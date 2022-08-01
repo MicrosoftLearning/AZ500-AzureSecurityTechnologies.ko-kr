@@ -2,12 +2,12 @@
 lab:
   title: 01 - 역할 기반 액세스 제어
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: da0086efa92f860f38d3bade2b18dfbcca84884c
-ms.sourcegitcommit: ff9f02863c270d4261acd5a77e8e29cf241679c5
+ms.openlocfilehash: 156b27cdbdd97656e8ccd85c4ed3656c0db91937
+ms.sourcegitcommit: 46495f1eba96da4be553aff5b7521e7ab62f50b8
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/11/2022
-ms.locfileid: "139714076"
+ms.lasthandoff: 06/03/2022
+ms.locfileid: "146032712"
 ---
 # <a name="lab-01-role-based-access-control"></a>랩 01: 역할 기반 액세스 제어
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -247,7 +247,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 4. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Dylan Williams 사용자 계정의 objectId 속성을 얻습니다. 
 
     ```cli
-    OBJECTID=$(echo $USER | jq '.[].objectId' | tr -d '"')
+    OBJECTID=$(echo $USER | jq '.[].id' | tr -d '"')
     ```
 
 5. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 서비스 데스크 그룹에 Dylan의 사용자 계정을 추가합니다. 
@@ -311,7 +311,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
    |액세스 할당(멤버 창 아래)|**사용자, 그룹 또는 서비스 주체**|
    |(+멤버 선택) 선택|**서비스 데스크**|
 
-5. **검토 + 할당** 을 클릭하여 역할 할당을 만듭니다.
+5. **검토 + 할당** 을 두 번 클릭하여 역할 할당을 만듭니다.
 
 6. **액세스 제어(IAM)** 블레이드에서 **역할 할당** 을 선택합니다.
 
