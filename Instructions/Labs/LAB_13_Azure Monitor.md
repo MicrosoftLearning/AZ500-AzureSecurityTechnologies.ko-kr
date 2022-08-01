@@ -2,12 +2,12 @@
 lab:
   title: 13 - Azure Monitor
   module: Module 04 - Manage security operations
-ms.openlocfilehash: e51e88d55193532e3c91c485d0a247b5e686a48f
-ms.sourcegitcommit: 7c5e8e9a86553c6bd9b9a6651b60c6cb9676f0ff
+ms.openlocfilehash: df6fbcf475fe0a5cefec130ab713f92997dcf206
+ms.sourcegitcommit: 022221e69467f2fdccf2e02bb54e6ec395570668
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2022
-ms.locfileid: "147168501"
+ms.lasthandoff: 04/21/2022
+ms.locfileid: "143988960"
 ---
 # <a name="lab-13-azure-monitor"></a>랩 13: Azure Monitor
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -158,7 +158,7 @@ ms.locfileid: "147168501"
 6. **Windows 성능 카운터** 를 클릭하고 **+ 성능 카운터 추가** 를 클릭한 다음 사용 가능한 성능 카운터 목록을 검토하고 다음 카운터를 추가합니다.
 
     - Memory(\*)\Available Memory Mbytes
-    - 프로세스(\*)\\% 프로세서 시간
+    - 프로세스(\*)\%프로세서 시간
     - Event Tracing for Windows\Total Memory Usage --- Non-Paged Pool
     - Event Tracing for Windows\Total Memory Usage --- Paged Pool
 
