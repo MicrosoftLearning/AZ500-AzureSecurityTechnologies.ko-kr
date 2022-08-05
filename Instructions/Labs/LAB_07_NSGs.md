@@ -2,12 +2,12 @@
 lab:
   title: 07 - 네트워크 보안 그룹 및 애플리케이션 보안 그룹
   module: Module 02 - Implement Platform Protection
-ms.openlocfilehash: e33f0a1f5c30a86d2b2a47069c6f4d759d60e782
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: d7cfed1e861215cf32c3b51c4a07aa6886575000
+ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703494"
+ms.lasthandoff: 04/04/2022
+ms.locfileid: "141368707"
 ---
 # <a name="lab-07-network-security-groups-and-application-security-groups"></a>랩 07: 네트워크 보안 그룹 및 애플리케이션 보안 그룹
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -66,7 +66,7 @@ ms.locfileid: "139703494"
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB07** 을 이름으로 입력합니다.|
     |이름|**myVirtualNetwork**|
     |지역|**미국 동부**|
@@ -128,7 +128,7 @@ ms.locfileid: "139703494"
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB07**|
     |이름|**myNsg**|
     |지역|**미국 동부**|
@@ -197,7 +197,7 @@ ms.locfileid: "139703494"
 
 1. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신** 을 입력하고 **Enter** 키를 누릅니다.
 
-2. **가상 머신** 블레이드에서 **+ 만들기** 를 클릭하고 드롭다운 목록에서 **+ 가상 머신** 을 클릭합니다.
+2. **가상 머신** 블레이드에서 **+ 만들기** 를 클릭하고 드롭다운 목록에서 **+ Azure 가상 머신** 을 클릭합니다.
 
 3. **가상 머신 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정합니다(나머지는 기본값을 그대로 사용).
 
@@ -207,10 +207,10 @@ ms.locfileid: "139703494"
    |Resource group|**AZ500LAB07**|
    |가상 머신 이름|**myVmWeb**|
    |지역|**(미국)미국 동부**|
-   |이미지|**Windows Server 2022 Datacenter - Gen2**|
+   |이미지|**Windows Server 2022 Datacenter: Azure Edition- Gen2**|
    |크기|**표준 D2s v3**|
    |사용자 이름|**학생**|
-   |암호|**모듈 6 랩에서 만든 암호를 다시 사용하세요(연습 1, 작업 2)**|
+   |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    |암호 확인|**암호 다시 입력**|
    |공용 인바운드 포트|**없음**|
    |기존 Windows Server 라이선스를 사용하시겠습니까? |**아니요**|
@@ -235,7 +235,7 @@ ms.locfileid: "139703494"
 
 이 작업에서는 관리 서버로 사용할 가상 머신을 만듭니다.
 
-1. Azure Portal의 **가상 머신** 블레이드로 다시 이동하여 **+ 만들기** 를 클릭하고 드롭다운 목록에서 **+ 가상 머신** 을 클릭합니다.
+1. Azure Portal에서 **가상 머신** 블레이드로 다시 이동하고, **+ 만들기** 를 클릭하고, 드롭다운 목록에서 **+ Azure 가상 머신** 을 클릭합니다.
 
 2. **가상 머신 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정합니다(나머지는 기본값을 그대로 사용).
 
@@ -245,10 +245,10 @@ ms.locfileid: "139703494"
    |Resource group|**AZ500LAB07**|
    |가상 머신 이름|**myVMMgmt**|
    |지역|(미국)미국 동부|
-   |이미지|**Windows Server 2022 Datacenter - Gen 2**|
+   |이미지|**Windows Server 2022 Datacenter: Azure Edition - Gen 2**|
    |크기|**표준 D2s v3**|
    |사용자 이름|**학생**|
-   |암호|**모듈 6 랩에서 만든 암호를 다시 사용하세요(연습 1, 작업 2)**|
+   |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    |공용 인바운드 포트|**없음**|
    |이미 Windows Server 라이선스가 있으신가요?|**아니요**|
 
@@ -301,7 +301,7 @@ ms.locfileid: "139703494"
    |설정|값|
    |---|---|
    |사용자 이름|**학생**|
-   |암호|**모듈 6 랩에서 만든 암호를 다시 사용하세요(연습 1, 작업 2)**|
+   |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 연결이 성공했는지 확인합니다. 이 시점에서 원격 데스크톱을 통해 myVMMgmt에 연결할 수 있다는 것을 확인하였습니다.
 

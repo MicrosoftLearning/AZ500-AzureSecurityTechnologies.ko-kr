@@ -2,12 +2,12 @@
 lab:
   title: 01 - 역할 기반 액세스 제어
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: 156b27cdbdd97656e8ccd85c4ed3656c0db91937
-ms.sourcegitcommit: 46495f1eba96da4be553aff5b7521e7ab62f50b8
+ms.openlocfilehash: 9ddbfd416d9897bcdf891c9c9265d8205277c176
+ms.sourcegitcommit: 79ca7b110859fe71a3849a28fdc781cad95d1567
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 06/03/2022
-ms.locfileid: "146032712"
+ms.lasthandoff: 06/15/2022
+ms.locfileid: "146381343"
 ---
 # <a name="lab-01-role-based-access-control"></a>랩 01: 역할 기반 액세스 제어
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -25,7 +25,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 ## <a name="lab-objectives"></a>랩 목표
 
-이 랩에서는 다음 연습을 완료하겠습니다.
+이 랩에서는 다음과 같은 연습을 완료합니다:
 
 - 연습 1: 최대식(사용자 계정)을 Azure Portal의 구성원으로 포함하는 상급 관리자 그룹을 만듭니다. 
 - 연습 2: 정지우(사용자 계정)가 PowerShell의 구성원인 하급 주니어 관리자 그룹을 만듭니다.

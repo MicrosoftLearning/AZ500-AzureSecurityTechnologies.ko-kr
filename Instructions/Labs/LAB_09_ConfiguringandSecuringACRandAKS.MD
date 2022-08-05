@@ -2,12 +2,12 @@
 lab:
   title: 09 - ACR 및 AKS 구성 및 보안
   module: Module 02 - Implement Platform Protection
-ms.openlocfilehash: 062531406ffcfac6e4c8e279c24cbb1959eebc43
-ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
+ms.openlocfilehash: 167dca080d65d97997b3a884015bfa2228c17a23
+ms.sourcegitcommit: 967cb50981ef07d731dd7548845a38385b3fb7fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/04/2022
-ms.locfileid: "141368693"
+ms.lasthandoff: 05/31/2022
+ms.locfileid: "145955421"
 ---
 # <a name="lab-09-configuring-and-securing-acr-and-aks"></a>랩 09: ACR 및 AKS 구성 및 보안
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -148,6 +148,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
     |Kubernetes 클러스터 이름|**MyKubernetesCluster**|
     |지역|**(미국) 미국 동부**|
     |가용성 영역 |**없음**|
+    |스케일링 방법|**수동**|
     |노드 수|**1**|
 
 4. **다음: 노드 풀 >** 을 클릭하고, **Kubernetes 클러스터 만들기** 블레이드의 **노드 풀** 탭에서 다음 설정을 지정합니다(다른 설정은 기본값으로 둡니다).

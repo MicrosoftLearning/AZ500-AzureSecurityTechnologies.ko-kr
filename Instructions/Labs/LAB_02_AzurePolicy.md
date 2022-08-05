@@ -2,12 +2,12 @@
 lab:
   title: 02 - Azure Policy
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: a28872fa69650b18226d3da63cac7d5a0632fb43
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: d49ce05e4620310d45317fe582bddb3aa511430b
+ms.sourcegitcommit: 967cb50981ef07d731dd7548845a38385b3fb7fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703572"
+ms.lasthandoff: 05/31/2022
+ms.locfileid: "145955393"
 ---
 # <a name="lab-02-azure-policy"></a>랩 02: Azure Policy
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -93,7 +93,7 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 
    |설정|값|
    |---|---|
-   |Subscription|Azure 구독명|
+   |구독|Azure 구독명|
    |Resource group|**AZ500LAB02**|
 
 1. **선택** 을 클릭합니다.
@@ -161,5 +161,12 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
     ```powershell
     Remove-AzResourceGroup -Name "AZ500LAB02" -Force -AsJob
     ```
-
 1.  **Cloud Shell** 창을 닫습니다. 
+  
+1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **정책** 을 입력하고 **Enter** 키를 누릅니다.
+
+1. 작성 섹션에서 **할당** 을 선택합니다.
+
+1. 할당 목록에서는 이 랩에서 만든 **허용되는 위치** 정책의 이름을 선택합니다.
+
+1. 정책 할당에서 **할당 삭제** 를 선택한 다음, **예** 를 선택합니다.

@@ -2,12 +2,12 @@
 lab:
   title: 14 - 클라우드용 Microsoft Defender
   module: Module 04 - Microsoft Defender for Cloud
-ms.openlocfilehash: 6ec274b75692321577c8966e07349211209eaa02
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: 647e2dc79012d6fedca9da9a78f6006f64be093b
+ms.sourcegitcommit: 18d4f5ccc60ae6d43b27e8b7d4d3ef7f68a02e93
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703590"
+ms.lasthandoff: 04/06/2022
+ms.locfileid: "141483503"
 ---
 # <a name="lab-14-microsoft-defender-for-cloud"></a>랩 14: 클라우드용 Microsoft Defender
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -53,52 +53,52 @@ ms.locfileid: "139703590"
 
 2. Azure Portal에서 페이지 위쪽에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **클라우드용 Microsoft Defender** 을 입력하고 **Enter** 키를 누릅니다.
 
-3. 이전에 완료되지 않은 경우 **클라우드용 Microsoft Defender \| 시작** 블레이드에서 **업그레이드** 를 클릭합니다.
+3. 이전에 완료되지 않은 경우 **클라우드용 Microsoft Defender | 시작** 블레이드에서 **업그레이드** 를 클릭합니다.
      
-4. 이전에 완료되지 않은 경우 **클라우드용 Microsoft Defender \| 시작** 블레이드의 **에이전트 설치** 탭에서 아래로 스크롤하여 **에이전트 설치** 를 클릭합니다.
+4. 이전에 완료되지 않은 경우 **클라우드용 Microsoft Defender | 시작** 블레이드의 **에이전트 설치** 탭에서 아래로 스크롤하여 **에이전트 설치** 를 클릭합니다.
 
-5. **클라우드용 Microsoft Defender \| 시작** 블레이드의 **업그레이드** 탭 >> **강화된 보안 기능이 있는 작업 영역 선택** 섹션에서 Log Analytics 작업 영역을 선택하여 **Microsoft Defender 계획** 을 켭니다. 
+5. **클라우드용 Microsoft Defender | 시작** 블레이드의 **업그레이드** 탭 >> **강화된 보안 기능이 있는 작업 영역 선택** 섹션에서 Log Analytics 작업 영역을 선택하여 **Microsoft Defender 플랜** 을 켭니다. 
 
     >**참고**: Microsoft Defender 계획의 일부로 사용할 수 있는 모든 기능을 검토합니다. 
 
-6. **Defender 계획** 블레이드에서 **모든 클라우드용 Microsoft Defender 계획 사용** 을 선택하고 **저장** 을 클릭합니다.
+6. **클라우드용 Microsoft Defender** 로 이동하고 왼쪽의 세로 메뉴 모음에 있는 관리 설정 아래에서 **환경 설정** 을 클릭합니다.
 
-7. **클라우드용 Microsoft Defender** 로 이동하고 왼쪽의 세로 메뉴 모음에 있는 관리 설정 아래에서 **환경 설정** 을 클릭합니다.
+7. **클라우드용 Microsoft Defender | 환경 설정** 블레이드에서 관련 구독을 클릭합니다. 
 
-8. **클라우드용 Microsoft Defender | 환경 설정** 블레이드에서 관련 구독을 클릭합니다. 
+8. **Defender 계획** 블레이드에서 **모든 클라우드용 Microsoft Defender 계획 사용** 을 선택하고 **저장** 을 클릭합니다.
 
-9. **설정 | Defender 계획** 블레이드의 왼쪽 세로 메뉴에서 **자동 프로비전** 을 클릭합니다.
+9. **설정 | Defender 플랜** 블레이드의 왼쪽 세로 메뉴에서 **자동 프로비저닝** 을 클릭합니다. 
 
-10. **설정 | 자동 프로비전** 블레이드에서 첫 번째 항목인 **Azure VM용 Log Analytics 작업 영역** 의 자동 프로비전이 **켜기** 로 설정되어 있는지 확인합니다.
+10. **설정 | 자동 프로비저닝** 블레이드에서 첫 번째 항목인 **Azure VM용 Log Analytics 에이전트** 의 자동 프로비저닝이 **켜기** 로 설정되어 있는지 확인합니다.
 
-11. **설정 \| 워크플로 자동화** 블레이드에서 **+ 워크플로 자동화 추가** 를 클릭합니다.
-
-12. **워크플로 자동화 추가** 블레이드에서 사용 가능한 설정을 검토합니다. 
+11. **설정 | 워크플로 자동화** 블레이드에서 사용 가능한 설정을 검토합니다. 
 
     >**참고**: 위협 탐지 경고 및 클라우드용 Microsoft Defender 권장 사항을 기반으로 작업을 트리거할 수 있습니다. Logic Apps를 기반으로 작업을 구성할 수도 있습니다. 
-
-13. **워크플로 자동화 추가** 블레이드에서 **취소** 를 클릭합니다.
+    
+12. **워크플로 자동화 추가** 블레이드에서 사용 가능한 설정을 검토합니다.
 
     >**참고**: 클라우드용 Microsoft Defender는 시스템 업데이트 상태, OS 보안 구성 및 엔드포인트 보호를 포함한 가상 머신에 대한 많은 인사이트를 제공합니다.
 
-14. **클라우드용 Microsoft Defender \| 환경 설정** 블레이드로 다시 이동하여 구독을 확장하고 이전 랩에서 만든 Log Analytics 작업 영역을 나타내는 항목을 클릭합니다.
+13. **워크플로 자동화 추가** 블레이드에서 **취소** 를 클릭합니다.
 
-15. **설정 \| Defender 계획** 블레이드에서 **모든 클라우드용 Microsoft Defender 계획 사용** 이 선택되어 있는지 확인하고 **저장** 을 클릭합니다.
+14. **클라우드용 Microsoft Defender | 환경 설정** 블레이드로 다시 이동하여 구독을 확장하고 이전 랩에서 만든 Log Analytics 작업 영역을 나타내는 항목을 클릭합니다.
 
-16. **클라우드용 Microsoft Defender \| 설정** 블레이드에서 **데이터 수집** 을 선택합니다. **모든 이벤트** 를 선택하고 **저장** 합니다.
+15. **설정 | Defender 플랜** 블레이드에서 **모든 클라우드용 Microsoft Defender 플랜 사용** 이 선택되어 있는지 확인하고 **저장** 을 클릭합니다.
+
+16. **클라우드용 Microsoft Defender | 설정** 블레이드에서 **데이터 수집** 을 선택합니다. **모든 이벤트** 를 선택하고 **저장** 합니다.
 
 
 #### <a name="task-2-review-the-microsoft-defender-for-cloud-recommendation"></a>작업 2: 클라우드용 Microsoft Defender 권장 사항 검토
 
 이 작업에서는 클라우드용 Microsoft Defender 권장 사항을 검토합니다. 
 
-1. Azure Portal에서 **클라우드용 Microsoft Defender\| 개요** 블레이드로 다시 이동합니다. 
+1. Azure Portal에서 **클라우드용 Microsoft Defender| 개요** 블레이드로 다시 이동합니다. 
 
-2. **클라우드용 Microsoft Defender \| 개요** 블레이드에서 **보안 점수** 타일을 검토합니다.
+2. **클라우드용 Microsoft Defender | 개요** 블레이드에서 **보안 점수** 타일을 검토합니다.
 
     >**참고**: 현재 점수가 표시되면 적어 둡니다.
 
-3. **클라우드용 Microsoft Defender \| 개요** 블레이드로 돌아와 **평가된 리소스** 를 선택합니다.
+3. **클라우드용 Microsoft Defender | 개요** 블레이드로 돌아와서 **평가된 리소스** 를 선택합니다.
 
 4. **인벤토리** 블레이드에서 **myVM** 항목을 선택합니다.
 
@@ -111,7 +111,7 @@ ms.locfileid: "139703590"
 
 이 작업에서는 가상 머신에서 Just-In-Time VM 액세스를 사용할 수 있도록 클라우드용 Microsoft Defender 권장 사항을 구현합니다. 
 
-1. Azure Portal에서 **클라우드용 Microsoft Defender \| 개요** 블레이드로 다시 이동하고 **클라우드 보안** 타일에서 **워크로드 보호** 를 선택합니다.
+1. Azure Portal에서 **클라우드용 Microsoft Defender | 개요** 블레이드로 다시 이동하고 **클라우드 보안** 타일에서 **워크로드 보호** 를 선택합니다.
 
 2. **워크로드 보호** 블레이드의 **고급 보호** 섹션에서 **Just-In-Time VM 액세스** 타일을 선택하고, **Just-In-Time VM 액세스 블레이드** 에서 **Just-In-Time VM 액세스 시도** 를 클릭합니다.
 

@@ -2,12 +2,12 @@
 lab:
   title: 05 - Azure AD Privileged Identity Management
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: f0fc7615d2e2e3a26782366d7a630ed9984bd3f0
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: 6ef7c51d334587e5e4e7116194fa46f2eb5d1df0
+ms.sourcegitcommit: 1da29a6d959a7f91dbbcbabf5ec06869c98fc1f1
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703530"
+ms.lasthandoff: 03/30/2022
+ms.locfileid: "141267272"
 ---
 # <a name="lab-05-azure-ad-privileged-identity-management"></a>랩 05: Azure AD Privileged Identity Management
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -53,7 +53,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 이 작업에서는 Azure AD 디렉터리 역할에 대해 사용자를 적격 상태로 설정합니다.
 
-1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
 
     >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. 전역 관리자 역할이 있는 사용자로 로그인되었는지 확인합니다.
     
@@ -372,7 +372,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 9. **Azure Active Directory Premium P2 - 허가된 사용자** 블레이드에서 **Azure Active Directory Premium P2** 라이선스를 할당한 사용자 계정의 확인란을 선택합니다. 위쪽 창에서 **라이선스 제거** 를 클릭하고 확인하라는 메시지가 표시되면 **예** 를 선택합니다.
 
-10. Azure Portal에서 **사용자 - 모든 사용자(미리 보기)** 블레이드로 이동하여 **aaduser1** 사용자 계정을 나타내는 항목을 클릭합니다. 그런 다음 **aaduser1 - 프로필** 블레이드에서 **삭제** 를 클릭하고 삭제를 확인하라는 메시지가 표시되면 **예** 를 선택합니다.
+10. Azure Portal에서 **사용자 - 모든 사용자** 블레이드로 이동하여 **aaduser1** 사용자 계정을 나타내는 항목을 클릭합니다. 그런 다음 **aaduser1 - 프로필** 블레이드에서 **삭제** 를 클릭하고 삭제를 확인하라는 메시지가 표시되면 **예** 를 선택합니다.
 
 11. 동일한 단계 순서를 반복하여 만든 나머지 사용자 계정을 삭제합니다.
 

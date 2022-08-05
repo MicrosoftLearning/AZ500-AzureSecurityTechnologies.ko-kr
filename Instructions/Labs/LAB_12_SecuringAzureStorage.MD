@@ -2,12 +2,12 @@
 lab:
   title: " 12 - 서비스 엔드포인트 및 스토리지 보안"
   module: Module 03 - Secure data and applications
-ms.openlocfilehash: d47890d94d7f1a008024ebedf5154d487cb35792
-ms.sourcegitcommit: 967cb50981ef07d731dd7548845a38385b3fb7fb
+ms.openlocfilehash: 094c35e70258656693d64a816b9ed9382eade199
+ms.sourcegitcommit: 7c5e8e9a86553c6bd9b9a6651b60c6cb9676f0ff
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 05/31/2022
-ms.locfileid: "145955412"
+ms.lasthandoff: 07/18/2022
+ms.locfileid: "147168510"
 ---
 # <a name="lab-12-service-endpoints-and-securing-storage"></a>랩 12: 서비스 엔드포인트 및 보안 스토리지
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -64,7 +64,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB12** 를 이름으로 입력합니다.|
     |이름|**myVirtualNetwork**|
     |지역|**(미국) 미국 동부**|
@@ -116,7 +116,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |이름|**myNsgPrivate**|
     |지역|**미국 동부**|
@@ -195,7 +195,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     |---|---|
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**개인**|
-
+    
 #### <a name="task-4-create-a-storage-account-with-a-file-share"></a>작업 4: 파일 공유를 통해 스토리지 계정 만들기
 
 이 작업에서는 파일 공유가 있는 스토리지 계정을 만들고 스토리지 계정 키를 가져옵니다.  
@@ -208,7 +208,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |스토리지 계정 이름|3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름|
     |위치|**(미국) 미국 동부**|
@@ -253,7 +253,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**개인**|
 
@@ -277,7 +277,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용할 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPrivate**|
     |지역|**(미국)미국 동부**|
@@ -312,7 +312,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용할 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPublic**|
     |지역|**(미국)미국 동부**|

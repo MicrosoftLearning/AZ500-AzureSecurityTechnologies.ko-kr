@@ -2,12 +2,12 @@
 lab:
   title: 06 - 디렉터리 동기화 구현
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: 00c359e1875ab915ab697d8ed33e36d956540529
-ms.sourcegitcommit: 1da29a6d959a7f91dbbcbabf5ec06869c98fc1f1
+ms.openlocfilehash: 9403e136799cd27b91f27c5d8d268ab0aec3f7c5
+ms.sourcegitcommit: 79ca7b110859fe71a3849a28fdc781cad95d1567
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/30/2022
-ms.locfileid: "141267260"
+ms.lasthandoff: 06/15/2022
+ms.locfileid: "146381352"
 ---
 # <a name="lab-06-implement-directory-synchronization"></a>랩 06: 디렉터리 동기화 구현
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -49,7 +49,7 @@ ms.locfileid: "141267260"
 
 이 작업에서는 Azure VM 배포용 DNS 이름을 식별합니다. 
 
-1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
@@ -65,11 +65,11 @@ ms.locfileid: "141267260"
 
     >**참고**: `<custom-label>` 자리 표시자를 전역적으로 고유할 가능성이 높은 유효한 DNS 이름으로 변경합니다. `<location>` 자리 표시자를 이 랩에서 사용할 Active Directory 도메인 컨트롤러를 호스트하는 Azure VM을 배포하려는 지역의 이름으로 바꿉니다.
 
-    >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/** ](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
+    >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
 
 5. 이 명령이 **True** 를 반환하는지 확인합니다. True가 반환되지 않으면 **True** 가 반환될 때까지 다른 `<custom-label>` 값을 사용해 같은 명령을 다시 실행합니다.
 
-6. 성공적인 결과가 반환된 `<custom-label>` 값을 기록합니다. 다음 작업에서 해당 값이 필요합니다.
+6. 성공적인 결과가 반환된 `<custom-label>` 값을 기록합니다. 다음 작업에서 필요합니다.
 
 7. Cloud Shell 창을 닫습니다.
 
@@ -92,7 +92,7 @@ ms.locfileid: "141267260"
    |구독|Azure 구독명|
    |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB06** 을 이름으로 입력합니다.|
    |지역|이전 작업에서 확인한 Azure 지역|
-   |관리자 사용자 이름|**Student**|
+   |관리자 사용자 이름|**학생**|
    |관리자 암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    |도메인 이름|**adatum.com**|
    |DNS 접두사|이전 작업에서 만든 DNS 호스트 이름|
@@ -123,7 +123,7 @@ ms.locfileid: "141267260"
 
 2. 현재 Azure AD 테넌트의 **개요** 를 표시하는 블레이드에서 **테넌트 관리** 를 클릭한 후 다음 화면에서 **+ 만들기** 를 클릭합니다.
 
-3. **디렉터리 만들기** 블레이드의 **기본** 탭에서 **Azure Active Directory** 옵션이 선택되어 있는지 확인하고 **다음: 구성 >** 을 클릭합니다.
+3. **테넌트 만들기** 블레이드의 **기본** 탭에서 **Azure Active Directory** 옵션이 선택되어 있는지 확인하고 **다음: 구성 >** 을 클릭합니다.
 
 4. **디렉터리 만들기** 블레이드의 **구성** 탭에서 다음 설정을 구성합니다.
 
@@ -225,7 +225,7 @@ ms.locfileid: "141267260"
 
    |설정|값|
    |---|---|
-   |사용자 이름|**Student**|
+   |사용자 이름|**학생**|
    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자** 가 로드될 때까지 기다립니다.  

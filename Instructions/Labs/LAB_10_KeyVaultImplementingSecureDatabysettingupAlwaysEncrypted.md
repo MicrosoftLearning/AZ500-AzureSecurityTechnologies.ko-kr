@@ -2,12 +2,12 @@
 lab:
   title: 10 - Key Vault(Always Encrypted를 설정하여 보안 데이터 구현)
   module: Module 03 - Secure Data and Applications
-ms.openlocfilehash: aa30698684cad8837b95fe823ce16a4043b63e5c
-ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
+ms.openlocfilehash: c31dd6e930e0f1d1b82e7c6ea502bb6fa51a7dd7
+ms.sourcegitcommit: 967cb50981ef07d731dd7548845a38385b3fb7fb
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/04/2022
-ms.locfileid: "141368715"
+ms.lasthandoff: 05/31/2022
+ms.locfileid: "145955385"
 ---
 # <a name="lab-10-key-vault-implementing-secure-data-by-setting-up-always-encrypted"></a>랩 10: Key Vault(Always Encrypted를 설정하여 보안 데이터 구현)
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -72,7 +72,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB10** 을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
    |관리자 사용자 이름|**학생**|
@@ -133,7 +133,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |설정|값|
     |----|----|
     |템플릿에서 구성(선택 사항)|**키, 비밀 및 인증서 관리**|
-    |키 권한|**모두 선택** 을 클릭하면 권한이 **16개 선택** 됩니다(**순환 정책 작업** 권한이 **선택 취소** 되어 있어야 합니다). |
+    |키 권한|**모두 선택** 을 클릭하면 권한이 **17개 선택** 됩니다(**순환 정책 작업** 권한이 **선택 취소** 되어 있어야 합니다). |
     |비밀 권한|**모두 선택** 을 클릭하면 총 **8개의 선택된** 권한이 나타납니다.|
     |인증 권한|**모두 선택** 을 클릭하면 권한이 총 **16개 선택** 됩니다.|
     |보안 주체 선택|**선택된 항목 없음** 을 클릭하고, **보안 주체** 블레이드에서 사용자 계정을 선택하고 **선택** 을 클릭합니다.|
@@ -315,7 +315,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
    
 4. **ADO.NET 연결 문자열** 을 기록합니다. 이 시간은 나중에 필요합니다.
 
-    >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 **Pa55w.rd1234** 로 바꿔야 합니다.
+    >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 연습 1의 배포에서 구성한 암호로 바꿔야 합니다.
 
 #### <a name="task-4-log-on-to-the-azure-vm-running-visual-studio-2019-and-sql-management-studio-2018"></a>작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
 
@@ -402,7 +402,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 14. **열 선택** 페이지에서 **SSN** 및 **Birthdate** 열을 선택하고 **SSN** 열의 **암호화 유형** 은 **명확함** 으로, **Birthdate** 열의 암호화 유형은 **무작위** 로 설정한 후에 **다음** 을 클릭합니다.
 
-    >**참고**: 암호화를 수행하는 중에 **호출 대상에 의해 예외가 throw됨** 같이 **Rotary(Microsoft.SQLServer.Management.ServiceManagement)** 와 관련된 오류가 throw되면 **키 권한의** **순환 정책 작업** 값이 **선택 취소** 되어 있는지 확인합니다. 현재 위치가 Azure Portal이 아닌 경우 **Key Vault** >> **액세스 정책** >> **키 권한** 으로 이동하여 **순환 정책 작업** 아래에서 모든 값의 선택을 취소합니다. 
+    >**참고**: 암호화를 수행하는 중에 **호출 대상에 의해 예외가 throw됨** 같이 **Rotary(Microsoft.SQLServer.Management.ServiceManagement)** 와 관련된 오류가 throw되면 **키 권한** 의 **순환 정책 작업** 값이 **선택 취소** 되어 있는지 확인합니다. 현재 위치가 Azure Portal이 아닌 경우 **Key Vault** >> **액세스 정책** >> **키 권한** 으로 이동하고, **순환 정책 작업** 아래에서 모든 값의 선택을 취소한 다음, **권한 있는 키 작업** 아래에서 **해제** 를 선택 취소합니다.
 
 15. **마스터 키 구성** 페이지에서 **Azure Key Vault** 를 선택하고 **로그인** 을 클릭합니다. 메시지가 표시되면 이 랩의 앞부분에서 Azure Key Vault 인스턴스를 프로비전하는 데 사용한 것과 같은 사용자 계정을 사용하여 인증을 진행합니다. 그런 다음 **Azure Key Vault 선택** 드롭다운 목록에 Key Vault가 표시되는지 확인하고 **다음** 을 클릭합니다.
 
@@ -469,7 +469,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 14. Visual Studio 콘솔에서 **시작** 단추를 클릭하여 콘솔 애플리케이션의 빌드를 시작합니다.
 
-15. 애플리케이션은 명령 프롬프트 창을 시작합니다. 암호에 대한 메시지가 표시되면 Azure SQL 데이터베이스에 연결하기 위해 **Pa55w.rd1234를** 입력합니다. 
+15. 애플리케이션은 명령 프롬프트 창을 시작합니다. 암호를 묻는 메시지가 표시되면 연습 1의 배포에서 지정한 암호를 입력하여 Azure SQL Database에 연결합니다. 
 
 16. 콘솔 앱은 실행 중인 상태로 유지하고 **SQL Management Studio** 콘솔로 전환합니다. 
 

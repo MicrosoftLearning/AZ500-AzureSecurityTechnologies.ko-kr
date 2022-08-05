@@ -2,12 +2,12 @@
 lab:
   title: 08 - Azure Firewall
   module: Module 02 - Implement Platform Protection
-ms.openlocfilehash: cb13c319b70c994bed74b1079bc4ad8fe6209361
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: 1657a251f1355150d6386f8793825369be955705
+ms.sourcegitcommit: e9389f8de66fec6d456a3f303bd350e380df7ff2
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703512"
+ms.lasthandoff: 04/04/2022
+ms.locfileid: "141371918"
 ---
 # <a name="lab-08-azure-firewall"></a>랩 08: Azure Firewall
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -80,11 +80,11 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB08** 을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
 
-    >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/** ](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
+    >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
 
 7. **검토 + 만들기** 를 클릭한 다음 **만들기** 를 클릭합니다.
 
@@ -167,13 +167,14 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
    |설정|값|
    |---|---|
    |경로 이름|**FW-DG**|
-   |주소 접두사|**0.0.0.0/0**
+   |주소 접두사 원본|**IP 주소**|
+   |원본 IP 주소/CIDR 범위|**0.0.0.0/0**
    |다음 홉 유형|**가상 어플라이언스**|
    |다음 홉 주소|이전 작업에서 식별한 방화벽의 개인 IP 주소|
 
     >**참고**: Azure Firewall은 실제로는 관리되는 서비스이지만 이 상황에서는 가상 어플라이언스를 사용할 수 있습니다.
     
-11.  **확인** 을 클릭하여 경로를 추가합니다. 
+11.  **추가** 를 클릭하여 경로를 추가합니다. 
 
 
 #### <a name="task-4-configure-an-application-rule"></a>작업 4: 애플리케이션 규칙 구성

@@ -2,12 +2,12 @@
 lab:
   title: 04 - MFA, 조건부 액세스 및 AAD ID 보호
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: c4b21d80083316c681f5916c5fe75973220695d1
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
+ms.openlocfilehash: f63f8a24c0d9b7c870967ee8c83292bd80b617f9
+ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703524"
+ms.lasthandoff: 04/04/2022
+ms.locfileid: "141368711"
 ---
 # <a name="lab-04-mfa-conditional-access-and-aad-identity-protection"></a>랩 04: MFA, 조건부 액세스 및 AAD ID 보호
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -80,6 +80,8 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 9. **사용자 지정 배포** 블레이드에서 다음 설정이 구성되었는지 확인합니다 (다른 설정은 기본값으로 유지).
 
+>**참고**: 과정 나머지 부분에서 VM(가상 머신)을 만드는 데 사용할 고유한 암호를 만들어야 합니다. 암호는 12자 이상이어야 하며, 정의된 복잡성 요구 사항(암호에 소문자 1개, 대문자 1개, 숫자 1개, 특수 문자 1개 중 3가지가 있어야 합니다)을 충족해야 합니다. [VM 암호 요구 사항](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-). 암호를 기록해 둡니다.
+
    |설정|값|
    |---|---|
    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
@@ -88,10 +90,10 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
    |Vm 크기|**Standard_D2s_v3**|
    |Vm 이름|**az500-04-vm1**|
    |관리자 사용자 이름|**학생**|
-   |관리자 암호|**Pa55w.rd1234**|
+   |관리자 암호|**고유한 암호를 만들고 나중에 참조할 수 있도록 기록하세요. 필요한 랩 액세스를 위해 이 암호를 입력하라는 메시지가 표시됩니다.**|
    |Virtual Network 이름|**az500-04-vnet1**|
 
-    >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/** ](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
+    >**Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
 10. **검토 + 만들기** 를 클릭한 다음 **만들기** 를 클릭합니다.
 
@@ -162,7 +164,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **사용자** 를 클릭합니다.
 
-2. **사용자 \| 모든 사용자(미리 보기)** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+2. **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
 
 3. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되어 있는지 확인하고 다음 설정을 지정합니다. 다른 설정은 모두 기본값으로 유지하고 **만들기** 를 클릭합니다.
 
@@ -179,7 +181,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 사용자의 암호를 기록합니다. 이 랩에서 나중에 필요합니다. 
 
-4. 다시 **사용자 \| 모든 사용자(미리 보기)** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+4. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
 
 5. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되었는지 확인하고 다음 설정을 지정합니다(다른 모든 설정을 기본값으로 남겨 둡니다).
 
@@ -194,7 +196,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 전체 사용자 이름과 암호를 기록합니다.
 
-6. 다시 **사용자 \| 모든 사용자(미리 보기)** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+6. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
 
 7. **새 사용자** 를 클릭하고 새 사용자 구성 설정을 완료한 다음 **만들기** 를 클릭합니다.
 
@@ -215,7 +217,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 이 작업에서는 각 사용자를 Azure Active Directory Premium P2 라이선스에 할당합니다.
 
-1. **사용자 \| 모든 사용자(미리 보기)** 블레이드에서 사용자 계정을 나타내는 항목을 클릭합니다. 
+1. **사용자 \| 모든 사용자** 블레이드에서 사용자 계정을 나타내는 항목을 클릭합니다. 
 
 2. 사용자 계정의 속성을 표시하는 블레이드에서 **편집** 을 클릭합니다.  사용 위치를 설정하지 않았다면 사용 위치가 **미국** 으로 설정되어 있는지 확인하고 **저장** 을 클릭합니다.
 
@@ -431,7 +433,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **ID 보호** 를 클릭합니다.
 
-4. **ID 보호 \| 개요** 블레이드에서 **보호**, **보고**, **알림** 옵션을 검토합니다. 
+4. **ID 보호 \| 개요** 블레이드에서 **새로운 위험한 사용자가 탐지됨** 및 **새로운 위험한 로그인이 탐지됨** 차트와 위험한 사용자에 관한 기타 정보를 검토합니다. 
 
 #### <a name="task-2-configure-a-user-risk-policy"></a>작업 2: 사용자 위험 정책 구성
 
@@ -484,7 +486,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
    |설정|값|
    |---|---|
    |사용자 이름|**학생**|
-   |암호|**Pa55w.rd1234**|
+   |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자** 가 로드될 때까지 기다립니다.  
 
