@@ -2,12 +2,12 @@
 lab:
   title: " 12 - 서비스 엔드포인트 및 스토리지 보안"
   module: Module 03 - Secure data and applications
-ms.openlocfilehash: 094c35e70258656693d64a816b9ed9382eade199
-ms.sourcegitcommit: 7c5e8e9a86553c6bd9b9a6651b60c6cb9676f0ff
+ms.openlocfilehash: 96c1073571e40558a102d2fd661b6b4e3b4f48d7
+ms.sourcegitcommit: 5eaa012a52e6f14e499393257855d314a720a668
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 07/18/2022
-ms.locfileid: "147168510"
+ms.lasthandoff: 08/31/2022
+ms.locfileid: "147717271"
 ---
 # <a name="lab-12-service-endpoints-and-securing-storage"></a>랩 12: 서비스 엔드포인트 및 보안 스토리지
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -43,10 +43,11 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 - 작업 1: 가상 네트워크 만들기
 - 작업 2: 가상 네트워크에 서브넷을 추가하고 스토리지 엔드포인트를 구성합니다.
 - 작업 3: 서브넷에 대한 액세스를 제한하도록 네트워크 보안 그룹을 구성합니다.
-- 작업 4: 파일 공유를 통해 스토리지 계정 만들기
-- 작업 5: 지정된 서브넷에 가상 머신 배포
-- 작업 6: 프라이빗 서브넷에서 스토리지 연결을 테스트하여 액세스가 허용되는지 확인합니다.
-- 작업 7: 공용 서브넷에서 스토리지 연결을 테스트하여 액세스가 거부되는지 확인합니다. 
+- 작업 4: 공용 서브넷에서 rdp를 허용하도록 네트워크 보안 그룹 구성
+- 작업 5: 파일 공유를 통해 스토리지 계정 만들기
+- 작업 6: 지정된 서브넷에 가상 머신 배포
+- 작업 7: 프라이빗 서브넷에서 스토리지 연결을 테스트하여 액세스가 허용되는지 확인
+- 작업 8: 공용 서브넷에서 스토리지 연결을 테스트하여 액세스가 거부되는지 확인 
 
 #### <a name="task-1-create-a-virtual-network"></a>작업 1: 가상 네트워크 만들기
 
@@ -195,8 +196,58 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     |---|---|
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**개인**|
+
+#### <a name="task-4-configure-a-network-security-group-to-allow-rdp-on-the-public-subnet"></a>작업 4: 공용 서브넷에서 RDP를 허용하도록 네트워크 보안 그룹 구성
+
+이 작업에서는 하나의 인바운드 보안 규칙(RDP)이 있는 네트워크 보안 그룹을 만듭니다. 또한 네트워크 보안 그룹을 공용 서브넷과 연결합니다. 이렇게 하면 공용 VM에 대한 RDP 액세스가 허용됩니다.
+
+1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **네트워크 보안 그룹** 을 입력하고 **Enter** 키를 누릅니다.
+
+2. **네트워크 보안 그룹** 블레이드에서 **+ 만들기** 를 클릭합니다.
+
+3. **네트워크 보안 그룹 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다. 
+
+    |설정|값|
+    |---|---|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Resource group|**AZ500LAB12**|
+    |이름|**myNsgPublic**|
+    |지역|**미국 동부**|
+
+4. **검토 + 만들기** 를 클릭한 다음, **만들기** 를 클릭합니다.
+
+    >**참고**: 다음 단계에서는 Azure Storage 서비스와의 통신을 허용하는 아웃바운드 보안 규칙을 만듭니다. 
+
+5. Azure 포털에서 **네트워크 보안 그룹** 블레이드로 돌아가 **myNsgPublic** 항목을 클릭합니다.
+
+6. **myNsgPublic** 블레이드의 **설정** 섹션에서 **인바운드 보안 규칙** 을 클릭한 다음 + **추가** 를 클릭합니다.
+
+7. **인바운드 보안 규칙 추가** 블레이드에서 다음 설정을 지정합니다(다른 모든 값은 기본값으로 둡니다). 
+
+    |설정|값|
+    |---|---|
+    |원본|**임의**|
+    |원본 포트 범위|**\***|
+    |대상|**서비스 태그**|
+    |대상 서비스 태그|**VirtualNetwork**|
+    |대상 포트 범위|**3389**|
+    |프로토콜|**TCP**|
+    |작업|**허용**|
+    |우선 순위|**1200**|                                                    
+    |이름|**Allow-RDP-All**|
+
+8. **인바운드 보안 규칙 추가** 블레이드에서 **추가** 를 클릭하여 새 인바운드 규칙을 만듭니다. 
+
+    >**참고**: 이제 네트워크 보안 그룹을 공용 서브넷과 연결합니다.
+
+9. **서브넷** 블레이드에서 **+ 연결** 을 선택하고 **서브넷 연결** 섹션에서 다음 설정을 지정한 다음 **확인** 을 클릭합니다.
+
+    |설정|값|
+    |---|---|
+    |가상 네트워크|**myVirtualNetwork**|
+    |서브넷|**공용**|
     
-#### <a name="task-4-create-a-storage-account-with-a-file-share"></a>작업 4: 파일 공유를 통해 스토리지 계정 만들기
+#### <a name="task-5-create-a-storage-account-with-a-file-share"></a>작업 5: 파일 공유를 통해 스토리지 계정 만들기
 
 이 작업에서는 파일 공유가 있는 스토리지 계정을 만들고 스토리지 계정 키를 가져옵니다.  
 
@@ -263,7 +314,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     >**참고**: 이 시점에 랩에서 파일 공유와 함께 스토리지 계정, 네트워크 보안 그룹, 가상 네트워크를 구성했습니다. 
 
-#### <a name="task-5-deploy-virtual-machines-into-the-designated-subnets"></a>작업 5: 지정된 서브넷에 가상 머신 배포
+#### <a name="task-6-deploy-virtual-machines-into-the-designated-subnets"></a>작업 6: 지정된 서브넷에 가상 머신 배포
 
 이 작업에서는 두 개의 가상 머신을 하나는 프라이빗 서브넷에, 다른 하나는 공용 서브넷에 만들게 됩니다. 
 
@@ -341,7 +392,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     >**참고**: **myVMPrivate** Azure VM의  배포가 완료되면 다음 작업으로 진행할 수 있습니다.
 
-#### <a name="task-6-test-the-storage-connection-from-the-private-subnet-to-confirm-that-access-is-allowed"></a>작업 6: 프라이빗 서브넷에서 스토리지 연결을 테스트하여 액세스가 허용되는지 확인합니다.
+#### <a name="task-7-test-the-storage-connection-from-the-private-subnet-to-confirm-that-access-is-allowed"></a>작업 7: 프라이빗 서브넷에서 스토리지 연결을 테스트하여 액세스가 허용되는지 확인
 
 이 작업에서는 원격 데스크톱을 통해 myVMPrivate 가상 머신에 연결하고 드라이브를 파일 공유에 매핑합니다. 
 
@@ -393,7 +444,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     >**참고**: 이 시점에서 프라이빗 서브넷의 가상 머신이 스토리지 계정에 액세스할 수 있음을 확인했습니다. 
 
-####  <a name="task-7-test-the-storage-connection-from-the-public-subnet-to-confirm-that-access-is-denied"></a>작업 7: 공용 서브넷에서 스토리지 연결을 테스트하여 액세스가 거부되는지 확인합니다. 
+####  <a name="task-8-test-the-storage-connection-from-the-public-subnet-to-confirm-that-access-is-denied"></a>작업 8: 공용 서브넷에서 스토리지 연결을 테스트하여 액세스가 거부되는지 확인 
 
 1. **가상 머신** 블레이드로 돌아갑니다. 
 
@@ -426,7 +477,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     Test-NetConnection -ComputerName www.bing.com -Port 80
     ```
 
-    >**참고**: 공용 서브넷과 연결된 네트워크 보안 그룹이 없기 때문에 테스트에 성공합니다.
+    >**참고**: 공용 서브넷에서 인터넷을 거부하는 아웃바운드 보안 규칙이 없으므로 테스트가 성공합니다.
 
 8. **myVmPublic** Azure VM에 대해 원격 데스크톱 세션을 종료합니다.
 
@@ -448,4 +499,4 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     ```
 
 4.  **Cloud Shell** 창을 닫습니다. 
- 
+
