@@ -2,12 +2,12 @@
 lab:
   title: 15 - Microsoft Sentinel
   module: Module 04 - Manage Security Operations
-ms.openlocfilehash: 63a24bbc17b846d3587cf3fb83ab46b7235d5fcd
-ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
+ms.openlocfilehash: 147bb0c8f6637393087c5a913f5c9bd8ca380866
+ms.sourcegitcommit: 3c178de473f4f986a3a7ea1d03c9f5ce699a05a4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/04/2022
-ms.locfileid: "141368807"
+ms.lasthandoff: 09/09/2022
+ms.locfileid: "147871967"
 ---
 # <a name="lab-15-microsoft-sentinel"></a>랩 15: Microsoft Sentinel
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -147,7 +147,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
     |위치|**(미국) 미국 동부**|
     |플레이북 이름|**Change-Incident-Severity**|
@@ -217,7 +217,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
 9. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **인시던트 설정** 탭에서 기본 설정을 수락하고 **다음: 자동 응답** 을 클릭합니다. 
 
-10. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **자동 응답** 탭에 있는 **경고 자동화** 드롭다운 목록에서 **Change-Incident-Severity** 항목 옆의 체크박스를 선택하고 **다음: 검토 >** 를 클릭합니다. 
+10. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **자동 응답** 탭에 있는 **경고 자동화(클래식)** 드롭다운 목록에서 **Change-Incident-Severity** 항목 옆의 체크박스를 선택하고 **다음: 검토 >** 를 클릭합니다. 
 
 11. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **검토 및 만들기** 탭에서 **만들기** 를 클릭합니다.
 

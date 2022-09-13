@@ -2,12 +2,12 @@
 lab:
   title: 13 - Azure Monitor
   module: Module 04 - Manage security operations
-ms.openlocfilehash: df6fbcf475fe0a5cefec130ab713f92997dcf206
-ms.sourcegitcommit: 022221e69467f2fdccf2e02bb54e6ec395570668
+ms.openlocfilehash: d7418287b895ccb5af66f01b499181b321e2bc36
+ms.sourcegitcommit: 3c178de473f4f986a3a7ea1d03c9f5ce699a05a4
 ms.translationtype: HT
 ms.contentlocale: ko-KR
-ms.lasthandoff: 04/21/2022
-ms.locfileid: "143988960"
+ms.lasthandoff: 09/09/2022
+ms.locfileid: "147871976"
 ---
 # <a name="lab-13-azure-monitor"></a>랩 13: Azure Monitor
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
@@ -145,7 +145,7 @@ ms.locfileid: "143988960"
 
 1. Azure Portal에서 이 연습에서 이전에 만든 Log Analytics 작업 영역으로 다시 이동합니다.
 
-2. Log Analytics 작업 영역 블레이드의 **설정** 섹션에서 **고급 설정** 을 클릭합니다.
+2. Log Analytics 작업 영역 블레이드의 **설정** 섹션에서 **레거시 에이전트 관리** 를 클릭합니다.
 
 3. **에이전트 구성** 블레이드에서 Windows 이벤트 로그, Windows 성능 카운터, Linux 성능 카운터, IIS 로그 및 Syslog를 포함한 구성 가능한 설정을 검토합니다. 
 
@@ -158,7 +158,7 @@ ms.locfileid: "143988960"
 6. **Windows 성능 카운터** 를 클릭하고 **+ 성능 카운터 추가** 를 클릭한 다음 사용 가능한 성능 카운터 목록을 검토하고 다음 카운터를 추가합니다.
 
     - Memory(\*)\Available Memory Mbytes
-    - 프로세스(\*)\%프로세서 시간
+    - 프로세스(\*)\\% 프로세서 시간
     - Event Tracing for Windows\Total Memory Usage --- Non-Paged Pool
     - Event Tracing for Windows\Total Memory Usage --- Paged Pool
 
