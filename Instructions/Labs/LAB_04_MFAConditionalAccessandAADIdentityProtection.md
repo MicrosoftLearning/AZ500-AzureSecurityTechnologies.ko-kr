@@ -1,26 +1,21 @@
 ---
 lab:
-  title: 04 - MFA, 조건부 액세스 및 AAD ID 보호
+  title: '04 - MFA, 조건부 액세스 및 AAD ID 보호'
   module: Module 01 - Manage Identity and Access
-ms.openlocfilehash: f63f8a24c0d9b7c870967ee8c83292bd80b617f9
-ms.sourcegitcommit: 2f08105eaaf0413d3ec3c12a3b078678151fd211
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 04/04/2022
-ms.locfileid: "141368711"
 ---
+
 # <a name="lab-04-mfa-conditional-access-and-aad-identity-protection"></a>랩 04: MFA, 조건부 액세스 및 AAD ID 보호
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 평가하려고 합니다.
+You have been asked to create a proof of concept of features that enhance Azure Active Directory (Azure AD) authentication. Specifically, you want to evaluate:
 
 - Azure AD 다단계 인증
 - Azure AD 조건부 액세스
 - Azure AD ID 보호
 
-> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -52,40 +47,40 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 #### <a name="task-1-deploy-an-azure-vm-by-using-an-azure-resource-manager-template"></a>작업 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
 
-이 작업에서는 ARM 템플릿을 사용하여 가상 머신을 만듭니다. 이 가상 머신은 이 랩의 마지막 연습에 사용됩니다. 
+In this task, you will create a virtual machine by using an ARM template. This virtual machine will be used in the last exercise for this lab. 
 
 1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
     >**참고**: 이 랩에서 사용하는 Azure 구독의 Owner 또는 Contributor 역할과 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 계정을 사용하여 Azure Portal에 로그인합니다.
 
-2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포** 를 입력합니다.
+2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포**를 입력합니다.
 
     >**참고**: **마켓플레이스** 목록에서 **템플릿 배포(사용자 지정 템플릿을 사용하여 배포)** 를 선택해도 됩니다.
 
 3. **사용자 지정 배포** 블레이드에서 **편집기에서 사용자 고유의 탬플릿 빌드** 옵션을 클릭합니다.
 
-4. **템플릿 편집** 블레이드에서 **파일 로드** 를 클릭하고 **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.json** 파일을 찾아 **열기** 를 클릭합니다.
+4. **템플릿 편집** 블레이드에서 **파일 로드**를 클릭하고 **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.json** 파일을 찾아 **열기**를 클릭합니다.
 
     >**참고**: 템플릿의 내용을 검토하고 Windows Server 2019 Datacenter를 호스팅하는 Azure VM를 배포함을 참고합니다.
 
-5. **템플릿 편집** 블레이드에서 **저장** 을 클릭합니다.
+5. **템플릿 편집** 블레이드에서 **저장**을 클릭합니다.
 
-6. **사용자 지정 배포** 블레이드로 돌아가서 **매개 변수 편집** 을 클릭합니다.
+6. **사용자 지정 배포** 블레이드로 돌아가서 **매개 변수 편집**을 클릭합니다.
 
-7. **매개 변수 편집** 블레이드에서 **파일 로드** 를 클릭하고 **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.parameters.json** 파일을 찾아 **열기** 를 클릭합니다.
+7. **매개 변수 편집** 블레이드에서 **파일 로드**를 클릭하고 **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.parameters.json** 파일을 찾아 **열기**를 클릭합니다.
 
     >**참고**: adminUsername 및 adminPassword 값을 지적하는 매개 변수 파일의 내용을 검토합니다.
 
-8. **매개 변수 편집** 블레이드에서 **저장** 을 클릭합니다.
+8. **매개 변수 편집** 블레이드에서 **저장**을 클릭합니다.
 
 9. **사용자 지정 배포** 블레이드에서 다음 설정이 구성되었는지 확인합니다 (다른 설정은 기본값으로 유지).
 
->**참고**: 과정 나머지 부분에서 VM(가상 머신)을 만드는 데 사용할 고유한 암호를 만들어야 합니다. 암호는 12자 이상이어야 하며, 정의된 복잡성 요구 사항(암호에 소문자 1개, 대문자 1개, 숫자 1개, 특수 문자 1개 중 3가지가 있어야 합니다)을 충족해야 합니다. [VM 암호 요구 사항](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-). 암호를 기록해 둡니다.
+><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You will need to create a unique password that will be used for creating VMs (virtual machines) for the rest of the course. The password must be at least 12 characters long and meet the defined complexity requirements (Password must have 3 of the following: 1 lower case character, 1 upper case character, 1 number, and 1 special character). <bpt id="p1">[</bpt>VM password requirements<ept id="p1">](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq#what-are-the-password-requirements-when-creating-a-vm-)</ept>. Please make a note of the password.
 
    |설정|값|
    |---|---|
    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
-   |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB04** 를 이름으로 입력합니다.|
+   |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB04**를 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
    |Vm 크기|**Standard_D2s_v3**|
    |Vm 이름|**az500-04-vm1**|
@@ -95,11 +90,11 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**Note**: To identify Azure regions where you can provision Azure VMs, refer to [**https://azure.microsoft.com/en-us/regions/offers/**](https://azure.microsoft.com/en-us/regions/offers/)
 
-10. **검토 + 만들기** 를 클릭한 다음 **만들기** 를 클릭합니다.
+10. **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다.
 
-    >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 연습을 진행하세요. 이 랩의 마지막 연습에서 이 배포에 포함된 가상 머신을 사용합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but proceed to the next exercise. You will use the virtual machine included in this deployment in the last exercise of this lab.
 
-> 결과: 이 랩의 마지막 연습에서 사용할 Azure VM **az500-04-vm1** 의 템플릿 배포를 시작했습니다.
+> 결과: 이 랩의 마지막 연습에서 사용할 Azure VM **az500-04-vm1**의 템플릿 배포를 시작했습니다.
 
 
 ### <a name="exercise-2-implement-azure-mfa"></a>연습 2: Azure MFA 구현
@@ -119,9 +114,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 이 작업에서는 새 Azure AD 테넌트를 만듭니다. 
 
-1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory** 를 입력하고 **Enter** 키를 누릅니다.
+1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory**를 입력하고 **Enter** 키를 누릅니다.
 
-2. 현재 Azure AD 테넌트의 **개요** 를 표시하는 블레이드에서 **테넌트 관리** 를 클릭한 후 다음 화면에서 **+ 만들기** 를 클릭합니다.
+2. 현재 Azure AD 테넌트의 **개요**를 표시하는 블레이드에서 **테넌트 관리**를 클릭한 후 다음 화면에서 **+ 만들기**를 클릭합니다.
 
 3. **테넌트 만들기** 블레이드의 **기본** 탭에서 **Azure Active Directory** 옵션이 선택되어 있는지 확인하고 **다음: 구성 >** 을 클릭합니다.
 
@@ -133,12 +128,12 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
    |초기 도메인 이름|문자와 숫자의 조합으로 구성된 고유한 이름|
    |국가 또는 지역|**미국**|
 
-    >**참고**: 초기 도메인 이름을 기록합니다. 이 랩의 후반부에서 필요합니다.
+    >Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명을 만들라는 메시지가 표시됩니다.
 
-5. **검토 + 만들기** 를 클릭한 다음, **만들기** 를 클릭합니다.
+5. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다.
 6. **로봇이 아님을 증명** 블레이드에서 Captcha 코드를 추가한 다음 **제출** 단추를 클릭합니다. 
 
-    >**참고**: 새 테넌트가 만들어질 때까지 기다립니다. **알림** 아이콘을 사용하여 배포 상태를 모니터링합니다. 
+    >특히 다음을 평가하려고 합니다. 
 
 
 #### <a name="task-2-activate-azure-ad-premium-p2-trial"></a>작업 2: Azure AD Premium P2 평가판 활성화
@@ -147,41 +142,41 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. Azure Portal의 도구 모음에서 Cloud Shell 셸 아이콘 오른쪽에 있는 **디렉터리 + 구독** 아이콘을 클릭합니다. 
 
-2. **디렉터리 + 구독** 블레이드에서 새로 만든 테넌트 **AdatumLab500-04** 를 클릭하고 **전환** 단추를 클릭하여 현재 디렉터리로 설정합니다.
+2. **디렉터리 + 구독** 블레이드에서 새로 만든 테넌트 **AdatumLab500-04**를 클릭하고 **전환** 단추를 클릭하여 현재 디렉터리로 설정합니다.
 
     >**참고**: **AdatumLab500-04** 항목이 **디렉터리 + 구독** 필터 목록에 나타나지 않으면 브라우저 창을 새로 고쳐야 할 수 있습니다.
 
-3. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory** 를 입력하고 **Enter** 키를 누릅니다. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **라이선스** 를 클릭합니다.
+3. In the Azure portal, in the <bpt id="p1">**</bpt>Search resources, services, and docs<ept id="p1">**</ept> text box at the top of the Azure portal page, type <bpt id="p2">**</bpt>Azure Active Directory<ept id="p2">**</ept> and press the <bpt id="p3">**</bpt>Enter<ept id="p3">**</ept> key. On the <bpt id="p1">**</bpt>AdatumLab500-04<ept id="p1">**</ept> blade, in the <bpt id="p2">**</bpt>Manage<ept id="p2">**</ept> section, click <bpt id="p3">**</bpt>Licenses<ept id="p3">**</ept>.
 
-4. **라이선스 \| 개요** 블레이드의 **관리** 섹션에서 **모든 제품** 을 클릭한 다음 **+ 사용/구매** 를 클릭합니다.
+4. **라이선스 \| 개요** 블레이드의 **관리** 섹션에서 **모든 제품**을 클릭한 다음 **+ 사용/구매**를 클릭합니다.
 
-5. **활성화** 블레이드의 Azure AD Premium P2 섹션에서 **무료 평가판** 을 클릭한 다음 **활성화** 를 클릭합니다.
+5. **활성화** 블레이드의 Azure AD Premium P2 섹션에서 **무료 평가판**을 클릭한 다음 **활성화**를 클릭합니다.
 
 
 #### <a name="task-3-create-azure-ad-users-and-groups"></a>작업 3: Azure AD 사용자 및 그룹 만들기
 
-이 작업에서는 다음 세 사용자를 만듭니다. aaduser1(전역 관리자), aaduser2(사용자), aaduser3(사용자). 이후 작업에는 각 사용자의 주체 이름과 암호가 필요합니다. 
+In this task, you will create three users: aaduser1 (Global Admin), aaduser2 (user), and aaduser3 (user). You will need each user's principal name and password for later tasks. 
 
-1. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **사용자** 를 클릭합니다.
+1. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **사용자**를 클릭합니다.
 
-2. **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+2. **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자**를 클릭합니다. 
 
-3. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되어 있는지 확인하고 다음 설정을 지정합니다. 다른 설정은 모두 기본값으로 유지하고 **만들기** 를 클릭합니다.
+3. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되어 있는지 확인하고 다음 설정을 지정합니다. 다른 설정은 모두 기본값으로 유지하고 **만들기**를 클릭합니다.
 
    |설정|값|
    |---|---|
    |사용자 이름|**aaduser1**|
    |이름|**aaduser1**|
-   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시** 를 클릭합니다.|
+   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시**를 클릭합니다.|
    |그룹|**0개 그룹이 선택됨**|
-   |역할|**사용자** 를 클릭하고 **전역 관리자** 를 클릭한 다음 **선택** 을 클릭합니다.|
+   |역할|**사용자**를 클릭하고 **전역 관리자**를 클릭한 다음 **선택**을 클릭합니다.|
    |사용 위치|**미국**|  
 
-    >**참고**: 전체 사용자 이름을 기록합니다. 도메인 이름이 표시된 드롭다운 목록의 오른쪽에 있는 **클립보드에 복사** 단추를 클릭하여 해당 값을 복사할 수 있습니다. 
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record the full user name. You can copy its value by clicking the <bpt id="p1">**</bpt>Copy to clipboard<ept id="p1">**</ept> button on the right hand side of the drop-down list displaying the domain name. 
 
-    >**참고**: 사용자의 암호를 기록합니다. 이 랩에서 나중에 필요합니다. 
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record the user's password. You will need this later in this lab. 
 
-4. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+4. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자**를 클릭합니다. 
 
 5. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되었는지 확인하고 다음 설정을 지정합니다(다른 모든 설정을 기본값으로 남겨 둡니다).
 
@@ -189,22 +184,22 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
    |---|---|
    |사용자 이름|**aaduser2**|
    |이름|**aaduser2**|
-   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시** 를 클릭합니다.|
+   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시**를 클릭합니다.|
    |그룹|**0개 그룹이 선택됨**|
    |역할|**사용자**|
    |사용 위치|**미국**|  
 
     >**참고**: 전체 사용자 이름과 암호를 기록합니다.
 
-6. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자** 를 클릭합니다. 
+6. 다시 **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자**를 클릭합니다. 
 
-7. **새 사용자** 를 클릭하고 새 사용자 구성 설정을 완료한 다음 **만들기** 를 클릭합니다.
+7. **새 사용자**를 클릭하고 새 사용자 구성 설정을 완료한 다음 **만들기**를 클릭합니다.
 
    |설정|값|
    |---|---|
    |사용자 이름|**aaduser3**|
    |이름|**aaduser3**|
-   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시** 를 클릭합니다.|
+   |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시**를 클릭합니다.|
    |그룹|**0개 그룹이 선택됨**|
    |역할|**사용자**|
    |사용 위치|**미국**|  
@@ -219,21 +214,21 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. **사용자 \| 모든 사용자** 블레이드에서 사용자 계정을 나타내는 항목을 클릭합니다. 
 
-2. 사용자 계정의 속성을 표시하는 블레이드에서 **편집** 을 클릭합니다.  사용 위치를 설정하지 않았다면 사용 위치가 **미국** 으로 설정되어 있는지 확인하고 **저장** 을 클릭합니다.
+2. 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
 
-3. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **라이선스** 를 클릭합니다.
+3. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **라이선스**를 클릭합니다.
 
-4. **라이선스 \| 개요** 블레이드에서 **모든 제품** 을 클릭하고 **Azure Active Directory Premium P2** 확인란을 선택한 다음 **+ 할당** 을 클릭합니다.
+4. **라이선스 \| 개요** 블레이드에서 **모든 제품**을 클릭하고 **Azure Active Directory Premium P2** 확인란을 선택한 다음 **+ 할당**을 클릭합니다.
 
-5. **라이선스 할당** 블레이드에서 **+ 사용자 및 그룹 추가** 를 클릭합니다.
+5. **라이선스 할당** 블레이드에서 **+ 사용자 및 그룹 추가**를 클릭합니다.
 
-6. **사용자** 블레이드에서 **aaduser1**, **aaduser2**, **aaduser3** 및 사용자 계정을 선택하고 **선택** 을 클릭합니다.
+6. **사용자** 블레이드에서 **aaduser1**, **aaduser2**, **aaduser3** 및 사용자 계정을 선택하고 **선택**을 클릭합니다.
 
-7. **라이선스 할당** 블레이드로 돌아가서 **할당 옵션** 을 클릭하고 모든 옵션이 활성화되어 있는지 확인하고 **검토 + 할당** 을 클릭하고, **할당** 을 클릭합니다.
+7. **라이선스 할당** 블레이드로 돌아가서 **할당 옵션**을 클릭하고 모든 옵션이 활성화되어 있는지 확인하고 **검토 + 할당**을 클릭하고, **할당**을 클릭합니다.
 
-8. Azure Portal에서 로그아웃하고 동일한 계정을 사용하여 다시 로그인합니다. 라이선스 할당이 적용되기 위해서는 이 단계가 필요합니다.
+8. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다.
 
-    >**참고**: 이 시점에서 이 랩에서 사용할 모든 사용자 계정에 Azure Active Directory Premium P2 라이선스를 할당했습니다. 로그아웃한 다음 다시 로그인하십시오. 
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: At this point, you assigned Azure Active Directory Premium P2 licenses to all user accounts you will be using in this lab. Be sure to sign out and then sign back in. 
 
 #### <a name="task-5-configure-azure-mfa-settings"></a>작업 5: Azure MFA 설정 구성
 
@@ -243,25 +238,25 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: AdatumLab500-04 Azure AD 테넌트를 사용하고 있는지 확인합니다.
 
-2. **AdatumLab500-04** Azure Active Directory 테넌트 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+2. **AdatumLab500-04** Azure Active Directory 테넌트 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-3. **보안 \| 시작** 블레이드의 **관리** 섹션에서 **MFA** 를 클릭합니다.
+3. **보안 \| 시작** 블레이드의 **관리** 섹션에서 **MFA**를 클릭합니다.
 
 4. **MFA \| 시작** 블레이드에서 **추가 클라우드 기반 MFA 설정** 링크를 클릭합니다. 
 
     >**참고**: 그러면 **다단계 인증** 페이지가 표시되는 새 브라우저 탭이 열립니다.
 
-5. **다단계 인증** 페이지에서 **서비스 설정** 탭을 클릭합니다. **확인 옵션** 을 검토합니다. **휴대폰에 문자 메시지 전송**, **모바일 앱을 통한 알림**, **모바일 앱 또는 하드웨어 토큰의 확인 코드** 가 활성화됩니다. **저장** 을 클릭한 후 **닫기** 를 클릭합니다.
+5. On the <bpt id="p1">**</bpt>multi-factor authentication<ept id="p1">**</ept> page, click the <bpt id="p2">**</bpt>service settings<ept id="p2">**</ept> tab. Review <bpt id="p3">**</bpt>verification options<ept id="p3">**</ept>. Note that <bpt id="p1">**</bpt>Text message to phone<ept id="p1">**</ept>, <bpt id="p2">**</bpt>Notification through mobile app<ept id="p2">**</ept>, and <bpt id="p3">**</bpt>Verification code from mobile app or hardware token<ept id="p3">**</ept> are enabled. Click <bpt id="p1">**</bpt>Save<ept id="p1">**</ept> and then click <bpt id="p2">**</bpt>close<ept id="p2">**</ept>.
 
-6. **사용자** 탭으로 전환하고 **aaduser1** 항목을 클릭한 다음 **사용** 링크를 클릭하고 메시지가 표시되면 **다단계 인증 사용** 을 클릭합니다.
+6. **사용자** 탭으로 전환하고 **aaduser1** 항목을 클릭한 다음 **사용** 링크를 클릭하고 메시지가 표시되면 **다단계 인증 사용**을 클릭합니다.
 
-7. **aaduser1** 에 대한 **Multi-Factor Auth 상태** 열이 이제 **활성화** 되었습니다.
+7. **aaduser1**에 대한 **Multi-Factor Auth 상태** 열이 이제 **활성화**되었습니다.
 
-8. **aaduser1** 을 클릭하면 **적용** 옵션도 표시됩니다. 
+8. **aaduser1**을 클릭하면 **적용** 옵션도 표시됩니다. 
 
     >**참고**: 사용자 상태를 사용됨에서 적용됨으로 변경하면 Azure MFA를 지원하지 않는 레거시 Azure AD 통합 앱에만 영향을 미치며 상태가 적용됨으로 변경된 후에는 앱 암호를 사용해야 합니다.
 
-9. **aaduser1** 항목을 선택한 경우 **사용자 설정 관리** 를 클릭하고 사용 가능한 옵션을 검토합니다. 
+9. **aaduser1** 항목을 선택한 경우 **사용자 설정 관리**를 클릭하고 사용 가능한 옵션을 검토합니다. 
 
    - Require selected users to provide contact methods again(선택한 사용자가 연락처 방법을 다시 제공해야 함).
 
@@ -269,9 +264,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
    - 기억된 모든 디바이스에서 다단계 인증을 복원합니다.
 
-10. **취소** 를 클릭하고 Azure Portal에서 **MFA \| 시작** 블레이드가 표시된 브라우저 탭으로 다시 전환합니다.
+10. **취소**를 클릭하고 Azure Portal에서 **MFA \| 시작** 블레이드가 표시된 브라우저 탭으로 다시 전환합니다.
 
-11. **설정** 섹션에서 **사기 행위 경고** 를 클릭합니다.
+11. **설정** 섹션에서 **사기 행위 경고**를 클릭합니다.
 
 12. **MFA \| 사기 행위 경고** 블레이드에서 다음 설정을 구성합니다.
 
@@ -285,9 +280,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 이 시점에서 aaduser1 및 사기 행위 경고 설정에 대한 MFA를 활성화했습니다. 
 
-14. **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 다시 이동하여 **관리** 섹션에서 **속성** 을 클릭한 다음 블레이드 아래쪽의 **보안 기본값 관리** 링크를 클릭하고 **보안 기본값 사용** 블레이드에서 **아니요** 를 클릭합니다. **내 조직이 조건부 액세스 사용** 을 이유로 선택한 다음 **저장** 을 클릭합니다.
+14. Navigate back to the <bpt id="p1">**</bpt>AdatumLab500-04<ept id="p1">**</ept> Azure Active Directory tenant blade, in the <bpt id="p2">**</bpt>Manage<ept id="p2">**</ept> section, click <bpt id="p3">**</bpt>Properties<ept id="p3">**</ept>, next click the <bpt id="p4">**</bpt>Manage Security defaults<ept id="p4">**</ept> link at the bottom of the blade, on the <bpt id="p5">**</bpt>Enable Security Defaults<ept id="p5">**</ept> blade, click <bpt id="p6">**</bpt>No<ept id="p6">**</ept>. Select <bpt id="p1">**</bpt>My Organization is using Conditonal Access<ept id="p1">**</ept> as the reason and and then click <bpt id="p2">**</bpt>Save<ept id="p2">**</ept>.
 
-    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. Azure AD 테넌트에서 전역 관리자 역할을 하는 사용자로 로그인되었는지 확인합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure that you are signed-in to the <bpt id="p2">**</bpt>AdatumLab500-04<ept id="p2">**</ept> Azure AD tenant. You can use the <bpt id="p1">**</bpt>Directory + subscription<ept id="p1">**</ept> filter to switch between Azure AD tenants. Ensure you are signed in as a user with the Global Administrator role in the Azure AD tenant.
 
 #### <a name="task-6-validate-mfa-configuration"></a>작업 6: MFA 구성 유효성 검사
 
@@ -297,27 +292,27 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 2. Azure Portal로 이동하고 **aaduser1** 사용자 계정을 사용하여 로그인 합니다. 
 
-    >**참고**: 로그인하려면 이 랩의 앞에서 기록한 AzureAD 테넌트 DNS 도메인 이름을 포함하여 **aaduser1** 사용자 계정의 정규화된 이름을 제공해야 합니다. 이 사용자 이름은 aaduser1@`<your_tenant_name>`.onmicrosoft.com 형식이며, `<your_tenant_name>`은 고유한 Azure AD 테넌트 이름을 나타내는 자리 표시자입니다. 
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: To sign in you will need to provide a fully qualified name of the <bpt id="p2">**</bpt>aaduser1<ept id="p2">**</ept> user account, including the Azure AD tenant DNS domain name, which you recorded earlier in this lab. This user name is in the format aaduser1@<ph id="ph1">`&lt;your_tenant_name&gt;`</ph>.onmicrosoft.com, where <ph id="ph2">`&lt;your_tenant_name&gt;`</ph> is the placeholder representing your unique Azure AD tenant name. 
 
-3. 메시지가 표시되면 **자세한 정보 필요** 대화 상자에서 **다음** 을 클릭합니다.
+3. 메시지가 표시되면 **자세한 정보 필요** 대화 상자에서 **다음**을 클릭합니다.
 
     >**참고**: 브라우저 세션은 **추가 보안 인증** 페이지로 리디렉션됩니다.
 
-4. **계정 보안 유지** 페이지에서 **다른 방법을 설정하고 싶습니다.** 링크를 선택하고 **어떤 방법을 사용하시겠습니까?** 드롭다운 목록에서 **전화** 를 선택한 후에 **확인** 을 선택합니다.
+4. **계정 보안 유지** 페이지에서 **다른 방법을 설정하고 싶습니다.** 링크를 선택하고 **어떤 방법을 사용하시겠습니까?** 드롭다운 목록에서 **전화**를 선택한 후에 **확인**을 선택합니다.
 
-5. **계정 보안 유지** 페이지에서 국가나 지역을 선택하고 **전화 번호 입력** 부분에 휴대폰 번호를 입력합니다. 그런 다음 **코드를 문자로 받기** 옵션이 선택되어 있는지 확인하고 **다음** 을 클릭합니다.
+5. **계정 보안 유지** 페이지에서 국가나 지역을 선택하고 **전화 번호 입력** 부분에 휴대폰 번호를 입력합니다. 그런 다음 **코드를 문자로 받기** 옵션이 선택되어 있는지 확인하고 **다음**을 클릭합니다.
  
 6. 계정 보안 유지 페이지에서 휴대폰에 문자 메시지로 수신된 코드를 입력하고 다음을 클릭합니다.
 
 7. 계정 보안 유지 페이지에서 확인이 정상적으로 완료되었는지 확인하고 다음을 클릭합니다.
 
-8. **계정 보안 유지** 페이지에서 **다른 방법을 사용하고 싶습니다** 를 클릭하고, 드롭다운 목록에서 **이메일** 을 선택하고, **확인** 을 클릭하고, 사용할 이메일 주소를 제공하고, **다음** 을 클릭합니다. 해당 이메일을 받으면 이메일 본문에서 코드를 식별하고, 이를 제공한 후에 **완료** 를 클릭합니다.
+8. On the <bpt id="p1">**</bpt>Keep your account secure<ept id="p1">**</ept> page, click <bpt id="p2">**</bpt>I want to use a different method<ept id="p2">**</ept>, select <bpt id="p3">**</bpt>Email<ept id="p3">**</ept> from the drop down list, click <bpt id="p4">**</bpt>Confirm<ept id="p4">**</ept>, provide the  email address you intend to use, and click <bpt id="p5">**</bpt>Next<ept id="p5">**</ept>. Once you receive the corresponding email, identify the code in the email body, provide it, and then click <bpt id="p1">**</bpt>Done<ept id="p1">**</ept>.
 
-9. 메시지가 표시되면 암호를 변경합니다. 새 암호를 기록해 두어야 합니다.
+9. When prompted, change your password. Make sure to record the new password.
 
 10. Azure Portal에 성공적으로 로그인했는지 확인합니다.
 
-11. **aaduser1** 로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
+11. **aaduser1**로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
 
 > 결과: 새 AD 테넌트를 만들고, AD 사용자를 구성하고, MFA를 구성하고, 사용자용 MFA 환경을 테스트했습니다. 
 
@@ -337,51 +332,51 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. Azure Portal에서 다시 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 이동합니다.
 
-2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **조건부 액세스** 를 클릭합니다.
+3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **조건부 액세스**를 클릭합니다.
 
-4. **조건부 액세스 \| 정책** 블레이드에서 **+ 새 정책** 을 클릭하고 드롭다운 목록에서 **새 정책 만들기** 를 선택합니다. 
+4. **조건부 액세스 \| 정책** 블레이드에서 **+ 새 정책**을 클릭하고 드롭다운 목록에서 **새 정책 만들기**를 선택합니다. 
 
 5. **새로 만들기** 블레이드에서 다음 설정을 구성합니다.
 
-   - **이름** 텍스트 상자에 **AZ500Policy1** 을 입력합니다.
+   - **이름** 텍스트 상자에 **AZ500Policy1**을 입력합니다.
     
-   - **사용자 또는 워크로드 ID가 선택됨** 을 클릭합니다. 오른쪽의 이 정책의 적용 대상 >> 사용자 및 그룹 >> 포함 >> **사용자 및 그룹 선택** 사용 >> **사용자 및 그룹** 확인란을 선택하고, **선택** 블레이드에서 **aaduser2** 를 클릭하고 **선택** 을 클릭합니다.
+   - Click <bpt id="p1">**</bpt>Users or workload identities selected<ept id="p1">**</ept>. On the right side under the What does this policy apply to &gt;&gt; Users and groups &gt;&gt; Include &gt;&gt; Enable <bpt id="p1">**</bpt>Select users and groups<ept id="p1">**</ept> &gt;&gt; select the <bpt id="p2">**</bpt>Users and Groups<ept id="p2">**</ept> checkbox, on the <bpt id="p3">**</bpt>Select<ept id="p3">**</ept> blade, click <bpt id="p4">**</bpt>aaduser2<ept id="p4">**</ept>, and click <bpt id="p5">**</bpt>Select<ept id="p5">**</ept>.
     
-   - **클라우드 앱 또는 작업** 을 클릭한 후 **앱 선택** 을 클릭하고 **선택** 블레이드에서 **Microsoft Azure 관리** 를 클릭한 후 **선택** 을 클릭합니다. 
+   - **클라우드 앱 또는 작업**을 클릭한 후 **앱 선택**을 클릭하고 **선택** 블레이드에서 **Microsoft Azure 관리**를 클릭한 후 **선택**을 클릭합니다. 
 
     >**참고**: 이 정책이 Azure Portal에 대한 액세스에 영향을 미친다는 경고를 검토합니다.
     
-   - **조건** 클릭 후 **로그인 위험** 을 클릭하고 **로그인 위험** 블레이드에서 위험 수준을 검토하지만 변경하지 않고 **로그인 위험** 블레이드를 닫습니다.
+   - **조건** 클릭 후 **로그인 위험**을 클릭하고 **로그인 위험** 블레이드에서 위험 수준을 검토하지만 변경하지 않고 **로그인 위험** 블레이드를 닫습니다.
     
-   - **디바이스 플랫폼** 을 클릭하고 포함할 수 있는 디바이스 플랫폼을 검토하고 **완료** 를 클릭합니다.
+   - **디바이스 플랫폼**을 클릭하고 포함할 수 있는 디바이스 플랫폼을 검토하고 **완료**를 클릭합니다.
     
    - **위치** 클릭 후 위치 옵션을 검토하되 변경하지는 않습니다.
     
-   - **액세스 컨트롤** 섹션의 **권한 부여** 를 클릭한 후 **권한 부여** 블레이드에서 **다단계 인증 필요** 체크박스를 선택하고 **선택** 을 클릭합니다
+   - **액세스 컨트롤** 섹션의 **권한 부여**를 클릭한 후 **권한 부여** 블레이드에서 **다단계 인증 필요** 체크박스를 선택하고 **선택**을 클릭합니다
     
-   - **정책 사용** 을 **켜기** 로 설정합니다.
+   - **정책 사용**을 **켜기**로 설정합니다.
 
-6. **새로 만들기** 블레이드에서 **만들기** 를 클릭합니다. 
+6. **새로 만들기** 블레이드에서 **만들기**를 클릭합니다. 
 
     >**참고**: 이 시점에서 MFA가 Azure Portal에 로그인해야 하는 조건부 액세스 정책이 있습니다. 
 
 #### <a name="task-2---test-the-conditional-access-policy"></a>작업 2 - 조건부 액세스 정책을 테스트합니다.
 
-이 작업에서는 Azure Portal에서 **aaduser2** 로 로그인하고 MFA가 필요한지 확인합니다. 또한 다음 연습을 계속하기 전에 정책을 삭제합니다. 
+In this task, you will sign in to the Azure portal as <bpt id="p1">**</bpt>aaduser2<ept id="p1">**</ept> and verify MFA is required. You will also delete the policy before continuing on to the next exercise. 
 
 1. InPrivate Microsoft Edge 창을 엽니다.
 
 2. 새 브라우저 창에서 Azure Portal로 이동하고 **aaduser2** 사용자 계정을 사용하여 로그인합니다.
 
-3. 메시지가 표시되면 **자세한 정보 필요** 대화 상자에서 **다음** 을 클릭합니다.
+3. 메시지가 표시되면 **자세한 정보 필요** 대화 상자에서 **다음**을 클릭합니다.
 
     >**참고**: 브라우저 섹션이 **계정 보안 유지** 페이지로 리디렉션됩니다.
     
-4. **계정 보안 유지** 페이지에서 **다른 방법을 설정하고 싶습니다.** 링크를 선택하고 **어떤 방법을 사용하시겠습니까?** 드롭다운 목록에서 **전화** 를 선택한 후에 **확인** 을 선택합니다.
+4. **계정 보안 유지** 페이지에서 **다른 방법을 설정하고 싶습니다.** 링크를 선택하고 **어떤 방법을 사용하시겠습니까?** 드롭다운 목록에서 **전화**를 선택한 후에 **확인**을 선택합니다.
 
-5. **계정 보안 유지** 페이지에서 국가나 지역을 선택하고 **전화 번호 입력** 부분에 휴대폰 번호를 입력합니다. 그런 다음 **코드를 문자로 받기** 옵션이 선택되어 있는지 확인하고 **다음** 을 클릭합니다.
+5. **계정 보안 유지** 페이지에서 국가나 지역을 선택하고 **전화 번호 입력** 부분에 휴대폰 번호를 입력합니다. 그런 다음 **코드를 문자로 받기** 옵션이 선택되어 있는지 확인하고 **다음**을 클릭합니다.
 
 6. 계정 보안 유지 페이지에서 휴대폰에 문자 메시지로 수신된 코드를 입력하고 다음을 클릭합니다.
 
@@ -389,21 +384,21 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 8. 계정 보안 유지 페이지에서 완료를 클릭합니다.
 
-9. 메시지가 표시되면 암호를 변경합니다. 새 암호를 기록해 두어야 합니다.
+9. When prompted, change your password. Make sure to record the new password.
 
 10. Azure Portal에 성공적으로 로그인했는지 확인합니다.
 
-11. **aaduser2** 로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
+11. **aaduser2**로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
 
     >**참고**: 이제 새로 만든 조건부 액세스 정책이 aaduser2가 Azure Portal에 로그인할 때 MFA를 적용한다는 것을 확인했습니다.
 
 12. 다시 Azure Portal을 표시하는 브라우저 창에서 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 다시 이동합니다.
 
-13. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+13. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-14. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **조건부 액세스** 를 클릭합니다.
+14. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **조건부 액세스**를 클릭합니다.
 
-15. **조건부 액세스 \| 정책** 블레이드에서 **AZ500Policy1** 옆의 줄임표를 클릭하고 **삭제** 를 클릭한 후 확인하라는 메시지가 표시되면 **예** 를 클릭합니다.
+15. **조건부 액세스 \| 정책** 블레이드에서 **AZ500Policy1** 옆의 줄임표를 클릭하고 **삭제**를 클릭한 후 확인하라는 메시지가 표시되면 **예**를 클릭합니다.
 
     >**참고**: 결과: 이 연습에서는 사용자가 Azure Portal에 서명할 때 MFA를 요구하는 조건부 액세스 정책을 구현합니다. 
 
@@ -427,11 +422,11 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. 필요한 경우 Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. Azure AD 테넌트에서 전역 관리자 역할을 하는 사용자로 로그인되었는지 확인합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure that you are signed-in to the <bpt id="p2">**</bpt>AdatumLab500-04<ept id="p2">**</ept> Azure AD tenant. You can use the <bpt id="p1">**</bpt>Directory + subscription<ept id="p1">**</ept> filter to switch between Azure AD tenants. Ensure you are signed in as a user with the Global Administrator role in the Azure AD tenant.
 
-2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **ID 보호** 를 클릭합니다.
+3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **ID 보호**를 클릭합니다.
 
 4. **ID 보호 \| 개요** 블레이드에서 **새로운 위험한 사용자가 탐지됨** 및 **새로운 위험한 로그인이 탐지됨** 차트와 위험한 사용자에 관한 기타 정보를 검토합니다. 
 
@@ -439,64 +434,64 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 이 작업에서는 사용자 위험 정책을 만듭니다. 
 
-1. **ID 보호 \| 개요** 블레이드의 **보호** 섹션에서 **사용자 위험 정책** 을 클릭합니다.
+1. **ID 보호 \| 개요** 블레이드의 **보호** 섹션에서 **사용자 위험 정책**을 클릭합니다.
 
-2. 다음 설정으로 **사용자 위험 수정 정책** 을 구성합니다. 
+2. 다음 설정으로 **사용자 위험 수정 정책**을 구성합니다. 
 
-   - **사용자** 를 클릭하고, **사용자** 블레이드의 **포함** 탭에서 **모든 사용자** 옵션이 선택되어 있는지 확인합니다.
+   - **사용자**를 클릭하고, **사용자** 블레이드의 **포함** 탭에서 **모든 사용자** 옵션이 선택되어 있는지 확인합니다.
 
-   - **사용자** 블레이드에서 **제외** 탭으로 전환하고 **제외된 사용자 선택** 을 클릭합니다. 사용자 계정을 선택하고 **선택** 을 클릭합니다. 
+   - **사용자** 블레이드에서 **제외** 탭으로 전환하고 **제외된 사용자 선택**을 클릭합니다. 사용자 계정을 선택하고 **선택**을 클릭합니다. 
 
-   - **사용자 위험** 을 클릭하고, **사용자 위험** 블레이드에서 **낮음 이상** 을 선택한 다음 **완료** 를 클릭합니다. 
+   - **사용자 위험**을 클릭하고, **사용자 위험** 블레이드에서 **낮음 이상**을 선택한 다음 **완료**를 클릭합니다. 
 
-   - **액세스** 를 클릭하고, **액세스** 블레이드에서 **액세스 허용** 옵션과 **암호 변경 필요** 확인란이 선택되어 있는지 확인한 다음 **완료** 를 클릭합니다.
+   - **액세스**를 클릭하고, **액세스** 블레이드에서 **액세스 허용** 옵션과 **암호 변경 필요** 확인란이 선택되어 있는지 확인한 다음 **완료**를 클릭합니다.
 
-   - **정책 적용** 을 **켜기** 로 설정하고 **저장** 을 클릭합니다.
+   - **정책 적용**을 **켜기**로 설정하고 **저장**을 클릭합니다.
 
 #### <a name="task-3-configure-sign-in-risk-policy"></a>작업 3: 로그인 위험 정책 구성
 
 이 작업에서는 로그인 위험 정책을 구성합니다. 
 
-1. **ID 보호 \| 사용자 위험 정책** 블레이드의 **보호** 섹션에서 **로그인 위험 정책** 을 클릭합니다.
+1. **ID 보호 \| 사용자 위험 정책** 블레이드의 **보호** 섹션에서 **로그인 위험 정책**을 클릭합니다.
 
-2. 다음 설정으로 **로그인 위험 수정 정책** 을 구성합니다. 
+2. 다음 설정으로 **로그인 위험 수정 정책**을 구성합니다. 
 
-   - **사용자** 를 클릭하고, **사용자** 블레이드의 **포함** 탭에서 **모든 사용자** 옵션이 선택되어 있는지 확인합니다.
+   - **사용자**를 클릭하고, **사용자** 블레이드의 **포함** 탭에서 **모든 사용자** 옵션이 선택되어 있는지 확인합니다.
 
-   - **로그인 위험** 을 클릭하고, **로그인 위험** 블레이드에서 **중간 이상** 을 선택한 다음 **완료** 를 클릭합니다. 
+   - **로그인 위험**을 클릭하고, **로그인 위험** 블레이드에서 **중간 이상**을 선택한 다음 **완료**를 클릭합니다. 
 
-   - **액세스** 를 클릭하고, **액세스** 블레이드에서 **액세스 허용** 옵션과 **다단계 인증 필요** 확인란이 선택되어 있는지 확인한 다음 **완료** 를 클릭합니다.
+   - **액세스**를 클릭하고, **액세스** 블레이드에서 **액세스 허용** 옵션과 **다단계 인증 필요** 확인란이 선택되어 있는지 확인한 다음 **완료**를 클릭합니다.
 
-   - **정책 적용** 을 **켬** 으로 설정하고 **저장** 을 클릭합니다.
+   - **정책 적용**을 **켬**으로 설정하고 **저장**을 클릭합니다.
 
 #### <a name="task-4-simulate-risk-events-against-the-azure-ad-identity-protection-policies"></a>작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
 
-> 이 작업을 시작하기 전에 연습 1에서 시작한 템플릿 배포가 완료되었는지 확인합니다. 배포에는 **az500-04-vm1** 이라는 Azure VM이 포함됩니다. 
+> Before you start this task, ensure that the template deployment you started in Exercise 1 has completed. The deployment includes an Azure VM named <bpt id="p1">**</bpt>az500-04-vm1<ept id="p1">**</ept>. 
 
 1. Azure Portal에서 **디렉터리 + 구독** 필터를 **az500-04-vm1** Azure VM을 배포한 Azure 구독과 연결된 Azure AD 테넌트로 설정합니다.
 
-2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신** 을 입력하고 **Enter** 키를 누릅니다.
+2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신**을 입력하고 **Enter** 키를 누릅니다.
 
 3. **가상 머신** 블레이드에서 **az500-04-vm1** 항목을 클릭합니다. 
 
-4. **az500-04-vm1** 블레이드에서 **연결** 을 클릭하고 드롭다운 메뉴에서 **RDP** 를 클릭합니다. 
+4. **az500-04-vm1** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-5. **RDP 파일 다운로드** 를 클릭한 후 원격 데스크톱을 통해 **az500-04-vm1** Azure VM에 연결합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
+5. Click <bpt id="p1">**</bpt>Download RDP File<ept id="p1">**</ept> and use it to connect to the <bpt id="p2">**</bpt>az500-04-vm1<ept id="p2">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
 
    |설정|값|
    |---|---|
    |사용자 이름|**학생**|
    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
-    >**참고**: 원격 데스크톱 세션과 **서버 관리자** 가 로드될 때까지 기다립니다.  
+    >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다.  
 
     >**참고**: 다음 단계는 원격 데스크톱 세션에서 **az500-04-vm1** Azure VM으로 수행됩니다. 
 
-6. **서버 관리자** 에서 **로컬 서버** 를 클릭한 다음 **IE 보안 강화 구성** 을 클릭합니다.
+6. **서버 관리자**에서 **로컬 서버**를 클릭한 다음 **IE 보안 강화 구성**을 클릭합니다.
 
-7. **Internet Explorer 강화된 보안 구성** 대화 상자에서 두 옵션을 **해제** 로 설정하고 **확인** 을 클릭합니다.
+7. **Internet Explorer 강화된 보안 구성** 대화 상자에서 두 옵션을 **해제**로 설정하고 **확인**을 클릭합니다.
 
-8. **Internet Explorer** 를 시작하고 드롭다운 메뉴의 도구 모음에서 톱니 바퀴 아이콘을 클릭한 뒤 **안전** 을 클릭한 다음 **InPrivate 브라우징** 을 클릭합니다.
+8. **Internet Explorer**를 시작하고 드롭다운 메뉴의 도구 모음에서 톱니 바퀴 아이콘을 클릭한 뒤 **안전**을 클릭한 다음 **InPrivate 브라우징**을 클릭합니다.
 
 9. InPrivate Internet Explorer 창에서 **https://www.torproject.org/projects/torbrowser.html.en** 의 Tor 브라우저 프로젝트로 이동합니다.
 
@@ -506,11 +501,11 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 12. 메시지가 표시되면 **aaduser3** 계정으로 로그인을 시도합니다. 
 
-    >**참고**: **로그인이 차단되었음** 이라는 메시지가 표시됩니다. 이는 예상된 오류로, 이 계정이 다단계 인증으로 구성되어 있지 않은 것이 원인입니다. 이렇게 구성해야 하는 이유는 ToR 브라우저 사용과 관련한 로그인 위험이 증가했기 때문입니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You will be presented with the message <bpt id="p2">**</bpt>Your sign-in was blocked<ept id="p2">**</ept>. This is expected, since this account is not configured with multi-factor authentication, which is required due to increased sign-in risk associated with the use of ToR Browser.
 
-13. **다른 계정으로 로그아웃 및 로그인 옵션** 을 사용하여 해당 랩의 이전 다단계 인증을 위해 만들고 구성한 **aaduser1** 계정으로 로그인합니다.
+13. **다른 계정으로 로그아웃 및 로그인 옵션**을 사용하여 해당 랩의 이전 다단계 인증을 위해 만들고 구성한 **aaduser1** 계정으로 로그인합니다.
 
-    >**참고**: 이번에는 **의심스러운 활동이 감지됨** 이라는 메시지가 표시됩니다. 이 계정은 다단계 인증으로 구성되었으므로 다시 한번 예상됩니다. ToR 브라우저 사용과 관련한 로그인 위험이 증가하는 것을 고려하여 다단계 인증을 사용해야 합니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This time, you will be presented with the <bpt id="p2">**</bpt>Suspicious activity detected<ept id="p2">**</ept> message. Again, this is expected, since this account is configured with multi-factor authentiation. Considering the increased sign-in risk associated with the use of ToR Browser, you will have to use multi-factor authentication.
 
 14. **확인** 옵션을 사용하여 문자 또는 전화 통화로 ID를 확인할지 여부를 지정합니다.
 
@@ -526,17 +521,17 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. Azure Portal로 돌아가서 **디렉터리 + 구독** 필터를 사용하여 **AdatumLab500-04** Azure Active Directory 테넌트로 전환합니다.
 
-2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-3. **보안 \| 시작** 블레이드의 **보고** 섹션에서 **위험한 사용자** 를 클릭합니다. 
+3. **보안 \| 시작** 블레이드의 **보고** 섹션에서 **위험한 사용자**를 클릭합니다. 
 
 4. 보고서를 검토하여 **aaduser3** 사용자 계정을 참조하는 항목이 있는지 확인합니다.
 
-5. **보안 \| 시작** 블레이드의 **보고** 섹션에서 **위험한 로그인** 을 클릭합니다. 
+5. **보안 \| 시작** 블레이드의 **보고** 섹션에서 **위험한 로그인**을 클릭합니다. 
 
 6. 보고서를 검토하여 **aaduser3** 사용자 계정을 통한 로그인에 해당하는 항목이 있는지 확인합니다.
 
-7. **보고서** 에서 **위험 검색** 을 클릭합니다.
+7. **보고서**에서 **위험 검색**을 클릭합니다.
 
 8. 보고서를 검토하여 ToR 브라우저에서 생성된 익명 IP 주소의 로그인을 나타내는 항목이 있는지 확인합니다. 
 
@@ -552,26 +547,26 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 1. Azure Portal에서 다시 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 이동합니다.
 
-2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안** 을 클릭합니다.
+2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
-3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **ID 보호** 를 클릭합니다.
+3. **보안 \| 시작** 블레이드의 **보호** 섹션에서 **ID 보호**를 클릭합니다.
 
-4. **ID 보호 \| 개요** 블레이드에서 **사용자 위험 정책** 을 클릭합니다.
+4. **ID 보호 \| 개요** 블레이드에서 **사용자 위험 정책**을 클릭합니다.
 
-5. **ID 보호 \| 사용자 위험 정책** 블레이드에서 **정책 적용** 을 **끄기** 로 설정한 다음 **저장** 을 클릭합니다.
+5. **ID 보호 \| 사용자 위험 정책** 블레이드에서 **정책 적용**을 **끄기**로 설정한 다음 **저장**을 클릭합니다.
 
-6. **ID 보호 \| 사용자 위험 정책** 블레이드에서 **로그인 위험 정책** 을 클릭합니다.
+6. **ID 보호 \| 사용자 위험 정책** 블레이드에서 **로그인 위험 정책**을 클릭합니다.
 
-7. **ID 보호 \| 로그인 위험 정책** 블레이드에서 **정책 적용** 을 **끄기** 로 설정한 다음 **저장** 을 클릭합니다.
+7. **ID 보호 \| 로그인 위험 정책** 블레이드에서 **정책 적용**을 **끄기**로 설정한 다음 **저장**을 클릭합니다.
 
 다음 단계를 사용하여 랩의 앞 부분에서 프로비전한 Azure VM을 중지합니다.
 
 1. Azure Portal에서 **디렉터리 + 구독** 필터를 **az500-04-vm1** Azure VM을 배포한 Azure 구독과 연결된 Azure AD 테넌트로 설정합니다.
 
-2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신** 을 입력하고 **Enter** 키를 누릅니다.
+2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신**을 입력하고 **Enter** 키를 누릅니다.
 
 3. **가상 머신** 블레이드에서 **az500-04-vm1** 항목을 클릭합니다. 
  
-4. **az500-04-vm1** 블레이드에서 **중지** 를 클릭하고 확인하라는 메시지가 표시되면 **확인** 을 클릭하세요. 
+4. **az500-04-vm1** 블레이드에서 **중지**를 클릭하고 확인하라는 메시지가 표시되면 **확인**을 클릭하세요. 
 
 >  PIM 랩에 종속성이 있기 때문에 이 랩에서 프로비전된 리소스는 제거하지 않습니다.
