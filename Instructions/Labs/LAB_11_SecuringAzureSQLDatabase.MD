@@ -2,25 +2,20 @@
 lab:
   title: 11 - Azure SQL Database 보안
   module: Module 03 - Secure data and applications
-ms.openlocfilehash: 1112086c681d4d81e186ad87a8a01085f42f8490
-ms.sourcegitcommit: a8470295248a6363987bd5ea47154fe39f8535c3
-ms.translationtype: HT
-ms.contentlocale: ko-KR
-ms.lasthandoff: 03/09/2022
-ms.locfileid: "139703482"
 ---
+
 # <a name="lab-11-securing-azure-sql-database"></a>랩 11: Azure SQL Database 보호
 # <a name="student-lab-manual"></a>학생용 랩 매뉴얼
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 특히, 다음과 같은 기능에 관심이 있습니다.
+You have been asked to review security features for Azure SQL database. Specifically, you are interested in:
 
 - SQL 주입 및 데이터 반출과 같은 공격으로부터 보호합니다. 
 - 데이터베이스 정보를 검색하고 기밀과 같은 범주로 분류하는 기능. 
 - 데이터베이스 서버, 데이터베이스 쿼리 및 로그 이벤트를 감사하는 기능. 
 
-> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -57,39 +52,39 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
-2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포** 를 입력하고 **Enter** 키를 누릅니다.
+2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포**를 입력하고 **Enter** 키를 누릅니다.
 
 3. **사용자 지정 배포** 블레이드에서 **편집기에서 사용자 고유의 탬플릿 빌드** 옵션을 클릭합니다.
 
-4. **템플릿 편집** 블레이드에서 **파일 로드** 를 클릭하고, **\\Allfiles\\Labs\\11\\azuredeploy.json** 파일을 찾아 **열기** 를 클릭합니다.
+4. **템플릿 편집** 블레이드에서 **파일 로드**를 클릭하고, **\\Allfiles\\Labs\\11\\azuredeploy.json** 파일을 찾아 **열기**를 클릭합니다.
 
     >**참고**: 템플릿의 콘텐츠를 검토하고 Azure SQL 데이터베이스에 배포된 것을 확인합니다.
 
-5. **템플릿 편집** 블레이드에서 **저장** 을 클릭합니다.
+5. **템플릿 편집** 블레이드에서 **저장**을 클릭합니다.
 
 6. **사용자 지정 배포** 블레이드에서 다음 설정이 구성되었는지 확인합니다 (다른 설정은 기본값으로 유지).
 
    |설정|값|
    |---|---|
    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
-   |Resource group|**새로 만들기** 를 클릭하고 **AZ500LAB11** 을 이름으로 입력합니다.|
+   |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB11**을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
 
-7. **검토 + 만들기** 를 클릭한 다음, **만들기** 를 클릭합니다.
+7. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다.
 
     >**참고**: 배포가 완료될 때까지 기다리세요. 
 
 #### <a name="task-2-configure-advanced-data-protection"></a>작업 2: 고급 데이터 보호 구성
 
-1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹** 을 입력하고 **Enter** 키를 누릅니다.
+1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
 2. **리소스 그룹** 블레이드의 리소스 그룹 목록에서 **AZ500LAB11** 항목을 클릭합니다.
 
 3. **AZ500LAB11-RG** 블레이드에서 새로 만들어진 SQL Server를 나타내는 항목을 클릭합니다.
 
-4. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender** 를 클릭합니다. **시작** 페이지의 아래쪽으로 스크롤하여 **업그레이드** 를 선택합니다. **에이전트 설치** 탭에서 **에이전트 설치** 를 선택합니다.
+4. On the SQL server blade, in the <bpt id="p1">**</bpt>Security<ept id="p1">**</ept> section, click <bpt id="p2">**</bpt>Microsoft Defender for Cloud<ept id="p2">**</ept>. Scroll to the bottom of the <bpt id="p1">**</bpt>Getting started<ept id="p1">**</ept> page and select <bpt id="p2">**</bpt>Upgrade<ept id="p2">**</ept>. On the <bpt id="p1">**</bpt>Install agents<ept id="p1">**</ept> tab select <bpt id="p2">**</bpt>Install agents<ept id="p2">**</ept>.
 
-5. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender** 를 클릭하고 **Microsoft Defender for SQL 사용** 을 선택합니다.
+5. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭하고 **Microsoft Defender for SQL 사용**을 선택합니다.
 
       >**참고**: Azure Defender for SQL을 사용하도록 설정되었다는 알림이 표시될 때까지 기다립니다.
 
@@ -97,38 +92,38 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
       >**참고**: **(구성)** 이 표시되지 않는 경우 브라우저를 새로 고칩니다.
     
-7. **서버 설정** 블레이드에서 가격 및 평가 기간 관련 정보, **취약성 평가 설정** 및 **Advanced Threat Protection 설정** 을 검토합니다.
+7. **서버 설정** 블레이드에서 가격 및 평가 기간 관련 정보, **취약성 평가 설정** 및 **Advanced Threat Protection 설정**을 검토합니다.
 
-8. **클라우드용 Microsoft Defender** 블레이드로 돌아와 **권장 사항** 및 **보안 경고** 를 검토합니다.
+8. **클라우드용 Microsoft Defender** 블레이드로 돌아와 **권장 사항** 및 **보안 경고**를 검토합니다.
 
-      >**참고**: **클라우드용 Microsoft Defender** 블레이드에 권장 사항이 표시되려면 10~15분 정도 걸릴 수 있습니다. 이 시간 동안 기다리지 말고 다음 작업을 진행하세요. 단, 나머지 작업을 모두 완료한 후에는 이 블레이드로 돌아오는 것이 좋습니다.
+      ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: It may take 10-15 minutes for recommendations to appear on the <bpt id="p2">**</bpt>Microsoft Defender for Cloud<ept id="p2">**</ept> blade. Rather than waiting, proceed to the next task but consider returning to this blade once you complete all the remaining tasks.
 
 
 #### <a name="task-3-configure-data-classification"></a>작업 3: 데이터 분류 구성
 
 이 작업에서는 GPDR 및 데이터 보호 준수를 위해 SQL Database에서 정보를 검색하고 분류합니다.
 
-1. SQL 서버 블레이드의 **설정** 섹션에서 **SQL Databases** 를 클릭합니다.
+1. SQL 서버 블레이드의 **설정** 섹션에서 **SQL Databases**를 클릭합니다.
 
 2. 데이터베이스 목록에서 **AZ500LabDb** 항목을 선택합니다. 
 
-3. **AZ500LabDb** SQL 데이터베이스 블레이드의 **보안** 섹션에서 **데이터 검색 및 분류** 를 클릭합니다.
+3. **AZ500LabDb** SQL 데이터베이스 블레이드의 **보안** 섹션에서 **데이터 검색 및 분류**를 클릭합니다.
 
 4. **데이터 검색 및 분류** 블레이드에서 **분류** 탭을 클릭합니다.
 
     >**참고**: 분류 엔진은 데이터베이스에서 잠재적으로 중요한 데이터가 포함된 열을 검색하고 권장되는 열 분류 목록을 제공합니다.
 
-5. 블레이드 상단의 파란색 막대에 **분류 권장 사항이 있는 15개의 열을 찾았습니다** 라고 표시되는 문자 메시지를 클릭합니다.
+5. 블레이드 상단의 파란색 막대에 **분류 권장 사항이 있는 15개의 열을 찾았습니다**라고 표시되는 문자 메시지를 클릭합니다.
 
 6. 나열된 열과 권장 민감도 레이블을 검토합니다. 
 
-7. **모두 선택** 체크박스를 활성화한 다음 **선택한 권장 사항 수락** 을 클릭합니다.
+7. **모두 선택** 체크박스를 활성화한 다음 **선택한 권장 사항 수락**을 클릭합니다.
 
     >**참고**: 또는 특정 열만 선택하고 다른 열을 해제할 수 있습니다. 
 
     >**참고**: 정보 유형 및 민감도 레이블을 변경할 수 있습니다. 
 
-8. 검토가 완료되면 **저장** 을 클릭합니다. 
+8. 검토가 완료되면 **저장**을 클릭합니다. 
 
     >**참고**: 이렇게 하면 분류를 완료하고 데이터베이스 열을 새 분류 메타데이터로 영구적으로 레이블을 지정할 수 있습니다. 
 
@@ -140,41 +135,41 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
 1. Azure Portal에서 다시 SQL Server 블레이드로 이동합니다.
 
-2. SQL Server 블레이드의 **보안** 섹션에서 **감사** 를 클릭합니다.
+2. SQL Server 블레이드의 **보안** 섹션에서 **감사**를 클릭합니다.
 
-    >**참고**: 서버 수준 감사입니다. 기본 감사 설정에는 데이터베이스에 대해 실행되는 모든 쿼리 및 저장 프로시저 그리고 성공 및 실패한 로그인이 포함됩니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is server level auditing. The default auditing settings include all the queries and stored procedures executed against the database, as well as successful and failed logins.
 
-3. **Azure SQL 감사 사용** 스위치를 **ON** 으로 설정하여 감사를 사용하도록 설정합니다. 
+3. **Azure SQL 감사 사용** 스위치를 **ON**으로 설정하여 감사를 사용하도록 설정합니다. 
 
-4. **스토리지** 체크박스 및 **구독** 항목 상자를 선택하면 **스토리지 계정** 이 표시됩니다.
+4. **스토리지** 체크박스 및 **구독** 항목 상자를 선택하면 **스토리지 계정**이 표시됩니다.
 
-5. 드롭다운 목록에서 **구독** 을 선택합니다.
+5. 드롭다운 목록에서 **구독**을 선택합니다.
 
-6. **스토리지 계정** 을 클릭하고 **새로 만들기** 를 선택합니다.
+6. **스토리지 계정**을 클릭하고 **새로 만들기**를 선택합니다.
 
-7. **스토리지 계정 만들기** 블레이드의 **이름** 상자에 3~24자의 소문자와 숫자로 구성된 전역에서 고유한 이름을 입력하고 **확인** 을 클릭합니다. 
+7. **스토리지 계정 만들기** 블레이드의 **이름** 상자에 3~24자의 소문자와 숫자로 구성된 전역에서 고유한 이름을 입력하고 **확인**을 클릭합니다. 
 
     >**참고**: 스토리지 계정을 사용하려면 먼저 브라우저를 새로 고쳐야 할 수 있습니다.
 
-8. **감사** 블레이드로 돌아와 **고급 속성** 에서 **보존 기간(일)** 을 **5** 로 설정합니다. 
+8. **감사** 블레이드로 돌아와 **고급 속성**에서 **보존 기간(일)** 을 **5**로 설정합니다. 
 
-9. 감사 블레이드에서 **저장** 을 클릭하여 감사 설정을 저장합니다. 
+9. 감사 블레이드에서 **저장**을 클릭하여 감사 설정을 저장합니다. 
 
-    >**참고**: 잘못된 스토리지 컨테이너 경로에 대한 오류 메시지가 표시되는 경우 스토리지 계정이 아직 프로비전되지 않았을 수 있습니다. 몇 분 간 기다렸다가 **스토리지 계정** 을 클릭하고 **스토리지 계정 선택** 블레이드에서 새로 만든 스토리지 계정을 선택하고 감사 블레이드로 돌아가서 **저장** 을 클릭합니다.
+    >Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다.
 
-10. **설정** 섹션의 서버 블레이드에서 **SQL Databases** 를 클릭합니다.
+10. **설정** 섹션의 서버 블레이드에서 **SQL Databases**를 클릭합니다.
 
 11. 데이터베이스 목록에서 **AZ500LabDb** 항목을 선택합니다. 
 
-12. **AZ500LabDb** SQL Database 블레이드의 **보안** 섹션에서 **감사** 를 클릭합니다. 
+12. **AZ500LabDb** SQL Database 블레이드의 **보안** 섹션에서 **감사**를 클릭합니다. 
 
-    >**참고**: 데이터베이스 수준 감사입니다. 서버 수준 감사가 이미 활성화되었습니다. 
+    >특히, 다음과 같은 기능에 관심이 있습니다. 
   
-    >**참고**: 감사는 Azure Storage 계정, Log Analytics 작업 공간 또는 이벤트 허브에 기록할 수 있습니다. 이러한 옵션의 모든 조합을 구성할 수 있습니다.
+    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Audits can be written to an Azure storage account, to a Log Analytics workspace, or to the Event Hub. You can configure any combination of these options.
 
     >**참고**: 스토리지 기반 감사가 서버에서 활성화되는 경우 데이터베이스 설정에 관계없이 항상 데이터베이스에 적용됩니다.
 
-13. **감사 로그 보기** 를 클릭합니다.
+13. **감사 로그 보기**를 클릭합니다.
 
 14. **감사 기록** 블레이드에서 서버 감사와 데이터베이스 감사 간에 전환할 수 있습니다. 
 
@@ -185,11 +180,11 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
 **리소스 정리**
 
-> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
+> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. 
 
-1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기** 를 클릭합니다.
+1. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
 
-2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell** 이 선택되었는지 확인합니다.
+2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
 3. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 이 랩에서 만든 리소스 그룹을 제거합니다.
   
