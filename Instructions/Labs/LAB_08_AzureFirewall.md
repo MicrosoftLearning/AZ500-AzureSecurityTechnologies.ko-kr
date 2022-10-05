@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to install Azure Firewall. This will help your organization control inbound and outbound network access which is an important part of an overall network security plan. Specifically, you would like to create and test the following infrastructure components:
+Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보안 계획의 중요한 부분인 인바운드 및 아웃바운드 네트워크 액세스를 제어할 수 있습니다. 특히 다음의 인프라 구성 요소를 만들고 테스트하려고 합니다.
 
 - 워크로드 서브넷과 점프 호스트 서브넷이 있는 가상 네트워크.
 - 가상 머신은 각 서브넷입니다. 
@@ -17,7 +17,7 @@ You have been asked to install Azure Firewall. This will help your organization 
 - www.bing.com애 대한 아웃바운드 트래픽만 허용하는 방화벽 애플리케이션 규칙. 
 - 외부 DNS 서버 조회를 허용하는 방화벽 네트워크 규칙.
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -39,7 +39,7 @@ You have been asked to install Azure Firewall. This will help your organization 
 
 ### <a name="estimated-timing-40-minutes"></a>예상 소요 시간: 40분
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East (US)<ept id="p1">**</ept> region. Verify with your instructor this is region to use for you class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -55,7 +55,7 @@ You have been asked to install Azure Firewall. This will help your organization 
 
 이 작업에서는 랩 환경을 검토하고 배포합니다. 
 
-In this task, you will create a virtual machine by using an ARM template. This virtual machine will be used in the last exercise for this lab. 
+이 작업에서는 ARM 템플릿을 사용하여 가상 머신을 만듭니다. 이 가상 머신은 이 랩의 마지막 연습에 사용됩니다. 
 
 1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
@@ -83,7 +83,7 @@ In this task, you will create a virtual machine by using an ARM template. This v
 
 7. **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the deployment to complete. This should take about 2 minutes. 
+    >**참고**: 배포가 완료될 때까지 기다리세요. 이 작업은 2분 정도 걸립니다. 
 
 #### <a name="task-2-deploy-the-azure-firewall"></a>작업 2: Azure Firewall 배포
 
@@ -107,13 +107,13 @@ In this task, you will create a virtual machine by using an ARM template. This v
 
 4. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다. 
 
-    >Azure Firewall을 설치해야 합니다. 
+    >**참고**: 배포가 완료될 때까지 기다리세요. 이 작업은 5분 정도 걸립니다. 
 
 5. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
 6. **리소스 그룹** 블레이드의 리소스 그룹 목록에서 **AZ500LAB08** 항목을 클릭합니다.
 
-    >조직에서 전체 네트워크 보안 계획의 중요한 부분인 인바운드 및 아웃바운드 네트워크 액세스를 제어할 수 있습니다.
+    >**참고**: **AZ500LAB08** 리소스 그룹 블레이드에서 리소스 목록을 검토합니다. **유형**별로 정렬할 수 있습니다.
 
 7. 리소스 목록에서 **Test-FW01** 방화벽을 나타내는 항목을 클릭합니다.
 
@@ -124,7 +124,7 @@ In this task, you will create a virtual machine by using an ARM template. This v
 
 #### <a name="task-3-create-a-default-route"></a>작업 3: 기본 경로 만들기
 
-특히 다음의 인프라 구성 요소를 만들고 테스트하려고 합니다.
+이 작업에서는 **Workload-SN** 서브넷에 대한 기본 경로를 만듭니다. 이 경로는 방화벽을 통해 아웃바운드 트래픽을 구성합니다.
 
 1. Azure Portal에서 Azure 페이지 상단의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **경로 테이블**을 입력하고**Enter** 키를 누릅니다.
 
@@ -162,8 +162,8 @@ In this task, you will create a virtual machine by using an ARM template. This v
    |설정|값|
    |---|---|
    |경로 이름|**FW-DG**|
-   |주소 접두사 원본|**IP 주소**|
-   |원본 IP 주소/CIDR 범위|**0.0.0.0/0**
+   |주소 접두사 대상|**IP 주소**|
+   |대상 IP 주소/CIDR 범위|**0.0.0.0/0**
    |다음 홉 유형|**가상 어플라이언스**|
    |다음 홉 주소|이전 작업에서 식별한 방화벽의 개인 IP 주소|
 
@@ -202,7 +202,7 @@ In this task, you will create a virtual machine by using an ARM template. This v
 
 6. **추가**를 클릭하여 대상 FQDNs 기반 애플리케이션 규칙을 추가합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Azure Firewall includes a built-in rule collection for infrastructure FQDNs that are allowed by default. These FQDNs are specific for the platform and can't be used for other purposes. 
+    >**참고**: Azure Firewall에는 기본적으로 허용되는 인프라 FQDN에 대한 기본 제공 규칙 컬렉션이 포함되어 있습니다. 이러한 FQDN은 플랫폼에 대해 특정적이며 다른 용도로 사용할 수 없습니다. 
 
 #### <a name="task-5-configure-a-network-rule"></a>작업 5: 네트워크 규칙 구성
 
@@ -238,7 +238,7 @@ In this task, you will create a virtual machine by using an ARM template. This v
 
 #### <a name="task-6-configure-the-virtual-machine-dns-servers"></a>작업 6: 가상 머신 DNS 서버 구성
 
-In this task, you will configure the primary and secondary DNS addresses for the virtual machine. This is not a firewall requirement. 
+이 작업에서는 가상 머신에 대한 기본 및 보조 DNS 주소를 구성합니다. 이러한 주소를 구성해야 방화벽을 사용할 수 있는 것은 아닙니다. 
 
 1. Azure Portal에서 **AZ500LAB08** 리소스 그룹으로 다시 이동합니다.
 
@@ -266,7 +266,7 @@ In this task, you will configure the primary and secondary DNS addresses for the
 
 3. **Srv-Jump** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-4. Click <bpt id="p1">**</bpt>Download RDP File<ept id="p1">**</ept> and use it to connect to the <bpt id="p2">**</bpt>Srv-Jump<ept id="p2">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+4. **RDP 파일 다운로드**를 클릭하고 원격 데스크톱을 통해 **Srv-Jump** Azure VM에 연결하는 데 사용합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
    |설정|값|
    |---|---|
@@ -275,7 +275,7 @@ In this task, you will configure the primary and secondary DNS addresses for the
 
     >**참고**: 다음 단계는 **Srv-Jump** Azure VM에 대해 원격 데스크톱 세션에서 수행됩니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You will connect to the <bpt id="p2">**</bpt>Srv-Work<ept id="p2">**</ept> virtual machine. This is being done so we can test the ability to access the bing.com website.  
+    >**참고**: **Srv-Work** 가상 머신에 연결됩니다. 이를 완료하여 bing.com 웹 사이트에 액세스하는 기능을 테스트 할 수 있습니다.  
 
 5. **Srv-Jum**에 대한 원격 데스크톱 세션 내에서, **시작**을 마우스 오른쪽 단추를 클릭하고, 오른쪽 단추 클릭 메뉴에서 **실행**클릭한 뒤, **실행** 대화 상자에서 다음을 실행하여 **Srv-Work**를 연결합니다. 
 
@@ -298,7 +298,7 @@ In this task, you will configure the primary and secondary DNS addresses for the
 
 9. **Srv-Work**에 대한 원격 데스크톱 세션 내에서 Internet Explorer를 시작하고 **`https://www.bing.com`** 으로 이동합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The website should successfully display. The firewall allows you access.
+    >**참고**: 웹 사이트가 성공적으로 표시되어야 합니다. 방화벽을 사용하면 액세스할 수 있습니다.
 
 10. **`http://www.microsoft.com/`** 으로 이동합니다.
 
@@ -310,9 +310,9 @@ In this task, you will configure the primary and secondary DNS addresses for the
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
-1. 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기**를 클릭합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 

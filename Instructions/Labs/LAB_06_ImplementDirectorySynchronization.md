@@ -9,13 +9,13 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept demonstrating how to integrate on-premises Active Directory Domain Services (AD DS) environment with an Azure Active Directory (Azure AD) tenant. Specifically, you want to:
+온-프레미스 AD DS(Active Directory Domain Services) 환경을 Azure Active Directory(Azure AD) 테넌트와 통합하는 방법을 시연하는 개념 증명을 만들라는 요청을 받았습니다. 특히 다음을 수행해야 합니다.
 
 - AD DS 도메인 컨트롤러를 호스팅하는 Azure VM을 배포하여 단일 도메인 AD DS 포리스트 구현
 - Azure AD 테넌트 만들기 및 구성
 - Azure AD 테넌트와 AD DS 포리스트 동기화
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -44,11 +44,11 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 이 작업에서는 Azure VM 배포용 DNS 이름을 식별합니다. 
 
-1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
-2. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+2. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기**를 클릭합니다.
 
 3. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
@@ -58,13 +58,13 @@ You have been asked to create a proof of concept demonstrating how to integrate 
     Test-AzDnsAvailability -DomainNameLabel <custom-label> -Location '<location>'
     ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Replace the <ph id="ph1">`&lt;custom-label&gt;`</ph> placeholder with a valid DNS name that is likely to be globally unique. Replace the <ph id="ph1">`&lt;location&gt;`</ph> placeholder with the name of the region into which you want to deploy the Azure VM that will host the Active Directory domain controller you will use in this lab.
+    >**참고**: `<custom-label>` 자리 표시자를 전역적으로 고유할 가능성이 높은 유효한 DNS 이름으로 변경합니다. `<location>` 자리 표시자를 이 랩에서 사용할 Active Directory 도메인 컨트롤러를 호스트하는 Azure VM을 배포하려는 지역의 이름으로 바꿉니다.
 
     >**참고**: Azure VM을 프로비전할 수 있는 Azure 지역을 식별하려면 [ **https://azure.microsoft.com/en-us/regions/offers/** ](https://azure.microsoft.com/en-us/regions/offers/)를 참조하세요.
 
-5. Verify that the command returned <bpt id="p1">**</bpt>True<ept id="p1">**</ept>. If not, rerun the same command with a different value of the <ph id="ph1">`&lt;custom-label&gt;`</ph> until the command returns <bpt id="p1">**</bpt>True<ept id="p1">**</ept>.
+5. 이 명령이 **True**를 반환하는지 확인합니다. True가 반환되지 않으면 **True**가 반환될 때까지 다른 `<custom-label>` 값을 사용해 같은 명령을 다시 실행합니다.
 
-6. 온-프레미스 AD DS(Active Directory Domain Services) 환경을 Azure Active Directory(Azure AD) 테넌트와 통합하는 방법을 시연하는 개념 증명을 만들라는 요청을 받았습니다.
+6. 성공적인 결과가 반환된 `<custom-label>` 값을 기록합니다. 다음 작업에서 필요합니다.
 
 7. Cloud Shell 창을 닫습니다.
 
@@ -74,7 +74,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 1. 동일한 브라우저 창에서 다른 브라우저 탭을 열고 **https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain** 으로 이동합니다.
 
-2. 특히 다음을 수행해야 합니다.
+2. **새 Windows VM 만들기 및 새 AD 포리스트, 도메인 및 DC 만들기** 페이지에서 **Azure에 배포**를 클릭합니다. 이렇게 하면 Azure Portal에 **새 AD 포리스트가 있는 Azure VM 만들기** 블레이드로 브라우저가 자동으로 리디렉션됩니다.
 
 3. **새 AD 포리스트가 있는 Azure VM 만들기 **블레이드에서 **매개 변수 편집**을 클릭합니다.
 
@@ -95,7 +95,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 6. **새 AD 포리스트가 있는 Azure VM 만들기** 블레이드에서 **검토 + 만들기**, **만들기**를 차례로 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the deployment to complete but instead proceed to the next exercise. The deployment might take about 15 minutes. You will use the virtual machine deployed in this task in the third exercise of this lab.
+    >**참고**: 배포가 완료될 때까지 기다리지 말고 다음 연습을 진행합니다. 배포에는 약 15분이 소요될 수 있습니다. 이 랩의 세 번째 연습에서이 작업에 배포된 가상 머신을 사용합니다.
 
 > 결과: 이 연습을 통해, Azure Resource Manager 템플릿을 사용하여 Active Directory 도메인 컨트롤러를 호스트하는 Azure VM의 배포를 시작했습니다.
 
@@ -128,13 +128,13 @@ You have been asked to create a proof of concept demonstrating how to integrate 
    |초기 도메인 이름|문자와 숫자의 조합으로 구성된 고유한 이름|
    |국가 또는 지역|**미국**|
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record the initial domain name. You will need it later in this lab.
+    >**참고**: 초기 도메인 이름을 기록합니다. 이 랩의 후반부에서 필요합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The green check mark in the <bpt id="p2">**</bpt>Initial domain name<ept id="p2">**</ept> text box will indicate whether the domain name you typed in is valid and unique. (Record your initial domain name for later use).
+    >**참고**: **초기 도메인 이름** 텍스트 상자의 녹색 확인 표시는 입력한 도메인 이름이 유효하고 고유한지 여부를 나타냅니다. (나중에 사용하기 위해 초기 도메인 이름 기록).
 
 5. **검토 + 만들기**를 클릭한 다음, **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the new tenant to be created. Use the <bpt id="p1">**</bpt>Notification<ept id="p1">**</ept> icon to monitor the deployment status. 
+    >**참고**: 새 테넌트가 만들어질 때까지 기다립니다. **알림** 아이콘을 사용하여 배포 상태를 모니터링합니다. 
 
 #### <a name="task-2-add-a-custom-dns-name-to-the-new-azure-ad-tenant"></a>작업 2: 새 Azure AD 테넌트에 사용자 지정 DNS 이름 추가
 
@@ -154,7 +154,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 6. **adatum.com** 블레이드에서 Azure AD 도메인 이름 확인을 수행하는 데 필요한 정보를 검토한 다음 **삭제**를 두 번 선택합니다. 
 
-    >이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+    >**참고**: **adatum.com** DNS 도메인 이름이 없으므로 유효성 검사 프로세스를 완료할 수 없습니다. 그렇다고 해서 **adatum.com** AD DS 도메인을 Azure AD 테넌트와 동기화할 수 없는 것은 아닙니다. 이를 위해 이전 작업에서 식별한 Azure AD 테넌트의 초기 DNS 이름(**onmicrosoft.com** 접미사로 끝나는 이름)을 사용합니다. 그러나 결과적으로 AD DS 도메인의 DNS 도메인 이름과 Azure AD 테넌트의 DNS 이름은 다르다는 점을 기억해 두세요. 즉, Adatum 사용자는 AD DS 도메인에 로그인할 때와 Azure AD 테넌트에 로그인할 때 각기 다른 이름을 사용해야 합니다.
 
 #### <a name="task-3-create-an-azure-ad-user-with-the-global-administrator-role"></a>작업 3: 전역 관리자 역할을 사용하여 Azure AD 사용자 만들기
 
@@ -175,17 +175,17 @@ You have been asked to create a proof of concept demonstrating how to integrate 
    |역할|**사용자**를 클릭하고 **전역 관리자**를 클릭한 다음 **선택**을 클릭합니다.|
    |사용 위치|**미국**|  
 
-    >이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+    >**참고**: 전체 사용자 이름을 기록합니다. 도메인 이름이 표시된 드롭다운 목록의 오른쪽에 있는 **클립보드에 복사** 단추를 클릭하여 해당 값을 복사할 수 있습니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record the user's password. You will need this later in this lab. 
+    >**참고**: 사용자의 암호를 기록합니다. 이 랩에서 나중에 필요합니다. 
 
     >**참고**: Azure AD Connect를 구현하려면 전역 관리자 역할을 가진 Azure AD 사용자가 필요합니다.
 
 4. InPrivate 브라우저 창을 엽니다.
 
-5. Navigate to the Azure portal and sign in using the <bpt id="p1">**</bpt>syncadmin<ept id="p1">**</ept> user account. When prompted, change the password you recorded earlier in this task to <bpt id="p1">**</bpt>Pa55w.rd1234<ept id="p1">**</ept>.
+5. Azure Portal로 이동하고 **syncadmin** 사용자 계정을 사용하여 로그인합니다. 메시지가 표시되면 이 작업에서 이전에 기록한 암호를 **Pa55w.rd1234**로 변경합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: To sign in you will need to provide a fully qualified name of the <bpt id="p2">**</bpt>syncadmin<ept id="p2">**</ept> user account, including the Azure AD tenant DNS domain name, which you recorded earlier in this task. This user name is in the format syncadmin@<ph id="ph1">`&lt;your_tenant_name&gt;`</ph>.onmicrosoft.com, where <ph id="ph2">`&lt;your_tenant_name&gt;`</ph> is the placeholder representing your unique Azure AD tenant name. 
+    >**참고**: 로그인하려면 이 작업의 앞부분에서 기록했던 AzureAD 테넌트 DNS 도메인 이름을 포함하여 **syncadmin** 사용자 계정의 정규화된 이름을 제공해야 합니다. 이 사용자 이름은 syncadmin@`<your_tenant_name>`.onmicrosoft.com 형식이며, `<your_tenant_name>`은 고유한 Azure AD 테넌트 이름을 나타내는 자리 표시자입니다. 
 
 6. **syncadmin**으로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
 
@@ -216,7 +216,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 4. **adVM** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-5. In the <bpt id="p1">**</bpt>IP address<ept id="p1">**</ept> parameter, select <bpt id="p2">**</bpt>Load balancer public IP address<ept id="p2">**</ept>, then click <bpt id="p3">**</bpt>Download RDP File<ept id="p3">**</ept> and use it to connect to the <bpt id="p4">**</bpt>adVM<ept id="p4">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+5. **IP 주소** 매개 변수에서 **부하 분산 장치 공용 IP 주소**를 선택한 다음 **RDP 파일 다운로드**를 클릭합니다. 그런 후에 해당 파일을 사용하여 원격 데스크톱을 통해 **adVM** Azure VM에 연결합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
    |설정|값|
    |---|---|
@@ -257,13 +257,13 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
 이 작업에서는 가상 머신에 AD Connect를 설치합니다. 
 
-1. Within the Remote Desktop session to <bpt id="p1">**</bpt>adVM<ept id="p1">**</ept>, use Microsoft Edge to navigate to the Azure portal at <bpt id="p2">**</bpt><ph id="ph1">https://portal.azure.com</ph><ept id="p2">**</ept>, and sign in by using the <bpt id="p3">**</bpt>syncadmin<ept id="p3">**</ept> user account you created the previous exercise. When prompted, specify the full user name you recorded and the <bpt id="p1">**</bpt>Pa55w.rd1234<ept id="p1">**</ept> password.
+1. **adVM**에 대한 원격 데스크톱 세션에서 Microsoft Edge를 사용하여 **https://portal.azure.com** 의 Azure Portal로 이동하고, 이전 연습에서 만든 **syncadmin** 사용자 계정을 사용하여 로그인합니다. 메시지가 표시되면 기록한 전체 사용자 이름과 **Pa55w.rd1234** 암호를 지정합니다.
 
 2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory**를 입력하고 **Enter** 키를 누릅니다.
 
 3. Azure Portal의 **AdatumSync \| 개요** 블레이드에서 **Azure AD Connect**를 클릭합니다.
 
-4. On the <bpt id="p1">**</bpt>AdatumSync <ph id="ph1">\|</ph> Azure AD Connect<ept id="p1">**</ept> blade, click the <bpt id="p2">**</bpt>Download Azure AD Connect<ept id="p2">**</ept> link. You will be redirected to the <bpt id="p1">**</bpt>Microsoft Azure Active Directory Connect<ept id="p1">**</ept> download page.
+4. **AdatumSync \| Azure AD Connect** 블레이드에서 **Azure AD Connect 다운로드** 링크를 클릭합니다. **Microsoft Azure Active Directory Connect** 다운로드 페이지로 리디렉션됩니다.
 
 5. **Microsoft Azure Active Directory Connect** 다운로드 페이지에서 **다운로드**를 클릭합니다.
 
@@ -294,7 +294,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
     >**참고**: 앞서 설명했듯이 사용자 지정 Azure AD DNS 도메인 **adatum.com**을 확인할 수 없으므로 이러한 결과가 예상됩니다.
 
-16. On the <bpt id="p1">**</bpt>Domain and OU filtering<ept id="p1">**</ept> page, click the option <bpt id="p2">**</bpt>Sync selected domains and OUs<ept id="p2">**</ept>, domain name <bpt id="p3">**</bpt>adatum.com<ept id="p3">**</ept> will be checked, expand the <bpt id="p4">**</bpt>adatum.com<ept id="p4">**</ept> to view the <bpt id="p5">**</bpt>ToSync<ept id="p5">**</ept>. Clear all checkboxes, click only the checkbox next to the <bpt id="p1">**</bpt>ToSync<ept id="p1">**</ept> OU, and click <bpt id="p2">**</bpt>Next<ept id="p2">**</ept>.
+16. **도메인 및 OU 필터링** 페이지에서 **선택한 도메인 및 OU 동기화** 옵션을 클릭하고, 도메인 이름 **adatum.com** 확인란을 선택하고,**adatum.com**을 확장하여 **ToSync**를 봅니다. 모든 확인란의 선택을 취소하고 **ToSync** OU 옆의 확인란만 클릭한 후 **다음**을 클릭합니다.
 
 17. **사용자 고유하게 식별** 페이지에서 기본 설정을 수락하고 **다음**을 클릭합니다.
 
@@ -375,7 +375,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
     ```powershell
     (Get-MSOLCompanyInformation).DirectorySynchronizationEnabled
     ```
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The result should be <ph id="ph1">`False`</ph>. If that is not the case, wait a minute and re-run the command.
+    >**참고**: 결과는 `False`여야 합니다. 그렇지 않은 경우 1분 정도 기다렸다가 명령을 다시 실행합니다.
 
     >**참고**: 다음으로 Azure 리소스를 제거
 6. 원격 데스크톱 세션을 닫습니다.
@@ -395,7 +395,7 @@ You have been asked to create a proof of concept demonstrating how to integrate 
 
     >**참고**: 마지막으로 Azure AD 테넌트를 제거합니다
     
-    ><bpt id="p1">**</bpt>Note 2<ept id="p1">**</ept>: Deleting a tenant is meant to be a very hard process, so it can never accidentally or maliciously be done.  That means that removing the tenant as part of this lab often does not work.  While we have the steps here to delete the tenant, it is not required to consider yourself as completing this lab. If you ever have a need to remove a tenant in the real world, there are articles on DOCS.Microsoft.com to help you.
+    >**참고 2**: 테넌트 삭제는 매우 어려운 프로세스이기 때문에 실수로 또는 악의적으로 수행해서는 안 됩니다.  따라서 이 랩의 일부로 테넌트를 제거하는 일은 효과적이지 않을 수 있습니다.  여기에서 테넌트 삭제 단계를 진행하면서 이 랩을 완료할 필요는 없습니다. 실제 상황에서 테넌트를 제거해야 하는 경우 DOCS.Microsoft.com에 있는 문서를 참조하면 도움이 됩니다.
 
 12. Azure Portal로 돌아가서 **디렉터리 + 구독** 필터를 사용하여 **AdatumSync** Azure Active Directory 테넌트로 전환합니다.
 
