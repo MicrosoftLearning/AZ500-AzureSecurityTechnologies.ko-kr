@@ -9,7 +9,7 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to implement your organization's virtual networking infrastructure and test to ensure it is working correctly. In particular:
+조직의 가상 네트워킹 인프라를 구현하고 올바르게 작동하는지 테스트하라는 요청이 있습니다. 특히 다음 사항에 주의하십시오.
 
 - 조직에는 두 개의 서버 그룹이 있습니다. 웹 서버 및 관리 서버.
 - 각 서버 그룹은 자체 애플리케이션 보안 그룹에 있어야 합니다. 
@@ -17,7 +17,7 @@ You have been asked to implement your organization's virtual networking infrastr
 - 웹 서버는 인터넷에서 액세스할 때 IIS 웹 페이지를 표시해야 합니다. 
 - 네트워크 보안 그룹 규칙을 사용하여 네트워크 액세스를 제어해야 합니다. 
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -36,7 +36,7 @@ You have been asked to implement your organization's virtual networking infrastr
 
 ### <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East (US)<ept id="p1">**</ept> region. Verify with your instructor this is region to use for you class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -141,7 +141,7 @@ You have been asked to implement your organization's virtual networking infrastr
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**default**|
 
-#### <a name="task-4-create-inbound-nsg-security-rules-to-all-traffic-to-web-servers-and-rdp-to-the-management-servers"></a>작업 4: 웹 서버의 모든 트래픽 및 관리 서버의 RDP에 인바운드 NSG 보안 규칙을 만듭니다. 
+#### <a name="task-4-create-inbound-nsg-security-rules-to-all-traffic-to-web-servers-and-rdp-to-the-servers"></a>작업 4: 웹 서버의 모든 트래픽 및 관리 서버의 RDP에 인바운드 NSG 보안 규칙을 만듭니다. 
 
 1. **myNsg** 블레이드의 **설정** 섹션에서 **인바운드 보안 규칙**을 클릭합니다.
 
@@ -255,7 +255,7 @@ You have been asked to implement your organization's virtual networking infrastr
 
 5. **NIC 네트워크 보안 그룹** 아래에서 **없음**을 선택합니다.
 
-6. **다음: 관리 >** 를 클릭하고 **가상 머신 만들기** 블레이드의 **관리** 탭에서 다음 설정을 지정합니다.
+6. **다음: 관리 >** 를 클릭하고, **가상 머신 만들기** 블레이드의 **관리** 탭에서 다음 설정을 확인합니다.
 
    |설정|값|
    |---|---|
@@ -267,7 +267,7 @@ You have been asked to implement your organization's virtual networking infrastr
 
 #### <a name="task-3-associate-each-virtual-machines-network-interface-to-its-application-security-group"></a>작업 3: 각 가상 머신 네트워크 인터페이스를 애플리케이션 보안 그룹에 연결
 
-In this task, you will associate each virtual machines network interface with the corresponding application security group. The myVMWeb virtual machine interface will be associated to the myAsgWebServers ASG. The myVMMgmt virtual machine interface will be associated to the myAsgMgmtServers ASG. 
+이 작업에서는 각 가상 머신 네트워크 인터페이스를 해당 애플리케이션 보안 그룹과 연결합니다. myVMWeb 가상 머신 인터페이스는 myAsgWebServers ASG에 연결됩니다. myVMMgmt 가상 머신 인터페이스는 myAsgMgmtServers ASG에 연결됩니다. 
 
 1. Azure Portal에서 **가상 머신** 블레이드로 돌아가서 두 가상 머신 모두 **실행** 상태에 나열되었는지 확인합니다.
 
@@ -285,20 +285,20 @@ In this task, you will associate each virtual machines network interface with th
 
 #### <a name="task-4-test-the-network-traffic-filtering"></a>작업 4: 네트워크 트래픽 필터링 테스트
 
-In this task, you will test the network traffic filters. You should be able to RDP into the myVMMgmnt virtual machine. You should be able to connect from the internet to the myVMWeb virtual machine and view the default IIS web page.  
+이 작업에서는 네트워크 트래픽 필터를 테스트합니다. myVMMgmnt 가상 머신에 RDP를 할 수 있어야 합니다. 인터넷에서 myVMWeb 가상 머신으로 연결하고 기본 IIS 웹 페이지를 볼 수 있어야 합니다.  
 
 1. **myVMMgmt** 가상 머신 블레이드로 돌아갑니다.
 
 2. **myVMMgmt** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-3. 조직의 가상 네트워킹 인프라를 구현하고 올바르게 작동하는지 테스트하라는 요청이 있습니다.
+3. **RDP 파일 다운로드**를 클릭하고 원격 데스크톱을 통해 **myVMMgmt** Azure VM에 연결하는 데 사용합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
    |설정|값|
    |---|---|
    |사용자 이름|**학생**|
    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
-    >특히 다음 사항에 주의하십시오.
+    >**참고**: 원격 데스크톱 연결이 성공했는지 확인합니다. 이 시점에서 원격 데스크톱을 통해 myVMMgmt에 연결할 수 있다는 것을 확인하였습니다.
 
 4. Azure Portal에서 **myVMWeb** 가상 머신 블레이드로 이동합니다.
 
@@ -310,7 +310,7 @@ In this task, you will test the network traffic filters. You should be able to R
     Install-WindowsFeature -name Web-Server -IncludeManagementTools
     ```
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the installation to complete. This might take a couple of minutes. At that point, you can verify that myVMWeb can be accessed via HTTP/HTTPS.
+    >**참고**: 설치가 완료될 때까지 기다립니다. 이 과정은 몇 분 정도 걸릴 수 있습니다. 이 시점에서 HTTP/HTTPS를 통해 myVMWeb에 액세스할 수 있는지 확인할 수 있습니다.
 
 7. Azure Portal에서 **myVMWeb** 블레이드로 이동합니다.
 
@@ -318,15 +318,15 @@ In this task, you will test the network traffic filters. You should be able to R
 
 9. 다른 브라우저 탭을 열고 이전 단계에서 식별한 IP 주소로 이동합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The browser page should display the default IIS welcome page because port 80 is allowed inbound from the internet based on the setting of the <bpt id="p2">**</bpt>myAsgWebServers<ept id="p2">**</ept> application security group. The network interface of the myVMWeb Azure VM is associated with that application security group. 
+    >**참고**: 포트 80은 **myAsgWebServers** 애플리케이션 보안 그룹의 설정에 따라 인터넷에서 인바운드가 허용되므로 기본 IIS 시작 페이지가 브라우저 페이지에 표시되어야 합니다. myVMWeb Azure VM의 네트워크 인터페이스는 해당 애플리케이션 보안 그룹과 연결됩니다. 
 
 > 결과: NSG 및 ASG 구성이 작동하고 트래픽이 올바르게 관리되고 있는지 확인했습니다. 
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
-1. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 

@@ -9,14 +9,14 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept of Microsoft Defender for Cloud-based environment. Specifically, you want to:
+클라우드 기반 환경용 Microsoft Defender의 개념 증명을 만들라는 요청을 받았습니다. 특히 다음을 수행해야 합니다.
 
 - Azure 리소스를 모니터링하도록 클라우드용 Microsoft Defender를 구성합니다.
 - 가상 머신을 위한 클라우드용 Microsoft Defender 권장 사항을 검토합니다.
 - 게스트 구성 및 Just-In-Time VM 액세스에 대한 권장 사항을 구현합니다. 
 - Secure Score를 사용하여 더욱 안전한 인프라를 만드는 진행 상황을 결정하는 방법을 검토합니다.
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -68,7 +68,7 @@ You have been asked to create a proof of concept of Microsoft Defender for Cloud
 
 11. **설정 | 워크플로 자동화** 블레이드에서 사용 가능한 설정을 검토합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You can trigger actions based threat detection alerts and Microsoft Defender for Cloud recommendations. You can also configure an action based on Logic apps. 
+    >**참고**: 위협 탐지 경고 및 클라우드용 Microsoft Defender 권장 사항을 기반으로 작업을 트리거할 수 있습니다. Logic Apps를 기반으로 작업을 구성할 수도 있습니다. 
     
 12. **워크플로 자동화 추가** 블레이드에서 사용 가능한 설정을 검토합니다.
 
@@ -80,7 +80,7 @@ You have been asked to create a proof of concept of Microsoft Defender for Cloud
 
 15. **설정 | Defender 플랜** 블레이드에서 **모든 클라우드용 Microsoft Defender 플랜 사용**이 선택되어 있는지 확인하고 **저장**을 클릭합니다.
 
-16. Select <bpt id="p1">**</bpt>Data collection<ept id="p1">**</ept> from the <bpt id="p2">**</bpt>Microsoft Defender for Cloud | Settings<ept id="p2">**</ept> blade. Select <bpt id="p1">**</bpt>All Events<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Save<ept id="p2">**</ept>.
+16. **클라우드용 Microsoft Defender | 설정** 블레이드에서 **데이터 수집**을 선택합니다. **모든 이벤트**를 선택하고 **저장**합니다.
 
 
 #### <a name="task-2-review-the-microsoft-defender-for-cloud-recommendation"></a>작업 2: 클라우드용 Microsoft Defender 권장 사항 검토
@@ -110,7 +110,7 @@ You have been asked to create a proof of concept of Microsoft Defender for Cloud
 
 2. **워크로드 보호** 블레이드의 **고급 보호** 섹션에서 **Just-In-Time VM 액세스** 타일을 선택하고, **Just-In-Time VM 액세스 블레이드**에서 **Just-In-Time VM 액세스 시도**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If the VMs are not listed, navigate to <bpt id="p2">**</bpt>Virtual Machine<ept id="p2">**</ept> blade and click the <bpt id="p3">**</bpt>Configuration<ept id="p3">**</ept>, Click the <bpt id="p4">**</bpt>Enable the Just-in-time VMs<ept id="p4">**</ept> option under the <bpt id="p5">**</bpt>Just-in-time Vm's access<ept id="p5">**</ept>. Repeat the above step to navigate back to the <bpt id="p1">**</bpt>Microsoft Defender for Cloud<ept id="p1">**</ept> and refresh the page, the VM will appear.
+    >**참고**: VM이 나열되지 않은 경우 **가상 머신** 블레이드로 이동하여 **구성**을 클릭하고, **Just-In-Time VM 액세스**에서 **Just-In-Time VM 사용** 옵션을 클릭합니다. 위의 단계를 반복하여 **클라우드용 Microsoft Defender**로 다시 이동하고 페이지를 새로 고치면 VM이 표시됩니다.
 
 3. **Just-In-Time VM 액세스**에서 **구성되지 않음**을 선택한 후에 **myVM** 항목을 클릭합니다.
 
@@ -124,8 +124,8 @@ You have been asked to create a proof of concept of Microsoft Defender for Cloud
 
     >**참고**: 도구 모음의 **알림** 아이콘을 클릭하고 **알림** 블레이드를 확인하여 구성 진행 상황을 모니터링합니다. 
 
-    >클라우드 기반 환경용 Microsoft Defender의 개념 증명을 만들라는 요청을 받았습니다. 
+    >**참고**: 이 랩의 권장 사항을 구현하여 보안 점수가 반영되는 데 다소 시간이 걸릴 수 있습니다. 보안 점수를 주기적으로 확인하여 이러한 기능을 구현하는 데 미치는 영향을 확인합니다. 
 
 > 결과: 클라우드용 Microsoft Defender를 온보딩하고 가상 머신 권장 사항을 구현했습니다. 
 
-    >**Note**: Do not remove the resources from this lab as they are needed for the Azure Sentinel lab.
+    >**Note**: Do not remove the resources from this lab as they are needed for the Microsoft Sentinel lab.
