@@ -9,16 +9,16 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept that uses Azure Privileged Identity Management (PIM) to enable just-in-time administration and control the number of users who can perform privileged operations. The specific requirements are:
+Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관리를 사용하도록 설정하는 컨셉을 만들고 권한 있는 작업을 수행할 수 있는 사용자 수를 제어하는 방법을 알아봅니다. 특정 요구 사항은 다음과 같습니다.
 
 - 보안 관리자 역할에 aaduser2 Azure AD 사용자의 영구 할당을 만듭니다. 
 - aaduser2 Azure AD 사용자를 청구 관리자 및 전역 리더 역할에 사용할 수 있도록 구성합니다.
 - 전역 reader 역할 활성화를 구성하여 aaduser3 Azure AD 사용자의 승인 요청
 - 글로벌 리더 역할에 대한 액세스 검토를 구성하고 감사 기능을 검토합니다.
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-> Before you proceed, ensure that you have completed Lab 04: MFA, Conditional Access and AAD Identity Protection . You will need the Azure AD tenant, AdatumLab500-04, and the aaduser1, aaduser2, and aaduser3 user accounts.
+> 더 진행하기 전에, 랩 04를 완료했는지 확인합니다. MFA, 조건부 액세스 및 AAD ID 보호 . Azure AD 테넌트, AdatumLab500-04, aaduser1, aaduser2 및 aaduser3 사용자 계정이 필요합니다.
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -48,9 +48,9 @@ You have been asked to create a proof of concept that uses Azure Privileged Iden
 
 이 작업에서는 Azure AD 디렉터리 역할에 대해 사용자를 적격 상태로 설정합니다.
 
-1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure that you are signed-in to the <bpt id="p2">**</bpt>AdatumLab500-04<ept id="p2">**</ept> Azure AD tenant. You can use the <bpt id="p1">**</bpt>Directory + subscription<ept id="p1">**</ept> filter to switch between Azure AD tenants. Ensure you are signed in as a user with the Global Administrator role.
+    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. 전역 관리자 역할이 있는 사용자로 로그인되었는지 확인합니다.
     
     >**참고**: AdatumLab500-04 항목이 계속 표시되지 않으면 디렉터리 전환 링크를 클릭하고 AdatumLab500-04 줄을 선택한 다음 전환 단추를 클릭합니다.
 
@@ -132,7 +132,7 @@ You have been asked to create a proof of concept that uses Azure Privileged Iden
 
 7. **할당 유형** 설정을 검토하고 **할당**을 클릭합니다.
 
-8. On the <bpt id="p1">**</bpt>Assignments<ept id="p1">**</ept> page on the <bpt id="p2">**</bpt>Eligible Assignments<ept id="p2">**</ept> tab, select <bpt id="p3">**</bpt>Update<ept id="p3">**</ept> for the <bpt id="p4">**</bpt>aaduser2<ept id="p4">**</ept> assignment. Select <bpt id="p1">**</bpt>Permanently Eligible<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Save<ept id="p2">**</ept>.
+8. **적격 할당** 탭의 **할당** 페이지에서 **aaduser2** 할당의 **업데이트**를 클릭합니다. **영구적으로 적격**을 선택하고 **저장**을 클릭합니다.
 
     >**참고**: 이제 aaduser2 사용자에게 보안 관리자 역할이 영구적으로 할당됩니다.
     
@@ -153,7 +153,7 @@ You have been asked to create a proof of concept that uses Azure Privileged Iden
 
 2. InPrivate 브라우저 창에서 Azure Portal로 이동하고 **aaduser2** 사용자 계정을 사용하여 로그인 합니다.
 
-    >Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관리를 사용하도록 설정하는 컨셉을 만들고 권한 있는 작업을 수행할 수 있는 사용자 수를 제어하는 방법을 알아봅니다. 
+    >**참고**: 로그인하려면이 실습의 앞부분에서 기록한 Azure AD 테넌트 DNS 도메인 이름을 포함하여  **aaduser2** 사용자 계정의 정규화된 이름을 제공해야 합니다. 이 사용자 이름은 aaduser2@`<your_tenant_name>`.onmicrosoft.com 형식이며, `<your_tenant_name>`은 고유한 Azure AD 테넌트 이름을 나타내는 자리 표시자입니다. 
 
 3. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **Azure AD Privileged Identity Management**를 입력하고 **Enter** 키를 누릅니다.
 
@@ -228,7 +228,7 @@ You have been asked to create a proof of concept that uses Azure Privileged Iden
 
 15. **요청 승인 \| Azure AD 역할** 블레이드의 **역할 활성화 요청** 섹션에서 **aaduser2**에 의한 **전역 독자** 역할에 대한 역할 활성화 요청을 나타내는 항목의 확인란을 선택합니다.
 
-16. 특정 요구 사항은 다음과 같습니다. 
+16. **승인**을 클릭합니다. **요청 승인** 블레이드의 **Justification** 텍스트 상자에 활성화 이유를 입력하고 시작 시간과 종료 시간을 확인한 후에 **확인**을 클릭합니다. 
 
     >**참고**: 요청을 거부할 수도 있습니다.
 
@@ -259,11 +259,11 @@ You have been asked to create a proof of concept that uses Azure Privileged Iden
 
 #### <a name="task-1-configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>작업 1: PIM에서 Azure AD 디렉터리 역할용 보안 경고 구성
 
-In this task, you will reduce the risk associated with "stale" role assignments. You will do this by creating a PIM access review to ensure that assigned roles are still valid. Specifically, you will review the Global Reader role. 
+이 작업에서는 "부실" 역할 할당과 관련된 위험을 줄일 수 있습니다. 할당된 역할이 여전히 유효한지 확인하기 위해 PIM 액세스 검토를 만들어 이 작업을 수행합니다. 특히 전역 읽기 권한자를 검토합니다. 
 
 1. 계정을 사용하여 Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Ensure that you are signed-in to the <bpt id="p2">**</bpt>AdatumLab500-04<ept id="p2">**</ept> Azure AD tenant. You can use the <bpt id="p1">**</bpt>Directory + subscription<ept id="p1">**</ept> filter to switch between Azure AD tenants. Ensure you are signed in as a user with the Global Administrator role.
+    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. 전역 관리자 역할이 있는 사용자로 로그인되었는지 확인합니다.
     
     >**참고**: AdatumLab500-04 항목이 계속 표시되지 않으면 디렉터리 전환 링크를 클릭하고 AdatumLab500-04 줄을 선택한 다음 전환 단추를 클릭합니다.
 
@@ -291,13 +291,13 @@ In this task, you will reduce the risk associated with "stale" role assignments.
 
 8. **액세스 검토 만들기** 블레이드에서 **시작**을 클릭합니다.
  
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: It will take about a minute for the review to deploy and appear on the <bpt id="p2">**</bpt>AdatumLab500-04 <ph id="ph1">\|</ph> Access reviews<ept id="p2">**</ept> blade. You might have to refresh the web page. The review status will be <bpt id="p1">**</bpt>Active<ept id="p1">**</ept>. 
+    >**참고**: 검토가 배포되고 **AdatumLab500-04 \| 액세스 검토** 블레이드에 표시되려면 1분 정도 걸립니다. 웹 페이지를 새로 고침해야 할 수 있습니다. 검토 상태가 **활성**이 됩니다. 
 
 9. **AdatumLab500-04 \| 액세스 검토** 블레이드의 **전역 독자 검토** 헤더 아래에서 **전역 독자** 항목을 클릭합니다. 
 
 10. **전역 reader 검토** 블레이드에서 **개요** 페이지를 살펴보고, **진행률** 차트에 **검토되지 않은** 범주의 단일 사용자가 표시됩니다. 
 
-11. On the <bpt id="p1">**</bpt>Global Reader Review<ept id="p1">**</ept> blade, in the <bpt id="p2">**</bpt>Manage<ept id="p2">**</ept> section, click <bpt id="p3">**</bpt>Results<ept id="p3">**</ept>. Note that aaduser2 is listed as having access to this role.
+11. **전역 reader 검토** 블레이드의 **관리** 섹션에서 **결과**를 클릭합니다. aaduser2는 이 역할에 액세스할 수 있는 것으로 나열됩니다.
 
 12. **aaduser2**에서 **보기**를 클릭하여 해당 사용자를 포함하는 PIM 활동을 나타내는 항목이 포함된 자세한 감사 로그를 봅니다.
 
@@ -313,7 +313,7 @@ In this task, you will reduce the risk associated with "stale" role assignments.
 
 18. **AdatumLab500-04 \| 빠른 시작** 블레이드의 **관리** 섹션에서 **액세스 검토**를 클릭합니다.
 
-19. Select the entry representing the <bpt id="p1">**</bpt>Global Reader<ept id="p1">**</ept> review. Note that the <bpt id="p1">**</bpt>Progress<ept id="p1">**</ept> chart has been updated to show your review. 
+19. **전역 독자** 검토를 나타내는 항목을 선택합니다. 검토 결과를 표시하도록 **진행률**차트가 업데이트되었습니다. 
 
 #### <a name="task-2-review-pim-alerts-summary-information-and-detailed-audit-information"></a>작업 2: PIM 경고, 요약 정보 및 자세한 감사 정보를 검토합니다. 
 
@@ -323,7 +323,7 @@ In this task, you will reduce the risk associated with "stale" role assignments.
 
 2. **AdatumLab500-04 \| 빠른 시작** 블레이드의 **관리** 섹션에서 **경고**를 클릭한 다음 **설정**을 클릭합니다.
 
-3. 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 
+3. **경고 설정** 블레이드에서 미리 구성된 경고 및 위험 수준을 검토합니다. 자세한 내용은 해당 정보를 클릭합니다. 
 
 4. **AdatumLab500-04 \| 빠른 시작** 블레이드로 돌아와 **개요**를 클릭합니다. 
 
@@ -339,13 +339,13 @@ In this task, you will reduce the risk associated with "stale" role assignments.
 
 **리소스 정리**
 
-> 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
 1. Azure Portal에서 **디렉터리 + 구독** 필터를 **az500-04-vm1** Azure VM을 배포한 Azure 구독과 연결된 Azure AD 테넌트로 설정합니다.
 
     >**참고**: 기본 Azure AD 테넌트 항목이 표시되지 않으면 디렉터리 전환 링크를 클릭하고 기본 테넌트 줄을 선택한 다음 전환 단추를 클릭합니다.
 
-2. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+2. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기**를 클릭합니다.
 
 3. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
@@ -365,18 +365,18 @@ In this task, you will reduce the risk associated with "stale" role assignments.
 
     >**참고**: 랩 4 - 연습 2 - 작업 4 **Azure AD 사용자에게 Azure AD Premium P2 라이선스 할당**은 **aaduser1, aaduser2 및 aaduser3** 사용자에게 Premium 라이선스를 할당하는 것이었습니다. 할당된 사용자로부터 해당 라이선스를 제거해야 합니다.
 
-9. 더 진행하기 전에, 랩 04를 완료했는지 확인합니다. MFA, 조건부 액세스 및 AAD ID 보호 .
+9. **Azure Active Directory Premium P2 - 허가된 사용자** 블레이드에서 **Azure Active Directory Premium P2** 라이선스를 할당한 사용자 계정의 확인란을 선택합니다. 위쪽 창에서 **라이선스 제거**를 클릭하고 확인하라는 메시지가 표시되면 **예**를 선택합니다.
 
 10. Azure Portal에서 **사용자 - 모든 사용자** 블레이드로 이동하여 **aaduser1** 사용자 계정을 나타내는 항목을 클릭합니다. 그런 다음 **aaduser1 - 프로필** 블레이드에서 **삭제**를 클릭하고 삭제를 확인하라는 메시지가 표시되면 **예**를 선택합니다.
 
 11. 동일한 단계 순서를 반복하여 만든 나머지 사용자 계정을 삭제합니다.
 
-12. Azure AD 테넌트, AdatumLab500-04, aaduser1, aaduser2 및 aaduser3 사용자 계정이 필요합니다.
+12. Azure AD 테넌트의 **AdatumLab500-04 - 개요** 블레이드로 이동하고 **테넌트 관리**를 선택한 후 다음 화면에서 **AdatumLab500-04** 옆에 있는 확인란을 선택하고 **삭제**를 선택합니다. **테넌트 'AdatumLab500-04' 삭제** 블레이드에서 **Azure 리소스를 삭제할 권한 얻기** 링크를 선택하고, Azure Active Directory의 **속성** 블레이드에서 **Azure 리소스 권한 관리**를 **예**로 설정한 다음 **저장**을 선택합니다.
 
 13. Azure Portal에서 로그아웃하고 다시 로그인합니다. 
 
 14. **디렉터리 'AdatumLab500-04' 삭제** 블레이드로 다시 이동하여 **삭제**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Still not able to delete the tenant and throwing an error <bpt id="p2">**</bpt>Delete all license-based and subscriptions<ept id="p2">**</ept>, then it might be due to any subscriptions that have been linked to the tenant. Here <bpt id="p1">**</bpt>Free Premium P2 license<ept id="p1">**</ept> could be throwing the validation error. Deleting the trial subscription of the Premium P2 License using the Global admin id from the M365 admin&gt;&gt; <bpt id="p1">**</bpt>Your Products<ept id="p1">**</ept> and from the <bpt id="p2">**</bpt>Business Store<ept id="p2">**</ept> portal would solve this issue. Also note that deleting the tenant takes more time. Check the End date of the subscription, once after the end of the trial period, revisit the Azure Active directory and then try to delete the tenant.    
+    >**참고**: 여전히 테넌트를 삭제할 수 없고 **모든 라이선스 기반 및 구독 삭제** 오류가 throw된다면 테넌트에 연결된 구독 때문일 수 있습니다. 여기서는 **무료 Premium P2 라이선스**가 유효성 검사 오류를 throw할 수 있습니다. M365 관리자>> **사용자 제품** 및 **업무용 앱 스토어** 포털에서 전역 관리자 ID를 사용하여 Premium P2 라이선스의 평가판 구독을 삭제하면 이 문제가 해결됩니다. 또한 테넌트 삭제에는 더 많은 시간이 걸립니다. 평가판 기간이 끝난 후 구독의 종료 날짜를 확인하고 Azure Active Directory를 다시 확인한 다음 테넌트 삭제를 시도합니다.    
 
 > 이 작업과 관련된 자세한 내용은 [https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/directory-delete-howto)를 참조하세요.

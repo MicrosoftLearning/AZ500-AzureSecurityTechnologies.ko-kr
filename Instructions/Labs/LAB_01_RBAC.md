@@ -9,14 +9,14 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept showing how Azure users and groups are created. Also, how role-based access control is used to assign roles to groups. Specifically, you need to:
+Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 증명을 만들라는 요청을 받았습니다. 역할 기반 액세스 제어를 사용하여 그룹에 역할을 할당하는 방법도 포함됩니다. 특히, 다음과 같은 내용이 필요합니다.
 
 - 최대식(사용자 계정)이 구성원으로 포함된 상급 관리자 그룹을 만듭니다.
 - 정지우(사용자 계정)를 구성원으로 포함하여 하급 관리자 그룹을 만듭니다.
 - 최두리(사용자 계정)를 구성원으로 포함하는 서비스 데스크 그룹을 만듭니다.
 - 서비스 데스크 그룹에 가상 머신 기여자 역할을 할당합니다. 
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -63,7 +63,7 @@ You have been asked to create a proof of concept showing how Azure users and gro
 
 5. **사용자 이름** 옆에 있는 복사 아이콘을 클릭하여 전체 사용자를 복사합니다.
 
-6. Ensure that the <bpt id="p1">**</bpt>Auto-generate<ept id="p1">**</ept> password is selected, select the <bpt id="p2">**</bpt>Show password<ept id="p2">**</ept> checkbox to identify the automatically generated password. You would need to provide this password, along with the user name to Joseph. 
+6. **자동 생성** 암호가 선택되었는지 확인하고 **암호 표시** 체크박스를 선택하여 자동으로 생성된 암호를 식별합니다. Joseph에게 사용자 이름과 함께 이 암호를 제공해야 합니다. 
 
 7. **만들기**를 클릭합니다.
 
@@ -106,11 +106,11 @@ You have been asked to create a proof of concept showing how Azure users and gro
 
 이 작업에서는 PowerShell을 사용하여 Isabel Garcia의 사용자 계정을 만들겠습니다.
 
-1. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: To paste copied text into the Cloud Shell, right-click within the pane window and select <bpt id="p2">**</bpt>Paste<ept id="p2">**</ept>. Alternatively, you can use the <bpt id="p1">**</bpt>Shift+Insert<ept id="p1">**</ept> key combination.
+   >**참고**: 복사된 텍스트를 Cloud Shell에 붙여 넣으려면 창 내에서 마우스 오른쪽 단추를 클릭하고 **붙여넣기**를 선택합니다. 또는 **Shift+Insert** 키 조합을 사용할 수 있습니다.
 
 3. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 암호 프로필 개체를 만듭니다.
 
@@ -205,7 +205,7 @@ You have been asked to create a proof of concept showing how Azure users and gro
     DOMAINNAME=$(az ad signed-in-user show --query 'userPrincipalName' | cut -d '@' -f 2 | sed 's/\"//')
     ```
 
-3. Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 증명을 만들라는 요청을 받았습니다.
+3. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Dylan Williams라는 사용자를 만듭니다. *yourdomain*을 사용합니다.
  
     ```cli
     az ad user create --display-name "Dylan Williams" --password "Pa55w.rd1234" --user-principal-name Dylan@$DOMAINNAME
@@ -285,7 +285,7 @@ You have been asked to create a proof of concept showing how Azure users and gro
 
 3. **검토 + 만들기**를 클릭한 다음 **만들기**를 클릭합니다.
 
-   >역할 기반 액세스 제어를 사용하여 그룹에 역할을 할당하는 방법도 포함됩니다.
+   >**참고**: 리소스 그룹이 배포될 때까지 기다립니다. **알림** 아이콘(오른쪽 상단)을 사용하여 배포 상태의 진행률을 트랙킹합니다.
 
 4. **리소스 그룹** 블레이드에서 페이지를 새로 고침하고 새 리소스 그룹이 리소스 그룹 목록에 나타나는지 확인합니다.
 
@@ -322,7 +322,7 @@ You have been asked to create a proof of concept showing how Azure users and gro
 
 **리소스 정리**
 
-> 특히, 다음과 같은 내용이 필요합니다.
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다.
 
 1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 
 
