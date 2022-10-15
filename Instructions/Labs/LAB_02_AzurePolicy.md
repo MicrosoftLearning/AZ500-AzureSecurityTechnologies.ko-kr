@@ -9,12 +9,12 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept showing how Azure policy can be used. Specifically, you need to:
+Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요청을 받았습니다. 특히, 다음과 같은 내용이 필요합니다.
 
 - 리소스가 특정 지역에서만 만들어지도록 허용하는 허용 위치 정책을 만듭니다.
 - 허용된 위치에서만 리소스가 만들어지는지 확인하기 위한 테스트
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -46,7 +46,7 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
-1. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 1. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
@@ -72,15 +72,15 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
 1. **정책** 블레이드의 **작성** 섹션에서  **정의**를 선택합니다.
 
-1. Take a minute to browse the built-in definitions. Use the <bpt id="p1">**</bpt>Category<ept id="p1">**</ept> drop-down to filter the list of policies.
+1. 기본 제공된 여러 정의를 잠깐 검토하세요. **범주** 드롭다운 메뉴를 사용하여 정책 목록을 필터링합니다.
 
 1. **검색** 텍스트 상자에 **허용 위치**를 입력합니다. 
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The <bpt id="p2">**</bpt>Allowed locations<ept id="p2">**</ept> policy allows you to restrict location of resources, not resource groups. To restrict locations of resource groups, you can use the <bpt id="p1">**</bpt>Allowed locations for resource groups<ept id="p1">**</ept> policy.
+   >**참고**: **허용 위치** 정책을 사용하면 리소스 그룹이 아닌 리소스 위치를 제한할 수 있습니다. 리소스 그룹의 위치를 제한하려면 **리소스 그룹에 대해 허용된 위치**정책을 사용할 수 있습니다.
 
 1.  **허용되는 위치** 정책 정의를 클릭하여 세부 정보를 표시합니다. 
 
-   >Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요청을 받았습니다.
+   >**참고**: 이 정책 정의는 위치 배열을 매개 변수로 사용합니다. 정책 규칙은 'if-then'문입니다. 'if' 절은 리소스 위치가 매개 변수 목록에 포함되었는지 확인하고 그렇지 않은 경우 'then' 절이 리소스 생성을 거부하거나 기존 리소스의 경우 이를 비준수로 표시합니다.
 
 1. **허용 위치** 블레이드에서 **할당**을 클릭합니다.
 
@@ -88,7 +88,7 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
    |설정|값|
    |---|---|
-   |Subscription|Azure 구독명|
+   |구독|Azure 구독명|
    |Resource group|**AZ500LAB02**|
 
 1. **선택**을 클릭합니다.
@@ -105,13 +105,13 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
 1. **허용되는 위치** 블레이드에 있는 **매개 변수** 탭의 **허용되는 위치** 드롭다운 목록에서 **영국 남부**를 유일한 허용 위치로 선택합니다.  
 
-   >특히, 다음과 같은 내용이 필요합니다. 
+   >**참고**: 하나 이상의 위치를 선택할 수 있습니다. 정책에 다른 매개 변수 집합이 필요한 경우 이 탭은 그러한 선택을 제공합니다. 
 
 1.  **검토 + 만들기**를 클릭한 다음,  **만들기**를 클릭하여 정책 할당을 만듭니다.  
 
    >**참고**: 할당에 성공했으며 할당이 완료되는 데 약 30분이 걸릴 수 있다는 알림이 표시됩니다.
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The reason the Azure policy assignment might take up to 30 minutes to take effect is that is has to replicate globally. Typically this takes only a few minutes.  If the next task fails, simply wait a few minutes and attempt its steps again.
+   >**참고**: Azure 정책 할당이 적용되는 데 최대 30분이 소요될 수 있는 이유는 전역으로 복제해야 하기 때문입니다. 일반적으로는 소요 시간이 몇 분 정도에 지나지 않습니다.  다음 작업이 실패하면 몇 분 동안 기다렸다가 다시 각 단계를 시도하십시오.
 
 #### <a name="task-3-test-the-allowed-locations-policy-assignment"></a>작업 3: 허용 위치 정책 할당을 테스트합니다.
 
@@ -121,7 +121,7 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
 1. **가상 네트워크** 블레이드에서  **+ 만들기**를 클릭합니다.
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: First, you will try to create a virtual network in East US. Since this is not an allowed location, the request should be blocked. 
+   >**참고**: 먼저 미국 동부에서 가상 네트워크를 만들어 봅니다. 이 위치는 허용되는 위치가 아니므로 요청이 차단되어야 합니다. 
 
 1. **가상 네트워크 만들기** 블레이드의 **기본** 탭에서 다음 설정을 지정합니다(기타 설정은 기본값을 유지합니다). 
 
@@ -137,7 +137,7 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
     > **참고**: **유효성 검사 실패** 경고가 표시되지 않으면 **이전**을 클릭하고 몇 분 더 기다립니다.
 
-1. On the <bpt id="p1">**</bpt>Basics<ept id="p1">**</ept> tab, click the error message link to open the <bpt id="p2">**</bpt>Policy Assignment<ept id="p2">**</ept> blade. You will see the policy assignment that restricts the location.
+1. **기본** 탭에서 오류 메시지 링크를 클릭하여 **정책 할당** 블레이드를 엽니다. 위치를 제한하는 정책 할당이 표시됩니다.
 
 1. **정책 할당** 블레이드를 닫고, **가상 네트워크 만들기** 블레이드에서 **기본** 탭을 클릭하고, **지역** 드롭다운 목록에서 **(유럽) 영국 남부**를 선택합니다.
 
@@ -147,9 +147,9 @@ You have been asked to create a proof of concept showing how Azure policy can be
 
 **리소스 정리**
 
-> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다.
 
-1. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다.
+1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **다시 연결**을 클릭합니다.
 
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 이 랩에서 만든 리소스 그룹을 제거합니다.
   

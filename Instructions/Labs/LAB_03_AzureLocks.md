@@ -9,13 +9,13 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오 
 
-You have been asked to create a proof of concept showing how resource locks can be used to prevent accidental deletion or changes. Specifically, you need to:
+실수로 삭제되거나 변경되는 것을 방지하기 위해 리소스 잠금을 사용하는 방법을 보여주는 개념 증명을 만들어야 합니다. 특히, 다음과 같은 내용이 필요합니다.
 
 - 읽기 전용 잠금 만들기
 
 - 삭제 잠금 만들기
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
  
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -49,7 +49,7 @@ You have been asked to create a proof of concept showing how resource locks can 
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
-1. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 1. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
@@ -65,13 +65,13 @@ You have been asked to create a proof of concept showing how resource locks can 
     New-AzStorageAccount -ResourceGroupName AZ500LAB03 -Name (Get-Random -Maximum 999999999999999) -Location  EastUS -SkuName Standard_LRS -Kind StorageV2 
     ```
 
-   ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>:  Wait until the storage account is created. This might take a couple of minutes. 
+   >**참고**:  스토리지 계정이 생성될 때까지 기다립니다. 이 과정은 몇 분 정도 걸릴 수 있습니다. 
 
 1. Cloud Shell 창을 닫습니다.
 
 #### <a name="task-2-add-a-readonly-lock-on-the-storage-account"></a>작업 2: 스토리지 계정에 읽기 전용 잠금을 추가합니다. 
 
-In this task, you will add a read only lock to the storage account. This will protect the resource from accidental deletion or modification. 
+이 작업에서는 스토리지 계정에 읽기 전용 잠금만 추가합니다. 이를 통해 실수로 삭제하거나 수정하지 않도록 리소스를 보호합니다. 
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -137,7 +137,7 @@ In this task, you will add a read only lock to the storage account. This will pr
 
 #### <a name="task-5-test-the-delete-lock"></a>작업 5: 삭제 잠금을 테스트합니다.
 
-실수로 삭제되거나 변경되는 것을 방지하기 위해 리소스 잠금을 사용하는 방법을 보여주는 개념 증명을 만들어야 합니다. 
+이 작업에서는 삭제 잠금을 테스트합니다. 스토리지 계정을 수정할 수는 있지만 삭제하지는 않아야 합니다. 
 
 1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 클릭합니다.
 
@@ -155,15 +155,15 @@ In this task, you will add a read only lock to the storage account. This will pr
 
    >**참고**:  이제 **삭제** 잠금이 구성 변경을 허용하지만 실수로 삭제되지 않도록 하는 것을 확인했습니다.
 
-   >특히, 다음과 같은 내용이 필요합니다. 
+   >**참고**:  리소스 잠금을 사용하면 실수로 인한/악의적인 가장 중요한 리소스 변경 및/또는 삭제를 추가로 방어할 수 있습니다. **Owner** 역할을 하는 모든 사용자가 리소스 잠금을 제거할 수 있지만 이를 위해서는 의식적인 노력이 필요합니다. 잠금은 역할 기반 액세스 제어를 보완합니다. 
 
 > 결과: 이 연습에서는 Resource Manager 잠금을 사용하여 수정 및 실수로 삭제되지 않도록 리소스를 보호하는 방법을 배웠습니다.
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs.
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다.
 
-1. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>Reconnect<ept id="p1">**</ept>.
+1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **다시 연결**을 클릭합니다.
 
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 삭제 잠금을 제거합니다.
 

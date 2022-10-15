@@ -9,12 +9,12 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept application that makes use of the Azure SQL Database support for Always Encrypted functionality. All of the secrets and keys used in this scenario should be stored in Key Vault. The application should be registered in Azure Active Directory (Azure AD) in order to enhance its security posture. To accomplish these objectives, the proof of concept should include:
+Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 애플리케이션은 보안 태세를 향상시키기 위해 Azure Active Directory(Azure AD)에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
 
 - Azure Key Vault를 만들어 자격 증명 모음에 키 및 비밀을 저장합니다.
 - Always Encrypted를 사용하여 SQL Database를 만들고 데이터베이스 테이블의 열 콘텐츠를 암호화합니다.
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: For all the resources in this lab, we are using the <bpt id="p2">**</bpt>East US<ept id="p2">**</ept> region. Verify with your instructor this is the region to use for class. 
+>**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 이 개념 증명 작성과 관련된 Azure의 보안 기능을 중점적으로 살펴보려면 먼저 자동 ARM 템플릿 배포부터 진행해야 합니다. 이 작업을 수행하려면 Visual Studio 2019 및 SQL Server Management Studio 2018을 사용하여 가상 머신을 설정해야 합니다.
 
@@ -67,7 +67,7 @@ You have been asked to create a proof of concept application that makes use of t
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB10**을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
    |관리자 사용자 이름|**학생**|
@@ -81,11 +81,11 @@ You have been asked to create a proof of concept application that makes use of t
 
     >**참고**: 이렇게 하면 이 랩에 필요한 Azure VM 및 Azure SQL 데이터베이스 배포가 시작됩니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Do not wait for the ARM template deployment to be completed, but instead continue to the next exercise. The deployment might take between <bpt id="p1">**</bpt>20-25 minutes<ept id="p1">**</ept>. 
+    >**참고**: ARM 템플릿 배포가 완료될 때까지 기다리지 말고 다음 연습을 진행하세요. 배포는 **20~25분** 정도 걸릴 수 있습니다. 
 
 ### <a name="exercise-2-configure-the-key-vault-resource-with-a-key-and-a-secret"></a>연습 2: 키와 비밀을 사용하여 Key Vault 리소스 구성
 
-><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: For all the resources in this lab, we are using the <bpt id="p2">**</bpt>East (US)<ept id="p2">**</ept> region. Verify with your instructor this is region to use for you class. 
+>**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -95,13 +95,13 @@ You have been asked to create a proof of concept application that makes use of t
 
 #### <a name="task-1-create-and-configure-a-key-vault"></a>작업 1: Key Vault 만들기 및 구성
 
-In this task, you will create an Azure Key Vault resource. You will also configure the Azure Key Vault permissions.
+이 작업에서는 Azure Key Vault 리소스를 만듭니다. 그리고 Azure Key Vault 권한도 구성합니다.
 
-1. Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다.
+1. Azure Portal 오른쪽 위의 검색 창 옆에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
-3. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다.  
+3. Cloud Shell 창 내의 PowerShell 세션에서 다음 명령을 실행하여 리소스 그룹 **AZ500LAB10**에 Azure Key Vault를 만듭니다. 작업 1에서 이 랩의 리소스 그룹에 다른 이름을 선택했다면 이 작업에서도 해당 이름을 사용하세요. Key Vault 이름은 고유해야 합니다. 선택한 이름을 기억하세요. 이 랩에서 필요합니다.  
 
     ```powershell
     $kvName = 'az500kv' + $(Get-Random)
@@ -111,7 +111,7 @@ In this task, you will create an Azure Key Vault resource. You will also configu
     New-AzKeyVault -VaultName $kvName -ResourceGroupName 'AZ500LAB10' -Location $location
     ```
 
-    >애플리케이션은 보안 태세를 향상시키기 위해 Azure Active Directory(Azure AD)에 등록해야 합니다.
+    >**참고**: 마지막으로 실행된 명령의 출력에 자격 증명 모음 이름과 URI가 표시됩니다. 자격 증명 모음 URI는 `https://<vault_name>.vault.azure.net/` 형식입니다.
 
 4. Cloud Shell 창을 닫습니다. 
 
@@ -173,7 +173,7 @@ In this task, you will create an Azure Key Vault resource. You will also configu
 
     >**참고**: 만든 키와 관련된 정보를 점검합니다.
 
-    >이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
+    >**참고**: 키 식별자를 사용하여 모든 키를 참조할 수 있습니다. 최신 버전을 얻으려면 `https://<key_vault_name>.vault.azure.net/keys/MyLabKey`를 참조하거나 `https://<key_vault_name>.vault.azure.net/keys/MyLabKey/<key_version>`을 사용하여 특정 버전을 가져옵니다.
 
 
 #### <a name="task-3-add-a-secret-to-key-vault"></a>작업 3: Key Vault에 비밀 추가
@@ -224,7 +224,7 @@ In this task, you will create an Azure Key Vault resource. You will also configu
 
 #### <a name="task-1-enable-a-client-application-to-access-the-azure-sql-database-service"></a>작업 1: 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정 
 
-In this task, you will enable a client application to access the Azure SQL Database service. This will be done by setting up the required authentication and acquiring the Application ID and Secret that you will need to authenticate your application. T
+이 작업에서는 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정합니다. 이렇게 하려면 필요한 인증을 설정하고, 애플리케이션을 인증하는 데 필요한 애플리케이션 ID 및 비밀을 가져옵니다.
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **앱 등록**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -243,7 +243,7 @@ In this task, you will enable a client application to access the Azure SQL Datab
 
 5. **sqlApp** 블레이드에서 **애플리케이션(클라이언트) ID**의 값을 식별합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record this value. You will need it in the next task.
+    >**참고**: 이 값을 기록해 둡니다. 다음 작업에서 필요합니다.
 
 6. **sqlApp** 블레이드의 **관리** 섹션에서 **인증서 및 비밀**을 클릭합니다.
 
@@ -260,9 +260,9 @@ In this task, you will enable a client application to access the Azure SQL Datab
 
 10. **sqlApp | 인증서 및 비밀** 블레이드에서 **Key1**의 값을 식별합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record this value. You will need it in the next task. 
+    >**참고**: 이 값을 기록해 둡니다. 다음 작업에서 필요합니다. 
 
-    >**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+    >**참고**: 블레이드에서 멀리 *이동*하기 전에 값을 복사해야 합니다. 이렇게 하면 키의 일반 텍스트 값을 더 이상 검색할 수 없습니다.
 
 
 #### <a name="task-2-create-a-policy-allowing-the-application-access-to-the-key-vault"></a>작업 2: 애플리케이션의 Key Vault 액세스를 허용하는 정책 만들기
@@ -296,39 +296,39 @@ In this task, you will enable a client application to access the Azure SQL Datab
 
 #### <a name="task-3-retrieve-sql-azure-database-adonet-connection-string"></a>작업 3: SQL Azure 데이터베이스 ADO.NET 연결 문자열 검색 
 
-이 지역을 수업에 사용할 것인지 강사에게 확인합니다.
+연습 1에서 ARM 템플릿을 배포할 때 Azure SQL Server 인스턴스 및 Azure SQL 데이터베이스(**medical**)가 프로비전되었습니다. 이제 새 테이블 구조를 적용하여 빈 데이터베이스 리소스를 업데이트하고 암호화용 데이터 열을 선택합니다.
 
 1. Azure Portal의 페이지 상단에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **SQL 데이터베이스**를 입력하고 **Enter** 키를 누릅니다.
 
 2. SQL 데이터베이스 목록에서 **medical(<randomsqlservername>)** 항목을 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If the database cannot be found, this likely means the deployment you initiated in Exercise 1 has not completed yet. You can validate this by browsing to the Azure Resource Group "AZ500LAB10" (or the name you chose), and selecting <bpt id="p1">**</bpt>Deployments<ept id="p1">**</ept> from the Settings pane.  
+    >**참고**: 데이터베이스를 찾을 수 없으면 연습 1에서 시작한 배포가 아직 완료되지 않았을 가능성이 높습니다. Azure 리소스 그룹 "AZ500LAB10" 또는 선택한 이름의 그룹으로 이동한 다음 설정 창에서 **배포**를 선택하면 배포 완료 여부를 확인할 수 있습니다.  
 
 3. SQL Database 블레이드의 **설정** 섹션에서 **연결 문자열**을 클릭합니다. 
 
     >**참고**: 인터페이스에는 ADO.NET, JDBC, ODBC, PHP 및 Go용 연결 문자열이 포함됩니다. 
    
-4. Record the <bpt id="p1">**</bpt>ADO.NET Connection String<ept id="p1">**</ept>. You will need it later.
+4. **ADO.NET 연결 문자열**을 기록합니다. 이 시간은 나중에 필요합니다.
 
     >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 연습 1의 배포에서 구성한 암호로 바꿔야 합니다.
 
 #### <a name="task-4-log-on-to-the-azure-vm-running-visual-studio-2019-and-sql-management-studio-2018"></a>작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
 
-In this task, you log on to the Azure VM, which deployment you initiated in Exercise 1. This Azure VM hosts Visual Studio 2019 and SQL Server Management Studio 2018.
+이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 2018을 호스트합니다.
 
     >**Note**: Before you proceed with this task, ensure that the deployment you initiated in the first exercise has completed successfully. You can validate this by navigating to the blade of the Azure resource group "Az500Lab10" (or other name you chose) and selecting **Deployments** from the Settings pane.  
 
 1. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신**을 입력하고 **Enter** 키를 누릅니다.
 
-2. In the list of Virtual Machines shown, select the <bpt id="p1">**</bpt>az500-10-vm1<ept id="p1">**</ept> entry. On the <bpt id="p1">**</bpt>az500-10-vm1<ept id="p1">**</ept> blade, on the <bpt id="p2">**</bpt>Essentials<ept id="p2">**</ept> pane, take note of the <bpt id="p3">**</bpt>Public IP address<ept id="p3">**</ept>. You will use this later. 
+2. 표시된 가상 머신 목록에서 **az500-10-vm1** 항목을 선택합니다. **az500-10** 블레이드의 **필수** 창에서 **공용 IP 주소**를 클릭합니다. 나중에 수행할 작업에서 이 주소를 사용합니다. 
 
 #### <a name="task-5-create-a-table-in-the-sql-database-and-select-data-columns-for-encryption"></a>작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
 
-In this task, you will connect to the SQL Database with SQL Server Management Studio and create a table. You will then encrypt two data columns using an autogenerated key from the Azure Key Vault. 
+이 작업에서는 SQL Server Management Studio를 사용하여 SQL Database에 연결하고 테이블을 만듭니다. 그런 다음 Azure Key Vault에서 자동 생성된 키를 사용하여 데이터 열 두 개를 암호화합니다. 
 
 1. Azure Portal에서 **medical** SQL 데이터베이스의 블레이드로 이동하여 **필수** 섹션에서 **서버 이름**(클립보드에 복사)을 확인한 다음 도구 모음에서 **서버 방화벽 설정**을 클릭합니다.  
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record the server name. You will need the server name later in this task.
+    >**참고**: 서버 이름을 기록합니다. 이 작업의 후반에서 필요할 것입니다.
 
 2. **방화벽 설정** 블레이드에서 아래쪽의 **규칙 이름**으로 스크롤하여 다음 설정을 지정합니다. 
 
@@ -344,14 +344,14 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 4. **az500-10-vm1** 블레이드로 다시 이동하여 **개요**, **연결**을 차례로 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-5. Click <bpt id="p1">**</bpt>Download RDP File<ept id="p1">**</ept> and use it to connect to the <bpt id="p2">**</bpt>az500-10-vm1<ept id="p2">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+5. **RDP 파일 다운로드**를 클릭하고 원격 데스크톱을 통해 **az500-10-vm1** Azure VM에 연결하는 데 사용합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
     |설정|값|
     |---|---|
     |사용자 이름|**학생**|
     |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Wait for the Remote Desktop session and <bpt id="p2">**</bpt>Server Manager<ept id="p2">**</ept> to load. Close Server Manager. 
+    >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다. 서버 관리자를 닫습니다. 
 
     >**참고**: 이 랩의 나머지 단계는 원격 데스크톱 세션 내에서 **az500-10-vm1** Azure VM에 대해 수행됩니다. 
 
@@ -373,7 +373,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 10. **개체 탐색기** 창에서 **의료** 데이터베이스를 마우스 오른쪽 단추로 클릭하고 **새 쿼리**를 클릭합니다.
 
-11. Paste the following code into the query window and click <bpt id="p1">**</bpt>Execute<ept id="p1">**</ept>. This will create a <bpt id="p1">**</bpt>Patients<ept id="p1">**</ept> table.
+11. 다음 코드를 쿼리 창에 붙여넣고 **실행**을 클릭합니다. 그러면 **Patients** 테이블이 만들어집니다.
 
      ```sql
      CREATE TABLE [dbo].[Patients](
@@ -403,7 +403,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 16. **실행 설정** 페이지에서 **다음**을 클릭합니다.
     
-17. On the <bpt id="p1">**</bpt>Summary<ept id="p1">**</ept> page, click <bpt id="p2">**</bpt>Finish<ept id="p2">**</ept> to proceed with the encryption. When prompted, sign in again by using the same user account you used to provision the Azure Key Vault instance earlier in this lab.
+17. **요약** 페이지에서 **마침**을 클릭하여 암호화를 진행합니다. 메시지가 표시되면 이 랩의 앞부분에서 Azure Key Vault 인스턴스 프로비전에 사용한 것과 동일한 사용자 계정을 사용하여 다시 로그인합니다.
 
 18. 암호화 프로세스가 완료되면 **결과** 페이지에서 **닫기**를 클릭합니다.
 
@@ -456,7 +456,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 10. RDP 세션으로 돌아가고 Visual Studio 콘솔의 **솔루션 탐색기** 창에서 **Program.cs**를 클릭하고, 해당 콘텐츠를 클립보드에 복사한 코드로 바꿉니다.
 
-11. In the Visual Studio window, in the <bpt id="p1">**</bpt>Program.cs<ept id="p1">**</ept> pane, in line 15, replace the <ph id="ph1">`&lt;connection string noted earlier&gt;`</ph> placeholder with the Azure SQL database <bpt id="p2">**</bpt>ADO.NET<ept id="p2">**</ept> connection string you recorded earlier in the lab. In the connection string, replace the <ph id="ph1">`{your_password}`</ph> placehodler, with <ph id="ph2">`Pa55w.rd1234`</ph>. If you saved the string on the lab computer, you may need to leave the RDP session to copy the ADO string, then return to the Azure virtual machine to paste it in.
+11. Visual Studio 창에서 **Program.cs** 창의 줄 15에서 `<connection string noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 Azure SQL Database **ADO.NET** 연결 문자열로 바꿉니다. 연결 문자열에서 `{your_password}` 자리 표시자를 `Pa55w.rd1234`로 바꿉니다. 랩 컴퓨터에 문자열을 저장한 경우 RDP 세션을 떠나서 ADO 문자열을 복사한 다음, Azure 가상 머신으로 돌아가서 붙여 넣어야 할 수 있습니다.
 
 12. Visual Studio 창에서 **Program.cs** 창의 줄 16에서 `<client id noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 등록된 앱의 **애플리케이션(클라이언트) ID** 값으로 바꿉니다. 
 
@@ -464,7 +464,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 14. Visual Studio 콘솔에서 **시작** 단추를 클릭하여 콘솔 애플리케이션의 빌드를 시작합니다.
 
-15. The application will start a Command Prompt window. When prompted for password, type the password that you specified in the deployment in Exercise 1 to connect to Azure SQL Database. 
+15. 애플리케이션은 명령 프롬프트 창을 시작합니다. 암호를 묻는 메시지가 표시되면 연습 1의 배포에서 지정한 암호를 입력하여 Azure SQL Database에 연결합니다. 
 
 16. 콘솔 앱은 실행 중인 상태로 유지하고 **SQL Management Studio** 콘솔로 전환합니다. 
 
@@ -476,7 +476,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
     ```
 
-19. Switch back to the console application where you are prompted to enter a valid SSN. This will query the encrypted column for the data. At the Command Prompt, type the following and press the Enter key:
+19. 이제 콘솔 애플리케이션으로 다시 전환하면 유효한 SSN을 입력하라는 메시지가 표시됩니다. 이 SSN을 입력하면 암호화된 열에서 데이터를 쿼리합니다. 명령 프롬프트에서 다음을 입력하고 Enter 키를 누릅니다.
 
     ```cmd
     999-99-0003
@@ -488,7 +488,7 @@ In this task, you will connect to the SQL Database with SQL Server Management St
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs.
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다.
 
 1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 
 

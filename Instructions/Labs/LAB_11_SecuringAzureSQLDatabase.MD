@@ -9,13 +9,13 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to review security features for Azure SQL database. Specifically, you are interested in:
+Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 특히, 다음과 같은 기능에 관심이 있습니다.
 
 - SQL 주입 및 데이터 반출과 같은 공격으로부터 보호합니다. 
 - 데이터베이스 정보를 검색하고 기밀과 같은 범주로 분류하는 기능. 
 - 데이터베이스 서버, 데이터베이스 쿼리 및 로그 이벤트를 감사하는 기능. 
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -66,7 +66,7 @@ You have been asked to review security features for Azure SQL database. Specific
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB11**을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
 
@@ -82,7 +82,7 @@ You have been asked to review security features for Azure SQL database. Specific
 
 3. **AZ500LAB11-RG** 블레이드에서 새로 만들어진 SQL Server를 나타내는 항목을 클릭합니다.
 
-4. On the SQL server blade, in the <bpt id="p1">**</bpt>Security<ept id="p1">**</ept> section, click <bpt id="p2">**</bpt>Microsoft Defender for Cloud<ept id="p2">**</ept>. Scroll to the bottom of the <bpt id="p1">**</bpt>Getting started<ept id="p1">**</ept> page and select <bpt id="p2">**</bpt>Upgrade<ept id="p2">**</ept>. On the <bpt id="p1">**</bpt>Install agents<ept id="p1">**</ept> tab select <bpt id="p2">**</bpt>Install agents<ept id="p2">**</ept>.
+4. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭합니다. **시작** 페이지의 아래쪽으로 스크롤하여 **업그레이드**를 선택합니다. **에이전트 설치** 탭에서 **에이전트 설치**를 선택합니다.
 
 5. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭하고 **Microsoft Defender for SQL 사용**을 선택합니다.
 
@@ -96,7 +96,7 @@ You have been asked to review security features for Azure SQL database. Specific
 
 8. **클라우드용 Microsoft Defender** 블레이드로 돌아와 **권장 사항** 및 **보안 경고**를 검토합니다.
 
-      ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: It may take 10-15 minutes for recommendations to appear on the <bpt id="p2">**</bpt>Microsoft Defender for Cloud<ept id="p2">**</ept> blade. Rather than waiting, proceed to the next task but consider returning to this blade once you complete all the remaining tasks.
+      >**참고**: **클라우드용 Microsoft Defender** 블레이드에 권장 사항이 표시되려면 10~15분 정도 걸릴 수 있습니다. 이 시간 동안 기다리지 말고 다음 작업을 진행하세요. 단, 나머지 작업을 모두 완료한 후에는 이 블레이드로 돌아오는 것이 좋습니다.
 
 
 #### <a name="task-3-configure-data-classification"></a>작업 3: 데이터 분류 구성
@@ -137,7 +137,7 @@ You have been asked to review security features for Azure SQL database. Specific
 
 2. SQL Server 블레이드의 **보안** 섹션에서 **감사**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is server level auditing. The default auditing settings include all the queries and stored procedures executed against the database, as well as successful and failed logins.
+    >**참고**: 서버 수준 감사입니다. 기본 감사 설정에는 데이터베이스에 대해 실행되는 모든 쿼리 및 저장 프로시저 그리고 성공 및 실패한 로그인이 포함됩니다.
 
 3. **Azure SQL 감사 사용** 스위치를 **ON**으로 설정하여 감사를 사용하도록 설정합니다. 
 
@@ -155,7 +155,7 @@ You have been asked to review security features for Azure SQL database. Specific
 
 9. 감사 블레이드에서 **저장**을 클릭하여 감사 설정을 저장합니다. 
 
-    >Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다.
+    >**참고**: 잘못된 스토리지 컨테이너 경로에 대한 오류 메시지가 표시되는 경우 스토리지 계정이 아직 프로비전되지 않았을 수 있습니다. 몇 분 간 기다렸다가 **스토리지 계정**을 클릭하고 **스토리지 계정 선택** 블레이드에서 새로 만든 스토리지 계정을 선택하고 감사 블레이드로 돌아가서 **저장**을 클릭합니다.
 
 10. **설정** 섹션의 서버 블레이드에서 **SQL Databases**를 클릭합니다.
 
@@ -163,9 +163,9 @@ You have been asked to review security features for Azure SQL database. Specific
 
 12. **AZ500LabDb** SQL Database 블레이드의 **보안** 섹션에서 **감사**를 클릭합니다. 
 
-    >특히, 다음과 같은 기능에 관심이 있습니다. 
+    >**참고**: 데이터베이스 수준 감사입니다. 서버 수준 감사가 이미 활성화되었습니다. 
   
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Audits can be written to an Azure storage account, to a Log Analytics workspace, or to the Event Hub. You can configure any combination of these options.
+    >**참고**: 감사는 Azure Storage 계정, Log Analytics 작업 공간 또는 이벤트 허브에 기록할 수 있습니다. 이러한 옵션의 모든 조합을 구성할 수 있습니다.
 
     >**참고**: 스토리지 기반 감사가 서버에서 활성화되는 경우 데이터베이스 설정에 관계없이 항상 데이터베이스에 적용됩니다.
 
@@ -180,9 +180,9 @@ You have been asked to review security features for Azure SQL database. Specific
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
-1. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기**를 클릭합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 

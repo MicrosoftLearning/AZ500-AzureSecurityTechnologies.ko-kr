@@ -9,13 +9,13 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept of monitoring virtual machine performance. Specifically, you want to:
+가상 머신 성능을 모니터링하는 개념 증명을 만들어야 합니다. 특히 다음을 수행해야 합니다.
 
 - 원격 분석 및 로그를 수집할 수 있도록 가상 머신을 구성합니다.
 - 수집할 수 있는 원격 분석 및 로그를 보여줍니다.
 - 데이터를 사용하고 쿼리하는 방법을 보여줍니다. 
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -47,7 +47,7 @@ You have been asked to create a proof of concept of monitoring virtual machine p
 
     >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
 
-2. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+2. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 3. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
@@ -61,7 +61,7 @@ You have been asked to create a proof of concept of monitoring virtual machine p
 
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 새 Azure 가상 머신을 만듭니다. 
 
-    ><bpt id="p1">**</bpt>Attention<ept id="p1">**</ept>: The New-AzVm command doesn't work in the Azure CLI version 4.24 and Microsoft is currently investigating for resolution.  The work around in this lab is to install and revert back to Az.Compute version 4.23.0, which is unaffected by this issue.
+    >**주의**: New-AzVm 명령은 Azure CLI 버전 4.24에서 작동하지 않으며 Microsoft는 현재 해결 방법을 모색하고 있습니다.  이 랩의 해결 방법은 본 이슈에 영향을 받지 않는 Az.Compute 버전 4.23.0을 설치하고 되돌리는 것입니다.
    
     >**지침**: Az.Compute 버전 4.23.0으로 되돌리기 
   
@@ -107,7 +107,7 @@ You have been asked to create a proof of concept of monitoring virtual machine p
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
     |이름|유효하며 전역적으로 고유한 이름|
     |지역|**(미국) 미국 동부**|
@@ -118,7 +118,7 @@ You have been asked to create a proof of concept of monitoring virtual machine p
 
 #### <a name="task-3-enable-the-log-analytics-virtual-machine-extension"></a>작업 3: Log Analytics 가상 머신 확장을 사용하도록 설정
 
-In this task, you will enable the Log Analytics virtual machine extension. This extension installs the Log Analytics agent on Windows and Linux virtual machines. This agent collects data from the virtual machine and transfers it to the Log Analytics workspace that you designate. Once the agent is installed it will be automatically upgraded ensuring you always have the latest features and fixes. 
+이 작업에서는 Log Analytics 가상 머신 확장을 활성화합니다. 이 확장은 Windows 및 Linux 가상 머신에 Log Analytics 에이전트를 설치합니다. 이 에이전트는 가상 머신에서 데이터를 수집하고 지정한 Log Analytics 작업 영역으로 전송합니다. 에이전트가 설치되면 자동으로 업그레이드되어 항상 최신 기능과 픽스가 적용됩니다. 
 
 1. Azure Portal에서 **Log Analytics 작업 영역** 블레이드로 다시 이동한 다음 작업 영역 목록에서 이전 작업에서 만든 작업 영역을 나타내는 항목을 클릭합니다.
 
@@ -132,11 +132,11 @@ In this task, you will enable the Log Analytics virtual machine extension. This 
 
 5. 가상 머신이 Log Analytics 작업 영역에 연결될 때까지 기다립니다.
 
-    >가상 머신 성능을 모니터링하는 개념 증명을 만들어야 합니다. 
+    >**참고**: 이 작업은 몇 분 정도 걸릴 수 있습니다. **myVM** 블레이드에 표시되는 **상태**는 **연결**에서 **이 작업 영역**으로 변경됩니다. 
 
 #### <a name="task-4-collect-virtual-machine-event-and-performance-data"></a>작업 4: 가상 머신 이벤트 및 성능 데이터 수집
 
-특히 다음을 수행해야 합니다.
+이 작업에서는 Windows 시스템 로그 및 여러 일반적인 성능 카운터의 컬렉션을 구성합니다. 사용 가능한 다른 원본도 검토합니다.
 
 1. Azure Portal에서 이 연습에서 이전에 만든 Log Analytics 작업 영역으로 다시 이동합니다.
 
@@ -146,7 +146,7 @@ In this task, you will enable the Log Analytics virtual machine extension. This 
 
 4. **Windows 이벤트 로그**가 선택되어 있는지 확인하고 **+ Windows 이벤트 로그 추가**를 클릭한 다음 이벤트 로그 유형 목록에서 **시스템**을 선택합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: This is how you add event logs to the workspace. Other choices include, for example, <bpt id="p1">**</bpt>Hardware events<ept id="p1">**</ept> or <bpt id="p2">**</bpt>Key Management Service<ept id="p2">**</ept>.  
+    >**참고**: 이렇게 작업 영역에 이벤트 로그를 추가합니다. 기타 선택 사항으로는 **하드웨어 이벤트** 또는 **키 관리 서비스** 등이 있습니다.  
 
 5. **정보** 체크박스 선택을 취소하고 **오류** 및 **경고** 체크박스를 선택한 상태로 둡니다.
 
@@ -175,17 +175,17 @@ In this task, you will enable the Log Analytics virtual machine extension. This 
     
 5. 미리 정의된 쿼리 목록을 검토하고, **메모리 및 CPU 사용**을 선택하고, 해당 **실행** 단추를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You can start with the query <bpt id="p2">**</bpt>Virtual machine available memory<ept id="p2">**</ept>. If you don't get any results check the scope is set to virtual machine
+    >**참고**: **가상 머신 사용 가능한 메모리** 쿼리를 시작할 수 있습니다. 결과가 반환되지 않으면 범위가 가상 머신으로 설정되어 있는지 확인하세요.
 
 6. 쿼리는 새 쿼리 탭에서 자동으로 열립니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Log Analytics uses the Kusto query language. You can customize the existing queries or create your own. 
+    >**참고**: Log Analytics는 Kusto 쿼리 언어를 사용합니다. 기존 쿼리를 사용자 지정하거나 직접 만들 수 있습니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: The results of the query you selected are automatically displayed below the query pane. To re-run the query, click <bpt id="p1">**</bpt>Run<ept id="p1">**</ept>.
+    >**참고**: 선택한 쿼리의 결과는 쿼리 창 아래에 자동으로 표시됩니다. 쿼리를 다시 실행하려면 **실행**을 클릭합니다.
 
     >**참고**: 이 가상 머신은 방금 만들어졌기 때문에 아직 데이터가 없을 수 있습니다. 
 
-    >이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+    >**참고**: 다른 형식으로 데이터를 표시하는 옵션이 있습니다. 쿼리 결과에 따라 경고 규칙을 만드는 옵션도 있습니다.
 
     >**참고**: 다음 단계를 사용하여 이 랩의 앞부분에서 배포한 Azure VM에 일부 추가 부하를 생성할 수 있습니다.
 
@@ -199,7 +199,7 @@ In this task, you will enable the Log Analytics virtual machine extension. This 
        goto loop
        ```
        
-    4. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다.
+    4. Log Analytics 블레이드로 다시 전환하고 쿼리를 재실행합니다. 데이터가 수집될 때까지 몇 분 기다렸다가 쿼리를 재실행해야 할 수도 있습니다.
 
 > 결과: Log Analytics 작업 영역을 사용하여 데이터 원본 및 쿼리 로그를 구성했습니다. 
 

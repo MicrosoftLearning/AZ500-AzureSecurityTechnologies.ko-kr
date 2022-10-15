@@ -9,13 +9,13 @@ lab:
 
 ## <a name="lab-scenario"></a>랩 시나리오
 
-You have been asked to create a proof of concept to demonstrate securing Azure file shares. Specifically, you want to:
+Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 수행해야 합니다.
     
 - Azure Storage로 향하는 트래픽이 항상 Azure 백본 네트워크 내에 유지되도록 스토리지 엔드포인트를 만듭니다.
 - 특정 서브넷의 리소스만 스토리지에 액세스할 수 있도록 스토리지 엔드포인트를 구성합니다.
 - 특정 서브넷 외부의 리소스가 스토리지에 액세스할 수 없는지 확인합니다. 
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -60,7 +60,7 @@ You have been asked to create a proof of concept to demonstrate securing Azure f
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB12**를 이름으로 입력합니다.|
     |이름|**myVirtualNetwork**|
     |지역|**(미국) 미국 동부**|
@@ -78,7 +78,7 @@ You have been asked to create a proof of concept to demonstrate securing Azure f
 
 #### <a name="task-2-add-a-subnet-to-the-virtual-network-and-configure-a-storage-endpoint"></a>작업 2: 가상 네트워크에 서브넷을 추가하고 스토리지 엔드포인트를 구성합니다.
 
-In this task, you will create another subnet and enable a service endpoint on that subnet. Service endpoints are enabled per service, per subnet. 
+이 작업에서는 다른 서브넷을 만들고 해당 서브넷에서 서비스 엔드포인트를 활성화합니다. 서비스 엔드포인트는 서비스 단위, 서브넷 단위로 활성화됩니다. 
 
 1. Azure Portal에서 **가상 네트워크** 블레이드로 돌아갑니다.
 
@@ -102,7 +102,7 @@ In this task, you will create another subnet and enable a service endpoint on th
     
 #### <a name="task-3-configure-a-network-security-group-to-restrict-access-to-the-subnet"></a>작업 3: 서브넷에 대한 액세스를 제한하도록 네트워크 보안 그룹을 구성합니다.
 
-In this task, you will create a network security group with two outbound security rules (Storage and internet) and one inbound security rule (RDP). You will also associate the network security group with the Private subnet. This will restrict outbound traffic from Azure VMs connected to that subnet.
+이 작업에서는 두 개의 아웃바운드 보안 규칙(스토리지 및 인터넷)과 하나의 인바운드 보안 규칙(RDP)을 사용하여 네트워크 보안 그룹을 만듭니다. 또한 네트워크 보안 그룹을 개인 서브넷과 연결합니다. 이렇게 하면 해당 서브넷에 연결된 Azure VM의 아웃바운드 트래픽이 제한됩니다.
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **네트워크 보안 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -112,7 +112,7 @@ In this task, you will create a network security group with two outbound securit
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |이름|**myNsgPrivate**|
     |지역|**미국 동부**|
@@ -163,7 +163,7 @@ In this task, you will create a network security group with two outbound securit
 
     >**참고**: 이 규칙은 모든 네트워크 보안 그룹에서 아웃바운드 인터넷 통신을 허용하는 기본 규칙을 재정의합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: In the next steps, you will create an inbound security rule that allows Remote Desktop Protocol (RDP) traffic to the subnet. The rule overrides a default security rule that denies all inbound traffic from the internet. Remote Desktop connections are allowed to the subnet so that connectivity can be tested in a later step.
+    >**참고**: 다음 단계에서는 RDP(원격 데스크톱 프로토콜) 트래픽이 서브넷으로 전송될 수 있는 인바운드 보안 규칙을 만듭니다. 이 규칙은 인터넷의 모든 인바운드 트래픽을 거부하는 기본 보안 규칙을 재정의합니다. 서브넷에 원격 데스크톱 연결이 허용되므로 이후 단계에서 연결을 테스트할 수 있습니다.
 
 12. **myNsgPrivate** 블레이드의 **설정** 섹션에서 **인바운드 보안 규칙**을 클릭한 다음 **+ 추가**를 클릭합니다.
 
@@ -194,7 +194,7 @@ In this task, you will create a network security group with two outbound securit
 
 #### <a name="task-4-configure-a-network-security-group-to-allow-rdp-on-the-public-subnet"></a>작업 4: 공용 서브넷에서 RDP를 허용하도록 네트워크 보안 그룹 구성
 
-Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 메시지가 표시됩니다.
+이 작업에서는 하나의 인바운드 보안 규칙(RDP)이 있는 네트워크 보안 그룹을 만듭니다. 또한 네트워크 보안 그룹을 공용 서브넷과 연결합니다. 이렇게 하면 공용 VM에 대한 RDP 액세스가 허용됩니다.
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **네트워크 보안 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -204,7 +204,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |이름|**myNsgPublic**|
     |지역|**미국 동부**|
@@ -254,7 +254,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |스토리지 계정 이름|3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름|
     |위치|**(미국) 미국 동부**|
@@ -263,7 +263,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 4. **스토리지 계정 만들기** 블레이드의 **기본** 탭에서 **검토 + 만들기**를 클릭하고 유효성 검사 프로세스가 완료될 때까지 기다렸다가 **만들기**를 클릭합니다.
 
-    >특히 다음을 수행해야 합니다.
+    >**참고**: 스토리지 계정이 만들어질 때까지 기다립니다. 이 작업은 2분 정도 걸립니다.
 
 5. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -289,7 +289,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 13. **연결** 블레이드의 **Windows** 탭에서 파일 공유에 Z 드라이브 매핑을 만드는 PowerShell 스크립트를 복사하세요. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Record this script. You will need this in a later in this lab in order to map the file share from the Azure virtual machine on the <bpt id="p1">**</bpt>Private<ept id="p1">**</ept> subnet.
+    >**참고**: 이 스크립트를 기록합니다. 이 랩의 후반부에서 **프라이빗 서브넷**의 Azure 가상 머신에서 파일 공유를 매핑하려면 이것이 필요합니다.
 
 14. 스토리지 계정 블레이드로 다시 이동하여 **보안 + 네트워킹** 섹션에서 **네트워킹**을 클릭합니다.
 
@@ -299,7 +299,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**개인**|
 
@@ -323,7 +323,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+    |구독|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPrivate**|
     |지역|**(미국)미국 동부**|
@@ -358,7 +358,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+    |구독|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPublic**|
     |지역|**(미국)미국 동부**|
@@ -397,7 +397,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 3. **myVMPrivate** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-4. Click <bpt id="p1">**</bpt>Download RDP File<ept id="p1">**</ept> and use it to connect to the <bpt id="p2">**</bpt>myVMPrivate<ept id="p2">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+4. **RDP 파일 다운로드**를 클릭하고 원격 데스크톱을 통해 **myVMPrivate** Azure VM에 연결하는 데 사용합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
     |설정|값|
     |---|---|
@@ -410,7 +410,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 5. **myVMPrivate**의 원격 데스크톱 세션 내에서 **시작**을 클릭한 다음, **Windows PowerShell ISE**를 클릭합니다.
 
-6. Within the <bpt id="p1">**</bpt>Windows PowerShell ISE<ept id="p1">**</ept> window, open the <bpt id="p2">**</bpt>Script<ept id="p2">**</ept> pane, then paste and run the PowerShell script that you recorded earlier in this lab. The script has the following format:
+6. **Windows PowerShell ISE** 창 내에서 **스크립트** 창을 열고 이 랩에서 이전에 기록한 PowerShell 스크립트를 붙여 넣고 실행합니다. 이 스크립트의 형식은 다음과 같습니다.
 
     ```powershell
     $connectTestResult = Test-NetConnection -ComputerName <storage_account_name>.file.core.windows.net -Port 445
@@ -447,7 +447,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 3. **myVMPublic** 블레이드에서 **연결**을 클릭하고 드롭다운 메뉴에서 **RDP**를 클릭합니다. 
 
-4. Click <bpt id="p1">**</bpt>Download RDP File<ept id="p1">**</ept> and use it to connect to the <bpt id="p2">**</bpt>myVMPublic<ept id="p2">**</ept> Azure VM via Remote Desktop. When prompted to authenticate, provide the following credntials:
+4. **RDP 파일 다운로드**를 클릭하고 원격 데스크톱을 통해 **myVMPublic** Azure VM에 연결하는데 사용합니다. 인증하라는 메시지가 표시되면 다음 자격 증명을 입력합니다.
 
     |설정|값|
     |---|---|
@@ -464,7 +464,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     >**참고**: 이번에는 **New-PSDrive: 액세스가 거부되었습니다** 오류가 표시됩니다. 
 
-    >이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+    >**참고**: 액세스가 거부되는 이유는 *myVmPublic* 가상 머신이 공용 서브넷에 배포되기 때문입니다. 공용 서브넷에는 Azure Storage에 사용할 수 있는 서비스 엔드포인트가 없습니다. 스토리지 계정은 프라이빗 서브넷의 네트워크 액세스만 허용합니다.
 
 7. 다음으로 **Windows PowerShell ISE** 콘솔 창에서 다음을 실행하여 가상 머신에 인터넷에 대한 아웃바운드 연결이 있는지 확인합니다. 
 
@@ -481,9 +481,9 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
 **리소스 정리**
 
-> 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
-1. Open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, select <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 

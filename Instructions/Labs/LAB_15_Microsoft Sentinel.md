@@ -11,13 +11,13 @@ lab:
 
 **참고:** **Azure Sentinel**의 이름이 **Microsoft Sentinel**로 변경됨 
 
-You have been asked to create a proof of concept of Microsoft Sentinel-based threat detection and response. Specifically, you want to:
+Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 수행해야 합니다.
 
 - Azure Activity 및 클라우드용 Microsoft Defender에서 데이터 수집을 시작합니다.
 - 기본 제공 및 사용자 지정 경고 추가 
 - 플레이북을 사용하여 인시던트에 대한 응답을 자동화하는 방법을 검토합니다.
 
-> For all the resources in this lab, we are using the <bpt id="p1">**</bpt>East US<ept id="p1">**</ept> region. Verify with your instructor this is the region to use for class. 
+> 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
 ## <a name="lab-objectives"></a>랩 목표
 
@@ -58,13 +58,13 @@ You have been asked to create a proof of concept of Microsoft Sentinel-based thr
 
 2. Azure Portal에서 페이지 상단에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **Microsoft Sentinel**을 입력하고 **Enter** 키를 누릅니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: If this is your first attempt to action Microsoft Sentinel in the Azure dashboard complete the following step(s): In the Azure portal, in the <bpt id="p2">**</bpt>Search resources,  services, and docs<ept id="p2">**</ept> text box at the top of the Azure portal page, type <bpt id="p3">**</bpt>Microsoft Sentinel<ept id="p3">**</ept> and press the <bpt id="p4">**</bpt>Enter<ept id="p4">**</ept> key. Select <bpt id="p1">**</bpt>Microsoft Sentinel<ept id="p1">**</ept> from the <bpt id="p2">**</bpt>Services<ept id="p2">**</ept> view.
+    >**참고**: Azure 대시보드에서 Microsoft Sentinel 작업을 처음 시도하는 경우 다음 단계를 완료하세요. Azure Portal에서 페이지 상단에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **** 을 입력하고 **Enter** 키를 누릅니다. **서비스** 보기에서 **Microsoft Sentinel**을 선택합니다.
   
 3. **Microsoft Sentinel** 블레이드에서 **+ 만들기**를 클릭합니다.
 
 4. **작업 영역에 Microsoft Sentinel 추가** 블레이드에서, Azure Monitor 랩에서 만든 Log Analytics 작업 영역을 선택하고 **추가**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Microsoft Sentinel has very specific requirements for workspaces. For example, workspaces created by Microsoft Defender for Cloud can not be used. Read more at <bpt id="p1">[</bpt>Quickstart: On-board Azure Sentinel<ept id="p1">](https://docs.microsoft.com/en-us/azure/sentinel/quickstart-onboard)</ept>
+    >**참고**: Azure Sentinel에는 작업 영역에 대한 매우 구체적인 요구 사항이 있습니다. 예를 들어 클라우드용 Microsoft Defender에서 만든 작업 영역을 사용할 수 없습니다. [빠른 시작: Azure Sentinel 온보딩](https://docs.microsoft.com/en-us/azure/sentinel/quickstart-onboard)에서 알아보기
     
 #### <a name="task-2-configure-microsoft-sentinel-to-use-the-azure-activity-data-connector"></a>작업 2: Azure Sentinel을 구성하여 Azure Activity 데이터 커넥터를 사용합니다. 
 
@@ -74,21 +74,21 @@ You have been asked to create a proof of concept of Microsoft Sentinel-based thr
 
 2. **\|데이터 커넥터** 블레이드에서 사용 가능한 커넥터 목록을 검토하고 검색 창에 **Azure**를 입력한 다음 **Azure Activity** 커넥터를 나타내는 항목을 선택하고(필요한 경우 왼쪽에 있는 \<<를 사용하여 메뉴 모음을 숨김), 해당 설명 및 상태를 검토한 다음 **커넥터 페이지 열기**를 클릭합니다.
 
-3. On the <bpt id="p1">**</bpt>Azure Activity<ept id="p1">**</ept> blade the <bpt id="p2">**</bpt>Instructions<ept id="p2">**</ept> tab should be selected, note the <bpt id="p3">**</bpt>Prerequisites<ept id="p3">**</ept> and scroll down to the <bpt id="p4">**</bpt>Configuration<ept id="p4">**</ept>. Take note of the information describing the connector update. Your Azure Pass subscription never used the legacy connection method so you can skip step 1 (the <bpt id="p1">**</bpt>Disconnect All<ept id="p1">**</ept> button will be grayed out) and proceed to step 2.
+3. **Azure 활동** 블레이드의 **지침** 탭을 선택해야 하고 **필수 구성 요소**를 기록한 다음 **구성**으로 스크롤합니다. 커넥터 업데이트를 설명하는 정보를 살펴봅니다. Azure Pass 구독은 레거시 연결 방법을 사용하지 않기 때문에 1단계를 건너뛰고(**모든 연결 끊기** 단추가 회색으로 표시됨) 2단계로 진행할 수 있습니다.
 
 4. 2단계인 **진단 설정 새 파이프라인을 통해 구독 연결**에서 "Azure Policy 할당 마법사를 시작하고 지침을 따름" 지침을 검토한 다음 **Azure Policy 할당 마법사 시작\>** 을 클릭합니다.
 
-5. On the <bpt id="p1">**</bpt>Configure Azure Activity logs to stream to specified Log Analytics workspace<ept id="p1">**</ept> (Assign Policy page) <bpt id="p2">**</bpt>Basics<ept id="p2">**</ept> tab, click the <bpt id="p3">**</bpt>Scope elipsis (...)<ept id="p3">**</ept> button. In the <bpt id="p1">**</bpt>Scope<ept id="p1">**</ept> page choose your Azure Pass subscription from the drop-down subscription list and click the <bpt id="p2">**</bpt>Select<ept id="p2">**</ept> button at the bottom of the page.
+5. **지정된 Log Analytics 작업 영역으로 스트림하도록 Azure 활동 로그 구성**(정책 할당 페이지)의 **기본 사항** 탭에서 **범위 줄임표(...)** 단추를 클릭합니다. **범위** 페이지의 드롭다운 구독 목록에서 Azure Pass 구독을 선택하고 페이지 아래쪽의 **선택** 단추를 클릭합니다.
 
     >**참고**: 리소스 그룹은 선택하지 *마세요*.
 
-6. Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라는 메시지가 표시됩니다.
+6. **기본 사항** 탭 아래쪽에 있는 **다음** 단추를 클릭하고 **매개 변수** 탭으로 진행합니다. **매개 변수** 탭에서 **기본 Log Analytics 작업 영역 줄임표(...)** 단추를 클릭합니다. **기본 Log Analytics 작업 영역** 페이지에서 Azure pass 구독이 선택됐는지 확인하고 **작업 영역** 드롭다운을 사용하여 Sentinel에 사용할 Log Analytics 작업 영역을 선택합니다. 완료되면 페이지 아래쪽에 있는 **선택**  단추를 클릭합니다.
 
-7. 특히 다음을 수행해야 합니다.
+7. **매개 변수** 탭 아래쪽에 있는 **다음** 단추를 클릭하고 **수정** 탭으로 진행합니다. **수정** 탭에서 **수정 작업 만들기** 체크박스를 선택합니다. 그러면 **수정할 정책** 드롭다운에서 "지정된 Log Analytics 작업 영역으로 스트림하도록 Azure 활동 로그 구성"을 사용할 수 있습니다. **시스템 할당 ID 위치** 드롭다운에서 이전에 Log Analytics 작업 영역으로 선택한 지역(예: 미국 동부)을 선택합니다.
 
 8. **수정** 탭 아래쪽에 있는 **다음** 단추를 클릭하고 **비준수 메시지** 탭으로 진행합니다.  원할 경우 비준수 메시지를 입력하고 **비준수 메시지** 탭 아래쪽에 있는 **검토 + 만들기** 단추를 클릭합니다.
 
-9. Click the <bpt id="p1">**</bpt>Create<ept id="p1">**</ept> button. You should observe three succeeded status messages: <bpt id="p1">**</bpt>Creating policy assignment succeeded, Role Assignments creation succeeded, and Remediation task creation succeeded<ept id="p1">**</ept>.
+9. **만들기** 단추를 클릭합니다. 다음 3가지 성공 상태 메시지를 볼 수 있을 것입니다. **정책 할당 만들기 성공, 역할 할당 만들기 성공 및 수정 작업 만들기 성공**
 
     >**참고**: 알림, 종 아이콘을 통해 3가지 성공 작업을 확인할 수 있습니다.
 
@@ -104,9 +104,9 @@ You have been asked to create a proof of concept of Microsoft Sentinel-based thr
 
 2. **Microsoft Sentinel \| Analytics** 블레이드에서 **규칙 템플릿** 탭을 클릭합니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Review the types of rules you can create. Each rule is associated with a specific Data Source.
+    >**참고**: 만들 수 있는 규칙 유형을 검토합니다. 각 규칙은 특정 데이터 원본과 연결됩니다.
 
-3. In the listing of rule templates, type <bpt id="p1">**</bpt>Suspicious<ept id="p1">**</ept> into the search bar form and click the <bpt id="p2">**</bpt>Suspicious number of resource creation or deployment<ept id="p2">**</ept> entry associated with the <bpt id="p3">**</bpt>Azure Activity<ept id="p3">**</ept> data source. And then, in the pane displaying the rule template properties, click <bpt id="p1">**</bpt>Create rule<ept id="p1">**</ept> (scroll to the right of the page if needed).
+3. 규칙 템플릿 목록에서 검색 창 양식에 **의심스러움**을 입력한 후 **Azure 활동** 데이터 원본과 연결된 **의심스러운 리소스 작성 또는 배포 수** 항목을 클릭합니다. 그런 다음 규칙 템플릿 속성이 표시된 창에서 필요하면 페이지 오른쪽으로 스크롤하여 **규칙 만들기**를 클릭합니다.
 
     >**참고**: 이 규칙은 중간 심각도를 가지고 있습니다. 
 
@@ -126,7 +126,7 @@ You have been asked to create a proof of concept of Microsoft Sentinel-based thr
 
 #### <a name="task-4-create-a-playbook"></a>작업 4: 플레이북 만들기
 
-In this task, you will create a playbook. A security playbook is a collection of tasks that can be invoked by Microsoft Sentinel in response to an alert. 
+이 작업에서는 플레이북을 만듭니다. 보안 플레이북은 Microsoft Sentinel에서 경고에 대한 대응으로 호출할 수 있는 작업 모음입니다. 
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포**를 입력하고 **Enter** 키를 누릅니다.
 
@@ -142,7 +142,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
     |설정|값|
     |---|---|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
     |위치|**(미국) 미국 동부**|
     |플레이북 이름|**Change-Incident-Severity**|
@@ -160,7 +160,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 10. **변경-인시던트-심각도** 블레이드에서 **편집**을 클릭합니다.
 
-    >이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다.
+    >**참고**: **논리 앱 디자이너** 블레이드에서는 네 개의 연결 각각에 경고가 표시됩니다. 즉, 각각의 연결을 검토하고 구성해야 합니다.
 
 11. **논리 앱 디자이너** 블레이드에서 첫번째 **연결** 단계를 클릭합니다.
 
@@ -203,7 +203,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
     >**참고**: 이 규칙은 Just-In-Time VM 액세스 정책의 제거를 식별합니다.
 
-    >이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
+    >**참고** 구문 분석 오류가 표시된 경우 IntelliSense가 쿼리에 값을 추가했을 수 있습니다. 쿼리가 일치하는지 확인하고 그렇지 않으면 쿼리를 메모장에 붙여넣은 다음 메모장에서 규칙 쿼리로 붙여넣습니다. 
 
 
 7. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **규칙 논리 설정** 탭의 **쿼리 예약**에서 **5분**마다 **쿼리 실행**을 설정합니다.
@@ -216,19 +216,19 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 11. **분석 규칙 마법사 - 새 규칙 만들기** 블레이드의 **검토 및 만들기** 탭에서 **만들기**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: You now have a new active rule called <bpt id="p2">**</bpt>Playbook Demo<ept id="p2">**</ept>. If an event identified by the rue logic occurs, it will result in a medium severity alert, which will generate a corresponding incident.
+    >**참고**: 이제 **플레이북 데모**라는 새로운 활성 규칙이 만들어졌습니다. 규칙 논리로 식별된 이벤트가 발생하면 중간 심각도 경고가 발생하여 해당 인시던트를 생성합니다.
 
 #### <a name="task-6-invoke-an-incident-and-review-the-associated-actions"></a>작업 6: 인시던트를 호출하고 연결된 작업을 검토합니다.
 
 1. Azure Portal에서 **클라우드용 Microsoft Defender\| 개요** 블레이드로 이동합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Check your secure score. By now it should have updated. 
+    >**참고**: 보안 점수를 확인합니다. 지금쯤이면 업데이트되어 있어야 합니다. 
 
 2. **클라우드용 Microsoft Defender \|워크로드 보호** 블레이드의 **고급 보호** 아래에서 **액세스** 섹션을 클릭합니다.
 
 3. **클라우드용 Microsoft Defender \| Just in time VM 액세스** 블레이드의 **myVM** 가상 머신을 나타내는 행의 오른쪽에서 **타원** 단추를 클릭하고 **제거**를 클릭한 다음 **예**를 클릭합니다.
 
-    ><bpt id="p1">**</bpt>Note:<ept id="p1">**</ept> If the VM is not listed in the <bpt id="p2">**</bpt>Just-in-time VMs<ept id="p2">**</ept>, navigate to <bpt id="p3">**</bpt>Virutal Machine<ept id="p3">**</ept> blade and click the <bpt id="p4">**</bpt>Configuration<ept id="p4">**</ept>, Click the <bpt id="p5">**</bpt>Enable the Just-in-time VMs<ept id="p5">**</ept> option under the <bpt id="p6">**</bpt>Just-in-time Vm's access<ept id="p6">**</ept>. Repeat the above step to navigate back to the <bpt id="p1">**</bpt>Microsoft Defender for Cloud<ept id="p1">**</ept> and refresh the page, the VM will appear.
+    >**참고:** VM이 **Just-In-Time VM**에 나열되지 않은 경우 **Virutal Machine** 블레이드로 이동하여 **구성**을 클릭하고 **Just-In-Time VM 액세스**에서 **Just-In-Time VM 사용** 옵션을 클릭합니다. 위의 단계를 반복하여 **클라우드용 Microsoft Defender**로 다시 이동하고 페이지를 새로 고치면 VM이 표시됩니다.
 
 4. Azure Portal에서 페이지 상단에 있는 **리소르, 서비스 및 문서 검색** 텍스트 상자에서 **활동 로그**를 입력하고 **Enter** 키를 누릅니다.
 
@@ -240,7 +240,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 7. **Microsoft Sentinel \|개요** 블레이드에서 대시보드를 검토하고 Just-In-Time VM 액세스 정책의 삭제에 대응하는 경고가 표시되는지 확인합니다.
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: It can take up to 5 minutes for alerts to appear on the <bpt id="p2">**</bpt>Microsoft Sentinel <ph id="ph1">\|</ph> Overview<ept id="p2">**</ept> blade. If you are not seeing an alert at that point, run the query rule referenced in the previous task to verify that the Just In Time access policy deletion activity has been propagated to the Log Analytics workspace associated with your Microsoft Sentinel instance. If that is not the case, re-create the Just in time VM access policy and delete it again.
+    >**참고**: **Microsoft Sentinel \| 개요** 블레이드에 경고가 표시되려면 최대 5분이 소요될 수 있습니다. 해당 시점에 경고가 표시되지 않는 경우 이전 작업에서 참조된 쿼리 규칙을 실행하여 Just-In-Time 액세스 정책 삭제 활동이 Microsoft Sentinel 인스턴스와 연결된 Log Analytics 작업 영역에 전파되었는지 확인합니다. 그렇지 않은 경우 Just-In-Ttime VM 액세스 정책을 다시 만들고 다시 삭제합니다.
 
 8. **Microsoft Sentinel \| 개요** 블레이드의 **위협 관리** 섹션에서 **인시던트**를 클릭합니다.
 
@@ -248,7 +248,7 @@ In this task, you will create a playbook. A security playbook is a collection of
 
     >**참고**: **Microsoft Sentinel \| 인시던트** 블레이드에 인시던트가 표시되려면 최대 5분이 소요될 수 있습니다. 
 
-    ><bpt id="p1">**</bpt>Note<ept id="p1">**</ept>: Review the <bpt id="p2">**</bpt>Microsoft Sentinel <ph id="ph1">\|</ph> Playbooks<ept id="p2">**</ept> blade. You will find there the count of succesfull and failed runs.
+    >**참고**: **Microsoft Sentinel \| 플레이북** 블레이드를 검토합니다. 그곳에서 성공한 실행과 실패한 실행의 횟수를 확인할 수 있습니다.
 
     >**참고**: 인시던트에 다른 심각도 수준 및 상태를 할당할 수 있는 옵션이 있습니다.
 
@@ -256,9 +256,9 @@ In this task, you will create a playbook. A security playbook is a collection of
 
 **리소스 정리**
 
-> Remember to remove any newly created Azure resources that you no longer use. Removing unused resources ensures you will not incur unexpected costs. 
+> 더 이상 사용하지 않는 새로 만든 Azure 리소스는 모두 제거하세요. 사용하지 않는 리소스를 제거하면 예상하지 못한 비용이 발생하지 않습니다. 
 
-1. In the Azure portal, open the Cloud Shell by clicking the first icon in the top right of the Azure Portal. If prompted, click <bpt id="p1">**</bpt>PowerShell<ept id="p1">**</ept> and <bpt id="p2">**</bpt>Create storage<ept id="p2">**</ept>.
+1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell**, 그리고 **스토리지 만들기**를 클릭합니다.
 
 2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
 
