@@ -60,7 +60,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB12**를 이름으로 입력합니다.|
     |이름|**myVirtualNetwork**|
     |지역|**(미국) 미국 동부**|
@@ -112,7 +112,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |이름|**myNsgPrivate**|
     |지역|**미국 동부**|
@@ -204,7 +204,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |이름|**myNsgPublic**|
     |지역|**미국 동부**|
@@ -254,7 +254,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |스토리지 계정 이름|3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름|
     |위치|**(미국) 미국 동부**|
@@ -299,7 +299,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**개인**|
 
@@ -323,7 +323,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용할 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPrivate**|
     |지역|**(미국)미국 동부**|
@@ -331,7 +331,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     |사용자 이름|**localadmin**|
     |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
     |공용 인바운드 포트|**없음**|
-    |이미 Windows Server 라이선스가 있으신가요?|**아니요**|
+    |이미 Windows Server 라이선스가 있으신가요?|**선택되지 않음**|
 
     >**참고**: 공용 인바운드 포트의 경우 미리 만들어진 NSG에 의존합니다. 
 
@@ -358,7 +358,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용할 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
     |Resource group|**AZ500LAB12**|
     |가상 머신 이름|**myVmPublic**|
     |지역|**(미국)미국 동부**|
@@ -366,7 +366,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
     |사용자 이름|**localadmin**|
     |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
     |공용 인바운드 포트|**없음**|
-    |이미 Windows Server 라이선스가 있으신가요?|**아니요**|
+    |이미 Windows Server 라이선스가 있으신가요?|**선택되지 않음**|
 
     >**참고**: 공용 인바운드 포트의 경우 미리 만들어진 NSG에 의존합니다. 
 
@@ -423,7 +423,7 @@ Azure 파일 공유 보안을 입증하기 위해 개념 증명을 만들라는 
        Write-Error -Message "Unable to reach the Azure storage account via port 445. Check to make sure your organization or ISP is not blocking port 445, or use Azure P2S VPN, Azure S2S VPN, or Express Route to tunnel SMB traffic over a different port."
     }
     ```
-    >**참고**: `<storage-account-name>` 자리 표시자는 파일 공유를 호스팅하는 스토리지 계정의 이름을 나타내고, `<storage_account_name>` 자리 표시자는 기본 키를 나타냅니다.
+    >**참고**: `<storage_account_name>` 자리 표시자는 파일 공유를 호스팅하는 스토리지 계정의 이름을 나타내고, `<storage_account_key>` 자리 표시자는 기본 키를 나타냅니다.
 
 7. 파일 탐색기를 시작하고 Z: 드라이브 매핑이 성공적으로 만들어졌는지 확인합니다.
 
