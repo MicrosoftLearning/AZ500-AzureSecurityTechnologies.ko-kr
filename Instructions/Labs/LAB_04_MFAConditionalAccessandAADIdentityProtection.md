@@ -79,9 +79,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용할 Azure 구독의 이름|
+   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB04**를 이름으로 입력합니다.|
-   |위치|**(미국) 미국 동부**|
+   |위치|**미국 동부**|
    |Vm 크기|**Standard_D2s_v3**|
    |Vm 이름|**az500-04-vm1**|
    |관리자 사용자 이름|**학생**|
