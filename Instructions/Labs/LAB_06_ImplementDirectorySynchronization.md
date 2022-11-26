@@ -64,7 +64,7 @@ lab:
 
 5. 이 명령이 **True**를 반환하는지 확인합니다. True가 반환되지 않으면 **True**가 반환될 때까지 다른 `<custom-label>` 값을 사용해 같은 명령을 다시 실행합니다.
 
-6. 성공적인 결과가 반환된 `<custom-label>` 값을 기록합니다. 다음 작업에서 필요합니다.
+6. 성공적인 결과가 반환된 `<custom-label>` 값을 기록합니다. 다음 작업에서 해당 값이 필요합니다.
 
 7. Cloud Shell 창을 닫습니다.
 
@@ -84,7 +84,7 @@ lab:
 
    |설정|값|
    |---|---|
-   |Subscription|Azure 구독명|
+   |구독|Azure 구독명|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB06**을 이름으로 입력합니다.|
    |지역|이전 작업에서 확인한 Azure 지역|
    |관리자 사용자 이름|**학생**|
@@ -169,7 +169,7 @@ lab:
    |설정|값|
    |---|---|
    |사용자 이름|**syncadmin**|
-   |Name|**syncadmin**|
+   |이름|**syncadmin**|
    |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시**를 클릭합니다.|
    |그룹|**0개 그룹이 선택됨**|
    |역할|**사용자**를 클릭하고 **전역 관리자**를 클릭한 다음 **선택**을 클릭합니다.|
@@ -189,7 +189,7 @@ lab:
 
 6. **syncadmin**으로 로그아웃하고 InPrivate 브라우저 창을 닫습니다.
 
-> **결과**: 이 연습을 통해 Azure AD 테넌트를 만들고, 새 Azure AD 테넌트에 사용자 지정 DNS 이름을 추가하고, 전역 관리자 역할을 가진 Azure AD 사용자를 만들었습니다.
+> **결과**: 이 연습을 통해 Azure AD 테넌트를 만들고, 새 Azure AD 테넌트에 사용자 지정 DNS 이름을 추가하는 방법을 확인하고, 전역 관리자 역할을 가진 Azure AD 사용자를 만들었습니다.
 
 
 ### <a name="exercise-3-synchronize-active-directory-forest-with-an-azure-active-directory-tenant"></a>연습 3: Azure Active Directory 테넌트와 Active Directory 포리스트 동기화
