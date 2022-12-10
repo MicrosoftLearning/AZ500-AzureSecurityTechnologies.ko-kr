@@ -61,23 +61,10 @@ lab:
 
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 새 Azure 가상 머신을 만듭니다. 
 
-    >**주의**: New-AzVm 명령은 Azure CLI 버전 4.24에서 작동하지 않으며 Microsoft는 현재 해결 방법을 모색하고 있습니다.  이 랩의 해결 방법은 본 이슈에 영향을 받지 않는 Az.Compute 버전 4.23.0을 설치하고 되돌리는 것입니다.
-   
-    >**지침**: Az.Compute 버전 4.23.0으로 되돌리기 
-  
-   #### <a name="step-1-download-the-working-version-of-the-module-4230-into-your-cloud-shell-session"></a>1단계: 해당 클라우드 셸 세션에 모듈의 작업 버전(4.23.0) 다운로드 
-   **유형**: Install-Module -Name Az.Compute -Force -RequiredVersion 4.23.0
-
-   #### <a name="step-2-start-a-new-powershell-session-that-will-allow-the-azcompute-assembly-version-to-be-loaded"></a>2단계: Az.Compute 어셈블리 버전을 로드하는 새 PowerShell 세션 시작 
-   **형식**: pwsh
-
-   #### <a name="step-3-verify-that-version-4230-is-loaded"></a>3단계: 버전 4.23.0이 로드되었는지 확인
-   **유형**: Get-Module -Name Az.Compute
-   
     ```powershell
-    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'EastUS' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -OpenPorts 80,3389
+    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'EastUS' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -PublicIpSku Standard -OpenPorts 80,3389
     ```
-
+    
 6.  자격 증명에 대한 메시지가 표시되면:
 
     |설정|값|
@@ -110,7 +97,7 @@ lab:
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
     |이름|유효하며 전역적으로 고유한 이름|
-    |지역|**(미국) 미국 동부**|
+    |지역|**미국 동부**|
 
 4. **검토 + 만들기**를 선택합니다.
 
