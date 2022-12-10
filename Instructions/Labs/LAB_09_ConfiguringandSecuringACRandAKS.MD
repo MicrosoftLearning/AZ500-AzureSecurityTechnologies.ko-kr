@@ -138,7 +138,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     |설정|값|
     |----|----|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB09**|
     |Kubernetes 클러스터 이름|**MyKubernetesCluster**|
     |지역|**(미국) 미국 동부**|
