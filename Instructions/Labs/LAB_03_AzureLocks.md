@@ -57,7 +57,12 @@ lab:
 
     ```powershell
     New-AzResourceGroup -Name AZ500LAB03 -Location 'EastUS'
+    
+    Confirm
+    Provided resource group already exists. Are you sure you want to update it?
+    [Y] Yes [N] No [S] Suspend [?] Help (default is "Y"): Y
     ```
+1. Cloud Shell 창 내의 PowerShell 세션에서 **Y**를 입력하고 Enter 키를 누릅니다.
 
 1. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 새로 만든 리소스 그룹에 스토리지 계정을 만듭니다.
     
