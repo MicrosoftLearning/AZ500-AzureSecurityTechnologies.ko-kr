@@ -61,7 +61,7 @@ lab:
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB07**을 이름으로 입력합니다.|
     |이름|**myVirtualNetwork**|
     |지역|**미국 동부**|
@@ -123,7 +123,7 @@ lab:
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB07**|
     |이름|**myNsg**|
     |지역|**미국 동부**|
@@ -141,7 +141,7 @@ lab:
     |가상 네트워크|**myVirtualNetwork**|
     |서브넷|**default**|
 
-#### <a name="task-4-create-inbound-nsg-security-rules-to-all-traffic-to-web-servers-and-rdp-to-the-management-servers"></a>작업 4: 웹 서버의 모든 트래픽 및 서버의 RDP에 인바운드 NSG 보안 규칙을 만듭니다. 
+#### <a name="task-4-create-inbound-nsg-security-rules-to-all-traffic-to-web-servers-and-rdp-to-the-servers"></a>작업 4: 웹 서버의 모든 트래픽 및 서버의 RDP에 인바운드 NSG 보안 규칙을 만듭니다. 
 
 1. **myNsg** 블레이드의 **설정** 섹션에서 **인바운드 보안 규칙**을 클릭합니다.
 
@@ -198,7 +198,7 @@ lab:
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용할 Azure 구독의 이름|
+   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**AZ500LAB07**|
    |가상 머신 이름|**myVmWeb**|
    |지역|**(미국)미국 동부**|
@@ -236,7 +236,7 @@ lab:
 
    |설정|값|
    |---|---|
-   |구독|이 랩에서 사용할 Azure 구독의 이름|
+   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**AZ500LAB07**|
    |가상 머신 이름|**myVMMgmt**|
    |지역|(미국)미국 동부|

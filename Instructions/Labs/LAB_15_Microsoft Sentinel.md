@@ -142,7 +142,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
     |설정|값|
     |---|---|
-    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
+    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
     |위치|**(미국) 미국 동부**|
     |플레이북 이름|**Change-Incident-Severity**|
