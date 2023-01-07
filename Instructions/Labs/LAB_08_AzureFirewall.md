@@ -67,7 +67,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
 4. **템플릿 편집** 블레이드에서 **파일 로드**를 클릭하고, **\\Allfiles\\Labs\\08\\template.json** 파일을 찾아 **열기**를 클릭합니다.
 
-    >**참고**: 템플릿의 내용을 검토하고 Windows Server 2019 Datacenter를 호스팅하는 Azure VM를 배포함을 참고합니다.
+    >**참고**: 템플릿의 내용을 검토하고 Windows Server 2016 Datacenter를 호스팅하는 Azure VM를 배포함을 참고합니다.
 
 5. **템플릿 편집** 블레이드에서 **저장**을 클릭합니다.
 
