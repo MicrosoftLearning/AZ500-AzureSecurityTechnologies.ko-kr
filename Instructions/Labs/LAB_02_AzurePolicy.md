@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-02-azure-policy"></a>랩 02: Azure Policy
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 02: Azure Policy
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요청을 받았습니다. 특히, 다음과 같은 내용이 필요합니다.
 
@@ -16,21 +16,21 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음을 완료합니다.
 
 - 연습 1: Azure Policy 구현. 
 
-## <a name="azure-policy-diagram"></a>Azure Policy 다이어그램
+## Azure Policy 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157511920-19c1f06c-86bd-440d-80ac-d96aa27aefff.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-### <a name="exercise-1-implement-azure-policy"></a>연습 1: Azure Policy 구현
+### 연습 1: Azure Policy 구현
 
-#### <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+#### 예상 소요 시간: 20분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -38,7 +38,7 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 - 작업 2: 허용 위치 정책 할당을 만듭니다.
 - 작업 3: 허용 위치 정책 할당이 작동하는지 확인합니다. 
 
-#### <a name="task-1-create-a-resource-group-for-the-lab"></a>작업 1: 랩을 위한 리소스 그룹을 만듭니다. 
+#### 작업 1: 랩을 위한 리소스 그룹을 만듭니다. 
 
 이 작업에서는 이 랩에 사용할 리소스 그룹을 만듭니다. 
 
@@ -69,7 +69,7 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 
 1. **Cloud Shell**을 닫습니다.
 
-#### <a name="task-2-create-an-allowed-locations-policy-assignment"></a>작업 2: 허용 위치 정책 할당을 만듭니다.
+#### 작업 2: 허용 위치 정책 할당을 만듭니다.
 
 이 작업에서는 허용 위치 정책 할당을 만들고 정책이 사용할 수 있는 Azure 지역을 지정합니다. 
 
@@ -79,7 +79,7 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 
 1. 기본 제공된 여러 정의를 잠깐 검토하세요. **범주** 드롭다운 메뉴를 사용하여 정책 목록을 필터링합니다.
 
-1. **검색** 텍스트 상자에 **허용 위치**를 입력합니다. 
+1. **검색** 텍스트 상자에 **허용 되는 위치**를 입력합니다. 
 
    >**참고**: **허용 위치** 정책을 사용하면 리소스 그룹이 아닌 리소스 위치를 제한할 수 있습니다. 리소스 그룹의 위치를 제한하려면 **리소스 그룹에 대해 허용된 위치**정책을 사용할 수 있습니다.
 
@@ -118,7 +118,7 @@ Azure 정책의 사용 방법을 보여주는 개념 증명을 만들라는 요�
 
    >**참고**: Azure 정책 할당이 적용되는 데 최대 30분이 소요될 수 있는 이유는 전역으로 복제해야 하기 때문입니다. 일반적으로는 소요 시간이 몇 분 정도에 지나지 않습니다.  다음 작업이 실패하면 몇 분 동안 기다렸다가 다시 각 단계를 시도하십시오.
 
-#### <a name="task-3-test-the-allowed-locations-policy-assignment"></a>작업 3: 허용 위치 정책 할당을 테스트합니다.
+#### 작업 3: 허용 위치 정책 할당을 테스트합니다.
 
 이 작업에서는 허용 위치 정책 할당을 테스트합니다. 
 
