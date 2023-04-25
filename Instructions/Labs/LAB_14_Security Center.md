@@ -1,7 +1,7 @@
 ---
 lab:
     title: '14 - 클라우드용 Microsoft Defender'
-    module: '모듈 04 - 클라우드용 Microsoft Defender'
+    module: 'Module 04 - Microsoft Defender for Cloud'
 ---
 
 # 랩 14: 클라우드용 Microsoft Defender

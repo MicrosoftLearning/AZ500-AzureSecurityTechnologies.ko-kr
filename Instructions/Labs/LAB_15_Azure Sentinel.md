@@ -1,7 +1,7 @@
 ---
 lab:
     title: '15 - Microsoft Sentinel'
-    module: '모듈 04 - 보안 작업 관리'
+    module: 'Module 04 - Manage Security Operations'
 ---
 
 # 랩 15: Microsoft Sentinel
