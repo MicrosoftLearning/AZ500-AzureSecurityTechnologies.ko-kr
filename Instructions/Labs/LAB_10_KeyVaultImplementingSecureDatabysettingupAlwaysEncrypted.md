@@ -4,10 +4,10 @@ lab:
   module: Module 03 - Secure Data and Applications
 ---
 
-# <a name="lab-10-key-vault-implementing-secure-data-by-setting-up-always-encrypted"></a>랩 10: Key Vault(Always Encrypted를 설정하여 보안 데이터 구현)
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 10: Key Vault(Always Encrypted를 설정하여 보안 데이터 구현)
+# Student용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 애플리케이션은 보안 태세를 향상시키기 위해 Azure Active Directory(Azure AD)에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
 
@@ -18,7 +18,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 이 개념 증명 작성과 관련된 Azure의 보안 기능을 중점적으로 살펴보려면 먼저 자동 ARM 템플릿 배포부터 진행해야 합니다. 이 작업을 수행하려면 Visual Studio 2019 및 SQL Server Management Studio 2018을 사용하여 가상 머신을 설정해야 합니다.
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다:
 
@@ -27,27 +27,27 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 - 연습 3: Azure SQL 데이터베이스 및 데이터 기반 애플리케이션 구성
 - 연습 4: Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
 
-## <a name="key-vault-diagram"></a>Key Vault 다이어그램
+## Key Vault 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157532938-c724cc40-f64f-4d69-9e91-d75344c5e0a2.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-## <a name="lab-files"></a>랩 파일:
+## 랩 파일:
 
 - **\\Allfiles\\Labs\\10\\az-500-10_azuredeploy.json**
 
 - **\\Allfiles\\Labs\\10\\program.cs**
 
-### <a name="total-lab-time-estimate-60-minutes"></a>총 랩 소요 시간(예상): 60분
+### 총 랩 소요 시간(예상): 60분
 
-### <a name="exercise-1-deploy-the-base-infrastructure-from-an-arm-template"></a>연습 1: ARM 템플릿에서 기본 인프라 배포
+### 연습 1: ARM 템플릿에서 기본 인프라 배포
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: Azure VM 및 Azure SQL 데이터베이스 배포
 
-#### <a name="task-1-deploy-an-azure-vm-and-an-azure-sql-database"></a>작업 1: Azure VM 및 Azure SQL 데이터베이스 배포
+#### 작업 1: Azure VM 및 Azure SQL 데이터베이스 배포
 
 이 작업에서는 Azure VM을 배포합니다. 이 배포 과정에서는 Visual Studio 2019 및 SQL Server Management Studio 2018이 자동으로 설치됩니다. 
 
@@ -70,7 +70,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
    |Subscription|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB10**을 이름으로 입력합니다.|
    |위치|**미국 동부**|
-   |관리자 사용자 이름|**학생**|
+   |관리자 사용자 이름|**Student**|
    |관리자 암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    
     >**참고**: 가상 머신에 로그온하는 데 사용하는 관리 자격 증명을 변경할 수는 있지만 반드시 변경할 필요는 없습니다.
@@ -83,7 +83,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: ARM 템플릿 배포가 완료될 때까지 기다리지 말고 다음 연습을 진행하세요. 배포는 **20~25분** 정도 걸릴 수 있습니다. 
 
-### <a name="exercise-2-configure-the-key-vault-resource-with-a-key-and-a-secret"></a>연습 2: 키와 비밀을 사용하여 Key Vault 리소스 구성
+### 연습 2: 키와 비밀을 사용하여 Key Vault 리소스 구성
 
 >**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
@@ -93,7 +93,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 - 작업 2: Key Vault에 키 추가
 - 작업 3: Key Vault에 암호 추가
 
-#### <a name="task-1-create-and-configure-a-key-vault"></a>작업 1: Key Vault 만들기 및 구성
+#### 작업 1: Key Vault 만들기 및 구성
 
 이 작업에서는 Azure Key Vault 리소스를 만듭니다. 그리고 Azure Key Vault 권한도 구성합니다.
 
@@ -137,7 +137,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     
     >**참고**: 이전 검토 + 만들기 작업은 애플리케이션, 메일, 키 권한, 비밀 권한, 인증서 권한을 나열하는 액세스 정책 페이지로 돌아갑니다.
       
-#### <a name="task-2-add-a-key-to-key-vault"></a>작업 2: Key Vault에 키 추가
+#### 작업 2: Key Vault에 키 추가
 
 이 작업에서는 Key Vault에 키를 추가하고 키에 대한 정보를 확인합니다. 
 
@@ -178,7 +178,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     >**참고**: 키 식별자를 사용하여 모든 키를 참조할 수 있습니다. 최신 버전을 얻으려면 `https://<key_vault_name>.vault.azure.net/keys/MyLabKey`를 참조하거나 `https://<key_vault_name>.vault.azure.net/keys/MyLabKey/<key_version>`을 사용하여 특정 버전을 가져옵니다.
 
 
-#### <a name="task-3-add-a-secret-to-key-vault"></a>작업 3: Key Vault에 비밀 추가
+#### 작업 3: Key Vault에 비밀 추가
 
 1. Cloud Shell 창으로 다시 전환합니다.
 
@@ -213,7 +213,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     >**참고**: 최신 버전의 비밀을 얻으려면 `https://<key_vault_name>.vault.azure.net/secrets/<secret_name>`을 참조하고, 특정 버전을 얻으려면 `https://<key_vault_name>.vault.azure.net/secrets/<secret_name>/<secret_version>`을 참조합니다.
 
 
-### <a name="exercise-3-configure-an-azure-sql-database-and-a-data-driven-application"></a>연습 3: Azure SQL 데이터베이스 및 데이터 기반 애플리케이션 구성
+### 연습 3: Azure SQL 데이터베이스 및 데이터 기반 애플리케이션 구성
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -224,7 +224,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 - 작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
 
 
-#### <a name="task-1-enable-a-client-application-to-access-the-azure-sql-database-service"></a>작업 1: 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정 
+#### 작업 1: 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정 
 
 이 작업에서는 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정합니다. 이렇게 하려면 필요한 인증을 설정하고, 애플리케이션을 인증하는 데 필요한 애플리케이션 ID 및 비밀을 가져옵니다.
 
@@ -267,7 +267,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     >**참고**: 블레이드에서 멀리 *이동*하기 전에 값을 복사해야 합니다. 이렇게 하면 키의 일반 텍스트 값을 더 이상 검색할 수 없습니다.
 
 
-#### <a name="task-2-create-a-policy-allowing-the-application-access-to-the-key-vault"></a>작업 2: 애플리케이션의 Key Vault 액세스를 허용하는 정책 만들기
+#### 작업 2: 애플리케이션의 Key Vault 액세스를 허용하는 정책 만들기
 
 이 작업에서는 Key Vault에 저장된 비밀 액세스 권한을 새로 등록된 앱에 부여합니다.
 
@@ -296,7 +296,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 6. Cloud Shell 창을 닫습니다. 
 
 
-#### <a name="task-3-retrieve-sql-azure-database-adonet-connection-string"></a>작업 3: SQL Azure 데이터베이스 ADO.NET 연결 문자열 검색 
+#### 작업 3: SQL Azure 데이터베이스 ADO.NET 연결 문자열 검색 
 
 연습 1에서 ARM 템플릿을 배포할 때 Azure SQL Server 인스턴스 및 Azure SQL 데이터베이스(**medical**)가 프로비전되었습니다. 이제 새 테이블 구조를 적용하여 빈 데이터베이스 리소스를 업데이트하고 암호화용 데이터 열을 선택합니다.
 
@@ -314,7 +314,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 연습 1의 배포에서 구성한 암호로 바꿔야 합니다.
 
-#### <a name="task-4-log-on-to-the-azure-vm-running-visual-studio-2019-and-sql-management-studio-2018"></a>작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
+#### 작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
 
 이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 2018을 호스트합니다.
 
@@ -324,7 +324,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 2. 표시된 가상 머신 목록에서 **az500-10-vm1** 항목을 선택합니다. **az500-10** 블레이드의 **필수** 창에서 **공용 IP 주소**를 클릭합니다. 나중에 수행할 작업에서 이 주소를 사용합니다. 
 
-#### <a name="task-5-create-a-table-in-the-sql-database-and-select-data-columns-for-encryption"></a>작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
+#### 작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
 
 이 작업에서는 SQL Server Management Studio를 사용하여 SQL Database에 연결하고 테이블을 만듭니다. 그런 다음 Azure Key Vault에서 자동 생성된 키를 사용하여 데이터 열 두 개를 암호화합니다. 
 
@@ -350,7 +350,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     |설정|값|
     |---|---|
-    |사용자 이름|**학생**|
+    |사용자 이름|**Student**|
     |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다. 서버 관리자를 닫습니다. 
@@ -366,7 +366,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |서버 유형|**데이터베이스 엔진**|
     |서버 이름|이 작업의 앞부분에서 식별한 서버 이름|
     |인증|**SQL Server 인증**|
-    |로그인|**학생**|
+    |로그인|**Student**|
     |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
 8. **서버에 연결** 대화 상자에서 **연결**을 클릭합니다.
@@ -414,13 +414,13 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     >**참고**: **항상 암호화 키** 하위 노드에는 **열 마스터 키** 및 **열 암호화 키** 하위 폴더가 포함되어 있습니다.
 
 
-### <a name="exercise-4-demonstrate-the-use-of-azure-key-vault-in-encrypting-the-azure-sql-database"></a>연습 4: Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
+### 연습 4: Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: 데이터 기반 애플리케이션을 실행하여 Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
 
-#### <a name="task-1-run-a-data-driven-application-to-demonstrate-the-use-of-azure-key-vault-in-encrypting-the-azure-sql-database"></a>작업 1: 데이터 기반 애플리케이션을 실행하여 Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
+#### 작업 1: 데이터 기반 애플리케이션을 실행하여 Azure SQL 데이터베이스 암호화 과정에서 Azure Key Vault를 사용하는 방법 시연
 
 이 작업에서는 Visual Studio를 사용하여 콘솔 애플리케이션을 만들어 암호화된 열에 데이터를 로드합니다. 그런 다음 Key Vault의 키에 액세스하는 연결 문자열을 사용하여 해당 데이터에 안전하게 액세스합니다.
 

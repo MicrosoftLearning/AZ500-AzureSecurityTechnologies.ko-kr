@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-04-mfa-conditional-access-and-aad-identity-protection"></a>랩 04: MFA, 조건부 액세스 및 AAD ID 보호
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 04: MFA, 조건부 액세스 및 AAD ID 보호
+# Student용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 평가하려고 합니다.
 
@@ -17,7 +17,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다:
 
@@ -26,26 +26,26 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 - 연습 3: Azure AD 조건부 액세스 정책 구현 
 - 연습 4: Azure AD ID 보호 구현
 
-## <a name="mfa---conditional-access---identity-protection-diagram"></a>MFA - 조건부 액세스 - ID 보호 다이어그램
+## MFA - 조건부 액세스 - ID 보호 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157518628-8b4a9efe-0086-4ec0-825e-3d062748fa63.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-## <a name="lab-files"></a>랩 파일:
+## 랩 파일:
 
 - **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.json**
 - **\\Allfiles\\Labs\\04\\az-500-04_azuredeploy.parameters.json** 
 
-### <a name="exercise-1-deploy-an-azure-vm-by-using-an-azure-resource-manager-template"></a>연습 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
+### 연습 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
 
-### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: Azure Resource Manager 템플릿을 사용하여 Azure VM 배포
 
-#### <a name="task-1-deploy-an-azure-vm-by-using-an-azure-resource-manager-template"></a>작업 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
+#### 작업 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
 
 이 작업에서는 ARM 템플릿을 사용하여 가상 머신을 만듭니다. 이 가상 머신은 이 랩의 마지막 연습에 사용됩니다. 
 
@@ -84,7 +84,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
    |위치|**미국 동부**|
    |Vm 크기|**Standard_D2s_v3**|
    |Vm 이름|**az500-04-vm1**|
-   |관리자 사용자 이름|**학생**|
+   |관리자 사용자 이름|**Student**|
    |관리자 암호|**고유한 암호를 만들고 나중에 참조할 수 있도록 기록하세요. 필요한 랩 액세스를 위해 이 암호를 입력하라는 메시지가 표시됩니다.**|
    |Virtual Network 이름|**az500-04-vnet1**|
 
@@ -97,9 +97,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 > 결과: 이 랩의 마지막 연습에서 사용할 Azure VM **az500-04-vm1**의 템플릿 배포를 시작했습니다.
 
 
-### <a name="exercise-2-implement-azure-mfa"></a>연습 2: Azure MFA 구현
+### 연습 2: Azure MFA 구현
 
-### <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+### 예상 소요 시간: 30분
 
 이 연습에서는 다음 작업을 수행합니다.
 
@@ -110,7 +110,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 - 작업 5: Azure MFA 설정 구성
 - 작업 6: MFA 구성 유효성 검사
 
-#### <a name="task-1-create-a-new-azure-ad-tenant"></a>작업 1: 새 Azure AD 테넌트 만들기
+#### 작업 1: 새 Azure AD 테넌트 만들기
 
 이 작업에서는 새 Azure AD 테넌트를 만듭니다. 
 
@@ -136,7 +136,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
     >**참고**: 새 테넌트가 만들어질 때까지 기다립니다. **알림** 아이콘을 사용하여 배포 상태를 모니터링합니다. 
 
 
-#### <a name="task-2-activate-azure-ad-premium-p2-trial"></a>작업 2: Azure AD Premium P2 평가판 활성화
+#### 작업 2: Azure AD Premium P2 평가판 활성화
 
 이 작업에서는 Azure AD Premium P2 무료 평가판에 등록합니다. 
 
@@ -153,7 +153,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 5. **활성화** 블레이드의 Azure AD Premium P2 섹션에서 **무료 평가판**을 클릭한 다음 **활성화**를 클릭합니다.
 
 
-#### <a name="task-3-create-azure-ad-users-and-groups"></a>작업 3: Azure AD 사용자 및 그룹 만들기
+#### 작업 3: Azure AD 사용자 및 그룹 만들기
 
 이 작업에서는 다음 세 사용자를 만듭니다. aaduser1(전역 관리자), aaduser2(사용자), aaduser3(사용자). 이후 작업에는 각 사용자의 주체 이름과 암호가 필요합니다. 
 
@@ -208,7 +208,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 이 시점에서 **사용자** 페이지에 새 사용자가 세 명 있어야 합니다. 
     
-#### <a name="task-4-assign-azure-ad-premium-p2-licenses-to-azure-ad-users"></a>작업 4: Azure AD 사용자에게 Azure AD Premium P2 라이선스 할당
+#### 작업 4: Azure AD 사용자에게 Azure AD Premium P2 라이선스 할당
 
 이 작업에서는 각 사용자를 Azure Active Directory Premium P2 라이선스에 할당합니다.
 
@@ -230,7 +230,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 이 시점에서 이 랩에서 사용할 모든 사용자 계정에 Azure Active Directory Premium P2 라이선스를 할당했습니다. 로그아웃한 다음 다시 로그인하십시오. 
 
-#### <a name="task-5-configure-azure-mfa-settings"></a>작업 5: Azure MFA 설정 구성
+#### 작업 5: Azure MFA 설정 구성
 
 이 작업에서는 MFA를 구성하고 aaduser1에 대한 MFA를 활성화합니다. 
 
@@ -284,7 +284,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. Azure AD 테넌트에서 전역 관리자 역할을 하는 사용자로 로그인되었는지 확인합니다.
 
-#### <a name="task-6-validate-mfa-configuration"></a>작업 6: MFA 구성 유효성 검사
+#### 작업 6: MFA 구성 유효성 검사
 
 이 작업에서는 aaduser1 사용자 계정의 로그인을 테스트하여 MFA 구성의 유효성을 검사합니다. 
 
@@ -317,16 +317,16 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 > 결과: 새 AD 테넌트를 만들고, AD 사용자를 구성하고, MFA를 구성하고, 사용자용 MFA 환경을 테스트했습니다. 
 
 
-### <a name="exercise-3-implement-azure-ad-conditional-access-policies"></a>연습 3: Azure AD 조건부 액세스 정책 구현 
+### 연습 3: Azure AD 조건부 액세스 정책 구현 
 
-### <a name="estimated-timing-15-minutes"></a>예상 소요 시간: 15분
+### 예상 소요 시간: 15분
 
 이 연습에서는 다음 작업을 수행합니다. 
 
 - 작업 1: 조건부 액세스 정책 구성
 - 작업 2: 조건부 액세스 정책을 테스트합니다.
 
-#### <a name="task-1---configure-a-conditional-access-policy"></a>작업 1 - 조건부 액세스 정책을 구성합니다. 
+#### 작업 1 - 조건부 액세스 정책을 구성합니다. 
 
 이 작업에서는 조건부 액세스 정책 설정을 검토하고, Azure Portal에 로그인할 때 MFA를 요구하는 정책을 만듭니다. 
 
@@ -362,7 +362,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 이 시점에서 MFA가 Azure Portal에 로그인해야 하는 조건부 액세스 정책이 있습니다. 
 
-#### <a name="task-2---test-the-conditional-access-policy"></a>작업 2 - 조건부 액세스 정책을 테스트합니다.
+#### 작업 2 - 조건부 액세스 정책을 테스트합니다.
 
 이 작업에서는 Azure Portal에서 **aaduser2**로 로그인하고 MFA가 필요한지 확인합니다. 또한 다음 연습을 계속하기 전에 정책을 삭제합니다. 
 
@@ -404,9 +404,9 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 >결과: Azure AD 조건부 액세스를 구성하고 테스트했습니다.
 
-### <a name="exercise-4-implement-azure-ad-identity-protection"></a>연습 4: Azure AD ID 보호 구현
+### 연습 4: Azure AD ID 보호 구현
 
-### <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+### 예상 소요 시간: 30분
 
 이 연습에서는 다음 작업을 수행합니다. 
 
@@ -416,7 +416,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 - 작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
 - 작업 5: Azure AD ID 보호 보고 검토
 
-#### <a name="task-1-enable-azure-ad-identity-protection"></a>작업 1: Azure AD ID 보호 사용
+#### 작업 1: Azure AD ID 보호 사용
 
 이 작업에서는 Azure Portal의 Azure AD ID 보호 옵션을 봅니다. 
 
@@ -430,7 +430,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
 4. **ID 보호 \| 개요** 블레이드에서 **새로운 위험한 사용자가 탐지됨** 및 **새로운 위험한 로그인이 탐지됨** 차트와 위험한 사용자에 관한 기타 정보를 검토합니다. 
 
-#### <a name="task-2-configure-a-user-risk-policy"></a>작업 2: 사용자 위험 정책 구성
+#### 작업 2: 사용자 위험 정책 구성
 
 이 작업에서는 사용자 위험 정책을 만듭니다. 
 
@@ -448,7 +448,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
    - **정책 적용**을 **켜기**로 설정하고 **저장**을 클릭합니다.
 
-#### <a name="task-3-configure-sign-in-risk-policy"></a>작업 3: 로그인 위험 정책 구성
+#### 작업 3: 로그인 위험 정책 구성
 
 이 작업에서는 로그인 위험 정책을 구성합니다. 
 
@@ -464,7 +464,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
    - **정책 적용**을 **켬**으로 설정하고 **저장**을 클릭합니다.
 
-#### <a name="task-4-simulate-risk-events-against-the-azure-ad-identity-protection-policies"></a>작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
+#### 작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
 
 > 이 작업을 시작하기 전에 연습 1에서 시작한 템플릿 배포가 완료되었는지 확인합니다. 배포에는 **az500-04-vm1**이라는 Azure VM이 포함됩니다. 
 
@@ -480,7 +480,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
    |설정|값|
    |---|---|
-   |사용자 이름|**학생**|
+   |사용자 이름|**Student**|
    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다.  
@@ -515,7 +515,7 @@ Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명�
 
     >**참고**: 이 시점에서 두 개의 서로 다른 로그인을 시도했습니다. 그런 다음 Azure ID 보호 보고서를 검토합니다.
 
-#### <a name="task-5-review-the-azure-ad-identity-protection-reports"></a>작업 5: Azure AD ID 보호 보고 검토
+#### 작업 5: Azure AD ID 보호 보고 검토
 
 이 작업에서는 ToR 브라우저 로그인에서 생성된 Azure AD ID 보호 보고서를 검토합니다.
 
