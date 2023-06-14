@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-06-implement-directory-synchronization"></a>랩 06: 디렉터리 동기화 구현
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 06: 디렉터리 동기화 구현
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 온-프레미스 AD DS(Active Directory Domain Services) 환경을 Azure Active Directory(Azure AD) 테넌트와 통합하는 방법을 시연하는 개념 증명을 만들라는 요청을 받았습니다. 특히 다음을 수행해야 합니다.
 
@@ -17,7 +17,7 @@ lab:
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다:
 
@@ -25,22 +25,22 @@ lab:
 - 연습 2: Azure Active Directory 테넌트 만들기 및 구성
 - 연습 3: Azure Active Directory 테넌트와 Active Directory 포리스트 동기화
 
-## <a name="implement-directory-synchronization"></a>디렉터리 동기화 구현
+## 디렉터리 동기화 구현
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157525374-8f740f14-c2db-47b3-98f8-7feb9bc122b5.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-### <a name="exercise-1-deploy-an-azure-vm-hosting-an-active-directory-domain-controller"></a>연습 1: Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM 배포
+### 연습 1: Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM 배포
 
-### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: Azure VM 배포에 사용할 수 있는 DNS 이름 식별
 - 작업 2: ARM 템플릿을 사용하여 Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM 배포
 
-#### <a name="task-1-identify-an-available-dns-name-for-an-azure-vm-deployment"></a>작업 1: Azure VM 배포에 사용할 수 있는 DNS 이름 식별
+#### 작업 1: Azure VM 배포에 사용할 수 있는 DNS 이름 식별
 
 이 작업에서는 Azure VM 배포용 DNS 이름을 식별합니다. 
 
@@ -68,13 +68,13 @@ lab:
 
 7. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-2-use-an-arm-template-to-deploy-an-azure-vm-hosting-an-active-directory-domain-controller"></a>작업 2: ARM 템플릿을 사용하여 Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM 배포
+#### 작업 2: ARM 템플릿을 사용하여 Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM 배포
 
 이 작업에서는 Active Directory 도메인 컨트롤러를 호스팅하는 Azure VM을 배포합니다.
 
 1. 동일한 브라우저 창에서 다른 브라우저 탭을 열고 **https://github.com/Azure/azure-quickstart-templates/tree/master/application-workloads/active-directory/active-directory-new-domain** 으로 이동합니다.
 
-2. **새 Windows VM 만들기 및 새 AD 포리스트, 도메인 및 DC 만들기** 페이지에서 **Azure에 배포**를 클릭합니다. 이렇게 하면 Azure Portal에 **새 AD 포리스트가 있는 Azure VM 만들기** 블레이드로 브라우저가 자동으로 리디렉션됩니다.
+2. **새 AD 포리스트를 사용하여 Azure VM 만들기** 페이지에서 **Azure에 배포를** 클릭합니다. 이렇게 하면 Azure Portal에 **Create an Azure VM with a new AD Forest** 블레이드로 브라우저가 자동으로 리디렉션됩니다. 
 
 3. **새 AD 포리스트가 있는 Azure VM 만들기 **블레이드에서 **매개 변수 편집**을 클릭합니다.
 
@@ -84,7 +84,7 @@ lab:
 
    |설정|값|
    |---|---|
-   |Subscription|Azure 구독명|
+   |구독|Azure 구독명|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB06**을 이름으로 입력합니다.|
    |지역|이전 작업에서 확인한 Azure 지역|
    |관리자 사용자 이름|**학생**|
@@ -100,9 +100,9 @@ lab:
 > 결과: 이 연습을 통해, Azure Resource Manager 템플릿을 사용하여 Active Directory 도메인 컨트롤러를 호스트하는 Azure VM의 배포를 시작했습니다.
 
 
-### <a name="exercise-2-create-and-configure-an-azure-active-directory-tenant"></a>연습 2: Azure Active Directory 테넌트 만들기 및 구성 
+### 연습 2: Azure Active Directory 테넌트 만들기 및 구성 
 
-### <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+### 예상 소요 시간: 20분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -110,7 +110,7 @@ lab:
 - 작업 2: 새 Azure AD 테넌트에 사용자 지정 DNS 이름 추가
 - 작업 3: 전역 관리자 역할을 사용하여 Azure AD 사용자 만들기
 
-#### <a name="task-1-create-an-azure-active-directory-ad-tenant"></a>작업 1: Azure Active Directory(AD) 테넌트 만들기
+#### 작업 1: Azure Active Directory(AD) 테넌트 만들기
 
 이 작업에서는 이 랩에서 사용할 새 Azure AD 테넌트를 만듭니다. 
 
@@ -136,7 +136,7 @@ lab:
 
     >**참고**: 새 테넌트가 만들어질 때까지 기다립니다. **알림** 아이콘을 사용하여 배포 상태를 모니터링합니다. 
 
-#### <a name="task-2-add-a-custom-dns-name-to-the-new-azure-ad-tenant"></a>작업 2: 새 Azure AD 테넌트에 사용자 지정 DNS 이름 추가
+#### 작업 2: 새 Azure AD 테넌트에 사용자 지정 DNS 이름 추가
 
 이 작업에서는 새 Azure AD 테넌트에 사용자 지정 DNS 이름을 추가합니다. 
 
@@ -156,20 +156,20 @@ lab:
 
     >**참고**: **adatum.com** DNS 도메인 이름이 없으므로 유효성 검사 프로세스를 완료할 수 없습니다. 그렇다고 해서 **adatum.com** AD DS 도메인을 Azure AD 테넌트와 동기화할 수 없는 것은 아닙니다. 이를 위해 이전 작업에서 식별한 Azure AD 테넌트의 초기 DNS 이름(**onmicrosoft.com** 접미사로 끝나는 이름)을 사용합니다. 그러나 결과적으로 AD DS 도메인의 DNS 도메인 이름과 Azure AD 테넌트의 DNS 이름은 다르다는 점을 기억해 두세요. 즉, Adatum 사용자는 AD DS 도메인에 로그인할 때와 Azure AD 테넌트에 로그인할 때 각기 다른 이름을 사용해야 합니다.
 
-#### <a name="task-3-create-an-azure-ad-user-with-the-global-administrator-role"></a>작업 3: 전역 관리자 역할을 사용하여 Azure AD 사용자 만들기
+#### 작업 3: 전역 관리자 역할을 사용하여 Azure AD 사용자 만들기
 
 이 작업에서는 새 Azure AD 사용자를 추가하고 전역 관리자 역할에 할당합니다. 
 
 1. **AdatumSync** Azure AD 테넌트 블레이드의 **관리** 섹션에서 **사용자**를 클릭합니다.
 
-2. **사용자 \| 모든 사용자** 블레이드에서 **+ 새 사용자**를 클릭합니다. 
+2. **사용자 | 모든 사용자** 블레이드에서 **+ 새 사용자를** 클릭한 다음 **새 사용자 만들기**를 클릭합니다.
 
 3. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되어 있는지 확인하고 다음 설정을 지정합니다. 다른 설정은 모두 기본값으로 유지하고 **만들기**를 클릭합니다.
 
    |설정|값|
    |---|---|
    |사용자 이름|**syncadmin**|
-   |이름|**syncadmin**|
+   |Name|**syncadmin**|
    |암호|**암호 자동 생성** 옵션이 선택되어 있는지 확인하고 **암호 표시**를 클릭합니다.|
    |그룹|**0개 그룹이 선택됨**|
    |역할|**사용자**를 클릭하고 **전역 관리자**를 클릭한 다음 **선택**을 클릭합니다.|
@@ -192,9 +192,9 @@ lab:
 > **결과**: 이 연습을 통해 Azure AD 테넌트를 만들고, 새 Azure AD 테넌트에 사용자 지정 DNS 이름을 추가하는 방법을 확인하고, 전역 관리자 역할을 가진 Azure AD 사용자를 만들었습니다.
 
 
-### <a name="exercise-3-synchronize-active-directory-forest-with-an-azure-active-directory-tenant"></a>연습 3: Azure Active Directory 테넌트와 Active Directory 포리스트 동기화
+### 연습 3: Azure Active Directory 테넌트와 Active Directory 포리스트 동기화
 
-### <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+### 예상 소요 시간: 20분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -202,7 +202,7 @@ lab:
 - 작업 2: Azure AD Connect 설치
 - 작업 3: 디렉터리 동기화 확인
 
-#### <a name="task-1-prepare-ad-ds-for-directory-synchronization"></a>작업 1: 디렉터리 동기화를 위한 AD DS 준비
+#### 작업 1: 디렉터리 동기화를 위한 AD DS 준비
 
 이 작업에서는 AD DS 도메인 컨트롤러를 실행하는 Azure VM에 연결하고 디렉터리 동기화 계정을 만듭니다. 
 
@@ -253,7 +253,7 @@ lab:
    |암호 및 암호 확인|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    |다른 암호 옵션|**암호 사용 기간 제한 없음**|
 
-#### <a name="task-2-install-azure-ad-connect"></a>작업 2: Azure AD Connect 설치
+#### 작업 2: Azure AD Connect 설치
 
 이 작업에서는 가상 머신에 AD Connect를 설치합니다. 
 
@@ -309,7 +309,7 @@ lab:
 21. **구성 완료** 페이지에서 정보를 검토하고 **끝내기**를 클릭하여 **Microsoft Azure Active Directory Connect** 창을 닫습니다.
 
 
-#### <a name="task-3-verify-directory-synchronization"></a>작업 3: 디렉터리 동기화 확인
+#### 작업 3: 디렉터리 동기화 확인
 
 이 작업에서는 디렉터리 동기화가 작동하는지 확인합니다. 
 
@@ -317,7 +317,7 @@ lab:
 
 2. **사용자 \| 모든 사용자** 블레이드에서 사용자 개체 목록에 **aduser1** 계정이 포함되어 있음을 확인합니다. 
 
->**참고**: 몇 분 동안 기다렸다가 **aduser1** 사용자 계정이 표시되도록 **새로 고침**을 선택해야 할 수 있습니다.
+   >**참고**: 몇 분 동안 기다렸다가 **aduser1** 사용자 계정이 표시되도록 **새로 고침**을 선택해야 할 수 있습니다.
 
 3. **aduser1** 계정을 선택하고 **프로필 > ID** 섹션에서 **원본** 특성이 **Windows Server AD**로 설정되어 있음을 확인합니다.
 
@@ -337,7 +337,7 @@ lab:
     Start-ADSyncSyncCycle -PolicyType Delta
     ```
 
-9. **aduser1 \| 프로필** 블레이드가 표시된 Microsoft Edge 창으로 전환하고, 페이지를 새로 고치고, **부서** 속성이 **영업**으로 설정되어 있음을 확인합니다.
+9. **aduser1** 블레이드가 표시된 Microsoft Edge 창으로 전환하고 페이지를 새로 고치면 Department 속성이 Sales로 설정됩니다.
 
     >**참고**: **부서** 특성이 설정되지 않은 상태로 유지되면 몇 분 동안 기다렸다가 페이지를 다시 새로 고침하세요.
 

@@ -4,10 +4,10 @@ lab:
   module: Module 02 - Implement Platform Protection
 ---
 
-# <a name="lab-09-configuring-and-securing-acr-and-aks"></a>랩 09: ACR 및 AKS 구성 및 보안
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 09: ACR 및 AKS 구성 및 보안
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포하라는 메시지가 표시됩니다. 특히 개념 증명은 다음을 보여줘야 합니다.
 
@@ -18,26 +18,26 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다.
 
 - 연습 1: ACR 및 AKS 구성 및 보안
 
-## <a name="configuring-and-securing-acr-and-aks-diagram"></a>랩: ACR 및 AKS 구성 및 보안
+## 랩: ACR 및 AKS 구성 및 보안
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157532250-1104a829-792a-4b6d-beff-fe976e2d5d4b.png)
 
-## <a name="intructions"></a>소개
+## 소개
 
-## <a name="lab-files"></a>랩 파일:
+## 랩 파일:
 
 - **\\Allfiles\\Labs\\09\\nginxexternal.yaml**
 - **\\Allfiles\\Labs\\09\\nginxinternal.yaml**
 
-### <a name="exercise-1-configuring-and-securing-acr-and-aks"></a>연습 1: ACR 및 AKS 구성 및 보안
+### 연습 1: ACR 및 AKS 구성 및 보안
 
-### <a name="estimated-timing-45-minutes"></a>예상 소요 시간: 45분
+### 예상 소요 시간: 45분
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
@@ -52,7 +52,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 - 작업 7: AKS에 내부 서비스 배포
 - 작업 8: 내부 AKS 호스팅 서비스에 액세스할 수 있는지 확인
 
-#### <a name="task-1-create-an-azure-container-registry"></a>작업 1: Azure Container Registry 만들기
+#### 작업 1: Azure Container Registry 만들기
 
 이 작업에서는 랩에 대한 리소스 그룹인 Azure Container Registry를 만듭니다.
 
@@ -90,7 +90,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     >**참고**: ACR의 이름을 기록합니다. 다음 작업에서 필요합니다.
 
-#### <a name="task-2-create-a-dockerfile-build-a-container-and-push-it-to-azure-container-registry"></a>작업 2: Dockerfile 만들기, 컨테이너 빌드 및 Azure Container Registry로 밀어넣기
+#### 작업 2: Dockerfile 만들기, 컨테이너 빌드 및 Azure Container Registry로 밀어넣기
 
 이 작업에서는 Dockerfile을 만들고 Dockerfile에서 이미지를 빌드하고 이미지를 ACR에 배포합니다. 
 
@@ -126,7 +126,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     >**참고**: 매니페스트에는 sha256 다이제스트, 매니페스트 생성 날짜 및 플랫폼 항목이 포함됩니다. 
 
-#### <a name="task-3-create-an-azure-kubernetes-service-cluster"></a>작업 3: Azure Kubernetes Service 클러스터 만들기
+#### 작업 3: Azure Kubernetes Service 클러스터 만들기
 
 이 작업에서는 Azure Kubernetes Service를 만들고 배포된 리소스를 검토합니다. 
 
@@ -138,7 +138,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     |설정|값|
     |----|----|
-    |Subscription|이 랩에서 사용 중인 Azure 구독의 이름|
+    |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |Resource group|**AZ500LAB09**|
     |Kubernetes 클러스터 이름|**MyKubernetesCluster**|
     |지역|**(미국) 미국 동부**|
@@ -197,7 +197,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     >**참고**: 클러스터 노드의 **상태**가 **준비 상태**로 나열되어 있는지 확인합니다.
 
-#### <a name="task-4-grant-the-aks-cluster-permissions-to-access-the-acr-and-manage-its-virtual-network"></a>작업 4: ACR에 액세스하여 해당 가상 네트워크를 관리할 수 있도록 AKS 클러스터 권한 부여
+#### 작업 4: ACR에 액세스하여 해당 가상 네트워크를 관리할 수 있도록 AKS 클러스터 권한 부여
 
 이 작업에서는 ACR에 액세스하여 해당 가상 네트워크를 관리할 수 있도록 AKS 클러스터 권한을 부여합니다. 
 
@@ -229,7 +229,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
     az role assignment create --assignee $AKS_MANAGED_ID --role "Contributor" --scope $AKS_VNET_ID
     ```
 
-#### <a name="task-5-deploy-an-external-service-to-aks"></a>작업 5: AKS에 외부 서비스 배포
+#### 작업 5: AKS에 외부 서비스 배포
 
 이 작업에서는 매니페스트 파일을 다운로드하고 YAML 파일을 편집하고 변경 내용을 클러스터에 적용합니다. 
 
@@ -268,7 +268,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
     service/nginxexternal created
     ```
 
-#### <a name="task-6-verify-the-you-can-access-an-external-aks-hosted-service"></a>작업 6: 외부 AKS 호스팅 서비스에 액세스할 수 있는지 확인합니다.
+#### 작업 6: 외부 AKS 호스팅 서비스에 액세스할 수 있는지 확인합니다.
 
 이 작업에서는 공용 IP 주소를 사용하여 컨테이너에 외부에서 액세스할 수 있는지 확인합니다.
 
@@ -284,7 +284,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
 4. **nginx에 오신 것을 환영합니다!** 페이지가 표시되는지 확인합니다. 
 
-#### <a name="task-7-deploy-an-internal-service-to-aks"></a>작업 7: AKS에 내부 서비스 배포
+#### 작업 7: AKS에 내부 서비스 배포
 
 이 작업에서는 AKS에서 내부 연결 서비스를 배포합니다. 
 
@@ -327,7 +327,7 @@ Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포
 
     >**참고**: 클러스터-IP 주소를 사용할 수도 있습니다.
 
-#### <a name="task-8-verify-the-you-can-access-an-internal-aks-hosted-service"></a>작업 8: 내부 AKS 호스팅 서비스에 액세스할 수 있는지 확인
+#### 작업 8: 내부 AKS 호스팅 서비스에 액세스할 수 있는지 확인
 
 이 작업에서는 AKS 클러스터에서 실행되는 Pod 중 하나를 사용하여 내부 서비스에 액세스합니다. 
 

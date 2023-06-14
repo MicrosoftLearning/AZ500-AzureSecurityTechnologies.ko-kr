@@ -4,10 +4,10 @@ lab:
   module: Module 04 - Manage security operations
 ---
 
-# <a name="lab-13-azure-monitor"></a>랩 13: Azure Monitor
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 13: Azure Monitor
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 가상 머신 성능을 모니터링하는 개념 증명을 만들어야 합니다. 특히 다음을 수행해야 합니다.
 
@@ -17,21 +17,21 @@ lab:
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다.
 
 - 연습 1: Azure Monitor를 사용하여 Azure 가상 머신에서 데이터 수집
 
-## <a name="azure-monitor"></a>Azure Monitor
+## Azure Monitor
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157536648-0a286514-a7e2-4058-9dea-e42da21eef76.png)
 
-## <a name="instructions"></a>지침
+## 지침
 
-### <a name="exercise-1-collect-data-from-an-azure-virtual-machine-with-azure-monitor"></a>연습 1: Azure Monitor를 사용하여 Azure 가상 머신에서 데이터 수집
+### 연습 1: Azure Monitor를 사용하여 Azure 가상 머신에서 데이터 수집
 
-### <a name="exercise-timing-20-minutes"></a>연습 시간: 20분
+### 연습 시간: 20분
 
 이 연습에서는 다음 작업을 완료합니다. 
 
@@ -41,7 +41,7 @@ lab:
 - 작업 4: 가상 머신 이벤트 및 성능 데이터 수집
 - 작업 5: 수집된 데이터 보기 및 쿼리 
 
-#### <a name="task-1-deploy-an-azure-virtual-machine"></a>작업 1: Azure 가상 머신 배포
+#### 작업 1: Azure 가상 머신 배포
 
 1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
 
@@ -82,7 +82,7 @@ lab:
 
 8. Cloud Shell 창을 닫습니다. 
 
-#### <a name="task-2-create-a-log-analytics-workspace"></a>작업 2: Log Analytics 작업 영역 만들기
+#### 작업 2: Log Analytics 작업 영역 만들기
 
 이 작업에서는 Log Analytics 작업 영역을 만듭니다. 
 
@@ -103,7 +103,7 @@ lab:
 
 5. **Log Analytics 작업 영역 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 클릭합니다.
 
-#### <a name="task-3-enable-the-log-analytics-virtual-machine-extension"></a>작업 3: Log Analytics 가상 머신 확장을 사용하도록 설정
+#### 작업 3: Log Analytics 가상 머신 확장을 사용하도록 설정
 
 이 작업에서는 Log Analytics 가상 머신 확장을 활성화합니다. 이 확장은 Windows 및 Linux 가상 머신에 Log Analytics 에이전트를 설치합니다. 이 에이전트는 가상 머신에서 데이터를 수집하고 지정한 Log Analytics 작업 영역으로 전송합니다. 에이전트가 설치되면 자동으로 업그레이드되어 항상 최신 기능과 픽스가 적용됩니다. 
 
@@ -121,7 +121,7 @@ lab:
 
     >**참고**: 이 작업은 몇 분 정도 걸릴 수 있습니다. **myVM** 블레이드에 표시되는 **상태**는 **연결**에서 **이 작업 영역**으로 변경됩니다. 
 
-#### <a name="task-4-collect-virtual-machine-event-and-performance-data"></a>작업 4: 가상 머신 이벤트 및 성능 데이터 수집
+#### 작업 4: 가상 머신 이벤트 및 성능 데이터 수집
 
 이 작업에서는 Windows 시스템 로그 및 여러 일반적인 성능 카운터의 컬렉션을 구성합니다. 사용 가능한 다른 원본도 검토합니다.
 
@@ -148,7 +148,7 @@ lab:
   
 7. **에이전트 구성** 블레이드에서 **적용**을 클릭합니다.
 
-#### <a name="task-5-view-and-query-collected-data"></a>작업 5: 수집된 데이터 보기 및 쿼리
+#### 작업 5: 수집된 데이터 보기 및 쿼리
 
 이 작업에서는 데이터 컬렉션에서 로그 검색을 실행합니다. 
 
@@ -192,5 +192,5 @@ lab:
 
 **리소스 정리**
 
->**참고**: Azure Security Center 랩 및 Azure Sentinel 랩에 필요한 리소스를 이 랩에서 제거하지 마세요.
+>**참고**: 클라우드용 Microsoft Defender 랩 및 Microsoft Sentinel 랩에 필요하므로 이 랩에서 리소스를 제거하지 마세요.
  

@@ -4,10 +4,10 @@ lab:
   module: Module 02 - Implement Platform Protection
 ---
 
-# <a name="lab-08-azure-firewall"></a>랩 08: Azure Firewall
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 08: Azure Firewall
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보안 계획의 중요한 부분인 인바운드 및 아웃바운드 네트워크 액세스를 제어할 수 있습니다. 특히 다음의 인프라 구성 요소를 만들고 테스트하려고 합니다.
 
@@ -19,25 +19,25 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다.
 
 - 연습 1: Azure Firewall 배포 및 테스트
 
-## <a name="azure-firewall-diagram"></a>Azure Firewall 다이어그램
+## Azure Firewall 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157529954-a1bc434b-2eca-41c1-b875-1f0c977d5e20.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-## <a name="lab-files"></a>랩 파일:
+## 랩 파일:
 
 - **\\Allfiles\\Labs\\08\\template.json**
 
-### <a name="exercise-1-deploy-and-test-an-azure-firewall"></a>연습 1: Azure Firewall 배포 및 테스트
+### 연습 1: Azure Firewall 배포 및 테스트
 
-### <a name="estimated-timing-40-minutes"></a>예상 소요 시간: 40분
+### 예상 소요 시간: 40분
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 강사에게 이 지역을 수업에서 사용하는지 확인합니다. 
 
@@ -51,7 +51,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 - 작업 6: DNS 서버를 구성합니다.
 - 작업 7: 방화벽 테스트 
 
-#### <a name="task-1-use-a-template-to-deploy-the-lab-environment"></a>작업 1: 템플릿을 사용하여 랩 환경을 배포합니다. 
+#### 작업 1: 템플릿을 사용하여 랩 환경을 배포합니다. 
 
 이 작업에서는 랩 환경을 검토하고 배포합니다. 
 
@@ -75,7 +75,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB08**을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
 
@@ -85,7 +85,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
     >**참고**: 배포가 완료될 때까지 기다리세요. 이 작업은 2분 정도 걸립니다. 
 
-#### <a name="task-2-deploy-the-azure-firewall"></a>작업 2: Azure Firewall 배포
+#### 작업 2: Azure Firewall 배포
 
 이 작업에서는 가상 네트워크에 Azure Firewall을 배포합니다. 
 
@@ -100,7 +100,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
    |Resource group|**AZ500LAB08**|
    |Name|**Test-FW01**|
    |지역|**(미국) 미국 동부**|
-   |방화벽 계층|**Standard**|
+   |방화벽 SKU|**Standard**|
    |방화벽 관리|**방화벽 규칙(클래식)을 사용하여 이 방화벽 관리**|
    |가상 네트워크 선택|**기존 항목 사용** 옵션을 클릭하고 드롭다운 목록에서 **Test-FW-VN**을 선택합니다.|
    |공용 IP 주소|**새로 추가**를 클릭하고 **TEST-FW-PIP**를 이름으로 입력한 다음 **확인**을 클릭합니다.|
@@ -122,7 +122,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
     >**참고**: 이 정보는 다음 작업에 필요합니다.
 
 
-#### <a name="task-3-create-a-default-route"></a>작업 3: 기본 경로 만들기
+#### 작업 3: 기본 경로 만들기
 
 이 작업에서는 **Workload-SN** 서브넷에 대한 기본 경로를 만듭니다. 이 경로는 방화벽을 통해 아웃바운드 트래픽을 구성합니다.
 
@@ -140,16 +140,16 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
 4. **검토 + 만들기**, **만들기**를 차례로 클릭하고 프로비전이 완료될 때까지 기다립니다. 
 
-5. **경로 테이블** 블레이드에서 **새로 고침**을 클릭하고 경로 테이블 목록에서 **방화벽-경로** 항목을 클릭합니다.
+5. **경로 테이블** 블레이드에서 **새로 고침**을 클릭하고 경로 테이블 목록에서 **Firewall-route** 항목을 클릭합니다.
 
-6. **방화벽-경로** 블레이드의 **설정** 섹션에서 **서브넷**을 클릭한 다음 **방화벽-경로 \| 서브넷** 블레이드에서 **+ 연결**을 클릭합니다.
+6. **Firewall-route** 블레이드의 **설정** 섹션에서 **서브넷**을 클릭한 다음 **Firewall-route\| 서브넷** 블레이드에서 **+ 연결**을 클릭합니다.
 
 7. **서브넷 연결** 블레이드에서 다음 설정을 지정합니다.
 
    |설정|값|
    |---|---|
    |가상 네트워크|**Test-FW-VN**|
-   |서브넷|**워크로드-SN**|
+   |서브넷|**Workload-SN**|
 
     >**참고**: 이 경로용으로 **Workload-SN** 서브넷을 선택해야 합니다. 그렇지 않을 경우, 방화벽이 제대로 작동하지 않습니다.
 
@@ -172,7 +172,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 11.  **추가**를 클릭하여 경로를 추가합니다. 
 
 
-#### <a name="task-4-configure-an-application-rule"></a>작업 4: 애플리케이션 규칙 구성
+#### 작업 4: 애플리케이션 규칙 구성
 
 이 작업에서는 `www.bing.com`으로의 아웃바운드 액세스를 허용하는 애플리케이션 규칙을 만듭니다.
 
@@ -204,7 +204,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
     >**참고**: Azure Firewall에는 기본적으로 허용되는 인프라 FQDN에 대한 기본 제공 규칙 컬렉션이 포함되어 있습니다. 이러한 FQDN은 플랫폼에 대해 특정적이며 다른 용도로 사용할 수 없습니다. 
 
-#### <a name="task-5-configure-a-network-rule"></a>작업 5: 네트워크 규칙 구성
+#### 작업 5: 네트워크 규칙 구성
 
 이 작업에서는 포트 53(DNS)에서 두 IP 주소로의 아웃바운드 액세스를 허용하는 네트워크 규칙을 만듭니다.
 
@@ -236,7 +236,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
     >**참고**: 이 경우에 사용되는 대상 주소는 공용 DNS 서버로 알려져 있습니다. 
 
-#### <a name="task-6-configure-the-virtual-machine-dns-servers"></a>작업 6: 가상 머신 DNS 서버 구성
+#### 작업 6: 가상 머신 DNS 서버 구성
 
 이 작업에서는 가상 머신에 대한 기본 및 보조 DNS 주소를 구성합니다. 이러한 주소를 구성해야 방화벽을 사용할 수 있는 것은 아닙니다. 
 
@@ -256,7 +256,7 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
     >**참고**: 네트워크 인터페이스에 대한 DNS 서버를 업데이트하면 해당 인터페이스가 연결된 가상 머신이 자동으로 다시 시작되며, 해당되는 경우 동일한 가용성 집합의 다른 가상 머신이 자동으로 다시 시작됩니다.
 
-#### <a name="task-7-test-the-firewall"></a>작업 7: 방화벽 테스트
+#### 작업 7: 방화벽 테스트
 
 이 작업에서는 방화벽을 테스트하여 정상적으로 작동하는지 확인합니다.
 
