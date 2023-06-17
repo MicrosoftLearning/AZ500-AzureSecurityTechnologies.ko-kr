@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-01-role-based-access-control"></a>랩 01: 역할 기반 액세스 제어
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 01: 역할 기반 액세스 제어
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 증명을 만들라는 요청을 받았습니다. 역할 기반 액세스 제어를 사용하여 그룹에 역할을 할당하는 방법도 포함됩니다. 특히, 다음과 같은 내용이 필요합니다.
 
@@ -18,7 +18,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다:
 
@@ -27,22 +27,22 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 - 연습 3: 사용자 Dylan Williams가 Azure CLI의 구성원인 서비스 데스크 그룹을 만듭니다. 
 - 연습 4: 서비스 데스크 그룹에 가상 머신 기여자 역할을 할당합니다.
 
-## <a name="role-based-access-control-architecture-diagram"></a>역할 기반 액세스 제어 아키텍처 다이어그램
+## 역할 기반 액세스 제어 아키텍처 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157751243-5aa6e521-9bc1-40af-839b-4fd9927479d7.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-### <a name="exercise-1-create-the-senior-admins-group-with-the-user-account-joseph-price-as-its-member"></a>연습 1: Joseph Price 사용자 계정을 구성원으로 하여 선임 관리자 그룹을 만듭니다. 
+### 연습 1: Joseph Price 사용자 계정을 구성원으로 하여 선임 관리자 그룹을 만듭니다. 
 
-#### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+#### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: Azure Portal을 사용하여 Joseph Price에 대한 사용자 계정을 만듭니다.
 - 작업 2: Azure Portal을 사용하여 선임 관리자 그룹을 만들고 Joseph Price 사용자 계정을 그룹에 추가합니다.
 
-#### <a name="task-1-use-the-azure-portal-to-create-a-user-account-for-joseph-price"></a>작업 1: Azure Portal을 사용하여 Joseph Price에 대한 사용자 계정 만들기 
+#### 작업 1: Azure Portal을 사용하여 Joseph Price에 대한 사용자 계정 만들기 
 
 이 작업에서는 Joseph Price에 대한 사용자 계정을 만들겠습니다. 
 
@@ -69,7 +69,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 8. **사용자 \| 모든 사용자** 블레이드를 새로 고침하여 새로운 사용자가 해당 Azure AD 테넌트에서 생성됐는지 확인합니다.
 
-#### <a name="task2-use-the-azure-portal-to-create-a-senior-admins-group-and-add-the-user-account-of-joseph-price-to-the-group"></a>작업 2: Azure Portal을 사용하여 선임 관리자 그룹을 만들고 Joseph Price 사용자 계정을 그룹에 추가합니다.
+#### 작업 2: Azure Portal을 사용하여 선임 관리자 그룹을 만들고 Joseph Price 사용자 계정을 그룹에 추가합니다.
 
 이 작업에서는 *선임 관리자* 그룹을 만들고 그룹에 Joseph Price 사용자 계정을 추가하여 그룹 소유자로 구성합니다.
 
@@ -93,16 +93,16 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 > 결과: Azure Portal을 사용하여 사용자와 그룹을 만들고 사용자를 그룹을 그룹에 할당했습니다. 
 
-### <a name="exercise-2-create-a-junior-admins-group-containing-the-user-account-of-isabel-garcia-as-its-member"></a>연습 2: 정지우(사용자 계정)를 구성원으로 포함하여 하급 관리자 그룹을 만듭니다.
+### 연습 2: 정지우(사용자 계정)를 구성원으로 포함하여 하급 관리자 그룹을 만듭니다.
 
-#### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+#### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: PowerShell을 사용하여 Isabel Garcia에 대한 사용자 계정을 만듭니다.
 - 작업 2: PowerShell을 사용하여 후임 관리자 그룹을 만들고 Isabel Garcia의 사용자 계정을 그룹에 추가합니다. 
 
-#### <a name="task-1-use-powershell-to-create-a-user-account-for-isabel-garcia"></a>작업 1: PowerShell을 사용하여 Isabel Garcia에 대한 사용자 계정을 만듭니다.
+#### 작업 1: PowerShell을 사용하여 Isabel Garcia에 대한 사용자 계정을 만듭니다.
 
 이 작업에서는 PowerShell을 사용하여 Isabel Garcia의 사용자 계정을 만들겠습니다.
 
@@ -147,7 +147,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     Get-AzureADUser 
     ```
 
-#### <a name="task2-use-powershell-to-create-the-junior-admins-group-and-add-the-user-account-of-isabel-garcia-to-the-group"></a>작업 2: PowerShell을 사용하여 후임 관리자 그룹을 만들고 Isabel Garcia의 사용자 계정을 그룹에 추가합니다.
+#### 작업 2: PowerShell을 사용하여 후임 관리자 그룹을 만들고 Isabel Garcia의 사용자 계정을 그룹에 추가합니다.
 
 이 작업에서는 후임 관리자 그룹을 만들고 PowerShell을 사용하여 Isabel Garcia의 사용자 계정을 그룹에 추가합니다.
 
@@ -184,16 +184,16 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 > 결과: PowerShell을 사용하여 사용자와 그룹 계정을 만들고 사용자 계정을 그룹 계정에 추가했습니다. 
 
 
-### <a name="exercise-3-create-a-service-desk-group-containing-the-user-account-of-dylan-williams-as-its-member"></a>연습 3: 최두리(사용자 계정)를 구성원으로 포함하는 서비스 데스크 그룹을 만듭니다.
+### 연습 3: 최두리(사용자 계정)를 구성원으로 포함하는 서비스 데스크 그룹을 만듭니다.
 
-#### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+#### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: Azure CLI를 사용하여 Dylan Williams의 사용자 계정을 만듭니다.
 - 작업 2: Azure CLI를 사용하여 서비스 데스크 그룹을 만들고 Dylan의 사용자 계정을 그룹에 추가합니다. 
 
-#### <a name="task-1-use-azure-cli-to-create-a-user-account-for-dylan-williams"></a>작업 1: Azure CLI를 사용하여 Dylan Williams의 사용자 계정을 만듭니다.
+#### 작업 1: Azure CLI를 사용하여 Dylan Williams의 사용자 계정을 만듭니다.
 
 이 작업에서는 Dylan Williams의 사용자 계정을 만듭니다.
 
@@ -217,7 +217,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     az ad user list --output table
     ```
 
-#### <a name="task-2-use-azure-cli-to-create-the-service-desk-group-and-add-the-user-account-of-dylan-to-the-group"></a>작업 2: Azure CLI를 사용하여 서비스 데스크 그룹을 만들고 Dylan의 사용자 계정을 그룹에 추가합니다. 
+#### 작업 2: Azure CLI를 사용하여 서비스 데스크 그룹을 만들고 Dylan의 사용자 계정을 그룹에 추가합니다. 
 
 이 작업에서는 서비스 데스크 그룹을 만들고 그룹에 Dylan을 할당합니다. 
 
@@ -262,16 +262,16 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 > 결과: Azure CLI를 사용하여 사용자와 그룹 계정을 만들고 그룹에 사용자 계정을 추가했습니다. 
 
 
-### <a name="exercise-4-assign-the-virtual-machine-contributor-role-to-the-service-desk-group"></a>연습 4: 서비스 데스크 그룹에 가상 머신 기여자 역할을 할당합니다.
+### 연습 4: 서비스 데스크 그룹에 가상 머신 기여자 역할을 할당합니다.
 
-#### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+#### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: 리소스 그룹을 만듭니다. 
 - 작업 2: 리소스 그룹에 서비스 데스크 가상 머신 Contributor 권한을 할당합니다.  
 
-#### <a name="task-1-create-a-resource-group"></a>작업 1: 리소스 그룹 만들기
+#### 작업 1: 리소스 그룹 만들기
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -290,7 +290,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 4. **리소스 그룹** 블레이드에서 페이지를 새로 고침하고 새 리소스 그룹이 리소스 그룹 목록에 나타나는지 확인합니다.
 
 
-#### <a name="task-2-assign-the-service-desk-virtual-machine-contributor-permissions"></a>작업 2: 서비스 데스크 가상 머신 Contributor 권한을 할당합니다. 
+#### 작업 2: 서비스 데스크 가상 머신 Contributor 권한을 할당합니다. 
 
 1. **리소스 그룹** 블레이드에서 **AZ500LAB01** 리소스 그룹 항목을 클릭합니다.
 
@@ -304,7 +304,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
    |---|---|
    |검색 탭의 역할|**Virtual Machine 참가자**|
    |액세스 할당(멤버 창 아래)|**사용자, 그룹 또는 서비스 주체**|
-   |(+멤버 선택) 선택|**서비스 데스크**|
+   |(+멤버 선택) 선택|**Service Desk**|
 
 5. **검토 + 할당**을 두 번 클릭하여 역할 할당을 만듭니다.
 

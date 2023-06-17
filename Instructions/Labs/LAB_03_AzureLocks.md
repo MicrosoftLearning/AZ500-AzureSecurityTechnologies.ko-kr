@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-03-resource-manager-locks"></a>랩 03: Resource Manager 잠금
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 03: Resource Manager 잠금
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오 
+## 랩 시나리오 
 
 실수로 삭제되거나 변경되는 것을 방지하기 위해 리소스 잠금을 사용하는 방법을 보여주는 개념 증명을 만들어야 합니다. 특히, 다음과 같은 내용이 필요합니다.
 
@@ -17,21 +17,21 @@ lab:
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
  
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다.
 
 - 연습 1: Resource Manager 잠금
 
-## <a name="resource-manager-locks-diagram"></a>Resource Manager 잠금 다이어그램
+## Resource Manager 잠금 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157514986-1bf6a9ea-4c7f-4487-bcd7-542648f8dc95.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-### <a name="exercise-1-resource-manager-locks"></a>연습 1: Resource Manager 잠금
+### 연습 1: Resource Manager 잠금
 
-#### <a name="estimated-timing-20-minutes"></a>예상 소요 시간: 20분
+#### 예상 소요 시간: 20분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -41,7 +41,7 @@ lab:
 - 작업 4: ReadOnly 잠금을 제거하고 삭제 잠금을 만듭니다.
 - 작업 5: 삭제 잠금을 테스트합니다.
 
-#### <a name="task-1-create-a-resource-group-with-a-storage-account"></a>작업 1: 스토리지 계정이 있는 리소스 그룹을 만듭니다.
+#### 작업 1: 스토리지 계정이 있는 리소스 그룹을 만듭니다.
 
 이 작업에서는 랩에 대한 리소스 그룹 및 스토리지 계정을 만듭니다. 
 
@@ -74,7 +74,7 @@ lab:
 
 1. Cloud Shell 창을 닫습니다.
 
-#### <a name="task-2-add-a-readonly-lock-on-the-storage-account"></a>작업 2: 스토리지 계정에 읽기 전용 잠금을 추가합니다. 
+#### 작업 2: 스토리지 계정에 읽기 전용 잠금을 추가합니다. 
 
 이 작업에서는 스토리지 계정에 읽기 전용 잠금만 추가합니다. 이를 통해 실수로 삭제하거나 수정하지 않도록 리소스를 보호합니다. 
 
@@ -97,11 +97,11 @@ lab:
 
    >**참고**:  이제 스토리지 계정은 실수로 삭제 및 수정되지 않도록 보호됩니다.
 
-#### <a name="task-3-test-the-readonly-lock"></a>작업 3: 읽기 전용 잠금 테스트 
+#### 작업 3: 읽기 전용 잠금 테스트 
 
 1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 클릭합니다.
 
-1. **보안 전송 필수** 옵션을 **비활성화**로 설정한 다음 **저장**을 클릭합니다.
+1. **보안 전송 필수** 옵션을 **사용 안 함**로 설정한 다음 **저장**을 클릭합니다.
 
 1. **스토리지 계정을 업데이트하지 못했습니다**라는 알림이 표시되어야 합니다.
 
@@ -121,7 +121,7 @@ lab:
 
    >**참고**:  이제 ReadOnly 잠금으로 인해 실수로 리소스가 삭제 및 수정되지 않음을 확인했습니다.
 
-#### <a name="task-4-remove-the-readonly-lock-and-create-a-delete-lock"></a>작업 4: ReadOnly 잠금을 제거하고 삭제 잠금을 만듭니다.
+#### 작업 4: ReadOnly 잠금을 제거하고 삭제 잠금을 만듭니다.
 
 이 작업에서는 스토리지 계정에서 읽기 전용 잠금을 제거하고 잠금 삭제를 만듭니다. 
 
@@ -140,19 +140,17 @@ lab:
 
 1. **확인**을 클릭합니다. 
 
-#### <a name="task-5-test-the-delete-lock"></a>작업 5: 삭제 잠금을 테스트합니다.
+#### 작업 5: 삭제 잠금을 테스트합니다.
 
 이 작업에서는 삭제 잠금을 테스트합니다. 스토리지 계정을 수정할 수는 있지만 삭제하지는 않아야 합니다. 
 
 1. 스토리지 계정 블레이드의 **설정** 섹션에서 **구성**을 클릭합니다.
 
-1. **보안 전송 필수** 옵션을 **비활성화**로 설정한 다음 **저장**을 클릭합니다.
+1. **보안 전송 필수** 옵션을 **사용 안 함**로 설정한 다음 **저장**을 클릭합니다.
 
    >**참고**:  이번에는 변경을 완료해야 합니다.
 
 1. 스토리지 계정 블레이드에서 **개요**를 선택하고 **개요** 블레이드에서 **삭제**를 클릭합니다.
-
-1. **스토리지 계정 삭제** 블레이드에서 스토리지 계정 이름을 입력하여 진행할지 확인한 다음 **삭제**를 클릭합니다.
 
 1. 다음 텍스트와 비슷한 내용의 알림을 검토합니다. 
 
@@ -170,7 +168,7 @@ lab:
 
 1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **다시 연결**을 클릭합니다.
 
-1. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 삭제 잠금을 제거합니다.
+1. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Delete Lock을 제거합니다.
 
     ```powershell
     $storageaccountname = (Get-AzStorageAccount -ResourceGroupName AZ500LAB03).StorageAccountName

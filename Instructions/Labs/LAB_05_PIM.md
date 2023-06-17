@@ -4,10 +4,10 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# <a name="lab-05-azure-ad-privileged-identity-management"></a>랩 05: Azure AD Privileged Identity Management
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 05: Azure AD Privileged Identity Management
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관리를 사용하도록 설정하는 컨셉을 만들고 권한 있는 작업을 수행할 수 있는 사용자 수를 제어하는 방법을 알아봅니다. 특정 요구 사항은 다음과 같습니다.
 
@@ -20,7 +20,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 > 더 진행하기 전에, 랩 04를 완료했는지 확인합니다. MFA, 조건부 액세스 및 AAD ID 보호 . Azure AD 테넌트, AdatumLab500-04, aaduser1, aaduser2 및 aaduser3 사용자 계정이 필요합니다.
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다:
 
@@ -28,15 +28,15 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 - 연습 2: 승인 없이 PIM 역할을 활성화합니다.
 - 연습 3: 액세스 검토를 만들고 PIM 감사 기능을 검토합니다.
 
-## <a name="azure-ad-privileged-identity-management-diagram"></a>Azure AD Privileged Identity Management 다이어그램
+## Azure AD Privileged Identity Management 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157522920-264ce57e-5c55-4a9d-8f35-e046e1a1e219.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-### <a name="exercise-1---configure-pim-users-and-roles"></a>연습 1 - PIM 사용자 및 역할 구성
+### 연습 1 - PIM 사용자 및 역할 구성
 
-#### <a name="estimated-timing-15-minutes"></a>예상 소요 시간: 15분
+#### 예상 소요 시간: 15분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -44,7 +44,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 - 작업 2: 적합한 구성원을 활성화하고 추가하려면 승인이 필요하도록 역할을 구성하십시오.
 - 작업 3: 사용자에게 역할에 대해 영구적 할당을 제공합니다. 
 
-#### <a name="task-1-make-a-user-eligible-for-a-role"></a>작업 1: 사용자에게 역할 부여
+#### 작업 1: 사용자에게 역할 부여
 
 이 작업에서는 Azure AD 디렉터리 역할에 대해 사용자를 적격 상태로 설정합니다.
 
@@ -78,15 +78,15 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
     >**참고**: 로그인하는 동안, aaduser2는 청구 관리자 역할을 사용할 수 있는 자격이 있습니다. 
 
-#### <a name="task-2-configure-a-role-to-require-approval-to-activate-and-add-an-eligible-member"></a>작업 2: 적격 구성원을 활성화하고 추가하기 위해 승인이 필요한 역할 구성
+#### 작업 2: 적격 구성원을 활성화하고 추가하기 위해 승인이 필요한 역할 구성
 
 1. Azure Portal에서 **Privileged Identity Management** 블레이드로 다시 이동하여 **Azure AD 역할**을 클릭합니다.
 
 2. **AdatumLab500-04 \| 빠른 시작** 블레이드의 **관리** 섹션에서 **역할**을 클릭합니다.
 
-3. **AdatumLab500-04 \| 역할** 블레이드에서 **전역 독자** 역할 항목을 클릭합니다. 
+3. **AdatumLab500-04 \| 역할** 블레이드에서 **전역 판독기** 역할 항목을 클릭합니다. 
 
-4. **전역 독자 \| 할당** 블레이드에서 블레이드 도구 모음의 **설정** 아이콘을 클릭하고 Azure MFA 요구 사항을 포함하여 역할의 구성 설정을 검토합니다.
+4. **전역 판독기\| 할당** 블레이드에서 블레이드 도구 모음의 **설정** 아이콘을 클릭하고 Azure MFA 요구 사항을 포함하여 역할의 구성 설정을 검토합니다.
 
 5. **편집**을 클릭합니다.
 
@@ -104,19 +104,19 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
     >**참고**: 이제 전역 Reader 역할을 사용하려는 모든 사용자는 aaduser3의 승인이 필요합니다. 
 
-12. **전역 독자 \| 할당** 블레이드에서 **+ 할당 추가**를 클릭합니다.
+12. **전역 판독기 \| 할당** 블레이드에서 **+ 할당 추가**를 클릭합니다.
 
 13. **할당 추가** 블레이드에서 **선택한 구성원 없음**을 클릭하고, **구성원 선택** 블레이드에서 **aaduser2**를 클릭한 다음 **선택**을 클릭합니다.
 
 14. **다음**을 클릭합니다. 
 
-15. **할당 유형**이 **적합함**을 확인하고 적격 기간 설정을 검토합니다.
+15. **할당 유형**이 **적격**을 확인하고 적격 기간 설정을 검토합니다.
 
 16. **할당**을 클릭합니다.
 
     >**참고**: 사용자 aaduser2는 전역 독자 역할을 사용할 수 있습니다. 
  
-#### <a name="task-3-give-a-user-permanent-assignment-to-a-role"></a>작업 3: 사용자에게 역할에 대해 영구적 할당을 제공합니다.
+#### 작업 3: 사용자에게 역할에 대해 영구적 할당을 제공합니다.
 
 1. Azure Portal에서 **Privileged Identity Management** 블레이드로 다시 이동하여 **Azure AD 역할**을 클릭합니다.
 
@@ -136,16 +136,16 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
     >**참고**: 이제 aaduser2 사용자에게 보안 관리자 역할이 영구적으로 할당됩니다.
     
-### <a name="exercise-2---activate-pim-roles-with-and-without-approval"></a>연습 2 - 승인 유무에 따른 PIM 역할 활성화
+### 연습 2 - 승인 유무에 따른 PIM 역할 활성화
 
-#### <a name="estimated-timing-15-minutes"></a>예상 소요 시간: 15분
+#### 예상 소요 시간: 15분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: 승인이 필요하지 않은 역할을 활성화합니다. 
 - 작업 2: 승인이 필요한 역할을 활성화합니다. 
 
-#### <a name="task-1-activate-a-role-that-does-not-require-approval"></a>작업 1: 승인이 필요하지 않은 역할을 활성화합니다.
+#### 작업 1: 승인이 필요하지 않은 역할을 활성화합니다.
 
 이 작업에서는 승인이 필요하지 않은 역할을 활성화합니다.
 
@@ -184,7 +184,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 12.  **비활성화 - 청구 관리자** 블레이드에서 **비활성화**를 다시 클릭하여 확인합니다.
 
 
-#### <a name="task-2-activate-a-role-that-requires-approval"></a>작업 2: 승인이 필요한 역할을 활성화합니다. 
+#### 작업 2: 승인이 필요한 역할을 활성화합니다. 
 
 이 작업에서는 승인이 필요한 역할을 활성화합니다.
 
@@ -248,16 +248,16 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 > 결과: 승인이 필요한 경우와 필요하지 않은 경우의 PIM 역할 활성화를 연습했습니다. 
 
-### <a name="exercise-3---create-an-access-review-and-review-pim-auditing-features"></a>연습 3 - 액세스 검토를 만들고 PIM 감사 기능 검토
+### 연습 3 - 액세스 검토를 만들고 PIM 감사 기능 검토
 
-#### <a name="estimated-timing-10-minutes"></a>예상 소요 시간: 10분
+#### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
 - 작업 1: PIM에서 Azure AD 디렉터리 역할용 보안 경고 구성
 - 작업 2: PIM 경고, 요약 정보 및 자세한 감사 정보 검토
 
-#### <a name="task-1-configure-security-alerts-for-azure-ad-directory-roles-in-pim"></a>작업 1: PIM에서 Azure AD 디렉터리 역할용 보안 경고 구성
+#### 작업 1: PIM에서 Azure AD 디렉터리 역할용 보안 경고 구성
 
 이 작업에서는 "부실" 역할 할당과 관련된 위험을 줄일 수 있습니다. 할당된 역할이 여전히 유효한지 확인하기 위해 PIM 액세스 검토를 만들어 이 작업을 수행합니다. 특히 전역 읽기 권한자를 검토합니다. 
 
@@ -293,7 +293,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
  
     >**참고**: 검토가 배포되고 **AdatumLab500-04 \| 액세스 검토** 블레이드에 표시되려면 1분 정도 걸립니다. 웹 페이지를 새로 고침해야 할 수 있습니다. 검토 상태가 **활성**이 됩니다. 
 
-9. **AdatumLab500-04 \| 액세스 검토** 블레이드의 **전역 독자 검토** 헤더 아래에서 **전역 독자** 항목을 클릭합니다. 
+9. **AdatumLab500-04 \| 액세스 검토** 블레이드의 **전역 판독기 검토** 헤더 아래에서 **전역 독자** 항목을 클릭합니다. 
 
 10. **전역 reader 검토** 블레이드에서 **개요** 페이지를 살펴보고, **진행률** 차트에 **검토되지 않은** 범주의 단일 사용자가 표시됩니다. 
 
@@ -315,7 +315,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 19. **전역 독자** 검토를 나타내는 항목을 선택합니다. 검토 결과를 표시하도록 **진행률**차트가 업데이트되었습니다. 
 
-#### <a name="task-2-review-pim-alerts-summary-information-and-detailed-audit-information"></a>작업 2: PIM 경고, 요약 정보 및 자세한 감사 정보를 검토합니다. 
+#### 작업 2: PIM 경고, 요약 정보 및 자세한 감사 정보를 검토합니다. 
 
 이 작업에서는 PIM 경고, 요약 정보 및 자세한 감사 정보를 검토합니다. 
 
