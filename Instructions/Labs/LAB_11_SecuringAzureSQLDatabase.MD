@@ -4,10 +4,10 @@ lab:
   module: Module 03 - Secure data and applications
 ---
 
-# <a name="lab-11-securing-azure-sql-database"></a>랩 11: Azure SQL Database 보호
-# <a name="student-lab-manual"></a>학생용 랩 매뉴얼
+# 랩 11: Azure SQL Database 보호
+# 학생용 랩 매뉴얼
 
-## <a name="lab-scenario"></a>랩 시나리오
+## 랩 시나리오
 
 Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 특히, 다음과 같은 기능에 관심이 있습니다.
 
@@ -17,25 +17,25 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-## <a name="lab-objectives"></a>랩 목표
+## 랩 목표
 
 이 랩에서는 다음과 같은 연습을 완료합니다.
 
 - 연습 1: SQL Database 보안 기능 구현
 
-## <a name="securing-azure-sql-database-diagram"></a>Azure SQL Database 보안 다이어그램
+## Azure SQL Database 보안 다이어그램
 
 ![이미지](https://user-images.githubusercontent.com/91347931/157533836-7250fa58-a109-4882-a55b-d3fa3baf34ab.png)
 
-## <a name="instructions"></a>Instructions
+## Instructions
 
-## <a name="lab-files"></a>랩 파일:
+## 랩 파일:
 
 - **\\Allfiles\\Labs\\11\\azuredeploy.json**
 
-### <a name="exercise-1-implement-sql-database-security-features"></a>연습 1: SQL Database 보안 기능 구현
+### 연습 1: SQL Database 보안 기능 구현
 
-### <a name="estimated-timing-30-minutes"></a>예상 소요 시간: 30분
+### 예상 소요 시간: 30분
 
 이 연습에서는 다음 작업을 완료합니다.
 
@@ -44,7 +44,7 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 - 작업 3: 데이터 분류 구성
 - 작업 4: 감사 구성
 
-#### <a name="task-1-deploy-an-azure-sql-database"></a>작업 1: Azure SQL Database 배포
+#### 작업 1: Azure SQL Database 배포
 
 이 작업에서는 템플릿을 사용하여 랩 인프라를 배포합니다. 
 
@@ -66,7 +66,7 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
    |설정|값|
    |---|---|
-   |Subscription|이 랩에서 사용할 Azure 구독의 이름|
+   |구독|이 랩에서 사용할 Azure 구독의 이름|
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB11**을 이름으로 입력합니다.|
    |위치|**(미국) 미국 동부**|
 
@@ -74,7 +74,7 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
     >**참고**: 배포가 완료될 때까지 기다리세요. 
 
-#### <a name="task-2-configure-advanced-data-protection"></a>작업 2: 고급 데이터 보호 구성
+#### 작업 2: 고급 데이터 보호 구성
 
 1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **리소스 그룹**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -82,24 +82,22 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
 3. **AZ500LAB11-RG** 블레이드에서 새로 만들어진 SQL Server를 나타내는 항목을 클릭합니다.
 
-4. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭합니다. **시작** 페이지의 아래쪽으로 스크롤하여 **업그레이드**를 선택합니다. **에이전트 설치** 탭에서 **에이전트 설치**를 선택합니다.
-
-5. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭하고 **Microsoft Defender for SQL 사용**을 선택합니다.
+4. SQL 서버 블레이드의 **보안** 섹션에서 **클라우드용 Microsoft Defender**를 클릭하고 **Microsoft Defender for SQL 사용**을 선택합니다.
 
       >**참고**: Azure Defender for SQL을 사용하도록 설정되었다는 알림이 표시될 때까지 기다립니다.
 
-6. SQL 서버 블레이드의 **보안** 섹션에 있는 **클라우드용 Microsoft Defender** 페이지의 **Microsoft Defender for SQL: 서버 수준에서 사용 가능(구성)** 매개 변수에서 **(구성)** 을 클릭합니다.   
+5. SQL 서버 블레이드의 **보안** 섹션에 있는 **Microsoft Defender for Cloud** 페이지의 **SQL용 Microsoft Defender: 구독 수준(구성) 매개 변수에서 사용하도록 설정**에서 **(구성)** 을 클릭합니다.  
 
       >**참고**: **(구성)** 이 표시되지 않는 경우 브라우저를 새로 고칩니다.
     
-7. **서버 설정** 블레이드에서 가격 및 평가 기간 관련 정보, **취약성 평가 설정** 및 **Advanced Threat Protection 설정**을 검토합니다.
+6. **서버 설정** 블레이드에서 가격 및 평가 기간 관련 정보, **취약성 평가 설정** 및 **Advanced Threat Protection 설정**을 검토합니다.
 
-8. **클라우드용 Microsoft Defender** 블레이드로 돌아와 **권장 사항** 및 **보안 경고**를 검토합니다.
+7. **클라우드용 Microsoft Defender** 블레이드로 돌아와 **권장 사항** 및 **보안 경고**를 검토합니다.
 
       >**참고**: **클라우드용 Microsoft Defender** 블레이드에 권장 사항이 표시되려면 10~15분 정도 걸릴 수 있습니다. 이 시간 동안 기다리지 말고 다음 작업을 진행하세요. 단, 나머지 작업을 모두 완료한 후에는 이 블레이드로 돌아오는 것이 좋습니다.
 
 
-#### <a name="task-3-configure-data-classification"></a>작업 3: 데이터 분류 구성
+#### 작업 3: 데이터 분류 구성
 
 이 작업에서는 GPDR 및 데이터 보호 준수를 위해 SQL Database에서 정보를 검색하고 분류합니다.
 
@@ -129,7 +127,7 @@ Azure SQL 데이터베이스에 대한 보안 기능을 검토해야 합니다. 
 
 9. **데이터 검색 및 분류** 블레이드 **개요** 탭으로 돌아와 최신 분류 정보를 반영하여 업데이트되었음을 확인합니다. 
 
-#### <a name="task-4--configure-auditing"></a>작업 4: 감사 구성 
+#### 작업 4: 감사 구성 
 
 이 작업에서는 먼저 서버 수준 감사를 구성한 다음 데이터베이스 수준 감사를 구성합니다. 
 
