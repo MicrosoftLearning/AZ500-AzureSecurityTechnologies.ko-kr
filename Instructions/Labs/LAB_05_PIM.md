@@ -48,7 +48,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 이 작업에서는 Azure AD 디렉터리 역할에 대해 사용자를 적격 상태로 설정합니다.
 
-1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. 에서 Azure Portal **`https://portal.azure.com/`** 로그인합니다.
 
     >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. 전역 관리자 역할이 있는 사용자로 로그인되었는지 확인합니다.
     
@@ -86,7 +86,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 3. **AdatumLab500-04 \| 역할** 블레이드에서 **전역 판독기** 역할 항목을 클릭합니다. 
 
-4. **전역 판독기\| 할당** 블레이드에서 블레이드 도구 모음의 **설정** 아이콘을 클릭하고 Azure MFA 요구 사항을 포함하여 역할의 구성 설정을 검토합니다.
+4. **전역 읽기 \| 권한자 할당** 블레이드의 블레이드 도구 모음에서 **역할 설정** 아이콘을 클릭하고 Azure Multi-Factor Authentication 요구 사항을 포함하여 역할에 대한 구성 설정을 검토합니다.
 
 5. **편집**을 클릭합니다.
 
@@ -132,7 +132,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 7. **할당 유형** 설정을 검토하고 **할당**을 클릭합니다.
 
-8. **적격 할당** 탭의 **할당** 페이지에서 **aaduser2** 할당의 **업데이트**를 클릭합니다. **영구적으로 적격**을 선택하고 **저장**을 클릭합니다.
+8. 왼쪽 탐색 패널에서 **할당을** 클릭합니다. **적격 할당** 탭의 **보안 관리자**에서 **aaduser2** 할당에 대한 **업데이트를** 선택합니다. **영구적으로 적격**을 선택하고 **저장**을 클릭합니다.
 
     >**참고**: 이제 aaduser2 사용자에게 보안 관리자 역할이 영구적으로 할당됩니다.
     
@@ -151,7 +151,7 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 1. InPrivate 브라우저 창을 엽니다.
 
-2. InPrivate 브라우저 창에서 Azure Portal로 이동하고 **aaduser2** 사용자 계정을 사용하여 로그인 합니다.
+2. InPrivate 브라우저 창에서 에서 Azure Portal **`https://portal.azure.com/`** 이동하여 **aaduser2** 사용자 계정을 사용하여 로그인합니다.
 
     >**참고**: 로그인하려면이 실습의 앞부분에서 기록한 Azure AD 테넌트 DNS 도메인 이름을 포함하여  **aaduser2** 사용자 계정의 정규화된 이름을 제공해야 합니다. 이 사용자 이름은 aaduser2@`<your_tenant_name>`.onmicrosoft.com 형식이며, `<your_tenant_name>`은 고유한 Azure AD 테넌트 이름을 나타내는 자리 표시자입니다. 
 
@@ -202,49 +202,47 @@ Azure PIM(Privileged Identity Management)을 사용하여 JIT(Just-in-Time) 관�
 
 6. **내 역할 \| Azure AD 역할** 블레이드에서 **보안 관리자** 역할을 찾아 **활성화**를 클릭합니다. 
 
-7. **추가 확인이 필요합니다. 계속하려면 클릭하세요** 경고를 클릭합니다. 
-
-8. 지침을 따라 ID를 확인합니다.
+7. 필요한 경우 **추가 확인이 필요합니다. 계속하려면 클릭하세요** 경고를 클릭하고 지침에 따라 ID를 확인합니다.
 
     >**참고**: 세션당 한 번만 인증하면 됩니다. 
 
-9. Azure Portal 인터페이스에 다시 돌아가면 **활성화 - 보안 관리자**의 **이유** 체크박스에서 활성화에 대한 근거를 제공하는 텍스트를 입력한 다음 **활성화**를 클릭합니다.
+8. Azure Portal 인터페이스에 다시 돌아가면 **활성화 - 보안 관리자**의 **이유** 체크박스에서 활성화에 대한 근거를 제공하는 텍스트를 입력한 다음 **활성화**를 클릭합니다.
 
     >**참고**: 자동 승인 프로세스가 완료되어야 합니다.
 
-10. **내 역할 \| Azure AD 역할** 블레이드로 돌아와 **활성 할당** 탭을 클릭하여 **활성 할당** 목록에 **보안 관리자**는 포함되어 있지만 **전역 독자** 역할은 포함되지 않은 것을 확인합니다.
+9. **내 역할 \| Azure AD 역할** 블레이드로 돌아와 **활성 할당** 탭을 클릭하여 **활성 할당** 목록에 **보안 관리자**는 포함되어 있지만 **전역 독자** 역할은 포함되지 않은 것을 확인합니다.
 
     >**참고**: 이제 전역 독자 역할을 승인합니다.
 
-11. **aaduser2**로 Azure Portal에서 로그아웃합니다.
+10. **aaduser2**로 Azure Portal에서 로그아웃합니다.
 
-12. **aaduser3**로 Azure Portal에 로그인합니다.
+11. InPrivate 브라우저에서 에서 **aaduser3**으로 Azure Portal **`https://portal.azure.com/`** 로그인합니다.
 
     >**참고**: 사용자 계정을 사용하여 인증하는 데 문제가 발생하는 경우, 사용자 계정을 사용하여 암호를 재설정하거나 로그인 옵션을 다시 구성하여 Azure AD 테넌트에 로그인할 수 있습니다.
 
-13. Azure Portal에서 **Azure AD Privileged Identity Management**로 이동합니다(Azure Portal 페이지 위쪽의 리소스, 서비스 및 문서 검색 텍스트 상자에 Azure AD Privileged Identity Management를 입력하고 Enter 키를 누릅니다).
+12. Azure Portal에서 **Azure AD Privileged Identity Management**로 이동합니다(Azure Portal 페이지 위쪽의 리소스, 서비스 및 문서 검색 텍스트 상자에 Azure AD Privileged Identity Management를 입력하고 Enter 키를 누릅니다).
 
-14. **Privileged Identity Management \| 빠른 시작** 블레이드의 **작업** 섹션에서 **요청 승인**을 클릭합니다.
+13. **Privileged Identity Management \| 빠른 시작** 블레이드의 **작업** 섹션에서 **요청 승인**을 클릭합니다.
 
-15. **요청 승인 \| Azure AD 역할** 블레이드의 **역할 활성화 요청** 섹션에서 **aaduser2**에 의한 **전역 독자** 역할에 대한 역할 활성화 요청을 나타내는 항목의 확인란을 선택합니다.
+14. **요청 승인 \| Azure AD 역할** 블레이드의 **역할 활성화 요청** 섹션에서 **aaduser2**에 의한 **전역 독자** 역할에 대한 역할 활성화 요청을 나타내는 항목의 확인란을 선택합니다.
 
-16. **승인**을 클릭합니다. **요청 승인** 블레이드의 **Justification** 텍스트 상자에 활성화 이유를 입력하고 시작 시간과 종료 시간을 확인한 후에 **확인**을 클릭합니다. 
+15. **승인**을 클릭합니다. **요청 승인** 블레이드의 **Justification** 텍스트 상자에 활성화 이유를 입력하고 시작 시간과 종료 시간을 확인한 후에 **확인**을 클릭합니다. 
 
     >**참고**: 요청을 거부할 수도 있습니다.
 
-17. **aaduser3**로 Azure Portal에서 로그아웃합니다.
+16. **aaduser3**로 Azure Portal에서 로그아웃합니다.
 
-18. **aaduser2**로 Azure Portal에 로그인합니다.
+17. InPrivate 브라우저에서 **에서 aaduser2**로 Azure Portal **`https://portal.azure.com/`** 로그인합니다.
 
-19. Azure Portal에서 **Azure AD Privileged Identity Management**로 이동합니다(Azure Portal 페이지 위쪽의 리소스, 서비스 및 문서 검색 텍스트 상자에 Azure AD Privileged Identity Management를 입력하고 Enter 키를 누릅니다).
+18. Azure Portal에서 **Azure AD Privileged Identity Management**로 이동합니다(Azure Portal 페이지 위쪽의 리소스, 서비스 및 문서 검색 텍스트 상자에 Azure AD Privileged Identity Management를 입력하고 Enter 키를 누릅니다).
 
-20. **Privileged Identity Management \| 빠른 시작** 블레이드의 **작업** 섹션에서 **내 역할**을 클릭합니다.
+19. **Privileged Identity Management \| 빠른 시작** 블레이드의 **작업** 섹션에서 **내 역할**을 클릭합니다.
 
-21. **내 역할 \| Azure AD 역할** 블레이드에서 **활성 할당** 탭을 클릭하고 전역 독자 역할이 현재 활성화되어 있는지 확인합니다.
+20. **내 역할 \| Azure AD 역할** 블레이드에서 **활성 할당** 탭을 클릭하고 전역 독자 역할이 현재 활성화되어 있는지 확인합니다.
 
     >**참고**: 업데이트된 활성 할당 목록을 보려면 페이지를 새로 고쳐야 할 수도 있습니다.
 
-22. 로그아웃한 후 InPrivate 브라우저 창을 닫습니다.
+21. 로그아웃한 후 InPrivate 브라우저 창을 닫습니다.
 
 > 결과: 승인이 필요한 경우와 필요하지 않은 경우의 PIM 역할 활성화를 연습했습니다. 
 

@@ -50,9 +50,9 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
     >**참고**: 이 랩에서 사용하는 Azure 구독의 Owner 또는 Contributor 역할과 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 계정을 사용하여 Azure Portal에 로그인합니다.
 
-2. Azure Portal 페이지 상단의 **검색 리소스, 서비스 및 문서** 텍스트 상자에서 **Azure Active Directory**를 입력하고 **Enter** 키를 누릅니다.
+2. Azure Portal 페이지 맨 위에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **Microsoft Entra ID**를 입력하고 **Enter** 키를 누릅니다.
 
-3. Azure Active Directory 테넌트의 **개요** 블레이드의 **관리** 섹션에서 **사용자** 및 **+ 새 사용자**를 차례로 선택합니다.
+3. Microsoft Entra ID 테넌트 **개요** 블레이드의 **관리** 섹션에서 **사용자를** 선택한 다음 **, + 새 사용자를** 선택합니다.
 
 4. **새 사용자** 블레이드에서 **사용자 만들기** 옵션이 선택되었는지 확인하고 다음 설정을 지정합니다.
 
@@ -73,7 +73,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 이 작업에서는 *선임 관리자* 그룹을 만들고 그룹에 Joseph Price 사용자 계정을 추가하여 그룹 소유자로 구성합니다.
 
-1. Azure Portal에서 Azure Active Directory 테넌트를 표시하는 블레이드로 다시 이동합니다. 
+1. Azure Portal Microsoft Entra ID 테넌트가 표시된 블레이드로 다시 이동합니다. 
 
 2. **관리** 섹션에서 **그룹**을 클릭한 다음, **+ 새 그룹**을 선택합니다.
  
@@ -123,7 +123,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     $passwordProfile.Password = "Pa55w.rd1234"
     ```
 
-5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Azure Active Directory에 연결합니다.
+5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID에 연결합니다.
 
     ```powershell
     Connect-AzureAD

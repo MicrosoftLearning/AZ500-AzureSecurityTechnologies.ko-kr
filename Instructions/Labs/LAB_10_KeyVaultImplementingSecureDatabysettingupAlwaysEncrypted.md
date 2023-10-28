@@ -16,7 +16,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 >**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-이 개념 증명 작성과 관련된 Azure의 보안 기능을 중점적으로 살펴보려면 먼저 자동 ARM 템플릿 배포부터 진행해야 합니다. 이 작업을 수행하려면 Visual Studio 2019 및 SQL Server Management Studio 2018을 사용하여 가상 머신을 설정해야 합니다.
+이 개념 증명 빌드와 관련된 Azure의 보안 측면에 집중하기 위해 자동화된 ARM 템플릿 배포에서 시작하여 Visual Studio 2019 및 SQL Server Management Studio 19를 사용하여 Virtual Machine을 설정합니다.
 
 ## 랩 목표
 
@@ -49,7 +49,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 #### 작업 1: Azure VM 및 Azure SQL 데이터베이스 배포
 
-이 작업에서는 Azure VM을 배포합니다. 이 배포 과정에서는 Visual Studio 2019 및 SQL Server Management Studio 2018이 자동으로 설치됩니다. 
+이 작업에서는 배포의 일부로 Visual Studio 2019 및 SQL Server Management Studio 19를 자동으로 설치하는 Azure VM을 배포합니다. 
 
 1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
@@ -129,7 +129,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |----|----|
     |템플릿에서 구성(선택 사항)|**키, 비밀 및 인증서 관리**|
     |키 권한|선택한 총 **9**개의 사용 권한 결과 **모두 선택을** 클릭합니다.|
-    |키 권한/암호화 작업|총 1개의 선택한 사용 권한이 생성**되는** **서명** 을 클릭합니다.|
+    |키 권한/암호화 작업|총 **1개의 선택한** 사용 권한이 있는 **서명을** 클릭합니다.|
     |비밀 권한|**모두 선택**을 클릭하면 총 **7개의 선택된** 권한이 나타납니다.|
     |인증 권한|**모두 선택**을 클릭하면 총 **15개의 선택된** 권한이 나타납니다.|
     |보안 주체 선택|**선택된 항목 없음**을 클릭하고, **보안 주체** 블레이드에서 사용자 계정을 선택하고 **다음**을 클릭합니다.|
@@ -221,7 +221,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 - 작업 1: 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정
 - 작업 2: 애플리케이션의 Key Vault 액세스를 허용하는 정책 만들기
 - 작업 3: SQL Azure 데이터베이스 ADO.NET 연결 문자열 검색 
-- 작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
+- 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온
 - 작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
 
 
@@ -311,13 +311,13 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 인터페이스에는 ADO.NET, JDBC, ODBC, PHP 및 Go용 연결 문자열이 포함됩니다. 
    
-4. **ADO.NET(SQL 인증)** 연결 문자열을 기록합니다. 이 시간은 나중에 필요합니다.
+4. **ADO.NET(SQL 인증)** 연결 문자열 기록합니다. 이 시간은 나중에 필요합니다.
 
     >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 연습 1의 배포에서 구성한 암호로 바꿔야 합니다.
 
-#### 작업 4: Visual Studio 2019 및 SQL Management Studio 2018을 실행하는 Azure VM에 로그온
+#### 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온
 
-이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 2018을 호스트합니다.
+이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 19를 호스트합니다.
 
     >**Note**: Before you proceed with this task, ensure that the deployment you initiated in the first exercise has completed successfully. You can validate this by navigating to the blade of the Azure resource group "Az500Lab10" (or other name you chose) and selecting **Deployments** from the Settings pane.  
 
@@ -358,7 +358,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 이 랩의 나머지 단계는 원격 데스크톱 세션 내에서 **az500-10-vm1** Azure VM에 대해 수행됩니다. 
 
-6. **시작**을 클릭하고, **시작** 메뉴에서**Microsoft SQL Server Tools 18** 폴더를 확장하고  **Microsoft SQL Server Management Studio** 메뉴 항목을 클릭합니다.
+6. **시작을** 클릭하고 **시작** 메뉴에서 **Microsoft SQL Server 도구 19** 폴더를 확장하고 **Micosoft SQL Server Management Studio** 메뉴 항목을 클릭합니다.
 
 7. **서버에 연결** 대화 상자에서, 다음 설정을 지정합니다. 
 
@@ -459,7 +459,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 10. RDP 세션으로 돌아가고 Visual Studio 콘솔의 **솔루션 탐색기** 창에서 **Program.cs**를 클릭하고, 해당 콘텐츠를 클립보드에 복사한 코드로 바꿉니다.
 
-11. Visual Studio 창에서 **Program.cs** 창의 줄 15에서 `<connection string noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 Azure SQL Database **ADO.NET** 연결 문자열로 바꿉니다. 연결 문자열에서 placehodler를 `{your_password}` 연습 1의 배포에서 지정한 암호로 바꿉니다. 랩 컴퓨터에 문자열을 저장한 경우 RDP 세션을 떠나서 ADO 문자열을 복사한 다음, Azure 가상 머신으로 돌아가서 붙여 넣어야 할 수 있습니다.
+11. Visual Studio 창에서 **Program.cs** 창의 줄 15에서 `<connection string noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 Azure SQL Database **ADO.NET** 연결 문자열로 바꿉니다. 연결 문자열 placehodler를 `{your_password}` 연습 1의 배포에서 지정한 암호로 바꿉니다. 랩 컴퓨터에 문자열을 저장한 경우 RDP 세션을 떠나서 ADO 문자열을 복사한 다음, Azure 가상 머신으로 돌아가서 붙여 넣어야 할 수 있습니다.
 
 12. Visual Studio 창에서 **Program.cs** 창의 줄 16에서 `<client id noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 등록된 앱의 **애플리케이션(클라이언트) ID** 값으로 바꿉니다. 
 
