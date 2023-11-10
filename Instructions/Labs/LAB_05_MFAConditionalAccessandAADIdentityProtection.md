@@ -4,7 +4,7 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
-# 랩 04: MFA 및 조건부 액세스
+# 랩 05: MFA 및 조건부 액세스
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
