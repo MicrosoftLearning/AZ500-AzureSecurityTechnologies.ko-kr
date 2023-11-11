@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 15 - Microsoft Sentinel
+  title: 16 - Microsoft Sentinel
   module: Module 04 - Manage Security Operations
 ---
 
-# 랩 15: Microsoft Sentinel
+# 랩 16: Microsoft Sentinel
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
@@ -27,7 +27,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
 ## Microsoft Sentinel 다이어그램
 
-![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/509aa70d-de11-4470-a289-877fbfecbc00)
+![이미지](https://user-images.githubusercontent.com/91347931/157538440-4953be73-90be-4edd-bd23-b678326ba637.png)
 
 ## Instructions
 

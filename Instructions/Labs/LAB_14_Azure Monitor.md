@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 13 - Azure Monitor
+  title: 14 - Azure Monitor
   module: Module 04 - Manage security operations
 ---
 
-# 랩 13: Azure Monitor
+# 랩 14: Azure Monitor
 
 # 학생용 랩 매뉴얼
 
@@ -154,8 +154,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 2. **모니터 설정** 블레이드에서 데이터 수집 규칙을 클릭합니다 **.**
 
-  ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/d43e8f94-efb2-4255-9320-210c976fd45e)
-
+    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/2184da69-12c2-476b-b2b2-b80620e822a6)
 
 3. **데이터 수집 규칙** 만들기 블레이드의 기본** 사항 탭에서 **다음 설정을 지정합니다.
   

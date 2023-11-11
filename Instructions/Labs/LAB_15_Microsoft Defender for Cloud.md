@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 14 - 클라우드용 Microsoft Defender
+  title: 15 - 클라우드용 Microsoft Defender
   module: Module 04 - Microsoft Defender for Cloud
 ---
 
-# 랩 14: 클라우드용 Microsoft Defender
+# 랩 15: 클라우드용 Microsoft Defender
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
@@ -26,7 +26,7 @@ lab:
 
 ## 클라우드용 Microsoft Defender 다이어그램
 
-![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/c31055cc-de95-41f6-adef-f09d756a68eb)
+![이미지](https://user-images.githubusercontent.com/91347931/157537800-94a64b6e-026c-41b2-970e-f8554ce1e0ab.png)
 
 ## 지침
 
