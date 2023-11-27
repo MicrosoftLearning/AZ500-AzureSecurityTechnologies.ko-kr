@@ -9,7 +9,7 @@ lab:
 
 ## 랩 시나리오
 
-Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 애플리케이션은 보안 태세를 향상시키기 위해 Azure Active Directory(Azure AD)에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
+Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 보안 태세를 강화하기 위해 애플리케이션을 Microsoft Entra ID에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
 
 - Azure Key Vault를 만들어 자격 증명 모음에 키 및 비밀을 저장합니다.
 - Always Encrypted를 사용하여 SQL Database를 만들고 데이터베이스 테이블의 열 콘텐츠를 암호화합니다.
@@ -29,7 +29,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 ## Key Vault 다이어그램
 
-![이미지](https://user-images.githubusercontent.com/91347931/157532938-c724cc40-f64f-4d69-9e91-d75344c5e0a2.png)
+![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/38c4ba6d-2fc7-45e5-b9a2-d5dbb4fbbcbc)
 
 ## Instructions
 
@@ -71,7 +71,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
    |Resource group|**새로 만들기**를 클릭하고 **AZ500LAB10**을 이름으로 입력합니다.|
    |위치|**미국 동부**|
    |관리자 사용자 이름|**학생**|
-   |관리자 암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
+   |관리자 암호|**랩 02 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
    
     >**참고**: 가상 머신에 로그온하는 데 사용하는 관리 자격 증명을 변경할 수는 있지만 반드시 변경할 필요는 없습니다.
 
@@ -352,7 +352,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |설정|값|
     |---|---|
     |사용자 이름|**Student**|
-    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
+    |암호|**랩 02 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다. 서버 관리자를 닫습니다. 
 
@@ -368,7 +368,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |서버 이름|이 작업의 앞부분에서 식별한 서버 이름|
     |인증|**SQL Server 인증**|
     |로그인|**Student**|
-    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
+    |암호|**랩 02 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
 8. **서버에 연결** 대화 상자에서 **연결**을 클릭합니다.
 
