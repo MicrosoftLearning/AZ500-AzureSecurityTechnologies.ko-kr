@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 13 - Azure Monitor
+  title: 11 - Azure Monitor
   module: Module 04 - Manage security operations
 ---
 
-# 랩 13: Azure Monitor
+# 랩 11: Azure Monitor
 
 # 학생용 랩 매뉴얼
 
@@ -62,7 +62,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
     |설정|값|
     |---|---|
     |사용자 |**localadmin**|
-    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
+    |암호|**랩 02 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 배포가 완료될 때까지 기다립니다. 
 
@@ -173,14 +173,16 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 
 4. 다음: 리소스 > 레이블이 지정된 **단추를 클릭하여 계속 진행합니다** .
+   
+6. 리소스 탭에서 + 리소스 추가를 선택하고 **데이터** 수집 엔드포인트를 사용하도록 검사 **.** 범위 템플릿 선택에서 AZ500LAB131415 검사 **** 적용을 클릭합니다 **.**
 
-5. 리소스 탭에서 **+ 리소스** 추가를 선택한 **다음, 데이터 수집 엔드포인트를 사용하도록 검사 **.****
+    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/d4191115-11bc-43ec-9bee-e84b9b95a821)
 
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/c8388619-c254-4c80-a1ff-dde2f35ed350)
+10. 다음: 수집 및 배달 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
 
-6. 다음: 수집 및 배달 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
+    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/8294d300-f910-4757-ad52-43c7594ac822)
 
-7. + 데이터 원본** 추가를 클릭한 **다음 **데이터 원본** 추가 페이지에서 데이터 원본 유형** 드롭다운 메뉴를 변경**하여 성능 카운터를 표시**합니다.** 다음 기본 설정을 그대로 둡니다.
+11. + 데이터 원본** 추가를 클릭한 **다음 **데이터 원본** 추가 페이지에서 데이터 원본 유형** 드롭다운 메뉴를 변경**하여 성능 카운터를 표시**합니다.** 다음 기본 설정을 그대로 둡니다.
 
     |설정|값|
     |---|---|
@@ -192,13 +194,13 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/a24e44ad-1d10-4533-80e2-bae1b3f6564d)
 
-8. 다음: 대상 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
+11. 다음: 대상 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
   
-9. **대상 유형** 드롭다운 메뉴를 변경하여 Azure Monitor 로그를 표시**합니다.** **구독** 창에서 구독*이 *표시되는지 확인하고 이전에 만든 Log Analytics 작업 영역을 반영하도록 계정 또는 네임스페이스** 드롭다운 메뉴를 변경**합니다.
+12. **대상 유형** 드롭다운 메뉴를 변경하여 Azure Monitor 로그를 표시**합니다.** **구독** 창에서 구독*이 *표시되는지 확인하고 이전에 만든 Log Analytics 작업 영역을 반영하도록 계정 또는 네임스페이스** 드롭다운 메뉴를 변경**합니다.
 
    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/481843f5-94c4-4a8f-bf51-a10d49130bf8)
 
-10. 페이지 아래쪽에서 **데이터 원본** 추가를 클릭합니다.
+11. 페이지 아래쪽에서 **데이터 원본** 추가를 클릭합니다.
     
     ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/964091e7-bbbc-4ca8-8383-bb2871a1e7f0)
 
