@@ -29,7 +29,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 ## 역할 기반 액세스 제어 아키텍처 다이어그램
 
-![이미지](https://user-images.githubusercontent.com/91347931/157751243-5aa6e521-9bc1-40af-839b-4fd9927479d7.png)
+![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/506cde9c-5242-4438-a793-f88a5434a2b2)
 
 ## Instructions
 
@@ -48,7 +48,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 1. 브라우저 세션을 시작하고 Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    >**참고**: 이 랩에서 사용하는 Azure 구독의 Owner 또는 Contributor 역할과 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 계정을 사용하여 Azure Portal에 로그인합니다.
+    >**참고**: 이 랩에 사용 중인 Azure 구독의 소유자 또는 기여자 역할이 있는 계정과 해당 구독과 연결된 Microsoft Entra 테넌트의 전역 관리이스트레이터 역할을 사용하여 Azure Portal에 로그인합니다.
 
 2. **Azure Portal 페이지의 맨 위에 있는 리소스, 서비스 및 문서** 검색 텍스트 상자에 Microsoft Entra ID**를 입력**하고 Enter** 키를 누릅니**다.
 
@@ -67,7 +67,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 7. **만들기**를 클릭합니다.
 
-8. **사용자 \| 모든 사용자** 블레이드를 새로 고침하여 새로운 사용자가 해당 Azure AD 테넌트에서 생성됐는지 확인합니다.
+8. 사용자 \| 모두 블레이드**를 **새로 고쳐 새 사용자가 Microsoft Entra 테넌트에 만들어졌 있는지 확인합니다.
 
 #### 작업 2: Azure Portal을 사용하여 선임 관리자 그룹을 만들고 Joseph Price 사용자 계정을 그룹에 추가합니다.
 
@@ -129,7 +129,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     Connect-AzureAD
     ```
       
-6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Azure AD 테넌트의 이름을 식별합니다. 
+6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트 이름을 식별합니다. 
 
     ```powershell
     $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
@@ -141,7 +141,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     New-AzureADUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
     ```
 
-8. Cloud Shell 창의 PowerShell 세션에서 다음을 실행하여 Azure AD 사용자를 나열합니다(Joseph 및 Isabel의 계정은 나열됨에 표시되어야 합니다). 
+8. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID 사용자를 나열합니다(Joseph 및 Isabel의 계정이 목록에 표시되어야 합니다.) 
 
     ```powershell
     Get-AzureADUser 
@@ -157,7 +157,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     New-AzureADGroup -DisplayName 'Junior Admins' -MailEnabled $false -SecurityEnabled $true -MailNickName JuniorAdmins
     ```
 
-2. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Azure AD 테넌트에 그룹을 나열합니다(목록에는 상위 관리자 및 하위 관리자 그룹이 포함되어야 함).
+2. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트에서 그룹을 나열합니다(목록에는 Senior 관리 및 Junior 관리s 그룹이 포함되어야 합니다.)
 
     ```powershell
     Get-AzureADGroup
@@ -199,7 +199,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 1. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **Bash**를 선택하고 메시지가 표시되면 **확인**을 클릭합니다. 
 
-2. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 해당 Azure AD 테넌트의 이름을 식별합니다.
+2. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Microsoft Entra 테넌트 이름을 식별합니다.
 
     ```cli
     DOMAINNAME=$(az ad signed-in-user show --query 'userPrincipalName' | cut -d '@' -f 2 | sed 's/\"//')
@@ -211,7 +211,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     az ad user create --display-name "Dylan Williams" --password "Pa55w.rd1234" --user-principal-name Dylan@$DOMAINNAME
     ```
       
-4. Cloud Shell 내의 Bash 세션에서 다음을 실행하여 Azure AD 사용자 계정을 나열합니다(목록에 Joseph, Isabe 및 Dylan의 사용자 계정이 포함되어야 합니다)
+4. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Microsoft Entra ID 사용자 계정을 나열합니다(목록에 Joseph, Isabel 및 Dylan의 사용자 계정이 포함되어야 합니다.)
     
     ```cli
     az ad user list --output table
@@ -227,7 +227,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
     az ad group create --display-name "Service Desk" --mail-nickname "ServiceDesk"
     ```
  
-2. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Azure AD 그룹을 나열합니다(목록에는 서비스 데스크, 선임 관리자 및 후임 관리자 그룹이 포함되어야 합니다).
+2. Cloud Shell 창 내의 Bash 세션에서 다음을 실행하여 Microsoft Entra ID 그룹을 나열합니다(목록에 Service Desk, Senior 관리 및 Junior 관리s 그룹이 포함되어야 합니다.)
 
     ```cli
     az ad group list -o table
