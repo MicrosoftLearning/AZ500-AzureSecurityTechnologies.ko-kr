@@ -1,19 +1,19 @@
 ---
 lab:
-  title: 02 - MFA 및 조건부 액세스
+  title: 04 - MFA 및 조건부 액세스
   module: Module 01 - Manage Identity and Access
 ---
 
-# 랩 02: MFA 및 조건부 액세스
+# 랩 05: MFA 및 조건부 액세스
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
 
-Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들라는 요청을 받았습니다. 특히 다음을 평가하려고 합니다.
+Azure Active Directory(Azure AD) 인증을 향상하는 기능의 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 평가하려고 합니다.
 
-- Microsoft Entra ID 다단계 인증
-- Microsoft Entra ID 조건부 액세스
-- Microsoft Entra ID 조건부 액세스 위험 기반 정책
+- Azure AD 다단계 인증
+- Azure AD 조건부 액세스
+- Azure AD 조건부 액세스 위험 기반 정책
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
@@ -23,12 +23,12 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 - 연습 1: Azure 리소스 관리자 템플릿을 사용하여 Azure VM을 배포합니다
 - 연습 2: Azure MFA 구현
-- 연습 3: Microsoft Entra ID 조건부 액세스 정책 구현 
-- 연습 4: Microsoft Entra ID ID 보호 구현
+- 연습 3: Azure AD 조건부 액세스 정책 구현 
+- 연습 4: Azure AD ID 보호 구현
 
 ## MFA - 조건부 액세스 - ID 보호 다이어그램
 
-![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/246a3798-6f50-4a41-99c2-71e9ab6a4c8f)
+![이미지](https://user-images.githubusercontent.com/91347931/157518628-8b4a9efe-0086-4ec0-825e-3d062748fa63.png)
 
 ## Instructions
 
@@ -51,7 +51,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 1. Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    >**참고**: 이 랩에 사용 중인 Azure 구독의 소유자 또는 기여자 역할이 있는 계정과 해당 구독과 연결된 Microsoft Entra ID 테넌트의 전역 관리이스트레이터 역할을 사용하여 Azure Portal에 로그인합니다.
+    >**참고**: 이 랩에서 사용하는 Azure 구독의 Owner 또는 Contributor 역할과 해당 구독과 연결된 Azure AD 테넌트의 전역 관리자 역할을 가진 계정을 사용하여 Azure Portal에 로그인합니다.
 
 2. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **사용자 지정 템플릿 배포**를 입력합니다.
 
@@ -103,22 +103,22 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 이 연습에서는 다음 작업을 완료합니다.
 
-- 작업 1: 새 Microsoft Entra ID 테넌트를 만듭니다.
-- 작업 2: Microsoft Entra ID P2 평가판을 활성화합니다.
-- 작업 3: Microsoft Entra ID 사용자 및 그룹을 만듭니다.
-- 작업 4: Microsoft Entra ID 사용자에게 Microsoft Entra ID P2 라이선스를 할당합니다.
+- 작업 1: 새 Azure AD 테넌트 만들기
+- 작업 2: Azure AD Premium P2 평가판 활성화
+- 작업 3: Azure AD 사용자 및 그룹 만들기
+- 작업 4: Azure AD 사용자에게 Azure AD Premium P2 라이선스 할당
 - 작업 5: Azure MFA 설정 구성
 - 작업 6: MFA 구성 유효성 검사
 
-#### 작업 1: 새 Microsoft Entra ID 테넌트 만들기
+#### 작업 1: 새 Azure AD 테넌트 만들기
 
-이 작업에서는 새 Microsoft Entra ID 테넌트를 만듭니다. 
+이 작업에서는 새 Azure AD 테넌트를 만듭니다. 
 
-1. Azure Portal의 Azure Portal 페이지 위쪽에 있는 **리소스, 서비스 및 문서** 검색 텍스트 상자에 Microsoft Entra ID**를 입력**하고 Enter** 키를 누릅니**다.
+1. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory**를 입력하고 **Enter** 키를 누릅니다.
 
-2. 현재 Microsoft Entra ID 테넌트 개요를 **표시하는 블레이드에서 테넌트** 관리를 클릭한 **다음 다음 화면에서 + 만들기**를 클릭합니다****.
+2. 현재 Azure AD 테넌트의 **개요**를 표시하는 블레이드에서 **테넌트 관리**를 클릭한 후 다음 화면에서 **+ 만들기**를 클릭합니다.
 
-3. **테넌트** 만들기 블레이드의 **기본 사항** 탭에서 Microsoft Entra ID** 옵션이 **선택되어 있는지 확인하고 다음: 구성 >** 클릭합니다**.
+3. **테넌트 만들기** 블레이드의 **기본** 탭에서 **Azure Active Directory** 옵션이 선택되어 있는지 확인하고 **다음: 구성 >** 을 클릭합니다.
 
 4. **테넌트 만들기** 창의 **구성** 탭에서 다음 설정을 지정합니다.
 
@@ -136,9 +136,9 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
     >**참고**: 새 테넌트가 만들어질 때까지 기다립니다. **알림** 아이콘을 사용하여 배포 상태를 모니터링합니다. 
 
 
-#### 작업 2: Microsoft Entra ID P2 평가판 활성화
+#### 작업 2: Azure AD Premium P2 평가판 활성화
 
-이 작업에서는 Microsoft Entra ID P2 평가판에 등록합니다. 
+이 작업에서는 Azure AD Premium P2 무료 평가판에 등록합니다. 
 
 1. Azure Portal의 도구 모음에서 Cloud Shell 셸 아이콘 오른쪽에 있는 **디렉터리 + 구독** 아이콘을 클릭합니다. 
 
@@ -146,18 +146,18 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: **AdatumLab500-04** 항목이 **디렉터리 + 구독** 필터 목록에 나타나지 않으면 브라우저 창을 새로 고쳐야 할 수 있습니다.
 
-3. Azure Portal의 Azure Portal 페이지 위쪽에 있는 **리소스, 서비스 및 문서** 검색 텍스트 상자에 Microsoft Entra ID**를 입력**하고 Enter** 키를 누릅니**다. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **라이선스**를 클릭합니다.
+3. Azure Portal에서 Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에서 **Azure Active Directory**를 입력하고 **Enter** 키를 누릅니다. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **라이선스**를 클릭합니다.
 
-4. 라이선스 개요 블레이드의 **빠른 작업**에서 **평가판** 가져오기를 클릭합니다**.** \| 
+4. **라이선스 \| 개요** 블레이드의 **관리** 섹션에서 **모든 제품**을 클릭한 다음 **+ 사용/구매**를 클릭합니다.
 
-5. MICROSFT ENTRA ID P2를 확장한 다음 활성화를 클릭합니다 **.**
+5. **활성화** 블레이드의 Azure AD Premium P2 섹션에서 **무료 평가판**을 클릭한 다음 **활성화**를 클릭합니다.
 
 
-#### 작업 3: Microsoft Entra ID 사용자 및 그룹을 만듭니다.
+#### 작업 3: Azure AD 사용자 및 그룹 만들기
 
 이 작업에서는 다음 세 사용자를 만듭니다. aaduser1(전역 관리자), aaduser2(사용자), aaduser3(사용자). 이후 작업에는 각 사용자의 사용자 계정 이름과 암호가 필요합니다. 
 
-1. AdatumLab500-04 Microsoft Entra ID 블레이드로 돌아가**서 **관리** 섹션에서 사용자를** 클릭합니다**.**
+1. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **사용자**를 클릭합니다.
 
 2. 사용자 모두 블레이드에서 **+ 새 사용자를** 클릭한 다음 **새 사용자** 만들기를 클릭합니다**.** \|  
 
@@ -207,17 +207,17 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 이 시점에서 **사용자** 페이지에 새 사용자가 세 명 있어야 합니다. 
     
-#### 작업 4: Microsoft Entra ID 사용자에게 Microsoft Entra ID Premium P2 라이선스 할당
+#### 작업 4: Azure AD 사용자에게 Azure AD Premium P2 라이선스 할당
 
-이 작업에서는 Microsoft Entra ID Premium P2 라이선스에 각 사용자를 할당합니다.
+이 작업에서는 각 사용자를 Azure Active Directory Premium P2 라이선스에 할당합니다.
 
 1. **사용자 \| 모든 사용자** 블레이드에서 사용자 계정을 나타내는 항목을 클릭합니다. 
 
 2. 사용자 계정의 속성을 표시하는 블레이드에서 **속성 편집**을 클릭합니다.  사용 위치가 미국** 설정되어 **있는지 확인합니다. 그렇지 않은 경우 사용 위치를 설정하고 저장**을 클릭합니다**.
 
-3. AdatumLab500-04 Microsoft Entra ID 블레이드로 돌아가**서 **관리** 섹션에서 라이선스**를 클릭합니다**.**
+3. **AdatumLab500-04** Azure Active Directory 블레이드로 다시 이동하여 **관리** 섹션에서 **라이선스**를 클릭합니다.
 
-4. 라이선스 개요 블레이드에서 **모든 제품을** 클릭하고 **Microsoft Entra ID Premium P2** 검사box를 선택한 **다음 + 할당**을 클릭합니다**.** \| 
+4. **라이선스 \| 개요** 블레이드에서 **모든 제품**을 클릭하고 **Azure Active Directory Premium P2** 확인란을 선택한 다음 **+ 할당**을 클릭합니다.
 
 5. **라이선스 할당** 블레이드에서 **+ 사용자 및 그룹 추가**를 클릭합니다.
 
@@ -227,17 +227,17 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 8. Azure Portal에서 로그아웃하고 동일한 계정을 사용하여 다시 로그인합니다. (라이선스 할당이 적용되려면 이 단계가 필요합니다.)
 
-    >**참고**: 이 시점에서 이 랩에서 사용할 모든 사용자 계정에 Microsoft Entra ID Premium P2 라이선스를 할당했습니다. 로그아웃한 다음 다시 로그인하십시오. 
+    >**참고**: 이 시점에서 이 랩에서 사용할 모든 사용자 계정에 Azure Active Directory Premium P2 라이선스를 할당했습니다. 로그아웃한 다음 다시 로그인하십시오. 
 
 #### 작업 5: Azure MFA 설정 구성
 
 이 작업에서는 MFA를 구성하고 aaduser1에 대한 MFA를 활성화합니다. 
 
-1. Azure Portal에서 AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드로 다시 **이동합니다.
+1. Azure Portal에서 다시 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 이동합니다.
 
-    >**참고**: AdatumLab500-04 Microsoft Entra ID 테넌트를 사용하고 있는지 확인합니다.
+    >**참고**: AdatumLab500-04 Azure AD 테넌트를 사용하고 있는지 확인합니다.
 
-2. **AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드의 **관리** 섹션에서 보안을** 클릭합니다**.
+2. **AdatumLab500-04** Azure Active Directory 테넌트 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
 3. **보안 \| 시작** 블레이드의 **관리** 섹션에서 **다단계 인증**을 클릭합니다.
 
@@ -253,7 +253,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 8. **aaduser1**을 클릭하면 **적용** 옵션도 표시됩니다. 
 
-    >**참고**: 사용자 상태 사용에서 적용됨으로 변경하면 Azure MFA를 지원하지 않는 레거시 Microsoft Entra ID 통합 앱에만 영향을 미치며, 상태 적용됨으로 변경되면 앱 암호를 사용해야 합니다.
+    >**참고**: 사용자 상태를 사용됨에서 적용됨으로 변경하면 Azure MFA를 지원하지 않는 레거시 Azure AD 통합 앱에만 영향을 미치며 상태가 적용됨으로 변경된 후에는 앱 암호를 사용해야 합니다.
 
 9. **aaduser1** 항목을 선택한 경우 **사용자 설정 관리**를 클릭하고 사용 가능한 옵션을 검토합니다. 
 
@@ -279,9 +279,9 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 이 시점에서 aaduser1 및 사기 행위 경고 설정에 대한 MFA를 활성화했습니다. 
 
-14. AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드**로 돌아가**서 관리** 섹션에서 속성을** 클릭한 **다음 블레이드 아래쪽의 보안 기본값 관리 링크를 클릭하고 **보안 기본값**** 사용 블레이드에서 **사용 안** 함으로 클릭합니다**. **내 조직에서 조건부 액세스를 *** 사용하지 않도록 설정하는* 이유로 선택하고 저장**을 클릭하고 **경고를 읽은 다음 사용 안 함을** 클릭합니다**.
+14. AdatumLab500-04** Azure Active Directory 테넌트 블레이드**로 돌아가**서 관리** 섹션에서 속성을** 클릭한 **다음 블레이드 아래쪽의 보안 기본값 관리 링크를 클릭하고 **보안 기본값**** 사용 블레이드에서 **사용 안** 을 클릭합니다**. **내 조직에서 조건부 액세스를 *** 사용하지 않도록 설정하는* 이유로 선택하고 저장**을 클릭하고 **경고를 읽은 다음 사용 안 함을** 클릭합니다**.
 
-    >**참고**: AdatumLab500-04** Microsoft Entra ID 테넌트에 로그인**되어 있는지 확인합니다. 디렉터리 + 구독** 필터를 **사용하여 Microsoft Entra ID 테넌트 간에 전환할 수 있습니다. Microsoft Entra ID 테넌트에서 Global 관리istrator 역할을 사용하여 사용자로 로그인했는지 확인합니다.
+    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. Azure AD 테넌트에서 전역 관리자 역할을 하는 사용자로 로그인되었는지 확인합니다.
 
 #### 작업 6: MFA 구성 유효성 검사
 
@@ -291,7 +291,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 2. Azure **`https://portal.azure.com/`** Portal로 이동하고 aaduser1** 사용자 계정을 사용하여 **로그인합니다. 
 
-    >**참고**: 로그인하려면 이 랩의 앞부분에서 기록한 Microsoft Entra ID 테넌트 DNS do기본 이름을 포함하여 aaduser1** 사용자 계정의 **정규화된 이름을 제공해야 합니다. 이 사용자 이름은 aaduser1@`<your_tenant_name>`.onmicrosoft.com 형식으로, 고유한 `<your_tenant_name>` Microsoft Entra ID 테넌트 이름을 나타내는 자리 표시자입니다. 
+    >**참고**: 로그인하려면 이 랩의 앞에서 기록한 AzureAD 테넌트 DNS 도메인 이름을 포함하여 **aaduser1** 사용자 계정의 정규화된 이름을 제공해야 합니다. 이 사용자 이름은 aaduser1@`<your_tenant_name>`.onmicrosoft.com 형식이며, `<your_tenant_name>`은 고유한 Azure AD 테넌트 이름을 나타내는 자리 표시자입니다. 
 
 3. 메시지가 표시되면 **자세한 정보 필요** 대화 상자에서 **다음**을 클릭합니다.
 
@@ -316,7 +316,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 > 결과: 새 AD 테넌트를 만들고, AD 사용자를 구성하고, MFA를 구성하고, 사용자용 MFA 환경을 테스트했습니다. 
 
 
-### 연습 3: Microsoft Entra ID 조건부 액세스 정책 구현 
+### 연습 3: Azure AD 조건부 액세스 정책 구현 
 
 ### 예상 소요 시간: 15분
 
@@ -329,7 +329,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 이 작업에서는 조건부 액세스 정책 설정을 검토하고, Azure Portal에 로그인할 때 MFA를 요구하는 정책을 만듭니다. 
 
-1. Azure Portal에서 AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드로 다시 **이동합니다.
+1. Azure Portal에서 다시 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 이동합니다.
 
 2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
@@ -343,7 +343,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
     
    - 사용자** 아래에서 **선택한 사용자 및 그룹 0을** 클릭합니다**. 포함**의 오른쪽에서 사용자 및 그룹 선택 >> 사용자 및 그룹**** 선택 **검사 상자의 사용자 및 그룹** 선택 블레이드에서 **aaduser2** 검사 상자를 선택하고 **선택을** 클릭합니다**.
     
-   - 대상 리소스에서 선택한 대상 리소스 없음을 클릭하고 **앱** 선택을 클릭한 **다음 선택에서 [없음 **]을 클릭합니다**.****** 선택** 블레이드에서 **Windows Azure 서비스 관리 API**에 대한 **검사 상자를 선택하고 선택을** 클릭합니다**. 
+   - 대상 리소스에서 선택한 대상 리소스 없음을 클릭하고 **앱** 선택을 클릭한 **다음 선택에서 [없음 **]을 클릭합니다**.****** 선택 블레이드에서 **Microsoft Azure 관리**용 **검사 상자를 선택하고 선택을** 클릭합니다**.** 
 
      >**참고**: 이 정책이 Azure Portal에 대한 액세스에 영향을 미친다는 경고를 검토합니다.
     
@@ -391,7 +391,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 이제 새로 만든 조건부 액세스 정책이 aaduser2가 Azure Portal에 로그인할 때 MFA를 적용한다는 것을 확인했습니다.
 
-12. Azure Portal을 표시하는 브라우저 창으로 돌아가서 AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드로 돌아갑니다**.
+12. 다시 Azure Portal을 표시하는 브라우저 창에서 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 다시 이동합니다.
 
 13. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
@@ -401,7 +401,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 결과: 이 연습에서는 사용자가 Azure Portal에 서명할 때 MFA를 요구하는 조건부 액세스 정책을 구현합니다. 
 
->결과: Microsoft Entra ID 조건부 액세스를 구성하고 테스트했습니다.
+>결과: Azure AD 조건부 액세스를 구성하고 테스트했습니다.
 
 ### 연습 4: 조건부 액세스에서 위험 기반 정책 배포
 
@@ -409,25 +409,25 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 이 연습에서는 다음 작업을 완료합니다.
 
-- 작업 1: Azure Portal에서 Microsoft Entra ID ID 보호 옵션 보기
+- 작업 1: Azure Portal에서 Azure AD ID 보호 옵션 보기
 - 작업 2: 사용자 위험 정책 구성
 - 작업 3: 로그인 위험 정책 구성
-- 작업 4: Microsoft Entra ID ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
-- 작업 5: Microsoft Entra ID ID 보호 보고서 검토
+- 작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
+- 작업 5: Azure AD ID 보호 보고 검토
 
-#### 작업 1: Microsoft Entra ID ID 보호 사용
+#### 작업 1: Azure AD ID 보호 사용
 
-이 작업에서는 Azure Portal에서 Microsoft Entra ID ID 보호 옵션을 볼 수 있습니다. 
+이 작업에서는 Azure Portal의 Azure AD ID 보호 옵션을 봅니다. 
 
 1. 필요한 경우 Azure Portal **`https://portal.azure.com/`** 에 로그인합니다.
 
-    >**참고**: AdatumLab500-04** Microsoft Entra ID 테넌트에 로그인**되어 있는지 확인합니다. 디렉터리 + 구독** 필터를 **사용하여 Microsoft Entra ID 테넌트 간에 전환할 수 있습니다. Microsoft Entra ID 테넌트에서 Global 관리istrator 역할을 사용하여 사용자로 로그인했는지 확인합니다.
+    >**참고**: **AdatumLab500-04** Azure AD 테넌트에 로그인되어 있는지 확인합니다. **디렉터리 + 구독** 필터를 사용하여 Azure AD 테넌트 간에 전환할 수 있습니다. Azure AD 테넌트에서 전역 관리자 역할을 하는 사용자로 로그인되었는지 확인합니다.
 
 #### 작업 2: 사용자 위험 정책 구성
 
 이 작업에서는 사용자 위험 정책을 만듭니다. 
 
-1. **AdatumLab500-04** Microsoft Entra ID 테넌트 > **보안**** > 조건부 액세스 > ****정책으로 찾습니다.**
+1. **AdatumLab500-04** Azure AD 테넌트 > **보안**** > 조건부 액세스 > ****정책**으로 이동하세요.
 
 2. + 새 정책을** 클릭합니다**.
 
@@ -463,7 +463,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 #### 작업 3: 로그인 위험 정책 구성
 
-1. **AdatumLab500-04** Microsoft Entra ID 테넌트 > **보안**** > 조건부 액세스> ****정책으로 찾습니다.**
+1. **AdatumLab500-04** Azure AD 테넌트 > **보안**** > 조건부 액세스> ****정책**으로 이동하세요.
 
 2. **+ 새 정책**을 선택합니다.
 
@@ -497,11 +497,11 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 17. **만들기**를 클릭하여 정책을 사용하도록 설정합니다.
 
-#### 작업 4: Microsoft Entra ID ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
+#### 작업 4: Azure AD ID 보호 정책에 대한 위험 이벤트 시뮬레이션 
 
 > 이 작업을 시작하기 전에 연습 1에서 시작한 템플릿 배포가 완료되었는지 확인합니다. 배포에는 **az500-04-vm1**이라는 Azure VM이 포함됩니다. 
 
-1. Azure Portal에서 디렉터리 + 구독 필터를 az500-04-vm1** Azure VM을 배포한 **Azure 구독과 연결된 Microsoft Entra ID 테넌트로 설정합니다 **.**
+1. Azure Portal에서 az500-04-vm1** Azure VM을 배포한 **Azure 구독과 연결된 Azure AD 테넌트에 디렉터리 + 구독** 필터를 설정합니다**.
 
 2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신**을 입력하고 **Enter** 키를 누릅니다.
 
@@ -514,7 +514,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
     |설정|값|
     |---|---|
     |사용자 이름|**Student**|
-    |암호|**랩 02 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
+    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 원격 데스크톱 세션과 **서버 관리자**가 로드될 때까지 기다립니다.  
 
@@ -548,11 +548,11 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 이 시점에서 두 개의 다른 로그인을 시도했습니다. 다음으로, Azure ID 보호 보고서를 검토합니다.
 
-#### 작업 5: Microsoft Entra ID ID 보호 보고서 검토
+#### 작업 5: Azure AD ID 보호 보고 검토
 
-이 작업에서는 ToR 브라우저 로그인에서 생성된 Microsoft Entra ID ID 보호 보고서를 검토합니다.
+이 작업에서는 ToR 브라우저 로그인에서 생성된 Azure AD ID 보호 보고서를 검토합니다.
 
-1. Azure Portal로 돌아가서 디렉터리 + 구독** 필터를 사용하여 **AdatumLab500-04** Microsoft Entra ID 테넌트로 전환**합니다.
+1. Azure Portal로 돌아가서 **디렉터리 + 구독** 필터를 사용하여 **AdatumLab500-04** Azure Active Directory 테넌트로 전환합니다.
 
 2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
@@ -570,15 +570,15 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
     >**참고**: 보고서에 위험이 표시되는 데 10~15분이 걸릴 수 있습니다.
 
-> **결과**: Microsoft Entra ID ID 보호를 사용하도록 설정하고, 사용자 위험 정책 및 로그인 위험 정책을 구성했으며, 위험 이벤트를 시뮬레이션하여 Microsoft Entra ID ID 보호 구성의 유효성을 검사했습니다.
+> **결과**: 위험 이벤트를 시뮬레이션하여 Azure AD ID 보호 구성의 유효성을 검사한 것은 물론, Azure AD ID 보호를 사용하고 사용자 위험 정책 및 로그인 위험 정책을 구성했습니다.
 
 **리소스 정리**
 
 > 더 이상 사용하지 않는 ID 보호 리소스는 제거해야 합니다. 
 
-다음 단계를 사용하여 AdatumLab500-04** Microsoft Entra ID 테넌트에서 **ID 보호 정책을 사용하지 않도록 설정합니다.
+다음 단계를 사용하여 **AdatumLab500-04** Azure AD 테넌트의 ID 보호 정책을 사용하지 않도록 설정합니다.
 
-1. Azure Portal에서 AdatumLab500-04** Microsoft Entra ID 테넌트 블레이드로 다시 **이동합니다.
+1. Azure Portal에서 다시 **AdatumLab500-04** Azure Active Directory 테넌트 블레이드로 이동합니다.
 
 2. **AdatumLab500-04** 블레이드의 **관리** 섹션에서 **보안**을 클릭합니다.
 
@@ -594,7 +594,7 @@ Microsoft Entra ID 인증을 향상시키는 기능의 개념 증명을 만들�
 
 다음 단계를 사용하여 랩의 앞 부분에서 프로비전한 Azure VM을 중지합니다.
 
-1. Azure Portal에서 디렉터리 + 구독 필터를 az500-04-vm1** Azure VM을 배포한 **Azure 구독과 연결된 Microsoft Entra ID 테넌트로 설정합니다 **.**
+1. Azure Portal에서 az500-04-vm1** Azure VM을 배포한 **Azure 구독과 연결된 Azure AD 테넌트에 디렉터리 + 구독** 필터를 설정합니다**.
 
 2. Azure Portal 페이지 위쪽의 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **가상 머신**을 입력하고 **Enter** 키를 누릅니다.
 
