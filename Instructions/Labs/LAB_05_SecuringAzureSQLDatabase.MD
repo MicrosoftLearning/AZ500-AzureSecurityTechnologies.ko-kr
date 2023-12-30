@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 08 - Azure SQL Database 보안
-  module: Module 03 - Secure data and applications
+  title: 05 - Azure SQL Database 보안
+  module: Module 02 - Plan and implement security for Azure SQL Database and Azure SQL Managed Instance
 ---
 
-# 랩 08: Azure SQL Database 보안
+# 랩 05: Azure SQL Database 보안
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오

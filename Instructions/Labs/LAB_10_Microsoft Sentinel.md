@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 13 - Microsoft Sentinel
-  module: Module 04 - Manage Security Operations
+  title: 10 - Microsoft Sentinel
+  module: Module 05 - Configure and manage security monitoring and automation solutions
 ---
 
-# 랩 13: Microsoft Sentinel
+# 랩 10: Microsoft Sentinel
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오

@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 09 - ACR 및 AKS 구성 및 보안
-  module: Module 02 - Implement Platform Protection
+  title: 04 - ACR 및 AKS 구성 및 보안
+  module: 'Module 01 - Secure compute, storage, and databases'
 ---
 
-# 랩 09: ACR 및 AKS 구성 및 보안
+# 랩 04: ACR 및 AKS 구성 및 보안
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
@@ -217,12 +217,14 @@ Azure Container Registry 및 Azure Kubernetes Service를 사용하여 개념 증
 
     ```sh
     RG_AKS=AZ500LAB09
-    
-    AKS_VNET_NAME=AZ500LAB09-vnet
+
+    RG_VNET=MC_AZ500LAB09_MyKubernetesCluster_eastus    
+
+    AKS_VNET_NAME=aks-vnet-30198516
     
     AKS_CLUSTER_NAME=MyKubernetesCluster
     
-    AKS_VNET_ID=$(az network vnet show --name $AKS_VNET_NAME --resource-group $RG_AKS --query id -o tsv)
+    AKS_VNET_ID=$(az network vnet show --name $AKS_VNET_NAME --resource-group $RG_VNET --query id -o tsv)
     
     AKS_MANAGED_ID=$(az aks show --name $AKS_CLUSTER_NAME --resource-group $RG_AKS --query identity.principalId -o tsv)
     

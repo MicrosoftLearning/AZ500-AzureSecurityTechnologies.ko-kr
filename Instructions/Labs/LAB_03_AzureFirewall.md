@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 06 - Azure Firewall
-  module: Module 02 - Implement Platform Protection
+  title: 03 - Azure Firewall
+  module: Module 02 - Plan and implement security for public access to Azure resources
 ---
 
-# 랩 06: Azure Firewall
+# 랩 03: Azure Firewall
 # 학생용 랩 매뉴얼
 
 ## 랩 시나리오
