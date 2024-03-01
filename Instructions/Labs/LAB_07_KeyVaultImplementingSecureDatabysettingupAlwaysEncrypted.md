@@ -1,6 +1,6 @@
 ---
 lab:
-  title: 07 - Key Vault(Always Encrypted를 설정하여 보안 데이터 구현)
+  title: 07 - Key Vault(Always Encrypted를 설정하여 안전한 데이터 구현)
   module: Module 01 - Manage security operations
 ---
 
@@ -9,14 +9,14 @@ lab:
 
 ## 랩 시나리오
 
-Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 보안 태세를 강화하기 위해 애플리케이션을 Microsoft Entra ID에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
+Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개념 증명 애플리케이션을 만들어야 합니다. 이 시나리오에 사용된 모든 비밀과 키는 Key Vault에 저장해야 합니다. 보안 태세를 강화하기 위해서는 해당 애플리케이션을 Microsoft Entra ID에 등록해야 합니다. 이러한 목표를 달성하기 위해 개념 증명에는 다음이 포함되어야 합니다.
 
 - Azure Key Vault를 만들어 자격 증명 모음에 키 및 비밀을 저장합니다.
 - Always Encrypted를 사용하여 SQL Database를 만들고 데이터베이스 테이블의 열 콘텐츠를 암호화합니다.
 
 >**참고**: 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
 
-이 개념 증명 빌드와 관련된 Azure의 보안 측면에 집중하려면 자동화된 ARM 템플릿 배포에서 시작하여 Visual Studio 2019 및 SQL Server Management Studio 19를 사용하여 Virtual Machine을 설정합니다.
+이 개념 증명 빌드와 관련된 Azure의 보안 측면에 계속 집중하기 위해 자동화된 ARM 템플릿 배포부터 시작하여 Visual Studio 2019 및 SQL Server Management Studio 19를 사용하여 가상 머신을 설정합니다.
 
 ## 랩 목표
 
@@ -129,8 +129,8 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |설정|값|
     |----|----|
     |템플릿에서 구성(선택 사항)|**키, 비밀 및 인증서 관리**|
-    |키 권한|선택한 총 **9**개의 사용 권한의 결과 모두** 선택 클릭 **|
-    |키 권한/암호화 작업|선택한 총 **1**개의 사용 권한이 있는 서명** 클릭 **|
+    |키 권한|**모두 선택**을 클릭하면 총 **9개 선택** 권한이 생성됩니다.|
+    |주요 권한/암호화 작업|**서명**을 클릭하면 총 **1개 선택** 권한이 생성됩니다.|
     |비밀 권한|**모두 선택**을 클릭하면 총 **7개의 선택된** 권한이 나타납니다.|
     |인증 권한|**모두 선택**을 클릭하면 총 **15개의 선택된** 권한이 나타납니다.|
     |보안 주체 선택|**선택된 항목 없음**을 클릭하고, **보안 주체** 블레이드에서 사용자 계정을 선택하고 **다음**을 클릭합니다.|
@@ -222,7 +222,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 - 작업 1: 클라이언트 애플리케이션이 Azure SQL Database 서비스에 액세스할 수 있도록 설정
 - 작업 2: 애플리케이션의 Key Vault 액세스를 허용하는 정책 만들기
 - 작업 3: SQL Azure 데이터베이스 ADO.NET 연결 문자열 검색 
-- 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온
+- 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온합니다.
 - 작업 5: SQL Database에서 테이블을 만들고 암호화를 위한 데이터 열을 선택합니다.
 
 
@@ -312,13 +312,13 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 인터페이스에는 ADO.NET, JDBC, ODBC, PHP 및 Go용 연결 문자열이 포함됩니다. 
    
-4. **ADO.NET(SQL 인증)** 연결 문자열 기록합니다. 이 시간은 나중에 필요합니다.
+4. **ADO.NET(SQL 인증)** 연결 문자열을 기록합니다. 이 시간은 나중에 필요합니다.
 
     >**참고**: 연결 문자열을 사용하는 경우 `{your_password}` 자리 표시자를 연습 1의 배포에서 구성한 암호로 바꿔야 합니다.
 
-#### 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온
+#### 작업 4: Visual Studio 2019 및 SQL Management Studio 19를 실행하는 Azure VM에 로그온합니다.
 
-이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 19를 호스트합니다.
+이 작업에서는 연습 1에서 배포를 시작한 Azure VM에 로그온합니다. 이 Azure VM은 Visual Studio 2019 및 SQL Server Management Studio 19를 호스팅합니다.
 
     >**Note**: Before you proceed with this task, ensure that the deployment you initiated in the first exercise has completed successfully. You can validate this by navigating to the blade of the Azure resource group "Az500Lab10" (or other name you chose) and selecting **Deployments** from the Settings pane.  
 
@@ -334,7 +334,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 서버 이름을 기록합니다. 이 작업의 후반에서 필요할 것입니다.
 
-2. 방화벽 설정 블레이드에서 **규칙 이름으로 아래로 스크롤하고 , + 방화벽 규칙** 추가를 클릭하고**, 다음 설정을 지정**합니다. 
+2. **방화벽 설정** 블레이드에서 규칙 이름까지 아래로 스크롤하고 **+ 방화벽 규칙 추가**를 클릭한 후 다음 설정을 지정합니다. 
 
     |설정|값|
     |---|---|
@@ -342,7 +342,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
     |시작 IP|az500-10-vm1의 공용 IP 주소|
     |종료 IP|az500-10-vm1의 공용 IP 주소|
 
-3. 저장**을 클릭하여 **변경 내용을 저장하고 확인 창을 닫습니다. 
+3. **저장**을 클릭하여 변경 내용을 저장하고 확인 창을 닫습니다. 
 
     >**참고**: 이렇게 하면 서버 방화벽 설정이 수정됩니다. 그에 따라 이 랩에서 배포한 Azure VM 공용 IP 주소에서 medical 데이터베이스에 연결할 수 있게 됩니다.
 
@@ -359,7 +359,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     >**참고**: 이 랩의 나머지 단계는 원격 데스크톱 세션 내에서 **az500-10-vm1** Azure VM에 대해 수행됩니다.
 
-6. az500-10-vm1에 **SQL Server Management Studio[를 설치](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017)합니다.** Azure VM:
+6. **az500-10-vm1.** 에 [SQL Server Management Studio](https://learn.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?preserve-view=true&view=sql-server-2017)를 설치합니다. Azure VM:
  
 7. **SQL Server Management Studio**를 엽니다.
 
@@ -462,7 +462,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 10. RDP 세션으로 돌아가고 Visual Studio 콘솔의 **솔루션 탐색기** 창에서 **Program.cs**를 클릭하고, 해당 콘텐츠를 클립보드에 복사한 코드로 바꿉니다.
 
-11. Visual Studio 창에서 **Program.cs** 창의 줄 15에서 `<connection string noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 Azure SQL Database **ADO.NET** 연결 문자열로 바꿉니다. 연결 문자열 placehodler를 `{your_password}` 연습 1의 배포에서 지정한 암호로 바꿉니다. 랩 컴퓨터에 문자열을 저장한 경우 RDP 세션을 떠나서 ADO 문자열을 복사한 다음, Azure 가상 머신으로 돌아가서 붙여 넣어야 할 수 있습니다.
+11. Visual Studio 창에서 **Program.cs** 창의 줄 15에서 `<connection string noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 Azure SQL Database **ADO.NET** 연결 문자열로 바꿉니다. 연결 문자열에서 `{your_password}` 자리 표시자를 연습 1의 배포에서 지정한 암호로 바꿉니다. 랩 컴퓨터에 문자열을 저장한 경우 RDP 세션을 떠나서 ADO 문자열을 복사한 다음, Azure 가상 머신으로 돌아가서 붙여 넣어야 할 수 있습니다.
 
 12. Visual Studio 창에서 **Program.cs** 창의 줄 16에서 `<client id noted earlier>` 자리 표시자를 랩의 앞부분에서 기록한 등록된 앱의 **애플리케이션(클라이언트) ID** 값으로 바꿉니다. 
 
@@ -498,7 +498,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
 1. Azure Portal 오른쪽 위의 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 
 
-2. Cloud Shell 창의 왼쪽 위 드롭다운 메뉴에서 필요한 경우 PowerShell**을 선택하고 **메시지가 표시되면 확인을** 클릭합니다**.
+2. 필요한 경우 Cloud Shell 창의 왼쪽 상단 드롭다운 메뉴에서 **PowerShell**을 선택하고 메시지가 표시되면 **확인**을 클릭합니다.
 
 3. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 이 랩에서 만든 리소스 그룹을 제거합니다.
   
