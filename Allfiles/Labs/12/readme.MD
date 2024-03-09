@@ -1,1 +1,1 @@
-This contains the bicep file to deploy the resources configured in the lab
+여기에는 랩에 구성된 리소스를 배포하는 bicep 파일이 포함됩니다.

@@ -1,10 +1,10 @@
 ---
 lab:
-  title: 08 - Azure Monitor
-  module: Module 02 - Configure data collection in Azure Monitor
+  title: 14 - Azure Monitor
+  module: Module 04 - Manage security operations
 ---
 
-# 랩 08: Azure Monitor
+# 랩 14: Azure Monitor
 
 # 학생용 랩 매뉴얼
 
@@ -20,18 +20,18 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 - 연습 1: Azure 가상 머신 배포
 - 연습 2: Log Analytics 작업 영역 만들기
-- 연습 3: Azure 스토리지 계정 만들기
-- 연습 4: 데이터 수집 규칙을 만듭니다.
+- 연습 3: Azure Storage 계정 만들기
+- 연습 4: 데이터 콜렉션 규칙을 만듭니다.
   
 ## 지침
 
 ### 연습 1: Azure 가상 머신 배포
 
-### 연습 시간: 10분
+### 운동 타이밍: 10분
 
 이 연습에서는 다음 작업을 완료합니다. 
 
-- 작업 1: Azure 가상 머신 배포 
+- 작업 1: Azure 가상 머신을 배포합니다. 
 
 #### 작업 1: Azure 가상 머신 배포
 
@@ -49,13 +49,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
     New-AzResourceGroup -Name AZ500LAB131415 -Location 'EastUS'
     ```
 
-    >**참고**: 이 리소스 그룹은 랩 13, 14 및 15에 사용됩니다.
-
-5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 EAH(호스트에서 암호화)를 사용하도록 설정합니다.
-   
-   ```powershell
-    Register-AzProviderFeature -FeatureName "EncryptionAtHost" -ProviderNamespace Microsoft.Compute 
-    ```
+    >**참고**: 이 리소스 그룹은 랩 13, 14 및 15에 사용됩니다. 
 
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 새 Azure 가상 머신을 만듭니다. 
 
@@ -68,7 +62,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
     |설정|값|
     |---|---|
     |사용자 |**localadmin**|
-    |암호|**랩 02 > 연습 2 > 작업 1 > 3단계에서 만든 개인 암호를 사용하세요.**|
+    |암호|**랩 04 > 연습 1 > 작업 1 > 9단계에서 만든 개인 암호를 사용하세요.**|
 
     >**참고**: 배포가 완료될 때까지 기다립니다. 
 
@@ -82,7 +76,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 ### 연습 2: Log Analytics 작업 영역 만들기
 
-### 연습 시간: 10분
+### 운동 타이밍: 10분
 
 이 연습에서는 다음 작업을 완료합니다. 
 
@@ -109,21 +103,21 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 5. **Log Analytics 작업 영역 만들기** 블레이드의 **검토 + 만들기** 탭에서 **만들기**를 클릭합니다.
 
-### 연습 3: Azure 스토리지 계정 만들기
+### 연습 3: Azure Storage 계정 만들기
 
 ### 예상 소요 시간: 10분
 
 이 연습에서는 다음 작업을 완료합니다.
 
-- 작업 1: Azure 스토리지 계정을 만듭니다.
+- 작업 1: Azure Storage 계정을 만듭니다.
 
-#### 작업 1: Azure 스토리지 계정 만들기
+#### 작업 1: Azure Storage 계정 만들기
 
 이 작업에서는 스토리지 계정을 만듭니다.
 
-1. Azure Portal의 Azure Portal 페이지 상단에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **스토리지 계정**을 입력하고 **Enter** 키를 누릅니다.
+1. Azure Portal 페이지의 맨 위에 있는 **리소스, 서비스 및 문서** 검색 텍스트 상자에 Storage 계정을** 입력**하고 Enter** 키를 누릅니**다.
 
-2. Azure Portal의 **스토리지 계정** 블레이드에서 **+ 만들기** 단추를 클릭하여 새 스토리지 계정을 만듭니다.
+2. Azure Portal의 **Storage 계정** 블레이드에서 + 만들기** 단추를 클릭하여 **새 스토리지 계정을 만듭니다.
 
     ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/73eb9241-d642-455a-a1ff-b504670395c0)
 
@@ -136,9 +130,9 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
     |스토리지 계정 이름|3~24자 사이의 문자와 숫자로 구성된 전역적으로 고유한 이름|
     |위치|**(미국) 미국 동부**|
     |성능|**표준(범용 v2 계정)**|
-    |중복성|**LRS(로컬 중복 스토리지)**|
+    |다시 배포|**LRS(로컬 중복 스토리지)**|
 
-4. **스토리지 계정 만들기** 블레이드의 **기본 사항** 탭에서 **검토**를 클릭하고 유효성 검사 프로세스가 완료될 때까지 기다린 다음 **만들기**를 클릭합니다.
+4. 스토리지 계정** 만들기 블레이드의 기본 사항** 탭에서 **검토를** 클릭하고 **유효성 검사 프로세스가 완료되기를 기다린 다음 만들기**를 클릭합니다**.**
 
      ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/d443821c-2ddf-4794-87fa-bfc092980eba)
 
@@ -156,14 +150,13 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 이 작업에서는 데이터 수집 규칙을 만듭니다.
 
-1. Azure Portal의 Azure Portal 페이지 상단에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **모니터링**을 입력하고 **Enter** 키를 누릅니다.
+1. Azure Portal 페이지의 맨 위에 있는 **리소스, 서비스 및 문서** 검색 텍스트 상자에 Monitor**를 입력**하고 Enter** 키를 누릅니**다.
 
-2. **모니터 설정** 블레이드에서  **데이터 수집 규칙**을 클릭합니다.
+2. **모니터 설정** 블레이드에서 데이터 수집 규칙을 클릭합니다 **.**
 
-  ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/d43e8f94-efb2-4255-9320-210c976fd45e)
+    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/2184da69-12c2-476b-b2b2-b80620e822a6)
 
-
-3. **데이터 수집 규칙 만들기** 블레이드의 **기본 사항** 탭에서 다음 설정을 지정합니다.
+3. **데이터 수집 규칙** 만들기 블레이드의 기본** 사항 탭에서 **다음 설정을 지정합니다.
   
     |설정|값|
     |---|---|
@@ -173,22 +166,20 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
     |리소스 그룹|**AZ500LAB131415**|
     |지역|**미국 동부**|
     |플랫폼 유형|**Windows**|
-    |데이터 컬렉션 엔드포인트|*비워 둠*|
+    |데이터 컬렉션 엔드포인트|*비워 둡니다.*|
 
     ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/9b58c4ce-b7a8-4acf-8289-d95b270a6083)
 
 
-4. 계속 진행하려면 **다음: 리소스 >** 라고 레이블이 지정된 단추를 클릭합니다.
-   
-6. 리소스 탭에서 **+ 리소스 추가**를 선택하고 **데이터 수집 엔드포인트 사용**을 선택합니다. 범위 선택 템플릿에서 **AZ500LAB131415**를 선택하고 **적용**을 클릭합니다.
+4. 다음: 리소스 > 레이블이 지정된 **단추를 클릭하여 계속 진행합니다** .
 
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/d4191115-11bc-43ec-9bee-e84b9b95a821)
+5. 리소스 탭에서 **+ 리소스** 추가를 선택한 **다음, 데이터 수집 엔드포인트를 사용하도록 검사 **.****
 
-10. 계속 진행하려면 **다음: 수집 및 배달 >** 이라고 레이블이 지정된 단추를 클릭합니다.
+    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/c8388619-c254-4c80-a1ff-dde2f35ed350)
 
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/8294d300-f910-4757-ad52-43c7594ac822)
+6. 다음: 수집 및 배달 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
 
-11. **+ 데이터 원본 추가**를 클릭한 다음 **데이터 원본 추가** 페이지에서 **데이터 원본 형식** 드롭다운 메뉴를 변경하여 **성능 카운터**를 표시합니다. 다음 기본 설정을 그대로 둡니다.
+7. + 데이터 원본** 추가를 클릭한 **다음 **데이터 원본** 추가 페이지에서 데이터 원본 유형** 드롭다운 메뉴를 변경**하여 성능 카운터를 표시**합니다.** 다음 기본 설정을 그대로 둡니다.
 
     |설정|값|
     |---|---|
@@ -200,13 +191,13 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/a24e44ad-1d10-4533-80e2-bae1b3f6564d)
 
-11. 계속 진행하려면 **다음: 대상 >** 이라고 레이블이 지정된 단추를 클릭합니다.
+8. 다음: 대상 >** 레이블이 지정된 **단추를 클릭하여 계속 진행합니다.
   
-12. **대상 유형** 드롭다운 메뉴를 변경하여 **Azure Monitor 로그**를 표시합니다. **구독** 창에서 *구독*이 표시되는지 확인한 다음 이전에 만든 Log Analytics 작업 영역을 반영하도록 **계정 또는 네임스페이스** 드롭다운 메뉴를 변경합니다.
+9. **대상 유형** 드롭다운 메뉴를 변경하여 Azure Monitor 로그를 표시**합니다.** **구독** 창에서 구독*이 *표시되는지 확인하고 이전에 만든 Log Analytics 작업 영역을 반영하도록 계정 또는 네임스페이스** 드롭다운 메뉴를 변경**합니다.
 
    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/481843f5-94c4-4a8f-bf51-a10d49130bf8)
 
-11. 페이지 하단에서 **데이터 원본 추가**를 클릭합니다.
+10. 페이지 아래쪽에서 **데이터 원본** 추가를 클릭합니다.
     
     ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/964091e7-bbbc-4ca8-8383-bb2871a1e7f0)
 
@@ -216,7 +207,7 @@ Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성
 
 14. **만들기**를 클릭합니다.
 
-> 결과: Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성능 카운터를 수집하기 위해 Azure Virtual Machines, Log Analytics 작업 영역, Azure Storage 계정 및 데이터 수집 규칙을 배포했습니다.
+> 결과: Azure Monitor 에이전트를 사용하여 가상 머신에서 이벤트 및 성능 카운터를 수집하기 위해 Azure 가상 머신, Log Analytics 작업 영역, Azure Storage 계정 및 데이터 수집 규칙을 배포했습니다.
 
 >**참고**: 클라우드용 Microsoft Defender 랩 및 Microsoft Sentinel 랩에 필요하므로 이 랩에서 리소스를 제거하지 마세요.
  
