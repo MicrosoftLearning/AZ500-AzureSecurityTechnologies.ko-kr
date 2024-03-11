@@ -126,25 +126,25 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID에 연결합니다.
 
     ```powershell
-    Connect-AzureAD
+    Connect-MgGraph
     ```
       
 6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트의 이름을 식별합니다. 
 
     ```powershell
-    $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
+    $domainName = ((Get-MgOrganization).VerifiedDomains)[0].Name
     ```
 
 7. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel Garcia에 대한 사용자 계정을 만듭니다. 
 
     ```powershell
-    New-AzureADUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
+    New-MgUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
     ```
 
 8. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID 사용자를 나열합니다(Joseph 및 Isabel의 계정이 목록에 표시되어야 함). 
 
     ```powershell
-    Get-AzureADUser 
+    Get-MgUser 
     ```
 
 #### 작업 2: PowerShell을 사용하여 후임 관리자 그룹을 만들고 Isabel Garcia의 사용자 계정을 그룹에 추가합니다.
