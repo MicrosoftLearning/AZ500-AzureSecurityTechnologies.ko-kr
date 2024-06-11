@@ -105,7 +105,11 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 3. Cloud Shell 창 내의 PowerShell 세션에서 다음 명령을 실행하여 리소스 그룹 **AZ500LAB10**에 Azure Key Vault를 만듭니다. 작업 1에서 이 랩의 리소스 그룹에 다른 이름을 선택했다면 이 작업에서도 해당 이름을 사용하세요. Key Vault 이름은 고유해야 합니다. 선택한 이름을 기억하세요. 이 랩에서 필요합니다.  
 
     ```powershell
-    New-AzKeyVault -VaultName $kvName -ResourceGroupName 'AZ500LAB10-lod41132372' -Location $location -DisableRbacAuthorization
+    $kvName = 'az500kv' + $(Get-Random)
+
+    $location = (Get-AzResourceGroup -ResourceGroupName 'AZ500LAB10').Location
+
+    New-AzKeyVault -VaultName $kvName -ResourceGroupName 'AZ500LAB10' -Location $location
     ```
 
     >**참고**: 마지막으로 실행된 명령의 출력에 자격 증명 모음 이름과 URI가 표시됩니다. 자격 증명 모음 URI는 `https://<vault_name>.vault.azure.net/` 형식입니다.
