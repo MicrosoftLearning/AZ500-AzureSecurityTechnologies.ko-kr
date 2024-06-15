@@ -302,7 +302,7 @@ lab:
 
 4. Azure Portal에서 **myVMWeb** 가상 머신 블레이드로 이동합니다.
 
-5. **myVMWeb** 블레이드의 **페이로드** 섹션에서 **명령 실행**을 클릭한 다음 **RunPowerShellScript**를 클릭합니다.
+5. **myVMWeb** 블레이드의 **운영** 섹션에서 **명령 실행**을 클릭한 다음 **RunPowerShellScript**를 클릭합니다.
 
 6. **명령 스크립트 실행** 창에서 다음을 실행하여 **myVmWeb**에 웹 서버 역활을 설치합니다.
 
