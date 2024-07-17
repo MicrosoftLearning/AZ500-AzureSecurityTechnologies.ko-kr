@@ -109,7 +109,7 @@ Always Encrypted 기능에 대한 Azure SQL Database 지원을 사용하는 개�
 
     $location = (Get-AzResourceGroup -ResourceGroupName 'AZ500LAB10').Location
 
-    New-AzKeyVault -VaultName $kvName -ResourceGroupName 'AZ500LAB10' -Location $location
+    New-AzKeyVault -VaultName $kvName -ResourceGroupName 'AZ500LAB10' -Location $location -DisableRbacAuthorization
     ```
 
     >**참고**: 마지막으로 실행된 명령의 출력에 자격 증명 모음 이름과 URI가 표시됩니다. 자격 증명 모음 URI는 `https://<vault_name>.vault.azure.net/` 형식입니다.
