@@ -9,11 +9,11 @@ lab:
 
 ## 랩 시나리오
 
-Azure Container Registry 및 Azure Kubernetes Service에 개념 증명을 배포하라는 메시지가 표시됩니다. 특히 개념 증명은 다음을 보여줘야 합니다.
+Azure Container Registry 및 Azure Kubernetes Service를 사용하여 개념 증명을 배포하라는 요청을 받았습니다. 특히 개념 증명은 다음을 입증해야 합니다.
 
-- Dockerfile을 사용하여 이미지를 빌드합니다.
-- Azure Container Registry를 사용하여 이미지를 저장합니다.
-- Azure Kubernetes Service 구성하기
+- Dockerfile을 사용하여 이미지를 빌드
+- Azure Container Registry를 사용하여 이미지를 저장
+- Azure Kubernetes Service를 구성
 - 컨테이너 애플리케이션을 내부 및 외부적으로 보호하고 액세스합니다. 
 
 > 이 랩의 모든 리소스에 대해 **미국 동부** 지역을 사용하고 있습니다. 이 지역을 수업에 사용할 것인지 강사에게 확인합니다. 
