@@ -120,35 +120,31 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 4. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 프로필 개체 내에서 암호값을 설정합니다.
     ```powershell
-    $PasswordProfile = @{
-      Password = 'Helo123!'
-      ForceChangePasswordNextSignIn = $true
-      ForceChangePasswordNextSignInWithMfa = $true
-    }
+    $passwordProfile.Password = "Pa55w.rd1234"
     ```
 
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID에 연결합니다.
 
     ```powershell
-    Connect-MgGraph -Scopes "User.ReadWrite.All", "Group.ReadWrite.All", "AuditLog.Read.All", "RoleManagement.Read.Directory"
+    Connect-AzureAD
     ```
       
 6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트의 이름을 식별합니다. 
 
     ```powershell
-    $domainName = ((Get-MgOrganization).VerifiedDomains)[0].Name
+    $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
     ```
 
 7. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel Garcia에 대한 사용자 계정을 만듭니다. 
 
     ```powershell
-    New-MgUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -MailNickName 'Isabel' -AccountEnabled
+    New-AzureADUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
     ```
 
 8. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID 사용자를 나열합니다(Joseph 및 Isabel의 계정이 목록에 표시되어야 함). 
 
     ```powershell
-    Get-MgUser 
+    Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*43846135@LOD*"} 
     ```
 
 #### 작업 2: PowerShell을 사용하여 후임 관리자 그룹을 만들고 Isabel Garcia의 사용자 계정을 그룹에 추가합니다.
@@ -158,38 +154,32 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 1. Cloud Shell 창 내의 동일한 PowerShell 세션에서 다음을 실행하여 후임 관리자라는 **새 보안 그룹을 만듭니다**.
    
    ```powershell
-   New-MgGroup -DisplayName "Junior Admins" -MailEnabled:$false -SecurityEnabled:$true -MailNickName JuniorAdmins
+   New-AzureADGroup -DisplayName 'Junior Admins43846135' -MailEnabled $false -SecurityEnabled $true -MailNickName JuniorAdmins
    ```
    
 2. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트의 **그룹을 나열**합니다(목록에는 Senior Admins 및 Junior Admins 그룹이 포함되어야 함).
    
    ```powershell
-   Get-MgGroup
+   Get-AzureADGroup
    ```
 
 3. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel Garcia의 사용자 계정에 대한 **참조를 얻습니다**.
 
    ```powershell
-   $user =Get-MgUser -Filter "MailNickName eq 'Isabel'"
+   $user = Get-AzureADUser -Filter "UserPrincipalName eq 'Isabel-43846135@LODSPRODMCA.onmicrosoft.com'"
    ```
 
-4. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 주니어 관리자 그룹에 대한 **참조를 가져옵니다**.
+4. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel의 사용자 계정을 Junior Admins43846135 그룹에 추가합니다.
    ```powershell
-   $targetGroup = Get-MgGroup -ConsistencyLevel eventual -Search '"DisplayName:Junior Admins"'
+   Add-AzADGroupMember -MemberUserPrincipalName $user.userPrincipalName -TargetGroupDisplayName "Junior Admins43846135"
    ```
 
-5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 하위 관리자 그룹에 **Isabel의 사용자 계정을 추가합니다**.
+5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Junior Admins43846135 그룹에 Isabel의 사용자 계정이 포함되어 있는지 확인합니다.
    
    ```powershell
-    New-MgGroupMember -DirectoryObjectId $user.id -GroupId $targetGroup.id
+    Get-AzADGroupMember -GroupDisplayName "Junior Admins43846135"
     ```
    
-5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 후임 관리자 그룹에 Isabel의 사용자 계정이 포함되어 있는지 **확인합니다**.
-   
-    ```powershell
-    Get-MgGroupMember -GroupId $targetGroup.id
-    ```
- 
 > 결과: PowerShell을 사용하여 사용자와 그룹 계정을 만들고 사용자 계정을 그룹 계정에 추가했습니다. 
 
 ### 연습 3: 최두리(사용자 계정)를 구성원으로 포함하는 서비스 데스크 그룹을 만듭니다.
