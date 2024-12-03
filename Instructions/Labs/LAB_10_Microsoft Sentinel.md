@@ -9,7 +9,7 @@ lab:
 
 ## 랩 시나리오
 
-**참고:** **Azure Sentinel**의 이름이 **Microsoft Sentinel**로 변경됨 
+**참고:****Microsoft Sentinel**이 **Microsoft Sentinel**로 이름이 변경됩니다. 
 
 Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라는 메시지가 표시됩니다. 특히 다음을 수행해야 합니다.
 
@@ -48,7 +48,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 - 작업 5: 사용자 지정 경고를 만들고 플레이북을 자동 응답으로 구성합니다.
 - 작업 6: 인시던트를 호출하고 연결된 작업을 검토합니다.
 
-#### 작업 1: Azure Sentinel 온보딩
+#### 작업 1: Microsoft Sentinel 온보딩
 
 이 작업에서는 Microsoft Sentinel을 온보딩하고 Log Analytics 작업 영역을 연결합니다. 
 
@@ -64,7 +64,7 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
 4. **작업 영역에 Microsoft Sentinel 추가** 블레이드에서, Azure Monitor 랩에서 만든 Log Analytics 작업 영역을 선택하고 **추가**를 클릭합니다.
 
-    >**참고**: Azure Sentinel에는 작업 영역에 대한 매우 구체적인 요구 사항이 있습니다. 예를 들어 클라우드용 Microsoft Defender에서 만든 작업 영역을 사용할 수 없습니다. [빠른 시작: Azure Sentinel 온보딩](https://docs.microsoft.com/en-us/azure/sentinel/quickstart-onboard)에서 알아보기
+    >**참고**: Azure Sentinel에는 작업 영역에 대한 매우 구체적인 요구 사항이 있습니다. 예를 들어 클라우드용 Microsoft Defender에서 만든 작업 영역을 사용할 수 없습니다. [빠른 시작: Microsoft Sentinel 온보딩](https://docs.microsoft.com/en-us/microsoft/sentinel/quickstart-onboard)에서 자세히 알아보기
     
 #### 작업 2: Azure Sentinel을 구성하여 Azure Activity 데이터 커넥터를 사용합니다. 
 
