@@ -11,7 +11,7 @@ lab:
 
 클라우드 기반 환경용 Microsoft Defender의 개념 증명을 만들라는 요청을 받았습니다. 특히 다음을 수행해야 합니다.
 
-- Azure 리소스를 모니터링하도록 클라우드용 Microsoft Defender를 구성합니다.
+- 가상 머신을 모니터링하도록 클라우드용 Microsoft Defender의 향상된 서버용 보안 기능을 구성합니다.
 - 가상 머신을 위한 클라우드용 Microsoft Defender 권장 사항을 검토합니다.
 - 게스트 구성 및 Just-In-Time VM 액세스에 대한 권장 사항을 구현합니다. 
 - Secure Score를 사용하여 더욱 안전한 인프라를 만드는 진행 상황을 결정하는 방법을 검토합니다.
@@ -38,35 +38,23 @@ lab:
 - 작업 2: 클라우드용 Microsoft Defender 권장 사항 검토
 - 작업 3: Just-In-Time VM 액세스를 사용하도록 설정하는 클라우드용 Microsoft Defender 권장 사항 구현
 
-#### 작업 1: 클라우드용 Microsoft Defender 구성
+#### 작업 1: 클라우드용 Microsoft Defender의 향상된 서버용 보안 기능
 
-이 작업에서는 클라우드용 Microsoft Defender를 온보딩하고 구성합니다.
+이 작업에서는 클라우드용 Microsoft Defender의 향상된 서버용 보안 기능을 온보딩하고 구성합니다.
 
-1. Azure portal **`https://portal.azure.com/`** 에 로그인합니다.
+1. 브라우저 세션을 시작하고 [Azure 구독](https://azure.microsoft.com/en-us/free/?azure-portal=true)에 로그인합니다. 관리 액세스 권한이 있는 경우입니다.
 
-    >**참고**: 이 랩에 사용 중인 Azure 구독에 Owner 또는 Contributor 역할이 있는 계정을 사용하여 Azure Portal에 로그인합니다.
+2. Azure Portal에서 페이지 위쪽에 있는 리소스, 서비스 및 문서 검색 텍스트 상자에 클라우드용 Microsoft Defender을 입력하고 Enter 키를 누릅니다.
 
-2. Azure Portal에서 페이지 위쪽에 있는 **리소스, 서비스 및 문서 검색** 텍스트 상자에 **클라우드용 Microsoft Defender**을 입력하고 **Enter** 키를 누릅니다.
+3. 클라우드용 Microsoft Defender의 관리 블레이드에서 환경 설정 영역으로 이동합니다. 구독 섹션이 표시될 때까지 환경 설정 폴더를 확장한 다음 구독을 클릭하여 세부 정보를 확인합니다.
 
-3. 왼쪽 탐색 패널에서 **시작**을 클릭합니다. **클라우드용 Microsoft Defender \|시작** 블레이드에서 **업그레이드**를 클릭합니다.
-     
-4. **클라우드용 Microsoft Defender \|시작** 블레이드의 에이전트 설치 탭에서 아래로 스크롤하여 **에이전트 설치**를 클릭합니다. 
+4. 설정 블레이드의 Defender 계획에서 CWP(클라우드 워크로드 보호)를 확장합니다.
+  
+5. CWP(클라우드 워크로드 보호) 계획 목록에서 서버를 선택합니다. 페이지 오른쪽에서 상태를 Off에서 On으로 변경한 다음 저장을 클릭합니다.
+  
+6. 서버용 Microsoft Defender 플랜 2의 세부 정보를 검토하려면 계획 을 선택합니다.
 
-5. **클라우드용 Microsoft Defender \| 시작** 블레이드의 **업그레이드** 탭에서 >> **보안 강화 기능이 포함된 작업 영역 선택** 섹션이 표시될 때까지 아래로 스크롤 >> Log Analytics 작업 영역을 선택하여 **Microsoft Defender 계획**을 활성화한 다음 큰 파란색 업그레이드 단추를 클릭합니다.  
-
-    >**참고**: Microsoft Defender 계획의 일부로 사용할 수 있는 모든 기능을 검토합니다. 
-
-6. **클라우드용 Microsoft Defender**로 이동하고 왼쪽 탐색 패널의 관리 섹션 아래에서 **환경 설정**을 클릭합니다.
-
-7. **클라우드용 Microsoft Defender \| 환경 설정** 블레이드에서 아래로 스크롤하여 구독이 나타날 때까지 확장하고 관련 구독을 클릭합니다. 
-
-8. **설정 \| Defender 계획** 블레이드에서 **모든 계획 사용**을 선택하고 필요한 경우 **저장**을 클릭합니다.
-
-9. **클라우드용 Microsoft Defender \| 환경 설정** 블레이드로 다시 이동하여 구독이 나타날 때까지 확장하고 이전 랩에서 만든 Log Analytics 작업 영역을 나타내는 항목을 클릭합니다.
-
-10. **설정 \| Defender 계획** 블레이드에서 모든 옵션이 "켜짐"인지 확인합니다. 필요한 경우 **모든 계획 사용**을 클릭한 다음 **저장**을 클릭합니다.
-
-11. **설정 \| Defender 계획** 블레이드에서 **데이터 수집**을 선택합니다. **모든 이벤트**를 클릭하고 **저장**을 클릭합니다.
+>**참고**: CWP(클라우드 워크로드 보호) 서버 계획을 Off에서 On으로 활성화하도록 설정하면 서버용 Microsoft Defender 플랜 2가 활성화됩니다.
 
 #### 작업 2: 클라우드용 Microsoft Defender 권장 사항 검토
 
