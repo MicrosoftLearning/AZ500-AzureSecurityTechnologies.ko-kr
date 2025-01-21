@@ -158,7 +158,7 @@ Azure Container Registry 및 Azure Kubernetes Service를 사용하여 개념 증
 
     |설정|값|
     |----|----|
-    |네트워크 구성|**Azure CNI**|
+    |네트워크 구성|**Azure CNI 오버레이**|
     |DNS 이름 접두사|**기본값 그대로 유지**|
 
     >**참고**: AKS는 프라이빗 클러스터로 구성할 수 있습니다. 이렇게 하면 API 서버에 개인 IP를 할당하여 API 서버와 노드 풀 간의 네트워크 트래픽이 개인 네트워크에만 남아 있는지 확인합니다. 자세한 내용은 [프라이빗 Azure Kubernetes Service 클러스터 만들기](https://docs.microsoft.com/en-us/azure/aks/private-clusters) 페이지를 참조하세요.
