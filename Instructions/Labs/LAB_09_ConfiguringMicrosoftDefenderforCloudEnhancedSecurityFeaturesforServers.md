@@ -14,13 +14,13 @@ lab:
 
 ## 랩 목표
 
-- 클라우드용 Microsoft Defender의 서버용 강화된 보안 기능 구성
+- 서버에 대한 클라우드용 Microsoft Defender 보안 강화 기능 구성
   
 - 서버용 Microsoft Defender 계획 2에 대한 강화된 보안 기능 검토
 
 ## 연습 지침
 
-### 클라우드용 Microsoft Defender의 서버용 강화된 보안 기능 구성
+### 서버에 대한 클라우드용 Microsoft Defender 보안 강화 기능 구성
 
 1. Azure Portal에서 페이지 위쪽의 리소스, 서비스 및 문서 검색 텍스트 상자에 **클라우드용 Microsoft Defender**를 입력하고 **Enter** 키를 누릅니다.
 
