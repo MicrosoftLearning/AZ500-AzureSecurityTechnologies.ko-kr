@@ -106,42 +106,44 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 이 작업에서는 PowerShell을 사용하여 Isabel Garcia의 사용자 계정을 만들겠습니다.
 
-1. Azure Portal 오른쪽 상단에 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다. 메시지가 표시되면 **PowerShell** 및 **스토리지 만들기**를 선택합니다.
+1. **Azure Portal** 오른쪽**상단에** 있는 첫 번째 아이콘을 클릭하여 Cloud Shell을 엽니다.
 
-2. Cloud Shell 창의 왼쪽 위 모서리에 있는 드롭다운 메뉴에서 **PowerShell**이 선택되었는지 확인합니다.
+2. **메시지가 표시되면 스토리지 계정을 만들어 Cloud Shell을 설정합니다**. Cloud Shell을 **처음 시작할 때만** 필요합니다.
+
+3. Cloud Shell 창의 왼쪽 상단에 있는 드롭다운 메뉴에서 **PowerShell이 선택되었는지** 확인합니다.
 
    >**참고**: 복사된 텍스트를 Cloud Shell에 붙여 넣으려면 창 내에서 마우스 오른쪽 단추를 클릭하고 **붙여넣기**를 선택합니다. 또는 **Shift+Insert** 키 조합을 사용할 수 있습니다.
 
-3. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 암호 프로필 개체를 만듭니다.
+4. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 암호 프로필 개체를 만듭니다.
 
     ```powershell
     $passwordProfile = New-Object -TypeName Microsoft.Open.AzureAD.Model.PasswordProfile
     ```
 
-4. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 프로필 개체 내에서 암호값을 설정합니다.
+5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 프로필 개체 내에서 암호값을 설정합니다.
     ```powershell
     $passwordProfile.Password = "Pa55w.rd1234"
     ```
 
-5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID에 연결합니다.
+6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID에 연결합니다.
 
     ```powershell
     Connect-AzureAD
     ```
       
-6. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트의 이름을 식별합니다. 
+7. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra 테넌트의 이름을 식별합니다. 
 
     ```powershell
     $domainName = ((Get-AzureAdTenantDetail).VerifiedDomains)[0].Name
     ```
 
-7. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel Garcia에 대한 사용자 계정을 만듭니다. 
+8. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Isabel Garcia에 대한 사용자 계정을 만듭니다. 
 
     ```powershell
     New-AzureADUser -DisplayName 'Isabel Garcia' -PasswordProfile $passwordProfile -UserPrincipalName "Isabel@$domainName" -AccountEnabled $true -MailNickName 'Isabel'
     ```
 
-8. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID 사용자를 나열합니다(Joseph 및 Isabel의 계정이 목록에 표시되어야 함). 
+9. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 Microsoft Entra ID 사용자를 나열합니다(Joseph 및 Isabel의 계정이 목록에 표시되어야 함). 
 
     ```powershell
     Get-AzureADUser -All $true | Where-Object {$_.UserPrincipalName -like "*43846135@LOD*"} 
@@ -296,7 +298,9 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 3. **AZ500Lab01 \| 액세스 제어(IAM)** 블레이드에서 **+ 추가**를 클릭하고 드롭다운 메뉴에서 **역할 할당 추가**를 클릭합니다.
 
-4. **역할 할당 추가** 블레이드에서 다음 설정을 지정하고 각 단계 후 **다음**을 클릭합니다.
+4. **역할 할당 추가** 블레이드에서 각 다음 설정을 완료하고 다음을 클릭합니다.
+
+   **참고:** 모든 단계를 완료한 후 **다음**을 클릭합니다.
 
    |설정|값|
    |---|---|
@@ -304,17 +308,17 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
    |액세스 할당(멤버 창 아래)|**사용자, 그룹 또는 서비스 주체**|
    |(+멤버 선택) 선택|**Service Desk**|
 
-5. **검토 + 할당**을 두 번 클릭하여 역할 할당을 만듭니다.
+6. **검토 + 할당**을 두 번 클릭하여 역할 할당을 만듭니다.
 
-6. **액세스 제어(IAM)** 블레이드에서 **역할 할당**을 선택합니다.
+7. **액세스 제어(IAM)** 블레이드에서 **역할 할당**을 선택합니다.
 
-7. **AZ500Lab01 \| 액세스 제어(IAM)** 블레이드의 **액세스 확인** 탭에서 **이름 또는 이메일 주소로 검색** 텍스트 상자에 **Dylan Williams**를 입력합니다.
+8. **AZ500Lab01 \| 액세스 제어(IAM)** 블레이드의 **액세스 확인** 탭에서 **이름 또는 이메일 주소로 검색** 텍스트 상자에 **Dylan Williams**를 입력합니다.
 
-8. 검색 결과 목록에서 Dylan Williams의 사용자 계정을 선택하고 **Dylan Williams 할당 - AZ500Lab01** 블레이드에서 새로 생성된 할당을 확인합니다.
+9. 검색 결과 목록에서 Dylan Williams의 사용자 계정을 선택하고 **Dylan Williams 할당 - AZ500Lab01** 블레이드에서 새로 생성된 할당을 확인합니다.
 
-9. **Dylan Williams 할당 - AZ500Lab01** 블레이드를 닫습니다.
+10. **Dylan Williams 할당 - AZ500Lab01** 블레이드를 닫습니다.
 
-10. **Joseph Price**의 액세스를 확인하려면 마지막 두 단계를 똑같이 반복합니다. 
+11. **Joseph Price**의 액세스를 확인하려면 마지막 두 단계를 똑같이 반복합니다. 
 
 > 결과: RBAC 권한을 할당하고 확인했습니다. 
 
