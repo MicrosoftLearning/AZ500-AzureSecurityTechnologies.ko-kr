@@ -4,6 +4,7 @@ lab:
   module: Module 01 - Manage Identity and Access
 ---
 
+
 # 랩 01: 역할 기반 액세스 제어
 # 학생용 랩 매뉴얼
 
