@@ -26,7 +26,7 @@ Azure Container Registry 및 Azure Kubernetes Service를 사용하여 개념 증
 
 ## 랩: ACR 및 AKS 구성 및 보안
 
-![이미지](https://user-images.githubusercontent.com/91347931/157532250-1104a829-792a-4b6d-beff-fe976e2d5d4b.png)
+![이 랩의 작업 프로세스 흐름을 보여 주는 다이어그램](../media/configuring-and-securing-acr-and-aks-diagram.png)
 
 ## 소개
 
@@ -81,6 +81,11 @@ Azure Container Registry 및 Azure Kubernetes Service를 사용하여 개념 증
     ```sh
     az acr create --resource-group AZ500LAB09 --name az500$RANDOM$RANDOM --sku Basic
     ```
+    > **참고** Azure Container Registry 리소스 공급자를 등록하세요. `az acr create` 실행 시 오류가 발생한다면, 이는 **Azure Container Registry** 서비스가 아직 구독에 등록되지 않았기 때문일 수 있습니다. 이 문제를 해결하기 위해 서비스를 등록하면서 레지스트리를 만들 수 있는 단일 명령을 사용할 수 있습니다.
+    
+    > ```sh
+    > az provider register --namespace Microsoft.ContainerRegistry
+    > ```
 
 7. Cloud Shell 창의 Bash 세션에서 다음을 실행하여 새 ACR이 만들어졌는지 확인합니다.
 
