@@ -30,9 +30,9 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 ## 역할 기반 액세스 제어 아키텍처 다이어그램
 
-![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/506cde9c-5242-4438-a793-f88a5434a2b2)
+![이 랩의 시스템 레이아웃 및 랩의 프로세스 흐름을 보여 주는 다이어그램](../media/role-based-access-control-architecture-diagram.png)
 
-## Instructions
+## 지침
 
 ### 연습 1: Joseph Price 사용자 계정을 구성원으로 하여 선임 관리자 그룹을 만듭니다. 
 
@@ -68,7 +68,7 @@ Azure 사용자와 그룹이 어떻게 만들어지는지 보여주는 개념 �
 
 7. **만들기**를 클릭합니다.
 
-8. **사용자 \| 모든 사용자** 블레이드를 새로 고쳐 Microsoft Entra 테넌트에 새 사용자가 만들어졌는지 확인합니다.
+8. **사용자 | 모든 사용자** 블레이드를 새로 고쳐 Microsoft Entra 테넌트에 새 사용자가 만들어졌는지 확인합니다.
 
 #### 작업 2: Azure Portal을 사용하여 선임 관리자 그룹을 만들고 Joseph Price 사용자 계정을 그룹에 추가합니다.
 

@@ -53,7 +53,7 @@ lab:
 
    - **구성됨** 탭에서 포트를 추가하려는 VM을 마우스 오른쪽 단추로 클릭하고 편집을 선택합니다.
 
-   ![이미지](https://github.com/user-attachments/assets/aa4ded55-c5b1-4d40-b5a0-a4c33b9eb81b)
+   ![vm 구성 화면에서 Just-In-Time 액세스 스크린샷](../media/just-in-time-vm-access.png)
    
    - **JIT VM 액세스 구성**에서 포트를 클릭하여 이미 보호된 포트의 기존 설정을 편집하거나 새로운 사용자 지정 포트를 추가할 수 있습니다.
    - 포트 편집이 완료되면 **저장**을 선택합니다.   
@@ -72,6 +72,6 @@ lab:
     
         - JIT를 사용하도록 설정한 경우 **액세스 요청**을 선택하여 요청 IP, 시간 범위 및 해당 VM에 대해 구성된 포트를 사용하여 액세스 요청을 전달합니다.
     
-   ![이미지](https://github.com/user-attachments/assets/f5d0b67c-7731-4261-b0eb-a56c505dadd4)
+   ![JIT를 사용한 Virtual Machine 연결 스크린샷](../media/vm-connection-for-vm1.png)
 
 > **결과**: VM에서 JIT를 사용하도록 설정하는 방법과 클라우드용 Microsoft Defender에서 JIT를 사용하도록 설정한 VM에 대해 액세스를 요청하는 방법에 대한 다양한 방법을 살펴봤습니다.

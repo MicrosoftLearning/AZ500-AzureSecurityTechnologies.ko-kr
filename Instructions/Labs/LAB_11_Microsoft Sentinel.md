@@ -27,9 +27,9 @@ Microsoft Sentinel 기반 위협 탐지 및 응답의 개념 증명을 만들라
 
 ## Microsoft Sentinel 다이어그램
 
-![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/509aa70d-de11-4470-a289-877fbfecbc00)
+![이 랩의 작업 프로세스 흐름을 보여 주는 다이어그램](../media/microsoft-sentinel-diagram.png)
 
-## Instructions
+## 지침
 
 ## 랩 파일:
 

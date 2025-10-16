@@ -26,7 +26,7 @@ lab:
 
 2. **클라우드용 Microsoft Defender**의 **관리 블레이드**에서 **환경 설정**으로 이동합니다. **구독** 섹션이 표시될 때까지 환경 설정 폴더를 확장한 다음 **구독**을 클릭하여 세부 정보를 확인합니다.
 
-   ![이미지](https://github.com/user-attachments/assets/3b25dd82-e09e-4f8a-b85e-c9bc6c4bd488)
+   ![클라우드용 Microsoft Defender의 환경 설정 스크린샷](../media/defender-for-cloud-environment-settings.png)
    
 3. **설정** 블레이드의 **Defender 계획**에서 **CWP(클라우드 워크로드 보호)** 를 확장합니다.
 
@@ -36,6 +36,6 @@ lab:
 
    참고: CWP(클라우드 워크로드 보호) 서버 계획을 Off에서 On으로 활성화하도록 설정하면 서버용 Microsoft Defender 플랜 2가 활성화됩니다.
  
-   ![이미지](https://github.com/user-attachments/assets/de434a75-345a-4023-83f1-fa53fcb5f288)
+   ![클라우드용 Microsoft Defender 플랜 선택 페이지 스크린샷](../media/defender-for-cloud-plan-selection.png)
    
 > **결과**: 구독에서 서버용 Microsoft Defender 플랜 2를 사용하도록 설정했습니다.
