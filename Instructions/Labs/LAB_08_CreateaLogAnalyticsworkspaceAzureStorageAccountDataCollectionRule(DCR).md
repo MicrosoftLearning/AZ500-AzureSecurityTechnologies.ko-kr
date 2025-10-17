@@ -168,7 +168,7 @@ lab:
     |플랫폼 유형|**Windows**|
     |데이터 수집 끝점|*공백으로 두기*|
 
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/9b58c4ce-b7a8-4acf-8289-d95b270a6083)
+    ![데이터 수집 규칙 만들기 기본 탭 스크린샷](../media/crete-a-data-collection-rule-basics-tab.png)
 
 
 5. 계속 진행하려면 **다음: 리소스 >** 라고 레이블이 지정된 단추를 클릭합니다.
@@ -191,7 +191,7 @@ lab:
     |디스크|60|
     |네트워크|60|
 
-   ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/a24e44ad-1d10-4533-80e2-bae1b3f6564d)
+   ![데이터 수집 규칙의 수집 및 제공 탭 스크린샷](../media/crete-a-data-collection-rule-collectanddeliver-tab.png)
 
 11. 계속 진행하려면 **다음: 대상 >** 이라고 레이블이 지정된 단추를 클릭합니다.
   
@@ -199,11 +199,11 @@ lab:
 
 13. 페이지 하단에서 **데이터 원본 추가**를 클릭합니다.
     
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/964091e7-bbbc-4ca8-8383-bb2871a1e7f0)
+    ![데이터 수집 규칙 페이지의 데이터 원본 추가 페이지 스크린샷](../media/crete-a-data-collection-rule-add-datasource.png)
 
 14. **검토 + 만들기**를 클릭합니다.
 
-    ![이미지](https://github.com/MicrosoftLearning/AZ500-AzureSecurityTechnologies/assets/91347931/50dd8407-a106-4540-9e14-ae40a3c04830)
+    ![데이터 수집 규칙 마법사의 검토 + 만들기 탭 스크린샷](../media/crete-a-data-collection-rule-reviewcreate-tab.png)
 
 15. **만들기**를 클릭합니다.
 

@@ -27,9 +27,9 @@ Azure Firewall을 설치해야 합니다. 조직에서 전체 네트워크 보�
 
 ## Azure Firewall 다이어그램
 
-![이미지](https://user-images.githubusercontent.com/91347931/157529954-a1bc434b-2eca-41c1-b875-1f0c977d5e20.png)
+![이 랩의 작업 프로세스 흐름을 보여 주는 다이어그램](../media/azure-firewall-diagram.png)
 
-## Instructions
+## 지침
 
 ## 랩 파일:
 
