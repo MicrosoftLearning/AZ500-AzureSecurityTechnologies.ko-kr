@@ -66,7 +66,7 @@ lab:
 5. Cloud Shell 창 내의 PowerShell 세션에서 다음을 실행하여 새 Azure 가상 머신을 만듭니다. 
 
     ```powershell
-    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'EastUS' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -PublicIpSku Standard -OpenPorts 80,3389 -Size Standard_D2s_v3 
+    New-AzVm -ResourceGroupName "AZ500LAB131415" -Name "myVM" -Location 'EastUS' -VirtualNetworkName "myVnet" -SubnetName "mySubnet" -SecurityGroupName   "myNetworkSecurityGroup" -PublicIpAddressName "myPublicIpAddress" -PublicIpSku Standard -OpenPorts 80,3389 -Size Standard_D2_v4 
     ```
     
 6.  자격 증명에 대한 메시지가 표시되면:
@@ -106,7 +106,7 @@ lab:
     |---|---|
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
-    |이름|유효하며 전역적으로 고유한 이름|
+    |속성|**lgawIgnite**|
     |지역|**미국 동부**|
 
 4. **검토 + 만들기**를 선택합니다.
@@ -133,10 +133,11 @@ lab:
     |---|---|
     |구독|이 랩에서 사용 중인 Azure 구독의 이름|
     |리소스 그룹|**AZ500LAB131415**|
-    **인스턴스 세부 정보** |스토리지 계정 이름|문자와 숫자로 구성된 3~24자 길이의 전역적으로 고유한 이름| |지역|**(미국) EastUS**|
+    **인스턴스 세부 정보** |스토리지 계정 이름|**strgactignite**|
+    |지역|**(미국) EastUS**|
     |기본 서비스|**Azure Blob Storage 또는 Azure Data Lake Storage Gen 2**|
     |성능|**표준(범용 v2 계정)**|
-    |이중화|**로컬 중복 스토리지(LRS)**|
+    |중복성|**LRS(로컬 중복 스토리지)**|
 
 5. **스토리지 계정 만들기** 블레이드의 **기본** 탭에서 **검토 + 만들기**를 클릭합니다. 유효성 검사 프로세스가 완료되면 **만들기**를 클릭합니다.
 
